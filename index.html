@@ -3,132 +3,151 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Pixie Packed Family | Disney Apparel &amp; Theme Park Travel Essentials</title>
-<meta name="description" content="Curated Disney apparel and theme park travel essentials, free packing checklists, and downloadable trip planning guides from The Pixie Packed Family.">
+<title>The Pixie Packed Family | Disney Vacation Planning &amp; Travel Essentials</title>
+<meta name="description" content="Disney vacation planning, resort reviews, park tips, and curated Amazon finds from The Pixie Packed Family — helping families pack smarter and make magical memories.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --dusk: #2b2250;
-    --dusk-light: #453a72;
-    --coral: #ff6f61;
-    --coral-dark: #e2554a;
-    --gold: #f0c14b;
-    --cream: #fff9f0;
-    --sage: #6f9e83;
-    --ink: #221c3a;
-    --gray: #6b6480;
+    --purple: #7b5fe0;
+    --magenta: #c23f97;
+    --coral: #e76e8c;
+    --orange: #eda268;
+    --maroon: #5c2a38;
+    --pink-bg: #fbe0ec;
+    --gold: #e8c468;
+    --cream: #fff8f3;
+    --gray: #7a6f78;
+    --ink: #3a2733;
     --white: #ffffff;
-    --radius: 16px;
-    --shadow: 0 6px 24px rgba(43,34,80,0.10);
-    --shadow-lg: 0 14px 40px rgba(43,34,80,0.18);
+    --radius: 18px;
+    --shadow: 0 6px 26px rgba(92,42,56,0.12);
+    --shadow-lg: 0 16px 44px rgba(92,42,56,0.20);
   }
   * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   body {
-    font-family: Georgia, 'Times New Roman', serif;
+    font-family: 'Quicksand', -apple-system, sans-serif;
     background: var(--cream);
     color: var(--ink);
-    line-height: 1.6;
+    line-height: 1.65;
   }
-  .sans { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; }
+  h1, h2, h3, .display { font-family: 'Fredoka', sans-serif; }
   a { color: inherit; text-decoration: none; }
   img { max-width: 100%; display: block; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+  a[data-placeholder="true"] { outline: 2px dashed var(--magenta); outline-offset: 3px; }
 
-  /* placeholder link visual flag — remove this rule once real links are in */
-  a[data-placeholder="true"] { outline: 2px dashed var(--coral); outline-offset: 3px; }
-
-  header {
-    background: var(--dusk);
-    position: sticky; top: 0; z-index: 50;
+  /* GRADIENT TEXT — the signature brand treatment, echoing the banner */
+  .gradient-text {
+    background: linear-gradient(90deg, var(--purple), var(--magenta) 40%, var(--coral) 70%, var(--orange));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
   }
-  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-  .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.25rem; font-weight: 700; }
-  .brand .mark { width: 34px; height: 34px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
-  .navlinks { display: flex; gap: 4px; font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; }
-  .navlinks a { color: rgba(255,255,255,0.82); font-size: 0.88rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; }
-  .navlinks a:hover { background: rgba(255,255,255,0.10); color: var(--white); }
 
-  .hero {
-    background: radial-gradient(circle at 20% 20%, var(--dusk-light), var(--dusk) 60%);
-    color: var(--white);
-    padding: 96px 24px 100px;
-    text-align: center;
-  }
-  .hero .eyebrow { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: var(--gold); font-weight: 700; margin-bottom: 18px; }
-  .hero h1 { font-size: clamp(2.1rem, 5vw, 3.6rem); font-weight: 700; max-width: 720px; margin: 0 auto 20px; }
-  .hero h1 em { font-style: italic; color: var(--gold); }
-  .hero p { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; font-size: 1.05rem; color: rgba(255,255,255,0.78); max-width: 520px; margin: 0 auto 36px; }
-  .btnrow { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 10px; font-weight: 700; font-size: 0.95rem; border: 2px solid transparent; transition: transform .15s; }
+  header { background: var(--maroon); position: sticky; top: 0; z-index: 50; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.2rem; font-weight: 600; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
+  .navlinks { display: flex; gap: 4px; }
+  .navlinks a { color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; }
+  .navlinks a:hover { background: rgba(255,255,255,0.12); color: var(--gold); }
+
+  .hero { background: linear-gradient(160deg, var(--pink-bg) 0%, #fdeef4 60%, var(--cream) 100%); padding: 70px 24px 40px; }
+  .hero-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
+  .hero-text .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: var(--magenta); font-weight: 700; margin-bottom: 16px; }
+  .hero-text h1 { font-size: clamp(2.1rem, 4.6vw, 3.3rem); font-weight: 700; line-height: 1.12; margin-bottom: 16px; }
+  .hero-text .tagline { font-size: 1.15rem; color: var(--maroon); font-weight: 600; margin-bottom: 16px; }
+  .hero-text p.sub { color: var(--gray); font-size: 1rem; max-width: 480px; margin-bottom: 30px; }
+  .btnrow { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 26px; border-radius: 12px; font-weight: 700; font-size: 0.95rem; border: 2px solid transparent; transition: transform .15s; }
   .btn:hover { transform: translateY(-2px); }
-  .btn-gold { background: var(--gold); color: var(--dusk); }
-  .btn-outline { border-color: rgba(255,255,255,0.5); color: var(--white); }
+  .btn-gold { background: var(--gold); color: var(--maroon); }
+  .btn-outline { border-color: var(--maroon); color: var(--maroon); }
+  .hero-photo { border-radius: 22px; overflow: hidden; box-shadow: var(--shadow-lg); border: 6px solid var(--white); transform: rotate(1.5deg); }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
 
-  section { padding: 76px 24px; }
-  .label { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.72rem; font-weight: 700; color: var(--coral); margin-bottom: 10px; display: block; }
-  .stitle { font-size: clamp(1.6rem, 3.2vw, 2.2rem); font-weight: 700; margin-bottom: 14px; }
-  .ssub { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; color: var(--gray); max-width: 560px; margin-bottom: 44px; font-size: 1rem; }
+  section { padding: 74px 24px; }
+  .label { text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.72rem; font-weight: 700; color: var(--magenta); margin-bottom: 10px; display: block; }
+  .stitle { font-size: clamp(1.6rem, 3.2vw, 2.15rem); font-weight: 600; margin-bottom: 14px; }
+  .ssub { color: var(--gray); max-width: 620px; margin-bottom: 42px; font-size: 1rem; }
 
-  .tag-card {
-    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
-    padding: 26px; transition: transform .18s, box-shadow .18s;
-    display: flex; flex-direction: column; height: 100%;
-  }
-  .tag-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-  .tag-corner { position: absolute; top: 14px; right: 14px; background: var(--coral); color: var(--white); font-size: 0.65rem; font-weight: 700; padding: 3px 9px; border-radius: 20px; font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; }
+  /* ABOUT / MISSION */
+  .mission { background: var(--white); }
+  .mission-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items: start; }
+  .mission p { color: var(--gray); margin-bottom: 14px; font-size: 0.97rem; }
+  .findlist { list-style: none; }
+  .findlist li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; font-size: 0.94rem; color: var(--ink); }
+  .findlist li::before { content: '✦'; color: var(--coral); flex-shrink: 0; margin-top: 2px; }
 
+  /* OUR STORY */
+  .story { background: var(--pink-bg); }
+  .story-block { display: grid; grid-template-columns: 1fr 1.3fr; gap: 40px; align-items: center; margin-bottom: 46px; }
+  .story-block.reverse { grid-template-columns: 1.3fr 1fr; }
+  .story-block.reverse .story-photo { order: 2; }
+  .story-photo { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+  .story-photo img { width: 100%; height: 340px; object-fit: cover; }
+  .story-text p { color: var(--maroon); margin-bottom: 14px; font-size: 0.97rem; line-height: 1.75; }
+  .signature { font-family: 'Fredoka', sans-serif; font-size: 1.3rem; color: var(--magenta); margin-top: 10px; }
+
+  /* PRODUCTS */
   .products { background: var(--white); }
   .grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
-  .picon { font-size: 2.4rem; margin-bottom: 14px; }
-  .tag-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
-  .tag-card p { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
-  .btn-sm { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 8px; font-weight: 700; font-size: 0.82rem; background: #ff9900; color: var(--white); }
+  .tag-card { background: var(--pink-bg); border-radius: var(--radius); padding: 28px 24px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; }
+  .tag-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+  .picon { font-size: 2.3rem; margin-bottom: 12px; }
+  .tag-card h3 { font-size: 1.02rem; margin-bottom: 8px; font-weight: 600; }
+  .tag-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
+  .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: #ff9900; color: var(--white); }
 
+  /* GUIDES */
   .guides { background: var(--cream); }
   .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-  .guide-card { position: relative; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
-  .guide-top { background: linear-gradient(135deg, var(--sage), #4f7d63); color: var(--white); padding: 34px 26px; }
-  .guide-top .picon { margin-bottom: 8px; }
-  .guide-body { padding: 24px 26px; font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; flex: 1; display: flex; flex-direction: column; }
+  .guide-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+  .guide-top { background: linear-gradient(135deg, var(--purple), var(--magenta)); color: var(--white); padding: 30px 26px; }
+  .guide-body { padding: 22px 26px; flex: 1; display: flex; flex-direction: column; }
   .guide-body p { color: var(--gray); font-size: 0.88rem; margin-bottom: 18px; flex: 1; }
   .guide-foot { display: flex; align-items: center; justify-content: space-between; }
-  .price { font-weight: 800; font-size: 1.15rem; }
+  .price { font-weight: 700; font-size: 1.1rem; color: var(--maroon); }
 
-  .social { background: var(--dusk); color: var(--white); }
+  /* SOCIAL */
+  .social { background: var(--maroon); color: var(--white); }
   .social .label { color: var(--gold); }
   .grid4social { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-  .social-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius); padding: 28px 20px; text-align: center; font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; }
-  .social-card .picon { font-size: 2.2rem; margin-bottom: 10px; }
-  .social-card h3 { font-size: 0.95rem; margin-bottom: 4px; color: var(--gold); font-family: Georgia, serif; }
+  .social-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.14); border-radius: var(--radius); padding: 28px 20px; text-align: center; }
+  .social-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .social-card h3 { font-size: 0.95rem; margin-bottom: 4px; color: var(--gold); }
   .social-card p { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 14px; }
 
+  /* ETSY */
   .etsy { background: var(--coral); color: var(--white); text-align: center; }
   .etsy .wrap { max-width: 640px; }
   .etsy h2 { font-size: 1.5rem; margin-bottom: 12px; }
-  .etsy p { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; margin-bottom: 24px; color: rgba(255,255,255,0.9); }
-  .btn-white { background: var(--white); color: var(--coral-dark); }
+  .etsy p { margin-bottom: 24px; color: rgba(255,255,255,0.92); }
+  .btn-white { background: var(--white); color: var(--coral); }
 
-  .about { background: var(--white); }
-  .about .wrap { display: grid; grid-template-columns: 1fr 2fr; gap: 48px; align-items: center; max-width: 900px; }
-  .avatar { aspect-ratio: 1; border-radius: 50%; background: linear-gradient(135deg, #ffe1cf, var(--coral)); display: flex; align-items: center; justify-content: center; font-size: 4.5rem; box-shadow: var(--shadow-lg); }
-  .about p { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; color: var(--gray); margin-bottom: 12px; font-size: 0.95rem; }
-
-  .signup { background: var(--sage); color: var(--white); text-align: center; }
+  /* SIGNUP */
+  .signup { background: var(--purple); color: var(--white); text-align: center; }
   .signup .wrap { max-width: 560px; }
-  form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; margin-top: 26px; }
-  input[type=email] { flex: 1; min-width: 220px; padding: 13px 16px; border-radius: 10px; border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: var(--white); font-size: 0.95rem; }
+  .signup .label { color: var(--gold); }
+  form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 26px; }
+  input[type=email] { flex: 1; min-width: 220px; padding: 13px 16px; border-radius: 10px; border: 2px solid rgba(255,255,255,0.3); background: rgba(255,255,255,0.1); color: var(--white); font-size: 0.95rem; font-family: 'Quicksand', sans-serif; }
   input::placeholder { color: rgba(255,255,255,0.6); }
 
-  footer { background: #1a1533; color: rgba(255,255,255,0.6); padding: 44px 24px 28px; text-align: center; font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; }
+  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 44px 24px 28px; text-align: center; }
   .footlinks { display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin: 18px 0; }
   .footlinks a { font-size: 0.85rem; color: rgba(255,255,255,0.6); }
   .footlinks a:hover { color: var(--gold); }
   .fineprint { font-size: 0.75rem; color: rgba(255,255,255,0.35); max-width: 620px; margin: 18px auto 0; }
 
-  @media (max-width: 700px) {
+  @media (max-width: 800px) {
     .navlinks { display: none; }
-    .about .wrap { grid-template-columns: 1fr; text-align: center; }
-    .avatar { max-width: 180px; margin: 0 auto; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; transform: none; }
+    .mission-grid { grid-template-columns: 1fr; }
+    .story-block, .story-block.reverse { grid-template-columns: 1fr; }
+    .story-block.reverse .story-photo { order: 0; }
+    .story-photo img { height: 260px; }
   }
 </style>
 </head>
@@ -138,21 +157,95 @@
   <nav class="wrap">
     <div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
     <div class="navlinks">
+      <a href="#mission">About</a>
+      <a href="#story">Our Story</a>
       <a href="#picks">Shop Picks</a>
       <a href="#guides">Free Guides</a>
       <a href="#follow">Follow</a>
-      <a href="#about">About</a>
     </div>
   </nav>
 </header>
 
 <section class="hero">
-  <span class="eyebrow">Disney Travel &amp; Theme Park Essentials</span>
-  <h1>Pack smarter. <em>Park happier.</em></h1>
-  <p>Curated apparel picks, free packing checklists, and downloadable trip guides for families headed to the parks — all in one place.</p>
-  <div class="btnrow">
-    <a class="btn btn-gold" href="#picks">Shop My Picks</a>
-    <a class="btn btn-outline" href="#guides">Get a Free Checklist</a>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <span class="eyebrow">Disney Vacation Planning &amp; Travel Essentials</span>
+      <h1><span class="gradient-text">The Pixie Packed Family</span></h1>
+      <p class="tagline">Packing Magic. Creating Memories.</p>
+      <p class="sub">Real trip planning, honest resort reviews, and Amazon finds that actually make Disney vacations easier — from our family to yours.</p>
+      <div class="btnrow">
+        <a class="btn btn-gold" href="#picks">Shop My Picks</a>
+        <a class="btn btn-outline" href="#guides">Get a Free Checklist</a>
+      </div>
+    </div>
+    <div class="hero-photo"><img src="photos/family-castle.jpg" alt="The Pixie Packed Family at Magic Kingdom"></div>
+  </div>
+</section>
+
+<section class="mission" id="mission">
+  <div class="wrap">
+    <span class="label">Our Mission</span>
+    <h2 class="stitle">Helping Families Pack Smarter &amp; Make Disney Memories</h2>
+    <div class="mission-grid">
+      <div>
+        <p>The Pixie Packed Family is a Disney-inspired family lifestyle brand dedicated to helping families create magical vacations with less stress, smarter planning, and products that truly make a difference.</p>
+        <p>Through authentic experiences, practical tips, and carefully curated Amazon affiliate recommendations, we make it easier for families to pack, plan, and enjoy unforgettable Disney adventures.</p>
+        <p>From park essentials and resort reviews to outfit ideas, travel hacks, and family-friendly itineraries, The Pixie Packed Family is designed to be a trusted resource for both first-time visitors and seasoned Disney fans. Every recommendation comes from real experiences, with a focus on value, convenience, and creating lifelong memories.</p>
+        <p><strong>Our mission is simple:</strong> to inspire families to spend less time worrying about the details and more time making magical memories together.</p>
+      </div>
+      <div>
+        <h3 style="margin-bottom:16px; font-size:1.1rem;">What You'll Find</h3>
+        <ul class="findlist">
+          <li>Disney World travel tips and planning guides</li>
+          <li>Resort tours and honest reviews</li>
+          <li>Amazon finds for Disney vacations</li>
+          <li>Disney outfit inspiration</li>
+          <li>Family travel content across Facebook, Instagram, TikTok, and YouTube</li>
+          <li>Practical advice for traveling with kids, grandparents, and multigenerational families</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap">
+    <span class="label">Hi, We're The Pixie Packed Family</span>
+    <h2 class="stitle">Welcome! We're so glad you're here.</h2>
+
+    <div class="story-block">
+      <div class="story-photo"><img src="photos/family-photo-2.jpg" alt="Vanessa and family"></div>
+      <div class="story-text">
+        <p>I'm Vanessa, the heart behind The Pixie Packed Family. I'm a wife of 32 years, a mom of four incredible children, a proud grandma, a former culinary and baking instructor, and now a full-time caregiver to our amazing son, Seth.</p>
+        <p>Life hasn't always followed the path we expected, but looking back, every twist has led us exactly where we're meant to be.</p>
+      </div>
+    </div>
+
+    <div class="story-block reverse">
+      <div class="story-photo"><img src="photos/family-photo-3.jpg" alt="Family adventure"></div>
+      <div class="story-text">
+        <p>In 2021, I made one of the biggest decisions of my life. After years of teaching high school and collegiate Culinary Arts and Baking &amp; Pastry in Ohio, I stepped away from the career I loved to become Seth's full-time caregiver. Seth depends on us every day, and while our family's journey has come with challenges, it has also taught us to celebrate life's smallest moments and biggest victories.</p>
+        <p>Around that same time, our family embraced a completely new adventure. We sold nearly everything we owned, bought a fifth-wheel camper, and moved from Ohio to Georgetown, South Carolina. It was a leap of faith that changed our lives.</p>
+      </div>
+    </div>
+
+    <div class="story-block">
+      <div class="story-photo"><img src="photos/family-photo-4.jpg" alt="First Disney vacation"></div>
+      <div class="story-text">
+        <p>Then, in March 2023, something unexpected happened — we took our first Disney vacation together. Like so many families, we thought we were simply planning a fun trip. Instead, we discovered a place that became something much more.</p>
+        <p>Watching Seth experience Disney was nothing short of magical. His excitement, joy, and pure happiness reminded us that Disney has a unique way of bringing families together, creating moments you'll remember forever. Before long, we found ourselves planning our next trip… and then another. We were hooked!</p>
+      </div>
+    </div>
+
+    <div class="story-block reverse">
+      <div class="story-photo"><img src="photos/family-photo-5.jpg" alt="Life in Florida"></div>
+      <div class="story-text">
+        <p>Our love for Disney continued to grow, and in 2025 another exciting chapter began when we moved to Kissimmee, Florida — still living in our fifth-wheel camper! My husband, Troy, joined the Disney team, bringing us even closer to the magic we had fallen in love with.</p>
+        <p>Today, The Pixie Packed Family is the result of that journey. This is where I share everything we've learned along the way — from vacation planning and honest resort reviews to park tips and Amazon finds that have truly made our trips easier. My goal is simple: to help families spend less time stressing over the details and more time making unforgettable memories together.</p>
+        <p>Whether you're planning your very first Disney vacation or you're a seasoned Disney fan looking for new ideas, I hope you'll find inspiration, helpful advice, and a little pixie magic here. Thank you for being part of our story — I can't wait to be a small part of yours.</p>
+        <p class="signature">See you in the parks! — Vanessa</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -162,30 +255,10 @@
     <h2 class="stitle">My Amazon Picks</h2>
     <p class="ssub">Real gear I actually use and recommend for park days — as an Amazon Associate I earn from qualifying purchases.</p>
     <div class="grid4">
-      <div class="tag-card">
-        <div class="picon">👕</div>
-        <h3>Matching Family Tees</h3>
-        <p>Coordinated park-day outfits the whole crew will actually want to wear.</p>
-        <a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a>
-      </div>
-      <div class="tag-card">
-        <div class="picon">🎒</div>
-        <h3>Park Day Backpacks</h3>
-        <p>Compact, comfortable bags built for a full day of walking and waiting.</p>
-        <a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a>
-      </div>
-      <div class="tag-card">
-        <div class="picon">🧴</div>
-        <h3>Sun &amp; Heat Essentials</h3>
-        <p>Sunscreen, cooling towels, and hydration gear for hot park afternoons.</p>
-        <a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a>
-      </div>
-      <div class="tag-card">
-        <div class="picon">👶</div>
-        <h3>Little Ones Must-Haves</h3>
-        <p>Stroller accessories and comfort items that make trips with kids easier.</p>
-        <a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a>
-      </div>
+      <div class="tag-card"><div class="picon">👕</div><h3>Matching Family Tees</h3><p>Coordinated park-day outfits the whole crew will actually want to wear.</p><a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a></div>
+      <div class="tag-card"><div class="picon">🎒</div><h3>Park Day Backpacks</h3><p>Compact, comfortable bags built for a full day of walking and waiting.</p><a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a></div>
+      <div class="tag-card"><div class="picon">🧴</div><h3>Sun &amp; Heat Essentials</h3><p>Sunscreen, cooling towels, and hydration gear for hot park afternoons.</p><a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a></div>
+      <div class="tag-card"><div class="picon">👗</div><h3>Disney Outfit Inspiration</h3><p>Character-inspired looks for every park, from Animal Kingdom to Epcot.</p><a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a></div>
     </div>
   </div>
 </section>
@@ -198,17 +271,11 @@
     <div class="grid2">
       <div class="guide-card">
         <div class="guide-top"><div class="picon">📋</div><strong>Ultimate Packing Checklist</strong></div>
-        <div class="guide-body">
-          <p>Everything to pack for a multi-day park trip, organized by category so nothing gets left behind.</p>
-          <div class="guide-foot"><span class="price">$7</span><a class="btn-sm" data-placeholder="true" href="#" style="background:var(--sage)">Get It →</a></div>
-        </div>
+        <div class="guide-body"><p>Everything to pack for a multi-day park trip, organized by category so nothing gets left behind.</p><div class="guide-foot"><span class="price">$7</span><a class="btn-sm" data-placeholder="true" href="#" style="background:var(--purple)">Get It →</a></div></div>
       </div>
       <div class="guide-card">
         <div class="guide-top"><div class="picon">🗓️</div><strong>3-Day Park Itinerary Template</strong></div>
-        <div class="guide-body">
-          <p>A fill-in-the-blank planning sheet to map out ride times, meals, and rest breaks.</p>
-          <div class="guide-foot"><span class="price">$9</span><a class="btn-sm" data-placeholder="true" href="#" style="background:var(--sage)">Get It →</a></div>
-        </div>
+        <div class="guide-body"><p>A fill-in-the-blank planning sheet to map out ride times, meals, and rest breaks.</p><div class="guide-foot"><span class="price">$9</span><a class="btn-sm" data-placeholder="true" href="#" style="background:var(--purple)">Get It →</a></div></div>
       </div>
     </div>
   </div>
@@ -220,10 +287,10 @@
     <h2 class="stitle">Follow Along</h2>
     <p class="ssub" style="color:rgba(255,255,255,0.65)">Daily tips, packing hacks, and real park-day moments.</p>
     <div class="grid4social">
-      <div class="social-card"><div class="picon">🎵</div><h3>TikTok</h3><p>Quick park tips &amp; hacks</p><a class="btn-sm" data-placeholder="true" href="#" style="background:#000">Follow →</a></div>
-      <div class="social-card"><div class="picon">▶️</div><h3>YouTube</h3><p>Full trip vlogs &amp; guides</p><a class="btn-sm" data-placeholder="true" href="#" style="background:#ff0000">Subscribe →</a></div>
-      <div class="social-card"><div class="picon">📘</div><h3>Facebook</h3><p>Community &amp; trip planning</p><a class="btn-sm" data-placeholder="true" href="#" style="background:#1877f2">Follow →</a></div>
-      <div class="social-card"><div class="picon">📸</div><h3>Instagram</h3><p>Behind the scenes</p><a class="btn-sm" data-placeholder="true" href="#" style="background:#c1387e">Follow →</a></div>
+      <div class="social-card"><div class="picon">🎵</div><h3>TikTok</h3><p>@thepixiepackedfamily</p><a class="btn-sm" href="https://www.tiktok.com/@thepixiepackedfamily" style="background:#000" target="_blank" rel="noopener">Follow →</a></div>
+      <div class="social-card"><div class="picon">▶️</div><h3>YouTube</h3><p>@thepixiepackedfamily</p><a class="btn-sm" href="https://youtube.com/@thepixiepackedfamily" style="background:#ff0000" target="_blank" rel="noopener">Subscribe →</a></div>
+      <div class="social-card"><div class="picon">📘</div><h3>Facebook</h3><p>The Pixie Packed Family</p><a class="btn-sm" href="https://www.facebook.com/share/1FXpKAP92W/" style="background:#1877f2" target="_blank" rel="noopener">Follow →</a></div>
+      <div class="social-card"><div class="picon">📸</div><h3>Instagram</h3><p>@vanessagronas</p><a class="btn-sm" href="https://www.instagram.com/vanessagronas" style="background:#c1387e" target="_blank" rel="noopener">Follow →</a></div>
     </div>
   </div>
 </section>
@@ -236,39 +303,24 @@
   </div>
 </section>
 
-<section class="about" id="about">
-  <div class="wrap">
-    <div class="avatar">✨</div>
-    <div>
-      <span class="label">The Family Behind It</span>
-      <h2 class="stitle">Hi, we're so glad you're here.</h2>
-      <p>The Pixie Packed Family started with one overpacked, under-planned trip to the parks — and a promise to make the next one easier. Now we share what actually works: real gear, real checklists, real advice.</p>
-      <p>No fluff, no filler — just what helps your family have a magical, less stressful trip.</p>
-    </div>
-  </div>
-</section>
-
 <section class="signup">
   <div class="wrap">
-    <span class="label" style="color:var(--white)">Stay in the Loop</span>
+    <span class="label">Stay in the Loop</span>
     <h2 class="stitle">Get Free Park Tips by Email</h2>
-    <p style="font-family:-apple-system, 'Segoe UI', system-ui, sans-serif; color:rgba(255,255,255,0.85)">New guides, packing hacks, and deals — straight to your inbox.</p>
-    <form>
-      <input type="email" placeholder="Your email address" required>
-      <button class="btn btn-gold" type="submit">Sign Up</button>
-    </form>
+    <p style="color:rgba(255,255,255,0.85)">New guides, packing hacks, and deals — straight to your inbox.</p>
+    <form><input type="email" placeholder="Your email address" required><button class="btn btn-gold" type="submit">Sign Up</button></form>
   </div>
 </section>
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <p style="font-size:0.85rem; color:rgba(255,255,255,0.4)">Disney apparel &amp; theme park travel essentials</p>
+  <p style="font-size:0.85rem; color:rgba(255,255,255,0.4)">Disney vacation planning &amp; travel essentials</p>
   <div class="footlinks">
+    <a href="#mission">About</a>
+    <a href="#story">Our Story</a>
     <a href="#picks">Shop Picks</a>
     <a href="#guides">Free Guides</a>
-    <a href="#follow">Follow</a>
     <a data-placeholder="true" href="#">Etsy Shop</a>
-    <a href="#about">About</a>
   </div>
   <p class="fineprint">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases. This site is not affiliated with, endorsed by, or sponsored by The Walt Disney Company.</p>
 </footer>
