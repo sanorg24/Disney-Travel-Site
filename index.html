@@ -95,14 +95,6 @@
   .grid4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
   .tag-card { background: var(--pink-bg); border-radius: var(--radius); padding: 28px 24px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; }
   .tag-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
-  .photo-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; grid-column: span 2; }
-  .photo-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-  .photo-card img { width: 100%; height: 280px; object-fit: cover; }
-  .photo-card-body { padding: 22px 24px; }
-  .photo-card-body h3 { font-size: 1.05rem; margin-bottom: 12px; font-weight: 600; }
-  .shop-links { display: flex; flex-wrap: wrap; gap: 8px; }
-  .shop-links a { display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 8px; font-weight: 700; font-size: 0.78rem; background: #ff9900; color: var(--white); }
-  @media (max-width: 700px) { .photo-card { grid-column: span 1; } }
   .picon { font-size: 2.3rem; margin-bottom: 12px; }
   .tag-card h3 { font-size: 1.02rem; margin-bottom: 8px; font-weight: 600; }
   .tag-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
@@ -309,18 +301,7 @@
       <div class="tag-card"><div class="picon">👕</div><h3>Matching Family Tees</h3><p>Coordinated park-day outfits the whole crew will actually want to wear.</p><a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a></div>
       <div class="tag-card"><div class="picon">🎒</div><h3>Park Day Backpacks</h3><p>Compact, comfortable bags built for a full day of walking and waiting.</p><a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a></div>
       <div class="tag-card"><div class="picon">🧴</div><h3>Sun &amp; Heat Essentials</h3><p>Sunscreen, cooling towels, and hydration gear for hot park afternoons.</p><a class="btn-sm" data-placeholder="true" href="#">Shop on Amazon →</a></div>
-      <div class="photo-card">
-        <img src="photos/outfit-mnsshp.jpg" alt="MNSSHP Outfit Inspiration">
-        <div class="photo-card-body">
-          <h3>MNSSHP Outfit Inspiration</h3>
-          <div class="shop-links">
-            <a href="https://amzn.to/4w0hL4j" target="_blank" rel="noopener">Ghost Minnie Backpack →</a>
-            <a href="https://amzn.to/4fppaoM" target="_blank" rel="noopener">2 Piece Short Set →</a>
-            <a href="https://amzn.to/3RL4QoC" target="_blank" rel="noopener">Halloween Ears →</a>
-            <a href="https://amzn.to/3RZ65AR" target="_blank" rel="noopener">OnCloud Shoes →</a>
-          </div>
-        </div>
-      </div>
+      <div class="tag-card"><div class="picon">👗</div><h3>Themed Outfit Inspiration</h3><p>Character-inspired outfits, organized by park event and theme, each with shoppable links.</p><a class="btn-sm" href="outfits.html" style="background:var(--magenta)">See Themed Outfits →</a></div>
     </div>
   </div>
 </section>
