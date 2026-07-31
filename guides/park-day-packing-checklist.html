@@ -20,22 +20,12 @@
   h1, h2 { font-family: 'Fredoka', sans-serif; }
   .page { max-width: 780px; margin: 0 auto; background: var(--white); border-radius: 24px; overflow: hidden; box-shadow: 0 16px 50px rgba(92,42,56,0.14); }
 
-  .header {
-    background: url('../photos/brand-banner.jpg') center/cover no-repeat;
-    padding: 24px 28px; text-align: center; position: relative;
-    min-height: 260px; display: flex; align-items: flex-end; justify-content: center;
+  .banner-img { width: 100%; height: auto; display: block; }
+  .title-bar { background: var(--blush); padding: 20px 28px; text-align: center; }
+  .title-bar h1 {
+    font-size: clamp(1.2rem, 3.2vw, 1.55rem); font-weight: 700; margin: 0 auto 6px; color: var(--maroon);
   }
-  .header::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.08); }
-  .header-inner { position: relative; z-index: 1; }
-  .header h1 {
-    font-size: clamp(1.2rem, 3.2vw, 1.55rem); font-weight: 700; margin: 0 auto 8px;
-    color: var(--maroon); background: rgba(255,255,255,0.82); display: inline-block;
-    padding: 6px 20px; border-radius: 50px;
-  }
-  .header p {
-    font-size: 0.86rem; color: var(--maroon); max-width: 460px; margin: 0 auto;
-    background: rgba(255,255,255,0.7); display: inline-block; padding: 4px 16px; border-radius: 50px;
-  }
+  .title-bar p { font-size: 0.86rem; color: var(--gray); max-width: 460px; margin: 0 auto; }
 
   .app-callout {
     margin: 22px 28px 0; background: var(--sky); border-radius: var(--radius); padding: 16px 20px;
@@ -79,11 +69,10 @@
 <body>
 
 <div class="page">
-  <div class="header">
-    <div class="header-inner">
-      <h1>Ultimate Park Day Packing Checklist</h1>
-      <p>Everything you need for a smooth, magical day in the parks — nothing left behind.</p>
-    </div>
+  <img class="banner-img" src="../photos/brand-banner.jpg" alt="The Pixie Packed Family">
+  <div class="title-bar">
+    <h1>Ultimate Park Day Packing Checklist</h1>
+    <p>Everything you need for a smooth, magical day in the parks — nothing left behind.</p>
   </div>
 
   <div class="app-callout">
