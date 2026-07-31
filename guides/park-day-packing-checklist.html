@@ -20,16 +20,22 @@
   h1, h2 { font-family: 'Fredoka', sans-serif; }
   .page { max-width: 780px; margin: 0 auto; background: var(--white); border-radius: 24px; overflow: hidden; box-shadow: 0 16px 50px rgba(92,42,56,0.14); }
 
-  .header { background: linear-gradient(135deg, #fff6fa, var(--blush)); padding: 40px 28px 30px; text-align: center; position: relative; }
-  .header .sparkle { position: absolute; font-size: 1.1rem; opacity: 0.55; color: var(--orange); }
-  .logo-wordmark {
-    font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(1.5rem, 4.5vw, 2.1rem);
-    background: linear-gradient(90deg, var(--purple), var(--magenta) 40%, var(--coral) 70%, var(--orange));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    margin-bottom: 6px;
+  .header {
+    background: url('../photos/brand-banner.jpg') center/cover no-repeat;
+    padding: 24px 28px; text-align: center; position: relative;
+    min-height: 260px; display: flex; align-items: flex-end; justify-content: center;
   }
-  .header h1 { font-size: clamp(1.3rem, 3.4vw, 1.7rem); color: var(--maroon); margin: 10px 0 8px; font-weight: 600; }
-  .header p { font-size: 0.9rem; color: var(--gray); max-width: 460px; margin: 0 auto; }
+  .header::before { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.08); }
+  .header-inner { position: relative; z-index: 1; }
+  .header h1 {
+    font-size: clamp(1.2rem, 3.2vw, 1.55rem); font-weight: 700; margin: 0 auto 8px;
+    color: var(--maroon); background: rgba(255,255,255,0.82); display: inline-block;
+    padding: 6px 20px; border-radius: 50px;
+  }
+  .header p {
+    font-size: 0.86rem; color: var(--maroon); max-width: 460px; margin: 0 auto;
+    background: rgba(255,255,255,0.7); display: inline-block; padding: 4px 16px; border-radius: 50px;
+  }
 
   .app-callout {
     margin: 22px 28px 0; background: var(--sky); border-radius: var(--radius); padding: 16px 20px;
@@ -74,11 +80,10 @@
 
 <div class="page">
   <div class="header">
-    <span class="sparkle" style="top:16px; left:10%;">✦</span>
-    <span class="sparkle" style="top:24px; right:12%; font-size:0.8rem;">✧</span>
-    <div class="logo-wordmark">The Pixie Packed Family</div>
-    <h1>Ultimate Park Day Packing Checklist</h1>
-    <p>Everything you need for a smooth, magical day in the parks — nothing left behind.</p>
+    <div class="header-inner">
+      <h1>Ultimate Park Day Packing Checklist</h1>
+      <p>Everything you need for a smooth, magical day in the parks — nothing left behind.</p>
+    </div>
   </div>
 
   <div class="app-callout">
