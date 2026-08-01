@@ -67,8 +67,10 @@
     /* Force background colors to actually print — browsers hide them by default */
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
 
-    /* Compact banner instead of full height */
-    .banner-img { max-height: 70px; object-fit: cover; object-position: center 30%; }
+    /* Compact banner instead of full height — object-position tuned to this specific banner
+       image so the "The Pixie Packed Family" wordmark (roughly 40-55% down the source image)
+       stays visible in the cropped strip instead of getting cut off. */
+    .banner-img { max-height: 82px; object-fit: cover; object-position: center 42%; }
 
     .title-bar { padding: 10px 20px; }
     .title-bar p { display: none; } /* subtitle isn't essential once printed, saves a line */
