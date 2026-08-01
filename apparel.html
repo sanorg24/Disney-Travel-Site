@@ -24,38 +24,38 @@
   .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 
   header { background: var(--maroon); position: sticky; top: 0; z-index: 50; }
-  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.2rem; font-weight: 600; }
-  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
   .navlinks a { color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; }
   .navlinks a:hover { background: rgba(255,255,255,0.12); color: var(--gold); }
 
-  .pagehero { background: var(--pink-bg); padding: 56px 24px 44px; text-align: center; }
-  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
-  .pagehero h1 { font-size: clamp(1.9rem, 4.2vw, 2.7rem); margin-bottom: 12px; }
-  .pagehero p { color: var(--gray); max-width: 520px; margin: 0 auto; }
+  .pagehero { background: var(--pink-bg); padding: 48px 20px 40px; text-align: center; }
+  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
+  .pagehero h1 { font-size: clamp(1.7rem, 6vw, 2.6rem); margin-bottom: 12px; }
+  .pagehero p { color: var(--gray); max-width: 540px; margin: 0 auto; font-size: 0.95rem; }
 
-  .jumplinks { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 20px 24px 0; }
-  .jumplinks a { background: var(--white); box-shadow: var(--shadow); padding: 9px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; color: var(--maroon); }
-  .jumplinks a:hover { background: var(--gold); }
+  .hub-section { padding: 48px 16px 60px; }
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
+  .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--purple); color: var(--white); align-self: flex-start; }
 
-  .category { padding: 50px 24px; scroll-margin-top: 80px; }
-  .category:nth-child(even) { background: var(--white); }
-  .cat-title { font-size: 1.4rem; margin-bottom: 4px; }
-  .cat-sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 26px; }
-  .coming-soon { color: var(--gray); font-size: 0.9rem; font-style: italic; background: var(--pink-bg); border-radius: var(--radius); padding: 24px; text-align: center; }
-
-  .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
-  .prod-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; display: flex; flex-direction: column; }
-  .prod-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .prod-card img { width: 100%; height: 170px; object-fit: contain; background: var(--white); padding: 10px; }
-  .prod-card-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
-  .prod-card-body h3 { font-size: 0.82rem; margin-bottom: 10px; font-weight: 600; flex: 1; line-height: 1.35; }
-  .prod-card-body a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 8px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
-
-  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 24px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
-  .footlinks { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
+  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
+  .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
   .footlinks a:hover { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    nav.wrap { justify-content: center; text-align: center; height: auto; }
+    .pagehero { padding: 40px 16px 30px; }
+    .hub-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 400px) {
+    .hub-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -70,104 +70,39 @@
 <section class="pagehero">
   <span class="eyebrow">Shop the Parks</span>
   <h1>Apparel</h1>
-  <p>Matching family tees and Disney apparel for everyone in the family.</p>
+  <p>Matching family tees and Disney apparel for everyone in the family. Tap a category to shop.</p>
 </section>
 
-<div class="jumplinks">
-  <a href="#family-tees">Matching Family Tees</a>
-  <a href="#mens">Men's</a>
-  <a href="#womens">Women's</a>
-  <a href="#kids">Kids</a>
-</div>
-
-<section class="category" id="family-tees">
+<section class="hub-section">
   <div class="wrap">
-    <h2 class="cat-title">Matching Family Tees</h2>
-    <p class="cat-sub">Coordinated park-day outfits the whole crew will actually want to wear.</p>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/apparel-family-01.jpg" alt="Personalized Castle Family Vacation Tees Mommy Daddy Kids 2026"><div class="prod-card-body"><h3>Personalized Castle Family Vacation Tees (Custom Names, 2026)</h3><a href="https://amzn.to/4wuwQw1" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-02.jpg" alt="Disney Vacation 2026 Making Family Memories Tee"><div class="prod-card-body"><h3>"Disney Vacation 2026 Making Family Memories" Tee</h3><a href="https://amzn.to/4xkbWzP" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-03.jpg" alt="Star Wars Disney Family Tee"><div class="prod-card-body"><h3>Star Wars Disney Family Tee</h3><a href="https://amzn.to/3TwHYdh" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-04.jpg" alt="Magic Family Vacation 2026 Castle Tee Personalized"><div class="prod-card-body"><h3>"Magic Family Vacation 2026" Castle Tee (Custom Text)</h3><a href="https://amzn.to/4w2vI1B" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-05.jpg" alt="Custom 2026 Castle Family Tee"><div class="prod-card-body"><h3>Custom 2026 Castle Family Tee</h3><a href="https://amzn.to/4pRoKet" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-06.jpg" alt="Custom 2026 Mama and Mini Matching Sweatshirt Set"><div class="prod-card-body"><h3>Custom 2026 Mama &amp; Mini Matching Sweatshirt Set</h3><a href="https://amzn.to/4h3iOwx" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-07.jpg" alt="Disney Mickey and Minnie Retro Striped Family Tee Set"><div class="prod-card-body"><h3>Disney Mickey &amp; Minnie Retro Striped Family Tee Set</h3><a href="https://amzn.to/4w3b55v" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-08.jpg" alt="Family Trip 2026 Leopard Mouse Ears Tee Adult and Kid Styles"><div class="prod-card-body"><h3>"Family Trip 2026" Leopard Mouse Ears Tee</h3><a href="https://amzn.to/4w0LTfS" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-09.jpg" alt="Pink Bow Castle Fireworks Matching Mommy and Me Tee"><div class="prod-card-body"><h3>Pink Bow Castle Fireworks Matching Mommy &amp; Me Tee</h3><a href="https://amzn.to/4h4a0Xe" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-10.jpg" alt="Mama Mouse and Mini Mouse Matching Tee Set"><div class="prod-card-body"><h3>"Mama Mouse" &amp; "Mini Mouse" Matching Tee Set</h3><a href="https://amzn.to/3TMMGUc" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-11.jpg" alt="Magic 2026 Family Vacation Fireworks Tee"><div class="prod-card-body"><h3>"Magic 2026 Family Vacation" Fireworks Tee</h3><a href="https://amzn.to/4yT0rAI" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-family-12.jpg" alt="Dad and Mom Toy Story Cowboy and Buzz Tee Set"><div class="prod-card-body"><h3>"Dad" &amp; "Mom" Toy Story Tee Set</h3><a href="https://amzn.to/4yThKBP" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+    <div class="hub-grid">
+      <div class="hub-card">
+        <div class="picon">👨‍👩‍👧‍👦</div>
+        <h3>Matching Family Tees</h3>
+        <p>Coordinated park-day outfits the whole crew will actually want to wear.</p>
+        <a class="btn-sm" href="apparel-family-tees.html">Shop Family Tees →</a>
+      </div>
+      <div class="hub-card">
+        <div class="picon">👔</div>
+        <h3>Men's</h3>
+        <p>Disney apparel and shorts for dad.</p>
+        <a class="btn-sm" href="apparel-mens.html">Shop Men's →</a>
+      </div>
+      <div class="hub-card">
+        <div class="picon">👗</div>
+        <h3>Women's</h3>
+        <p>Disney-inspired tees, tanks, shorts, and comfy loungewear for mom.</p>
+        <a class="btn-sm" href="apparel-womens.html">Shop Women's →</a>
+      </div>
+      <div class="hub-card">
+        <div class="picon">🧒</div>
+        <h3>Kids</h3>
+        <p>Disney apparel for the little ones.</p>
+        <a class="btn-sm" href="apparel-kids.html">Shop Kids →</a>
+      </div>
     </div>
   </div>
 </section>
-
-<section class="category" id="mens">
-  <div class="wrap">
-    <h2 class="cat-title">Men's</h2>
-    <p class="cat-sub">Disney apparel and shorts for dad.</p>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/apparel-mens-01.jpg" alt="Men's Golf Shorts Khaki"><div class="prod-card-body"><h3>Men's Golf Shorts (Khaki)</h3><a href="https://amzn.to/4pOfFTL" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-02.jpg" alt="Men's Quick-Dry Zip Pocket Shorts 2-Pack Gray and Black"><div class="prod-card-body"><h3>Men's Quick-Dry Shorts, 2-Pack (Gray &amp; Black)</h3><a href="https://amzn.to/4g3FbRs" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-03.jpg" alt="Men's Athletic Shorts Sage Green"><div class="prod-card-body"><h3>Men's Athletic Shorts (Sage Green)</h3><a href="https://amzn.to/45yenmh" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-04.jpg" alt="Men's Golf Shorts Gray"><div class="prod-card-body"><h3>Men's Golf Shorts (Gray)</h3><a href="https://amzn.to/4w2tjUD" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-05.jpg" alt="Men's Hakuna Matata Lion King Tee Gray"><div class="prod-card-body"><h3>"Hakuna Matata" Lion King Tee (Gray)</h3><a href="https://amzn.to/450sjFC" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-06.jpg" alt="Men's Mickey Safari Animal Kingdom Tee Olive"><div class="prod-card-body"><h3>Mickey Safari Animal Kingdom Tee (Olive)</h3><a href="https://amzn.to/4wA3yfC" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-07.jpg" alt="Men's Guardians of the Galaxy Retro Tee"><div class="prod-card-body"><h3>Guardians of the Galaxy Retro Tee</h3><a href="https://amzn.to/4g75zK8" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-08.jpg" alt="Men's Dead Men Tell No Tales Pirates Tee"><div class="prod-card-body"><h3>"Dead Men Tell No Tales" Pirates Tee</h3><a href="https://amzn.to/4yMwItv" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-09.jpg" alt="Men's Star Wars 77 Millennium Falcon Tee"><div class="prod-card-body"><h3>Star Wars '77 Millennium Falcon Tee</h3><a href="https://amzn.to/4h4bcKf" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-10.jpg" alt="Men's Pizza Planet Toy Story Tee"><div class="prod-card-body"><h3>Pizza Planet Tee</h3><a href="https://amzn.to/4wyzEbr" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-11.jpg" alt="Men's Hakuna Matata Lion King Tee Charcoal"><div class="prod-card-body"><h3>"Hakuna Matata" Lion King Tee (Charcoal)</h3><a href="https://amzn.to/4yQGo69" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-12.jpg" alt="Men's Princess Security Tee"><div class="prod-card-body"><h3>"Princess Security" Tee</h3><a href="https://amzn.to/4fTj1Am" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-mens-13.jpg" alt="Men's Cars Fabulous Doc Hudson Tee"><div class="prod-card-body"><h3>Cars "Fabulous Doc Hudson" Piston Cup Tee</h3><a href="https://amzn.to/4hdVrk5" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="category" id="womens">
-  <div class="wrap">
-    <h2 class="cat-title">Women's</h2>
-    <p class="cat-sub">Disney-inspired tees, tanks, shorts, and comfy loungewear for mom.</p>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/apparel-womens-01.jpg" alt="Hakuna Matata Lion King Retro Tee"><div class="prod-card-body"><h3>"Hakuna Matata" Lion King Retro Tee</h3><a href="https://amzn.to/4w4prTg" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-02.jpg" alt="A Dream is a Wish Your Heart Makes Cinderella Tee"><div class="prod-card-body"><h3>"A Dream is a Wish Your Heart Makes" Cinderella Tee</h3><a href="https://amzn.to/4fyga0z" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-03.jpg" alt="Meet Me at Midnight Cinderella Tee"><div class="prod-card-body"><h3>"Meet Me at Midnight" Cinderella Tee</h3><a href="https://amzn.to/4yOGNpw" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-04.jpg" alt="Leopard Print Minnie Bow Safari Tee"><div class="prod-card-body"><h3>Leopard Print Minnie Bow Safari Tee</h3><a href="https://amzn.to/4x8UJco" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-05.jpg" alt="Minnie Mouse Leopard Bow Face Tee"><div class="prod-card-body"><h3>Minnie Mouse Leopard Bow Face Tee</h3><a href="https://amzn.to/4fyu4zY" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-06.jpg" alt="Minnie Mouse Heart Leopard Print Tee"><div class="prod-card-body"><h3>Minnie Mouse Heart Leopard Print Tee</h3><a href="https://amzn.to/4xyXfcn" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-07.jpg" alt="Please Stand Clear of the Doors Monorail Tee"><div class="prod-card-body"><h3>"Please Stand Clear of the Doors" Monorail Tee</h3><a href="https://amzn.to/4fyh11h" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-08.jpg" alt="Anyone Can Cook Ratatouille Paris Tee"><div class="prod-card-body"><h3>"Anyone Can Cook" Ratatouille Paris Tee</h3><a href="https://amzn.to/4pNSUz8" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-09.jpg" alt="You've Got a Friend in Me Toy Story Tee"><div class="prod-card-body"><h3>"You've Got a Friend in Me" Toy Story Tee</h3><a href="https://amzn.to/4hCCl7e" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-10.jpg" alt="Leopard Minnie Mouse Rocker Tank"><div class="prod-card-body"><h3>Leopard Minnie Mouse Rocker Tank</h3><a href="https://amzn.to/4wKleoA" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-11.jpg" alt="You've Gotta Friend in Me Retro Toy Story Tee"><div class="prod-card-body"><h3>"You've Gotta Friend in Me" Retro Toy Story Tee</h3><a href="https://amzn.to/4g5Eqr1" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-12.jpg" alt="Avatar The Way of Water Tee"><div class="prod-card-body"><h3>Avatar: The Way of Water Tee</h3><a href="https://amzn.to/3TlUEUl" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-13.jpg" alt="May the Magic Be With You Castle Tee"><div class="prod-card-body"><h3>"May the Magic Be With You" Castle Tee</h3><a href="https://amzn.to/4w44V55" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-14.jpg" alt="Magical Tinker Bell Tee Maroon"><div class="prod-card-body"><h3>"Magical" Tinker Bell Tee (Maroon)</h3><a href="https://amzn.to/4xk5F7f" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-15.jpg" alt="Magical Castle Tee Purple"><div class="prod-card-body"><h3>"Magical" Castle Tee (Purple)</h3><a href="https://amzn.to/3S7bC8r" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-16.jpg" alt="Women's Lounge Shorts 5-Pack Pastel"><div class="prod-card-body"><h3>Women's Lounge Shorts, 5-Pack (Pastel)</h3><a href="https://amzn.to/45vnjca" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-17.jpg" alt="Women's Athletic Zip-Pocket Shorts 5-Pack Colorway A"><div class="prod-card-body"><h3>Women's Athletic Zip-Pocket Shorts, 5-Pack (Colorway A)</h3><a href="https://amzn.to/4xbrXI5" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-17.jpg" alt="Women's Athletic Zip-Pocket Shorts 5-Pack Colorway B"><div class="prod-card-body"><h3>Women's Athletic Zip-Pocket Shorts, 5-Pack (Colorway B)</h3><a href="https://amzn.to/4bYHXVJ" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-18.jpg" alt="Black Ribbed Loungewear Set"><div class="prod-card-body"><h3>Black Ribbed Loungewear Set</h3><a href="https://amzn.to/4cgSonF" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-19.jpg" alt="Light Blue V-Neck Pocket T-Shirt Dress"><div class="prod-card-body"><h3>Light Blue V-Neck Pocket T-Shirt Dress</h3><a href="https://amzn.to/44ZUuEA" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-20.jpg" alt="Red Tank and Shorts Lounge Set"><div class="prod-card-body"><h3>Red Tank &amp; Shorts Lounge Set</h3><a href="https://amzn.to/4fJzSVR" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-21.jpg" alt="Women's Athletic Tennis Skort Tan"><div class="prod-card-body"><h3>Women's Athletic Tennis Skort (Tan)</h3><a href="https://amzn.to/4yQ7Dh5" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-22.jpg" alt="Women's Distressed Denim Bermuda Shorts Black"><div class="prod-card-body"><h3>Women's Distressed Denim Bermuda Shorts (Black)</h3><a href="https://amzn.to/4pVosTY" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-23.jpg" alt="Women's Denim Bermuda Shorts Light Blue"><div class="prod-card-body"><h3>Women's Denim Bermuda Shorts (Light Blue)</h3><a href="https://amzn.to/4w4tHCe" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-24.jpg" alt="Women's Athletic Bermuda Shorts Blue"><div class="prod-card-body"><h3>Women's Athletic Bermuda Shorts (Blue)</h3><a href="https://amzn.to/4yQ7YjR" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-25.jpg" alt="Women's Drawstring Running Shorts Magenta"><div class="prod-card-body"><h3>Women's Drawstring Running Shorts (Magenta)</h3><a href="https://amzn.to/4pN9IWV" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/apparel-womens-26.jpg" alt="Women's Denim Bermuda Shorts Dark Blue"><div class="prod-card-body"><h3>Women's Denim Bermuda Shorts (Dark Blue)</h3><a href="https://amzn.to/4fJHHLf" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="category" id="kids">
-  <div class="wrap">
-    <h2 class="cat-title">Kids</h2>
-    <p class="cat-sub">Disney apparel for the little ones.</p>
-    <div class="coming-soon">Items coming soon — check back shortly!</div>
-  </div>
-</section>
-
-<!-- Replace a "coming-soon" div with a prod-grid full of prod-card blocks (see accessories.html for the pattern) as items come in for each subcategory -->
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
