@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ultimate Park Day Packing Checklist | The Pixie Packed Family</title>
-<meta name="description" content="A complete, printable, whimsical Disney park day packing checklist from The Pixie Packed Family.">
+<meta name="description" content="A complete, printable, whimsical Disney park day packing checklist from The Pixie Packed Family — use it as a fillable digital checklist or print it out.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -33,6 +33,12 @@
   .app-callout h3 { font-size: 1rem; margin-bottom: 4px; }
   .app-callout p { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
 
+  .digital-note {
+    margin: 18px 36px 0; background: var(--mint); border-radius: var(--radius); padding: 16px 22px;
+    display: flex; align-items: center; gap: 14px; text-align: left; font-size: 0.85rem; color: var(--maroon);
+  }
+  .digital-note .emoji { font-size: 1.6rem; flex-shrink: 0; }
+
   .printbar { text-align: center; padding: 22px 36px 0; }
   .printbtn { display: inline-flex; align-items: center; gap: 7px; background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.9rem; padding: 12px 26px; border: none; border-radius: 50px; cursor: pointer; }
 
@@ -50,9 +56,12 @@
   .checklist { display: flex; flex-direction: column; gap: 12px; }
   .item {
     display: flex; align-items: flex-start; gap: 14px; background: var(--white);
-    border-radius: 12px; padding: 14px 18px;
+    border-radius: 12px; padding: 14px 18px; cursor: pointer; transition: background .12s;
   }
-  .checkbox { width: 20px; height: 20px; flex-shrink: 0; margin-top: 3px; border: 2.5px solid var(--magenta); border-radius: 6px; }
+  .item:hover { background: #fdf6f9; }
+  .checkbox { width: 20px; height: 20px; flex-shrink: 0; margin-top: 3px; border: 2.5px solid var(--magenta); border-radius: 6px; display:flex; align-items:center; justify-content:center; font-size: 13px; color: var(--white); }
+  .item.checked .checkbox { background: var(--magenta); }
+  .item.checked .item-name { text-decoration: line-through; color: var(--gray); }
   .item-name { font-size: 0.95rem; font-weight: 700; color: var(--maroon); margin-bottom: 4px; }
   .item-tip { font-size: 0.82rem; color: var(--gray); line-height: 1.55; }
 
@@ -64,66 +73,57 @@
   .footer { background: var(--maroon); color: rgba(255,255,255,0.6); padding: 22px 28px; text-align: center; font-size: 0.82rem; }
   .footer strong { color: var(--orange); }
 
-  .print-page-2-header { display: none; }
+  /* ============ PRINT-ONLY compact checklist ============
+     A completely separate, purpose-built layout for printing/saving as PDF — short bordered
+     category cards in a grid, designed to actually fill the page instead of the long-form
+     on-screen version (which is meant for reading, not printing). Hidden on screen entirely. */
+  .print-only { display: none; }
 
   @media print {
-    html, body { padding: 0; background: white; font-size: 90%; }
-    .page { box-shadow: none; max-width: 100%; }
-    .noprint { display: none; }
-
-    /* Force background colors to actually print — browsers hide them by default */
+    @page { size: letter; margin: 0.35in; }
+    html, body { padding: 0; background: white; }
+    .page { box-shadow: none; max-width: 100%; border-radius: 0; }
+    .noprint, .screen-only { display: none !important; }
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
 
-    /* Compact banner instead of full height — object-position tuned to this specific banner
-       image so the "The Pixie Packed Family" wordmark (roughly 40-55% down the source image)
-       stays visible in the cropped strip instead of getting cut off. */
-    .banner-img { max-height: 78px; object-fit: cover; object-position: center 42%; }
+    .print-only { display: block; }
+    .pheader { text-align: center; padding: 0 0 10px; border-bottom: 2px solid var(--blush); margin-bottom: 14px; }
+    .pheader .pbrand { font-family: 'Fredoka', sans-serif; letter-spacing: 1.5px; font-size: 0.72rem; text-transform: uppercase; color: var(--magenta); margin-bottom: 4px; }
+    .pheader h1 { font-family: 'Fredoka', sans-serif; font-size: 1.4rem; color: var(--maroon); font-weight: 700; }
+    .pheader p { font-size: 0.72rem; color: var(--gray); margin-top: 3px; }
 
-    .title-bar { padding: 12px 20px 8px; }
-    .title-bar p { display: none; } /* subtitle isn't essential once printed, saves a line */
+    .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 14px; }
+    .pcard { border: 1.5px solid; border-radius: 12px; overflow: hidden; break-inside: avoid; }
+    .pcard-head { color: white; padding: 6px 12px; font-size: 0.76rem; font-weight: 700; display: flex; align-items: center; gap: 6px; font-family: 'Fredoka', sans-serif; }
+    .pcard-body { padding: 8px 12px 10px; background: white; }
+    .pitem { display: flex; align-items: flex-start; gap: 6px; padding: 3px 0; border-bottom: 1px dashed rgba(92,42,56,0.15); }
+    .pitem:last-child { border-bottom: none; }
+    .pcheckbox { width: 10px; height: 10px; border: 1.5px solid; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+    .pitem-name { font-size: 0.66rem; line-height: 1.25; }
 
-    .app-callout { margin: 10px 20px 0; padding: 8px 14px; }
-    .app-callout .emoji { font-size: 1.2rem; }
-    .app-callout h3 { font-size: 0.78rem; }
-    .app-callout p { font-size: 0.68rem; line-height: 1.3; }
+    .c-magenta { border-color: var(--magenta); } .c-magenta .pcard-head { background: var(--magenta); } .c-magenta .pcheckbox { border-color: var(--magenta); }
+    .c-orange { border-color: var(--orange); } .c-orange .pcard-head { background: var(--orange); } .c-orange .pcheckbox { border-color: var(--orange); }
+    .c-purple { border-color: var(--purple); } .c-purple .pcard-head { background: var(--purple); } .c-purple .pcheckbox { border-color: var(--purple); }
+    .c-coral { border-color: var(--coral); } .c-coral .pcard-head { background: var(--coral); } .c-coral .pcheckbox { border-color: var(--coral); }
+    .c-maroon { border-color: var(--maroon); } .c-maroon .pcard-head { background: var(--maroon); } .c-maroon .pcheckbox { border-color: var(--maroon); }
 
-    .body { padding: 14px 20px 4px; }
-    .section { margin-bottom: 12px; padding: 12px 14px 14px; border-radius: 10px; page-break-inside: avoid; }
-    .sec-header { margin-bottom: 8px; page-break-after: avoid; }
-    .sec-header-top { gap: 8px; margin-bottom: 3px; }
-    .sec-icon { font-size: 1rem; }
-    .sec-title { font-size: 0.88rem; }
-    .sec-desc { font-size: 0.66rem; padding-left: 26px; }
+    .addon-row { display: flex; align-items: center; gap: 6px; padding: 5px 0; }
+    .addon-line { border-bottom: 1px solid var(--gray); flex: 1; height: 1px; margin-top: 8px; }
 
-    .checklist { gap: 5px; }
-    .item { padding: 5px 9px; border-radius: 6px; gap: 8px; page-break-inside: avoid; }
-    .checkbox { width: 12px; height: 12px; border-radius: 4px; margin-top: 1px; }
-    .item-name { font-size: 0.72rem; margin-bottom: 1px; }
-    .item-tip { font-size: 0.6rem; line-height: 1.3; }
-
-    .footer { padding: 8px 20px; font-size: 0.65rem; }
-
-    /* Split the checklist across two pages roughly evenly (Essentials + Sun & Weather on
-       page 1; In the Park Bag + Traveling With Family on page 2), with the banner repeated
-       at the top of page 2 too — rather than leaving one page mostly empty. */
-    .print-page-2 { page-break-before: always; }
-    .print-page-2-header { display: block; margin: 0 0 10px; }
-    .print-page-2-header .banner-img { max-height: 78px; object-fit: cover; object-position: center 42%; }
-    .print-page-2-header .title-bar { padding: 8px 20px 2px; }
-    .print-page-2-header .title-bar p { display: none; }
+    .pfooter { text-align: center; margin-top: 14px; font-size: 0.6rem; color: var(--gray); padding: 0 14px; }
   }
 </style>
 </head>
 <body>
 
 <div class="page">
-  <img class="banner-img" src="../photos/brand-banner.jpg" alt="The Pixie Packed Family">
+  <img class="banner-img noprint" src="../photos/brand-banner.jpg" alt="The Pixie Packed Family">
   <div class="title-bar">
     <h1>Ultimate Park Day Packing Checklist</h1>
     <p>Everything you need for a smooth, magical day in the parks — nothing left behind.</p>
   </div>
 
-  <div class="app-callout">
+  <div class="app-callout noprint">
     <div class="emoji">📱</div>
     <div>
       <h3>Download the My Disney Experience App</h3>
@@ -131,12 +131,17 @@
     </div>
   </div>
 
+  <div class="digital-note noprint">
+    <div class="emoji">✅</div>
+    <div>Use this right on your phone — tap any item below to check it off as you pack, no printer needed. Prefer paper? Hit the button below for a clean, printable one-page version.</div>
+  </div>
+
   <div class="printbar noprint">
     <button class="printbtn" onclick="window.print()">🖨️ Print or Save as PDF</button>
   </div>
 
-  <div class="body">
-    <div class="print-page print-page-1">
+  <!-- ============ ON-SCREEN detailed guide (screen only, hidden when printing) ============ -->
+  <div class="body screen-only">
 
     <div class="section sec-1">
       <div class="sec-header">
@@ -167,14 +172,6 @@
         <div class="item"><div class="checkbox"></div><div><div class="item-name">Cooling towel</div><div class="item-tip">Wet it down at any restroom sink and drape it around your neck between rides — makes a bigger difference than it sounds.</div></div></div>
         <div class="item"><div class="checkbox"></div><div><div class="item-name">Poncho or light rain jacket</div><div class="item-tip">Florida afternoons can bring a fast-moving storm even on a sunny morning. Pack one even if the forecast looks totally clear.</div></div></div>
       </div>
-    </div>
-
-    </div>
-
-    <div class="print-page print-page-2">
-    <div class="print-page-2-header">
-      <img class="banner-img" src="../photos/brand-banner.jpg" alt="The Pixie Packed Family">
-      <div class="title-bar"><h1>Ultimate Park Day Packing Checklist</h1></div>
     </div>
 
     <div class="section sec-3">
@@ -215,7 +212,88 @@
       </div>
     </div>
 
+  </div>
+
+  <!-- ============ PRINT-ONLY compact checklist (hidden on screen, shown only when printing) ============ -->
+  <div class="print-only">
+    <div class="pheader">
+      <div class="pbrand">✦ The Pixie Packed Family ✦</div>
+      <h1>Ultimate Park Day Packing Checklist</h1>
+      <p>Everything you need for a smooth, magical day in the parks.</p>
     </div>
+
+    <div class="pgrid">
+      <div class="pcard c-magenta">
+        <div class="pcard-head">🎫 Essentials</div>
+        <div class="pcard-body">
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Park tickets / MagicBand</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Phone + portable charger</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Wallet / ID</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Mickey/Minnie ears</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Hand sanitizer</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Small first aid kit</div></div>
+        </div>
+      </div>
+
+      <div class="pcard c-orange">
+        <div class="pcard-head">☀️ Sun &amp; Weather</div>
+        <div class="pcard-body">
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Sunscreen (SPF 30+)</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">SPF lip balm</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Sunglasses</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Hat or visor</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Compact umbrella</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Cooling towel</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Poncho / rain jacket</div></div>
+        </div>
+      </div>
+
+      <div class="pcard c-purple">
+        <div class="pcard-head">🎒 In the Park Bag</div>
+        <div class="pcard-body">
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Refillable water bottle</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Snacks</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Sanitizing wipes</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Deodorant</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Anti-chafing cream</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Autograph book + pen</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Ziplock bags</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Broken-in shoes</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Extra socks</div></div>
+        </div>
+      </div>
+
+      <div class="pcard c-coral">
+        <div class="pcard-head">👨‍👩‍👧‍👦 Traveling With Family</div>
+        <div class="pcard-body">
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Stroller / ECV plan</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Stroller/ECV clip fan</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Handheld fan</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Pennies for pressing</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Trading pins + lanyard</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Bubble wands</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Change of clothes</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Medications</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Comfort item</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Noise-reducing headphones</div></div>
+          <div class="pitem"><div class="pcheckbox"></div><div class="pitem-name">Meeting point plan</div></div>
+        </div>
+      </div>
+
+      <div class="pcard c-maroon">
+        <div class="pcard-head">✦ My Add-Ons</div>
+        <div class="pcard-body">
+          <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
+          <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
+          <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
+          <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
+          <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
+          <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="pfooter">Made with pixie dust by The Pixie Packed Family — pixiepackedfamily.com</div>
   </div>
 
   <div class="shopcta noprint">
@@ -224,10 +302,20 @@
     <a href="../index.html#picks">Visit the Shop →</a>
   </div>
 
-  <div class="footer">
+  <div class="footer noprint">
     Made with pixie dust by <strong>The Pixie Packed Family</strong> — pixiepackedfamily.com
   </div>
 </div>
+
+<script>
+  document.querySelectorAll('.screen-only .item').forEach(function (item) {
+    item.addEventListener('click', function () {
+      item.classList.toggle('checked');
+      var box = item.querySelector('.checkbox');
+      box.textContent = item.classList.contains('checked') ? '✓' : '';
+    });
+  });
+</script>
 
 </body>
 </html>
