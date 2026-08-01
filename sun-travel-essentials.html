@@ -24,38 +24,38 @@
   .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 
   header { background: var(--maroon); position: sticky; top: 0; z-index: 50; }
-  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.2rem; font-weight: 600; }
-  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
   .navlinks a { color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; }
   .navlinks a:hover { background: rgba(255,255,255,0.12); color: var(--gold); }
 
-  .pagehero { background: var(--pink-bg); padding: 56px 24px 44px; text-align: center; }
-  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
-  .pagehero h1 { font-size: clamp(1.9rem, 4.2vw, 2.7rem); margin-bottom: 12px; }
-  .pagehero p { color: var(--gray); max-width: 560px; margin: 0 auto; }
+  .pagehero { background: var(--pink-bg); padding: 48px 20px 40px; text-align: center; }
+  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
+  .pagehero h1 { font-size: clamp(1.6rem, 5.5vw, 2.5rem); margin-bottom: 12px; }
+  .pagehero p { color: var(--gray); max-width: 560px; margin: 0 auto; font-size: 0.95rem; }
 
-  .jumplinks { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 20px 24px 0; }
-  .jumplinks a { background: var(--white); box-shadow: var(--shadow); padding: 9px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; color: var(--maroon); }
-  .jumplinks a:hover { background: var(--gold); }
+  .hub-section { padding: 48px 16px 60px; }
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
+  .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--orange); color: var(--white); align-self: flex-start; }
 
-  .category { padding: 50px 24px; scroll-margin-top: 80px; }
-  .category:nth-child(even) { background: var(--white); }
-  .cat-title { font-size: 1.5rem; margin-bottom: 4px; }
-  .cat-sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 30px; }
-
-  .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
-  .prod-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; display: flex; flex-direction: column; }
-  .prod-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .prod-card img { width: 100%; height: 190px; object-fit: contain; background: var(--white); padding: 10px; }
-  .prod-card-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
-  .prod-card-body h3 { font-size: 0.8rem; margin-bottom: 10px; font-weight: 600; flex: 1; line-height: 1.35; }
-  .prod-card-body a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 8px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
-  .prod-card-body a[data-placeholder="true"] { background: var(--gray); outline: 2px dashed var(--magenta); outline-offset: -2px; }
-
-  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 24px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
-  .footlinks { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
+  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
+  .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
   .footlinks a:hover { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    nav.wrap { justify-content: center; text-align: center; height: auto; }
+    .pagehero { padding: 40px 16px 30px; }
+    .hub-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 400px) {
+    .hub-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -70,91 +70,43 @@
 <section class="pagehero">
   <span class="eyebrow">Shop the Parks</span>
   <h1>Sun, Travel &amp; Personal Care Essentials</h1>
-  <p>Sunscreen, hair care, cooling gear, and travel-friendly personal care picks to keep the whole family comfortable at the parks and beyond.</p>
+  <p>Sunscreen, hair care, cooling gear, and travel-friendly personal care picks to keep the whole family comfortable at the parks and beyond. Tap a category to shop.</p>
 </section>
 
-<div class="jumplinks">
-  <a href="#sunscreen">Sunscreen</a>
-  <a href="#hair-care">Hair Care</a>
-  <a href="#cooling-fans">Cooling &amp; Fans</a>
-  <a href="#travel-personal-care">Travel &amp; Personal Care</a>
-</div>
-
-<section class="category" id="sunscreen">
+<section class="hub-section">
   <div class="wrap">
-    <h2 class="cat-title">Sunscreen</h2>
-    <p class="cat-sub">Broad-spectrum protection for every member of the family, from lips to scalp.</p>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/sun-travel-01.jpg" alt="Sun Bum Lip 30 Tinted Sunscreen Lip Balm Sunset Cove"><div class="prod-card-body"><h3>Sun Bum Lip 30 Tinted Sunscreen Lip Balm, Sunset Cove</h3><a href="https://amzn.to/4ySsdxh" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-02.jpg" alt="Sun Bum Sunscreen Gift Set"><div class="prod-card-body"><h3>Sun Bum Sunscreen Gift Set (Bag, Lotion, Lip Balm &amp; Face Stick)</h3><a href="https://amzn.to/3U5dOhi" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-03.jpg" alt="Sun Bum Coconut Sunscreen Lip Balm SPF 30"><div class="prod-card-body"><h3>Sun Bum Coconut Sunscreen Lip Balm SPF 30</h3><a href="https://amzn.to/4g62SbS" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-04.jpg" alt="Sun Bum Sunscreen Spray SPF 50"><div class="prod-card-body"><h3>Sun Bum Sunscreen Spray SPF 50</h3><a href="https://amzn.to/4pNViWN" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-05.jpg" alt="Baby Bum Mineral Sunscreen Lotion SPF 50 Fragrance Free"><div class="prod-card-body"><h3>Baby Bum Mineral Sunscreen Lotion SPF 50, Fragrance Free</h3><a href="https://amzn.to/4yQkG29" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-06.jpg" alt="Bella's Friends Mineral Sunscreen Powder Brush SPF 50"><div class="prod-card-body"><h3>Bella's Friends Mineral Sunscreen Powder Brush SPF 50</h3><a href="https://amzn.to/4bQLkhq" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-07.jpg" alt="Baby Bum Roll-On Mineral Sunscreen SPF 50"><div class="prod-card-body"><h3>Baby Bum Roll-On Mineral Sunscreen SPF 50</h3><a href="https://amzn.to/4fsKQ3m" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-08.jpg" alt="Solar Buddies Sunscreen Applicator"><div class="prod-card-body"><h3>Solar Buddies Sunscreen Applicator</h3><a href="https://amzn.to/4fJSi9g" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-09.jpg" alt="Sun Bum Face 50 Sunscreen Lotion"><div class="prod-card-body"><h3>Sun Bum Face 50 Sunscreen Lotion</h3><a href="https://amzn.to/4w28KaT" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-10.jpg" alt="Sun Bum Scalp and Hair Mist SPF 30"><div class="prod-card-body"><h3>Sun Bum Scalp &amp; Hair Mist SPF 30</h3><a href="https://amzn.to/4xf6azj" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+    <div class="hub-grid">
+      <div class="hub-card">
+        <div class="picon">🧴</div>
+        <h3>Sunscreen</h3>
+        <p>Broad-spectrum protection for every member of the family, from lips to scalp.</p>
+        <a class="btn-sm" href="sun-travel-sunscreen.html">Shop Sunscreen →</a>
+      </div>
+      <div class="hub-card">
+        <div class="picon">💇</div>
+        <h3>Hair Care</h3>
+        <p>Frizz-fighting, detangling, and styling essentials for humid park days and post-swim hair.</p>
+        <a class="btn-sm" href="sun-travel-hair-care.html">Shop Hair Care →</a>
+      </div>
+      <div class="hub-card">
+        <div class="picon">🌬️</div>
+        <h3>Cooling &amp; Fans</h3>
+        <p>Portable ways to beat the Florida heat, from handheld fans to stroller-mounted misters.</p>
+        <a class="btn-sm" href="sun-travel-cooling-fans.html">Shop Cooling &amp; Fans →</a>
+      </div>
+      <div class="hub-card">
+        <div class="picon">🧳</div>
+        <h3>Travel &amp; Personal Care</h3>
+        <p>Travel-size personal care essentials to keep everyone fresh and comfortable on long park days.</p>
+        <a class="btn-sm" href="sun-travel-personal-care.html">Shop Travel &amp; Personal Care →</a>
+      </div>
     </div>
   </div>
 </section>
-
-<section class="category" id="hair-care">
-  <div class="wrap">
-    <h2 class="cat-title">Hair Care</h2>
-    <p class="cat-sub">Frizz-fighting, detangling, and styling essentials for humid park days and post-swim hair.</p>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/sun-travel-21.jpg" alt="Hairitage Light as a Feather Leave-In Conditioner"><div class="prod-card-body"><h3>Hairitage "Light as a Feather" Leave-In Conditioner</h3><a href="https://amzn.to/4xehOdR" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-22.jpg" alt="Hairitage Ahead of the Curl Curl Creme"><div class="prod-card-body"><h3>Hairitage "Ahead of the Curl" Curl Crème</h3><a href="https://amzn.to/4bntVNa" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-23.jpg" alt="Color Wow Dream Coat Supernatural Spray"><div class="prod-card-body"><h3>Color Wow Dream Coat Supernatural Spray</h3><a href="https://amzn.to/4fQdFFV" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-24.jpg" alt="Sun Bum Hair Care Gift Set"><div class="prod-card-body"><h3>Sun Bum Hair Care Gift Set (Shampoo, Conditioner, 3-in-1 Leave-In)</h3><a href="https://amzn.to/4pO1MVD" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-26.jpg" alt="Sun Bum Texturizing Sea Spray"><div class="prod-card-body"><h3>Sun Bum Texturizing Sea Spray</h3><a href="https://amzn.to/454QvXk" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-27.jpg" alt="Hairitage Mane Event Anti-Frizz and Humidity Spray"><div class="prod-card-body"><h3>Hairitage "Mane Event" Anti-Frizz + Humidity Spray</h3><a href="https://amzn.to/4g4h8BY" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-28.jpg" alt="Fairy Tales Coco Cabana After-Sun Detangling Spray"><div class="prod-card-body"><h3>Fairy Tales Coco Cabana After-Sun Detangling Spray</h3><a href="https://amzn.to/4w2U3V7" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-29.jpg" alt="Fairy Tales Tangle Tamer Super Charge Mini Kit"><div class="prod-card-body"><h3>Fairy Tales Tangle Tamer Super Charge Mini Kit</h3><a href="https://amzn.to/4yNGdZe" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-34.jpg" alt="Color Wow Slay Anti-Frizz Kit"><div class="prod-card-body"><h3>Color Wow Slay Anti-Frizz Kit</h3><a href="https://amzn.to/4biGERm" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="category" id="cooling-fans">
-  <div class="wrap">
-    <h2 class="cat-title">Cooling &amp; Fans</h2>
-    <p class="cat-sub">Portable ways to beat the Florida heat, from handheld fans to stroller-mounted misters.</p>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/sun-travel-11.jpg" alt="AUJIAH Handheld Misting Fan"><div class="prod-card-body"><h3>AUJIAH Handheld Misting Fan</h3><a href="https://amzn.to/3RJsbaf" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-12.jpg" alt="Portable Stroller Misting Fan"><div class="prod-card-body"><h3>Portable Stroller Misting Fan</h3><a href="https://amzn.to/3RsAuaB" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-13.jpg" alt="Momcozy Stroller Fan"><div class="prod-card-body"><h3>Momcozy Stroller Fan</h3><a href="https://amzn.to/4pQUIHK" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-33.jpg" alt="Kbinter Mini Fan with Mickey Ears, Wearable"><div class="prod-card-body"><h3>Kbinter Mini Fan, Mickey Ears (Wearable)</h3><a href="https://amzn.to/450VUyB" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="category" id="travel-personal-care">
-  <div class="wrap">
-    <h2 class="cat-title">Travel &amp; Personal Care</h2>
-    <p class="cat-sub">Travel-size personal care essentials to keep everyone fresh and comfortable on long park days.</p>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/sun-travel-14.jpg" alt="Portable Fragrance Mist Keychains 3-Pack"><div class="prod-card-body"><h3>Portable Fragrance Mist Keychains, 3-Pack (Spiced Amber, Citrus Moss, Ginger Wood)</h3><a href="https://amzn.to/4yMdlkh" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-15.jpg" alt="Neutrogena Secret to Tate's Juicy Skin Refresh and Hydrate Set"><div class="prod-card-body"><h3>Neutrogena "Secret to Tate's Juicy Skin" Refresh &amp; Hydrate Set</h3><a href="https://amzn.to/4h2VM93" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-16.jpg" alt="Inis Voyager Travel Set"><div class="prod-card-body"><h3>Inis Voyager Travel Set</h3><a href="https://amzn.to/3TwB0VA" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-17.jpg" alt="Monistat Chafing Relief Powder Gel"><div class="prod-card-body"><h3>Monistat Chafing Relief Powder Gel</h3><a href="https://amzn.to/3RHTyle" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-18.jpg" alt="Body Glide Outdoor Anti-Blister and Chafing Balm"><div class="prod-card-body"><h3>Body Glide Outdoor Anti-Blister &amp; Chafing Balm</h3><a href="https://amzn.to/4wJcXkX" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-19.jpg" alt="DUDE Wipes Travel Size 6-Pack"><div class="prod-card-body"><h3>DUDE Wipes, Travel Size (6-Pack)</h3><a href="https://amzn.to/4xis30Q" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-20.jpg" alt="First Aid Kit Pouch"><div class="prod-card-body"><h3>First Aid Kit Pouch</h3><a href="https://amzn.to/3TvvO4m" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-25.jpg" alt="Stream2Sea Travel Kit"><div class="prod-card-body"><h3>Stream2Sea Travel Kit (Sunscreen, Shampoo/Bodywash, Conditioner &amp; Lip Balm)</h3><a href="https://amzn.to/3U6HkmM" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-30.jpg" alt="Disney x Touchland Power Mist Hand Sanitizer Minnie"><div class="prod-card-body"><h3>Disney x Touchland Power Mist Hand Sanitizer, Minnie</h3><a href="https://amzn.to/454Rbfk" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-31.jpg" alt="Disney x Touchland Power Mist Hand Sanitizer Mickey"><div class="prod-card-body"><h3>Disney x Touchland Power Mist Hand Sanitizer, Mickey</h3><a href="https://amzn.to/4xeSvbE" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/sun-travel-32.jpg" alt="Band-Aid Disney Mickey Mouse Bandages 20-count"><div class="prod-card-body"><h3>Band-Aid Disney Mickey Mouse Bandages, 20-Count</h3><a href="https://amzn.to/4pSkGKU" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Add more <section class="category"> blocks here as new essentials come in -->
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
 </footer>
 
