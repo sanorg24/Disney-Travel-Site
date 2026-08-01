@@ -87,20 +87,20 @@
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
 
     .print-only { display: block; }
-    .banner-img { max-height: 78px; object-fit: cover; object-position: center 42%; margin-bottom: 10px; }
+    .banner-img { max-height: 82px; object-fit: cover; object-position: center 42%; margin-bottom: 10px; }
     .pheader { text-align: center; padding: 0 0 10px; border-bottom: 2px solid var(--blush); margin-bottom: 14px; }
     .pheader .pbrand { display: none; } /* the real banner image above already carries the branding */
-    .pheader h1 { font-family: 'Fredoka', sans-serif; font-size: 1.4rem; color: var(--maroon); font-weight: 700; }
-    .pheader p { font-size: 0.72rem; color: var(--gray); margin-top: 3px; }
+    .pheader h1 { font-family: 'Fredoka', sans-serif; font-size: 1.48rem; color: var(--maroon); font-weight: 700; }
+    .pheader p { font-size: 0.82rem; color: var(--gray); margin-top: 5px; }
 
-    .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 0 14px; }
-    .pcard { border: 1.5px solid; border-radius: 12px; overflow: hidden; break-inside: avoid; }
-    .pcard-head { color: white; padding: 6px 12px; font-size: 0.76rem; font-weight: 700; display: flex; align-items: center; gap: 6px; font-family: 'Fredoka', sans-serif; }
-    .pcard-body { padding: 8px 12px 10px; background: white; }
-    .pitem { display: flex; align-items: flex-start; gap: 6px; padding: 3px 0; border-bottom: 1px dashed rgba(92,42,56,0.15); }
+    .pgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; padding: 0 16px; }
+    .pcard { border: 1.75px solid; border-radius: 13px; overflow: hidden; break-inside: avoid; }
+    .pcard-head { color: white; padding: 8px 14px; font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; gap: 7px; font-family: 'Fredoka', sans-serif; }
+    .pcard-body { padding: 8px 14px 10px; background: white; }
+    .pitem { display: flex; align-items: flex-start; gap: 7px; padding: 4px 0; border-bottom: 1px dashed rgba(92,42,56,0.15); }
     .pitem:last-child { border-bottom: none; }
-    .pcheckbox { width: 10px; height: 10px; border: 1.5px solid; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
-    .pitem-name { font-size: 0.66rem; line-height: 1.25; }
+    .pcheckbox { width: 12px; height: 12px; border: 1.75px solid; border-radius: 3.5px; flex-shrink: 0; margin-top: 2px; }
+    .pitem-name { font-size: 0.76rem; line-height: 1.3; }
 
     .c-magenta { border-color: var(--magenta); } .c-magenta .pcard-head { background: var(--magenta); } .c-magenta .pcheckbox { border-color: var(--magenta); }
     .c-orange { border-color: var(--orange); } .c-orange .pcard-head { background: var(--orange); } .c-orange .pcheckbox { border-color: var(--orange); }
@@ -108,10 +108,10 @@
     .c-coral { border-color: var(--coral); } .c-coral .pcard-head { background: var(--coral); } .c-coral .pcheckbox { border-color: var(--coral); }
     .c-maroon { border-color: var(--maroon); } .c-maroon .pcard-head { background: var(--maroon); } .c-maroon .pcheckbox { border-color: var(--maroon); }
 
-    .addon-row { display: flex; align-items: center; gap: 6px; padding: 5px 0; }
-    .addon-line { border-bottom: 1px solid var(--gray); flex: 1; height: 1px; margin-top: 8px; }
+    .addon-row { display: flex; align-items: center; gap: 7px; padding: 5px 0; }
+    .addon-line { border-bottom: 1px solid var(--gray); flex: 1; height: 1px; margin-top: 10px; }
 
-    .pfooter { text-align: center; margin-top: 14px; font-size: 0.6rem; color: var(--gray); padding: 0 14px; }
+    .pfooter { text-align: center; margin-top: 12px; font-size: 0.68rem; color: var(--gray); padding: 0 16px; }
   }
 </style>
 </head>
@@ -284,7 +284,6 @@
       <div class="pcard c-maroon">
         <div class="pcard-head">✦ My Add-Ons</div>
         <div class="pcard-body">
-          <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
           <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
           <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
           <div class="addon-row"><div class="pcheckbox" style="border-color:var(--maroon)"></div><div class="addon-line"></div></div>
