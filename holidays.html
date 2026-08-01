@@ -24,41 +24,38 @@
   .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 
   header { background: var(--maroon); position: sticky; top: 0; z-index: 50; }
-  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.2rem; font-weight: 600; }
-  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
   .navlinks a { color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; }
   .navlinks a:hover { background: rgba(255,255,255,0.12); color: var(--gold); }
 
-  .pagehero { background: var(--pink-bg); padding: 56px 24px 44px; text-align: center; }
-  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
-  .pagehero h1 { font-size: clamp(1.9rem, 4.2vw, 2.7rem); margin-bottom: 12px; }
-  .pagehero p { color: var(--gray); max-width: 520px; margin: 0 auto; }
+  .pagehero { background: var(--pink-bg); padding: 48px 20px 40px; text-align: center; }
+  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
+  .pagehero h1 { font-size: clamp(1.7rem, 6vw, 2.6rem); margin-bottom: 12px; }
+  .pagehero p { color: var(--gray); max-width: 540px; margin: 0 auto; font-size: 0.95rem; }
 
-  .jumplinks { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 20px 24px 0; }
-  .jumplinks a { background: var(--white); box-shadow: var(--shadow); padding: 9px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; color: var(--maroon); }
-  .jumplinks a:hover { background: var(--gold); }
+  .hub-section { padding: 48px 16px 60px; }
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
+  .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--coral); color: var(--white); align-self: flex-start; }
 
-  .category { padding: 50px 24px; scroll-margin-top: 80px; }
-  .category:nth-child(even) { background: var(--white); }
-  .cat-title { font-size: 1.5rem; margin-bottom: 4px; }
-  .cat-sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 30px; }
-
-  .fit-group { margin-bottom: 34px; }
-  .fit-title { font-size: 1.05rem; font-weight: 600; color: var(--magenta); margin-bottom: 14px; padding-bottom: 6px; border-bottom: 2px solid var(--pink-bg); }
-
-  .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
-  .prod-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; display: flex; flex-direction: column; }
-  .prod-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .prod-card img { width: 100%; height: 190px; object-fit: contain; background: var(--white); padding: 10px; }
-  .prod-card-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
-  .prod-card-body h3 { font-size: 0.8rem; margin-bottom: 10px; font-weight: 600; flex: 1; line-height: 1.35; }
-  .prod-card-body a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 8px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
-  .prod-card-body a[data-placeholder="true"] { background: var(--gray); outline: 2px dashed var(--magenta); outline-offset: -2px; }
-
-  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 24px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
-  .footlinks { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
+  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
+  .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
   .footlinks a:hover { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    nav.wrap { justify-content: center; text-align: center; height: auto; }
+    .pagehero { padding: 40px 16px 30px; }
+    .hub-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 400px) {
+    .hub-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -73,59 +70,26 @@
 <section class="pagehero">
   <span class="eyebrow">Shop the Parks</span>
   <h1>Holidays &amp; Festivals</h1>
-  <p>Seasonal Disney apparel and gear for holidays and festivals throughout the year.</p>
+  <p>Seasonal Disney apparel and gear for holidays and festivals throughout the year. Tap a holiday to shop.</p>
 </section>
 
-<div class="jumplinks">
-  <a href="#family-halloween">Family Halloween / MNSSHP</a>
-</div>
-
-<section class="category" id="family-halloween">
+<section class="hub-section">
   <div class="wrap">
-    <h2 class="cat-title">Family Halloween / MNSSHP</h2>
-    <p class="cat-sub">Spooky-cute matching looks for Mickey's Not-So-Scary Halloween Party and family Halloween fun.</p>
-
-    <div class="fit-group">
-      <div class="fit-title">Unisex</div>
-      <div class="prod-grid">
-        <div class="prod-card"><img src="photos/holiday-mnsshp-01.jpg" alt="Minnie Witch Tee"><div class="prod-card-body"><h3>Minnie Witch Tee</h3><a href="https://amzn.to/4yMJmIM" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-02.jpg" alt="Mickey BOO! Tee"><div class="prod-card-body"><h3>Mickey "BOO!" Tee</h3><a href="https://amzn.to/4hH8Y3E" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-03.jpg" alt="Mickey and Minnie Flying Tee"><div class="prod-card-body"><h3>Mickey &amp; Minnie Flying Tee</h3><a href="https://amzn.to/4xgNsrd" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-14.jpg" alt="Mickey's Halloween Candy Co Tee"><div class="prod-card-body"><h3>Mickey's Halloween Candy Co. Tee</h3><a href="https://amzn.to/4yLXBxH" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-15.jpg" alt="Pumpkin Skull Split Tee"><div class="prod-card-body"><h3>Pumpkin &amp; Skull Split Tee</h3><a href="https://amzn.to/3TP2Qwh" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-16.jpg" alt="Haunted Mansion Tee"><div class="prod-card-body"><h3>Haunted Mansion Tee</h3><a href="https://amzn.to/4bTmDAW" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+    <div class="hub-grid">
+      <div class="hub-card">
+        <div class="picon">🎃</div>
+        <h3>Family Halloween / MNSSHP</h3>
+        <p>Spooky-cute matching looks for Mickey's Not-So-Scary Halloween Party and family Halloween fun.</p>
+        <a class="btn-sm" href="holidays-family-halloween.html">Shop Halloween →</a>
       </div>
-    </div>
-
-    <div class="fit-group">
-      <div class="fit-title">Women's</div>
-      <div class="prod-grid">
-        <div class="prod-card"><img src="photos/holiday-mnsshp-04.jpg" alt="Skeleton Minnie Tee"><div class="prod-card-body"><h3>Skeleton Minnie Tee</h3><a href="https://amzn.to/4fMbmDR" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-05.jpg" alt="Minnie Witch Tee, Women's"><div class="prod-card-body"><h3>Minnie Witch Tee</h3><a href="https://amzn.to/4z5MwaS" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-06.jpg" alt="Mickey BOO! Tee, Women's"><div class="prod-card-body"><h3>Mickey "BOO!" Tee</h3><a href="https://amzn.to/3U5mpk1" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-07.jpg" alt="Mickey and Minnie Flying Tee, Women's"><div class="prod-card-body"><h3>Mickey &amp; Minnie Flying Tee</h3><a href="https://amzn.to/4yLq6eV" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-08.jpg" alt="Minnie Witch Flying Tee"><div class="prod-card-body"><h3>Minnie Witch Flying Tee</h3><a href="https://amzn.to/4wyjkaR" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-09.jpg" alt="Bibbidi Bobbidi Boo Tee"><div class="prod-card-body"><h3>Bibbidi Bobbidi Boo Tee</h3><a href="https://amzn.to/44VyXNl" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      </div>
-    </div>
-
-    <div class="fit-group">
-      <div class="fit-title">Youth</div>
-      <div class="prod-grid">
-        <div class="prod-card"><img src="photos/holiday-mnsshp-10.jpg" alt="Bibbity Bobbidity Boo Pumpkin Tee"><div class="prod-card-body"><h3>Bibbity Bobbidity Boo Pumpkin Tee</h3><a href="https://amzn.to/4wDwXFC" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-11.jpg" alt="Mickey BOO! Youth Tee"><div class="prod-card-body"><h3>Mickey "BOO!" Youth Tee</h3><a href="https://amzn.to/4xciNer" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-12.jpg" alt="Minnie Witch Youth Tee"><div class="prod-card-body"><h3>Minnie Witch Youth Tee</h3><a href="https://amzn.to/4fxLDQv" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-        <div class="prod-card"><img src="photos/holiday-mnsshp-13.jpg" alt="Here for the Treats Skeleton Minnie Tee"><div class="prod-card-body"><h3>"Here for the Treats" Skeleton Minnie Tee</h3><a href="https://amzn.to/4wbl1tS" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      </div>
+      <!-- Add a new hub-card block here for each new holiday/festival, plus its own holidays-[name].html page -->
     </div>
   </div>
 </section>
 
-<!-- Add more <section class="category"> blocks here as new holiday/festival subcategories come in -->
-
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
 </footer>
 
