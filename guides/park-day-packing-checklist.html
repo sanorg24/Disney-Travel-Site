@@ -87,8 +87,9 @@
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
 
     .print-only { display: block; }
+    .banner-img { max-height: 78px; object-fit: cover; object-position: center 42%; margin-bottom: 10px; }
     .pheader { text-align: center; padding: 0 0 10px; border-bottom: 2px solid var(--blush); margin-bottom: 14px; }
-    .pheader .pbrand { font-family: 'Fredoka', sans-serif; letter-spacing: 1.5px; font-size: 0.72rem; text-transform: uppercase; color: var(--magenta); margin-bottom: 4px; }
+    .pheader .pbrand { display: none; } /* the real banner image above already carries the branding */
     .pheader h1 { font-family: 'Fredoka', sans-serif; font-size: 1.4rem; color: var(--maroon); font-weight: 700; }
     .pheader p { font-size: 0.72rem; color: var(--gray); margin-top: 3px; }
 
@@ -117,8 +118,8 @@
 <body>
 
 <div class="page">
-  <img class="banner-img noprint" src="../photos/brand-banner.jpg" alt="The Pixie Packed Family">
-  <div class="title-bar">
+  <img class="banner-img" src="../photos/brand-banner.jpg" alt="The Pixie Packed Family">
+  <div class="title-bar screen-only">
     <h1>Ultimate Park Day Packing Checklist</h1>
     <p>Everything you need for a smooth, magical day in the parks — nothing left behind.</p>
   </div>
