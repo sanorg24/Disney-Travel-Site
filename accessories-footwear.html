@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Footwear | The Pixie Packed Family</title>
+<meta name="description" content="Park-tested shoes for Disney vacations — curated Amazon picks from The Pixie Packed Family.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --purple: #7b5fe0; --magenta: #c23f97; --coral: #e76e8c; --orange: #eda268;
+    --maroon: #5c2a38; --pink-bg: #fbe0ec; --gold: #e8c468; --cream: #fff8f3;
+    --gray: #7a6f78; --ink: #3a2733; --white: #ffffff;
+    --radius: 16px; --shadow: 0 6px 26px rgba(92,42,56,0.12); --shadow-lg: 0 16px 44px rgba(92,42,56,0.20);
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Quicksand', -apple-system, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+  h1, h2, h3 { font-family: 'Fredoka', sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  header { background: var(--maroon); position: sticky; top: 0; z-index: 50; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.2rem; font-weight: 600; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
+  .navlinks { display: flex; gap: 4px; flex-wrap: wrap; }
+  .navlinks a { color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 600; padding: 8px 12px; border-radius: 8px; white-space: nowrap; }
+  .navlinks a:hover { background: rgba(255,255,255,0.12); color: var(--gold); }
+
+  .pagehero { background: var(--pink-bg); padding: 48px 20px 36px; text-align: center; }
+  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
+  .pagehero h1 { font-size: clamp(1.7rem, 6vw, 2.6rem); margin-bottom: 12px; }
+  .pagehero p { color: var(--gray); max-width: 520px; margin: 0 auto; font-size: 0.95rem; }
+
+  .jumplinks { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 20px 16px 0; }
+  .jumplinks a { background: var(--white); box-shadow: var(--shadow); padding: 9px 16px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; color: var(--maroon); }
+  .jumplinks a:hover { background: var(--gold); }
+
+  .category { padding: 40px 16px 56px; scroll-margin-top: 80px; }
+  .category:nth-child(even) { background: var(--white); }
+  .cat-title { font-size: 1.35rem; margin-bottom: 4px; }
+  .cat-sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 26px; }
+
+  .subgroup-title { font-size: 1.05rem; margin: 30px 0 14px; color: var(--maroon); }
+  .subgroup-title:first-of-type { margin-top: 6px; }
+
+  .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+  .prod-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; display: flex; flex-direction: column; }
+  .prod-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .prod-card img { width: 100%; height: 150px; object-fit: contain; background: var(--white); padding: 10px; }
+  .prod-card-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
+  .prod-card-body h3 { font-size: 0.8rem; margin-bottom: 10px; font-weight: 600; flex: 1; line-height: 1.35; }
+  .prod-card-body a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 9px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
+
+  /* Hub page cards (accessories.html) */
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
+  .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--purple); color: var(--white); align-self: flex-start; }
+
+  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
+  .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
+  .footlinks a:hover { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    nav.wrap { justify-content: center; text-align: center; height: auto; }
+    .navlinks { justify-content: center; }
+    .pagehero { padding: 40px 16px 30px; }
+    .prod-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+    .prod-card img { height: 120px; }
+    .hub-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 400px) {
+    .hub-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
+    <div class="navlinks"><a href="accessories.html">← Back to Accessories</a><a href="index.html">Home</a></div>
+  </nav>
+</header>
+
+<section class="pagehero">
+  <span class="eyebrow">Park Day Accessories</span>
+  <h1>Footwear</h1>
+  <p>Comfortable, park-tested shoes for all-day walking.</p>
+</section>
+
+<section class="category" id="footwear">
+  <div class="wrap">
+    <h2 class="cat-title">Footwear</h2>
+    <p class="cat-sub">Comfortable, park-tested shoes for all-day walking.</p>
+    <h3 class="subgroup-title">Men's</h3>
+    <div class="prod-grid">
+      <div class="prod-card"><img src="photos/footwear-on-cloud5-navy.jpg" alt="On Cloud 5 Running Shoe, Navy and White"><div class="prod-card-body"><h3>On Cloud 5 Running Shoe (Navy)</h3><a href="https://amzn.to/4hILdbm" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-on-cloudx-white.jpg" alt="On Cloud X Running Shoe, White and Black"><div class="prod-card-body"><h3>On Cloud X Running Shoe (White/Black)</h3><a href="https://amzn.to/4fJQ2yv" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-on-cloudmonster-white.jpg" alt="On Cloudmonster Running Shoe, White and Grey"><div class="prod-card-body"><h3>On Cloudmonster Running Shoe (White)</h3><a href="https://amzn.to/3RJYrKn" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-on-cloudsurfer-yellow.jpg" alt="On Running Shoe, Pale Yellow"><div class="prod-card-body"><h3>On Running Shoe (Pale Yellow)</h3><a href="https://amzn.to/4ySf2wk" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-on-cloudspark-red.jpg" alt="On Running Shoe, White and Red"><div class="prod-card-body"><h3>On Running Shoe (White/Red)</h3><a href="https://amzn.to/4bqi94G" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-on-cloudswift-navy.jpg" alt="On Cloudswift Running Shoe, Navy"><div class="prod-card-body"><h3>On Cloudswift Running Shoe (Navy)</h3><a href="https://amzn.to/3TQfYRQ" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-hoka-white-black.jpg" alt="HOKA Running Shoe, White and Black"><div class="prod-card-body"><h3>HOKA Running Shoe (White/Black)</h3><a href="https://amzn.to/4pTkon4" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-hoka-sage-green.jpg" alt="HOKA Running Shoe, Sage Green"><div class="prod-card-body"><h3>HOKA Running Shoe (Sage Green)</h3><a href="https://amzn.to/4xfOX8Y" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-heydude-mickey-grey.jpg" alt="Hey Dude Mickey Mouse Print Loafer, Grey"><div class="prod-card-body"><h3>Hey Dude Mickey Mouse Print Loafer (Grey)</h3><a href="https://amzn.to/4bYYHMz" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-heydude-toystory-woody.jpg" alt="Hey Dude Toy Story Woody Print Loafer"><div class="prod-card-body"><h3>Hey Dude Toy Story Woody Loafer</h3><a href="https://amzn.to/4fMae2O" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-water-shoes-navy.jpg" alt="Quick-Dry Water Shoes, Navy and White"><div class="prod-card-body"><h3>Quick-Dry Water Shoes (Navy/White)</h3><a href="https://amzn.to/4vZLcDo" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+    </div>
+
+    <h3 class="subgroup-title">Women's</h3>
+    <div class="prod-grid">
+      <div class="prod-card"><img src="photos/footwear-w-on-cloud5-lilac.jpg" alt="On Cloud 5 Running Shoe, Lilac"><div class="prod-card-body"><h3>On Cloud 5 Running Shoe (Lilac)</h3><a href="https://amzn.to/4vXx3H7" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-w-on-cloud-periwinkle.jpg" alt="On Running Shoe, Periwinkle Blue"><div class="prod-card-body"><h3>On Running Shoe (Periwinkle)</h3><a href="https://amzn.to/4vZxxfG" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-w-on-cloudmonster-mint.jpg" alt="On Cloudmonster Running Shoe, Mint Green"><div class="prod-card-body"><h3>On Cloudmonster Running Shoe (Mint)</h3><a href="https://amzn.to/45wfDGC" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-w-on-cloudmonster-cream-pink.jpg" alt="On Cloudmonster Running Shoe, Cream and Pink"><div class="prod-card-body"><h3>On Cloudmonster Running Shoe (Cream/Pink)</h3><a href="https://amzn.to/4pQJyCN" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-w-on-cloudswift-grey.jpg" alt="On Running Shoe, Light Grey"><div class="prod-card-body"><h3>On Running Shoe (Light Grey)</h3><a href="https://amzn.to/4fHk7Ph" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-w-hoka-transport-cream.jpg" alt="HOKA Transport Shoe, Cream"><div class="prod-card-body"><h3>HOKA Transport Shoe (Cream)</h3><a href="https://amzn.to/4x6uYJC" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-w-hoka-bondi-white.jpg" alt="HOKA Bondi Running Shoe, White"><div class="prod-card-body"><h3>HOKA Bondi Running Shoe (White)</h3><a href="https://amzn.to/4fwOqJP" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-w-crocs-mickey-minnie-clog.jpg" alt="Crocs Classic Clog, Mickey and Minnie Print"><div class="prod-card-body"><h3>Crocs Classic Clog (Mickey &amp; Minnie Print)</h3><a href="https://amzn.to/3Sa1UCe" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-w-crocs-minnie-bow-clog.jpg" alt="Crocs Classic Clog, White with Red Minnie Bow"><div class="prod-card-body"><h3>Crocs Classic Clog (Minnie Bow, White/Red)</h3><a href="https://amzn.to/4g2YDhf" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/footwear-w-crocs-minnie-maryjane.jpg" alt="Crocs Minnie Mouse Mary Jane, Red and Black"><div class="prod-card-body"><h3>Crocs Minnie Mouse Mary Jane (Red/Black)</h3><a href="https://amzn.to/3TzRDQb" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Add more <div class="prod-card"> blocks inside the prod-grid above as new items come in -->
+
+<footer>
+  <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
+</footer>
+
+</body>
+</html>
