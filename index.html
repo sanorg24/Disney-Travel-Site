@@ -53,6 +53,12 @@
   .navlinks a { color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; }
   .navlinks a:hover { background: rgba(255,255,255,0.12); color: var(--gold); }
 
+  .hamburger-btn { display: none; background: none; border: none; color: var(--white); font-size: 1.6rem; cursor: pointer; padding: 6px 8px; line-height: 1; }
+  .mobile-menu { display: none; flex-direction: column; background: var(--maroon); border-top: 1px solid rgba(255,255,255,0.12); }
+  .mobile-menu a { color: rgba(255,255,255,0.9); font-size: 0.95rem; font-weight: 600; padding: 14px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .mobile-menu a:hover { background: rgba(255,255,255,0.08); color: var(--gold); }
+  .mobile-menu.open { display: flex; }
+
   .hero { background: linear-gradient(160deg, var(--pink-bg) 0%, #fdeef4 60%, var(--cream) 100%); padding: 70px 24px 40px; }
   .hero-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center; }
   .hero-text .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: var(--magenta); font-weight: 700; margin-bottom: 16px; }
@@ -98,6 +104,7 @@
   .tag-card { background: var(--pink-bg); border-radius: var(--radius); padding: 28px 24px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; }
   .tag-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
   .picon { font-size: 2.3rem; margin-bottom: 12px; }
+  .cat-photo { width: 56px; height: 56px; border-radius: 12px; object-fit: cover; margin-bottom: 12px; box-shadow: var(--shadow); }
   .tag-card h3 { font-size: 1.02rem; margin-bottom: 8px; font-weight: 600; }
   .tag-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
   .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: #ff9900; color: var(--white); }
@@ -173,6 +180,7 @@
 
   @media (max-width: 800px) {
     .navlinks { display: none; }
+    .hamburger-btn { display: block; }
     .hero-inner { grid-template-columns: 1fr; }
     .hero-photo { order: -1; transform: none; }
     .mission-grid { grid-template-columns: 1fr; }
@@ -203,7 +211,16 @@
       <a href="#guides">Free Guides</a>
       <a href="#follow">Follow</a>
     </div>
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">☰</button>
   </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#mission">About</a>
+    <a href="#story">Our Story</a>
+    <a href="#picks">Shop Picks</a>
+    <a href="blog.html">Blog</a>
+    <a href="#guides">Free Guides</a>
+    <a href="#follow">Follow</a>
+  </div>
 </header>
 
 <section class="hero sparkle-bg" style="overflow:hidden;">
@@ -259,7 +276,7 @@
     <h2 class="stitle">Welcome! We're so glad you're here.</h2>
 
     <div class="story-block">
-      <div class="story-photo"><img src="photos/family-photo-2.jpg" alt="Vanessa and family"></div>
+      <div class="story-photo"><img src="photos/family-photo-4.jpg" alt="First Disney vacation"></div>
       <div class="story-text">
         <p>I'm Vanessa, the heart behind The Pixie Packed Family. I'm a wife of 32 years, a mom of four incredible children, a proud grandma, a former culinary and baking instructor, and now a full-time caregiver to our amazing son, Seth.</p>
         <p>Seth has Down syndrome, autism, is non-verbal, and was recently diagnosed with retinal degeneration, leaving him legally blind. He depends on us every day, and while our family's journey has come with challenges, it has also taught us to celebrate life's smallest moments and biggest victories.</p>
@@ -276,7 +293,7 @@
     </div>
 
     <div class="story-block">
-      <div class="story-photo"><img src="photos/family-photo-4.jpg" alt="First Disney vacation"></div>
+      <div class="story-photo"><img src="photos/family-photo-2.jpg" alt="Vanessa and family"></div>
       <div class="story-text">
         <p>Then, in March 2023, something unexpected happened — we took our first Disney vacation together. Like so many families, we thought we were simply planning a fun trip. Instead, we discovered a place that became something much more.</p>
         <p>Watching Seth experience Disney was nothing short of magical. His excitement, joy, and pure happiness reminded us that Disney has a unique way of bringing families together, creating moments you'll remember forever. Before long, we found ourselves planning our next trip… and then another. We were hooked!</p>
@@ -301,11 +318,11 @@
     <h2 class="stitle">My Amazon Picks</h2>
     <p class="ssub">Real gear I actually use and recommend for park days — as an Amazon Associate I earn from qualifying purchases.</p>
     <div class="grid4">
-      <div class="tag-card"><div class="picon">👕</div><h3>Apparel</h3><p>Matching family tees plus Disney apparel for men, women, and kids.</p><a class="btn-sm" href="apparel.html" style="background:var(--purple)">Shop Apparel →</a></div>
-      <div class="tag-card"><div class="picon">🎒</div><h3>Park Day Accessories</h3><p>Hats, ears, headbands, and backpacks for a comfortable, magical day.</p><a class="btn-sm" href="accessories.html" style="background:var(--purple)">Shop Accessories →</a></div>
-      <div class="tag-card"><div class="picon">🧴</div><h3>Sun, Travel &amp; Personal Care</h3><p>Sunscreen, hair care, cooling gear, and travel-friendly personal care picks for hot park days.</p><a class="btn-sm" href="sun-travel-essentials.html" style="background:var(--orange)">Shop Essentials →</a></div>
-      <div class="tag-card"><div class="picon">👗</div><h3>Themed Outfit Inspiration</h3><p>Character-inspired outfits, organized by park event and theme, each with shoppable links.</p><a class="btn-sm" href="outfits.html" style="background:var(--magenta)">See Themed Outfits →</a></div>
-      <div class="tag-card"><div class="picon">🎃</div><h3>Holidays &amp; Festivals</h3><p>Seasonal Disney apparel, starting with Family Halloween and MNSSHP picks.</p><a class="btn-sm" href="holidays.html" style="background:var(--coral)">Shop Holidays →</a></div>
+      <div class="tag-card"><img class="cat-photo" src="photos/apparel-family-01.jpg" alt="Apparel"><h3>Apparel</h3><p>Matching family tees plus Disney apparel for men, women, and kids.</p><a class="btn-sm" href="apparel.html" style="background:var(--purple)">Shop Apparel →</a></div>
+      <div class="tag-card"><img class="cat-photo" src="photos/accessories-loungefly-01.jpg" alt="Park Day Accessories"><h3>Park Day Accessories</h3><p>Hats, ears, headbands, and backpacks for a comfortable, magical day.</p><a class="btn-sm" href="accessories.html" style="background:var(--purple)">Shop Accessories →</a></div>
+      <div class="tag-card"><img class="cat-photo" src="photos/sun-travel-01.jpg" alt="Sun, Travel & Personal Care"><h3>Sun, Travel &amp; Personal Care</h3><p>Sunscreen, hair care, cooling gear, and travel-friendly personal care picks for hot park days.</p><a class="btn-sm" href="sun-travel-essentials.html" style="background:var(--orange)">Shop Essentials →</a></div>
+      <div class="tag-card"><img class="cat-photo" src="photos/outfit-mnsshp.jpg" alt="Themed Outfit Inspiration"><h3>Themed Outfit Inspiration</h3><p>Character-inspired outfits, organized by park event and theme, each with shoppable links.</p><a class="btn-sm" href="outfits.html" style="background:var(--magenta)">See Themed Outfits →</a></div>
+      <div class="tag-card"><img class="cat-photo" src="photos/holiday-mnsshp-01.jpg" alt="Holidays & Festivals"><h3>Holidays &amp; Festivals</h3><p>Seasonal Disney apparel, starting with Family Halloween and MNSSHP picks.</p><a class="btn-sm" href="holidays.html" style="background:var(--coral)">Shop Holidays →</a></div>
     </div>
   </div>
 </section>
@@ -379,6 +396,23 @@
   </div>
   <p class="fineprint">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases. This site is not affiliated with, endorsed by, or sponsored by The Walt Disney Company.</p>
 </footer>
+
+<script>
+  var hamburgerBtn = document.getElementById('hamburger-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  hamburgerBtn.addEventListener('click', function () {
+    var isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburgerBtn.textContent = isOpen ? '✕' : '☰';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      hamburgerBtn.textContent = '☰';
+    });
+  });
+</script>
 
 </body>
 </html>
