@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Women's Apparel | The Pixie Packed Family</title>
+<meta name="description" content="Women's Disney apparel, tees, and loungewear — curated Amazon picks from The Pixie Packed Family.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+  :root {
+    --purple: #7b5fe0; --magenta: #c23f97; --coral: #e76e8c; --orange: #eda268;
+    --maroon: #5c2a38; --pink-bg: #fbe0ec; --gold: #e8c468; --cream: #fff8f3;
+    --gray: #7a6f78; --ink: #3a2733; --white: #ffffff;
+    --radius: 16px; --shadow: 0 6px 26px rgba(92,42,56,0.12); --shadow-lg: 0 16px 44px rgba(92,42,56,0.20);
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Quicksand', -apple-system, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+  h1, h2, h3 { font-family: 'Fredoka', sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  header { background: var(--maroon); position: sticky; top: 0; z-index: 50; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.2rem; font-weight: 600; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
+  .navlinks { display: flex; gap: 4px; flex-wrap: wrap; }
+  .navlinks a { color: rgba(255,255,255,0.85); font-size: 0.85rem; font-weight: 600; padding: 8px 12px; border-radius: 8px; white-space: nowrap; }
+  .navlinks a:hover { background: rgba(255,255,255,0.12); color: var(--gold); }
+
+  .pagehero { background: var(--pink-bg); padding: 48px 20px 36px; text-align: center; }
+  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
+  .pagehero h1 { font-size: clamp(1.6rem, 6vw, 2.4rem); margin-bottom: 12px; }
+  .pagehero p { color: var(--gray); max-width: 520px; margin: 0 auto; font-size: 0.95rem; }
+
+  .category { padding: 40px 16px 56px; }
+  .cat-sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 26px; }
+  .coming-soon { color: var(--gray); font-size: 0.9rem; font-style: italic; background: var(--pink-bg); border-radius: var(--radius); padding: 24px; text-align: center; }
+
+  .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+  .prod-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; display: flex; flex-direction: column; }
+  .prod-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .prod-card img { width: 100%; height: 150px; object-fit: contain; background: var(--white); padding: 10px; }
+  .prod-card-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
+  .prod-card-body h3 { font-size: 0.8rem; margin-bottom: 10px; font-weight: 600; flex: 1; line-height: 1.35; }
+  .prod-card-body a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 9px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
+
+  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
+  .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
+  .footlinks a:hover { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    nav.wrap { justify-content: center; text-align: center; height: auto; }
+    .navlinks { justify-content: center; }
+    .pagehero { padding: 40px 16px 30px; }
+    .prod-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+    .prod-card img { height: 120px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
+    <div class="navlinks"><a href="apparel.html">← Back to Apparel</a><a href="index.html">Home</a></div>
+  </nav>
+</header>
+
+<section class="pagehero">
+  <span class="eyebrow">Shop the Parks</span>
+  <h1>Women's</h1>
+  <p>Disney-inspired tees, tanks, shorts, and comfy loungewear for mom.</p>
+</section>
+
+<section class="category">
+  <div class="wrap">
+<div class="prod-grid">
+      <div class="prod-card"><img src="photos/apparel-womens-01.jpg" alt="Hakuna Matata Lion King Retro Tee"><div class="prod-card-body"><h3>"Hakuna Matata" Lion King Retro Tee</h3><a href="https://amzn.to/4w4prTg" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-02.jpg" alt="A Dream is a Wish Your Heart Makes Cinderella Tee"><div class="prod-card-body"><h3>"A Dream is a Wish Your Heart Makes" Cinderella Tee</h3><a href="https://amzn.to/4fyga0z" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-03.jpg" alt="Meet Me at Midnight Cinderella Tee"><div class="prod-card-body"><h3>"Meet Me at Midnight" Cinderella Tee</h3><a href="https://amzn.to/4yOGNpw" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-04.jpg" alt="Leopard Print Minnie Bow Safari Tee"><div class="prod-card-body"><h3>Leopard Print Minnie Bow Safari Tee</h3><a href="https://amzn.to/4x8UJco" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-05.jpg" alt="Minnie Mouse Leopard Bow Face Tee"><div class="prod-card-body"><h3>Minnie Mouse Leopard Bow Face Tee</h3><a href="https://amzn.to/4fyu4zY" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-06.jpg" alt="Minnie Mouse Heart Leopard Print Tee"><div class="prod-card-body"><h3>Minnie Mouse Heart Leopard Print Tee</h3><a href="https://amzn.to/4xyXfcn" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-07.jpg" alt="Please Stand Clear of the Doors Monorail Tee"><div class="prod-card-body"><h3>"Please Stand Clear of the Doors" Monorail Tee</h3><a href="https://amzn.to/4fyh11h" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-08.jpg" alt="Anyone Can Cook Ratatouille Paris Tee"><div class="prod-card-body"><h3>"Anyone Can Cook" Ratatouille Paris Tee</h3><a href="https://amzn.to/4pNSUz8" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-09.jpg" alt="You've Got a Friend in Me Toy Story Tee"><div class="prod-card-body"><h3>"You've Got a Friend in Me" Toy Story Tee</h3><a href="https://amzn.to/4hCCl7e" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-10.jpg" alt="Leopard Minnie Mouse Rocker Tank"><div class="prod-card-body"><h3>Leopard Minnie Mouse Rocker Tank</h3><a href="https://amzn.to/4wKleoA" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-11.jpg" alt="You've Gotta Friend in Me Retro Toy Story Tee"><div class="prod-card-body"><h3>"You've Gotta Friend in Me" Retro Toy Story Tee</h3><a href="https://amzn.to/4g5Eqr1" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-12.jpg" alt="Avatar The Way of Water Tee"><div class="prod-card-body"><h3>Avatar: The Way of Water Tee</h3><a href="https://amzn.to/3TlUEUl" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-13.jpg" alt="May the Magic Be With You Castle Tee"><div class="prod-card-body"><h3>"May the Magic Be With You" Castle Tee</h3><a href="https://amzn.to/4w44V55" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-14.jpg" alt="Magical Tinker Bell Tee Maroon"><div class="prod-card-body"><h3>"Magical" Tinker Bell Tee (Maroon)</h3><a href="https://amzn.to/4xk5F7f" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-15.jpg" alt="Magical Castle Tee Purple"><div class="prod-card-body"><h3>"Magical" Castle Tee (Purple)</h3><a href="https://amzn.to/3S7bC8r" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-16.jpg" alt="Women's Lounge Shorts 5-Pack Pastel"><div class="prod-card-body"><h3>Women's Lounge Shorts, 5-Pack (Pastel)</h3><a href="https://amzn.to/45vnjca" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-17.jpg" alt="Women's Athletic Zip-Pocket Shorts 5-Pack Colorway A"><div class="prod-card-body"><h3>Women's Athletic Zip-Pocket Shorts, 5-Pack (Colorway A)</h3><a href="https://amzn.to/4xbrXI5" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-17.jpg" alt="Women's Athletic Zip-Pocket Shorts 5-Pack Colorway B"><div class="prod-card-body"><h3>Women's Athletic Zip-Pocket Shorts, 5-Pack (Colorway B)</h3><a href="https://amzn.to/4bYHXVJ" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-18.jpg" alt="Black Ribbed Loungewear Set"><div class="prod-card-body"><h3>Black Ribbed Loungewear Set</h3><a href="https://amzn.to/4cgSonF" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-19.jpg" alt="Light Blue V-Neck Pocket T-Shirt Dress"><div class="prod-card-body"><h3>Light Blue V-Neck Pocket T-Shirt Dress</h3><a href="https://amzn.to/44ZUuEA" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-20.jpg" alt="Red Tank and Shorts Lounge Set"><div class="prod-card-body"><h3>Red Tank &amp; Shorts Lounge Set</h3><a href="https://amzn.to/4fJzSVR" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-21.jpg" alt="Women's Athletic Tennis Skort Tan"><div class="prod-card-body"><h3>Women's Athletic Tennis Skort (Tan)</h3><a href="https://amzn.to/4yQ7Dh5" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-22.jpg" alt="Women's Distressed Denim Bermuda Shorts Black"><div class="prod-card-body"><h3>Women's Distressed Denim Bermuda Shorts (Black)</h3><a href="https://amzn.to/4pVosTY" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-23.jpg" alt="Women's Denim Bermuda Shorts Light Blue"><div class="prod-card-body"><h3>Women's Denim Bermuda Shorts (Light Blue)</h3><a href="https://amzn.to/4w4tHCe" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-24.jpg" alt="Women's Athletic Bermuda Shorts Blue"><div class="prod-card-body"><h3>Women's Athletic Bermuda Shorts (Blue)</h3><a href="https://amzn.to/4yQ7YjR" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-25.jpg" alt="Women's Drawstring Running Shorts Magenta"><div class="prod-card-body"><h3>Women's Drawstring Running Shorts (Magenta)</h3><a href="https://amzn.to/4pN9IWV" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+      <div class="prod-card"><img src="photos/apparel-womens-26.jpg" alt="Women's Denim Bermuda Shorts Dark Blue"><div class="prod-card-body"><h3>Women's Denim Bermuda Shorts (Dark Blue)</h3><a href="https://amzn.to/4fJHHLf" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Add more <div class="prod-card"> blocks inside the prod-grid above as new items come in -->
+
+<footer>
+  <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
+</footer>
+
+</body>
+</html>
