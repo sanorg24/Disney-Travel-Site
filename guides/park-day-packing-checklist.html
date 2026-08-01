@@ -11,59 +11,63 @@
 <style>
   :root {
     --purple: #7b5fe0; --magenta: #c23f97; --coral: #e76e8c; --orange: #eda268;
-    --maroon: #5c2a38; --gray: #9a8a92; --white: #ffffff;
+    --maroon: #5c2a38; --gray: #8c7c85; --white: #ffffff;
     --blush: #ffeef5; --lavender: #f0ecfb; --mint: #eafaf3; --butter: #fff9e6; --sky: #eaf6fc;
-    --radius: 16px; --shadow: 0 6px 22px rgba(92,42,56,0.09);
+    --radius: 18px; --shadow: 0 6px 22px rgba(92,42,56,0.09);
   }
   * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Quicksand', -apple-system, sans-serif; background: var(--blush); color: var(--maroon); line-height: 1.55; padding: 24px 16px 60px; }
+  body { font-family: 'Quicksand', -apple-system, sans-serif; background: var(--blush); color: var(--maroon); line-height: 1.6; padding: 28px 16px 70px; }
   h1, h2 { font-family: 'Fredoka', sans-serif; }
-  .page { max-width: 780px; margin: 0 auto; background: var(--white); border-radius: 24px; overflow: hidden; box-shadow: 0 16px 50px rgba(92,42,56,0.14); }
+  .page { max-width: 820px; margin: 0 auto; background: var(--white); border-radius: 26px; overflow: hidden; box-shadow: 0 16px 50px rgba(92,42,56,0.14); }
 
   .banner-img { width: 100%; height: auto; display: block; }
-  .title-bar { background: var(--blush); padding: 20px 28px; text-align: center; }
-  .title-bar h1 {
-    font-size: clamp(1.2rem, 3.2vw, 1.55rem); font-weight: 700; margin: 0 auto 6px; color: var(--maroon);
-  }
-  .title-bar p { font-size: 0.86rem; color: var(--gray); max-width: 460px; margin: 0 auto; }
+  .title-bar { background: var(--blush); padding: 30px 36px 26px; text-align: center; }
+  .title-bar h1 { font-size: clamp(1.5rem, 3.6vw, 2rem); font-weight: 700; margin: 0 auto 10px; color: var(--maroon); }
+  .title-bar p { font-size: 0.95rem; color: var(--gray); max-width: 480px; margin: 0 auto; }
 
   .app-callout {
-    margin: 22px 28px 0; background: var(--sky); border-radius: var(--radius); padding: 16px 20px;
-    display: flex; align-items: center; gap: 14px; text-align: left;
+    margin: 26px 36px 0; background: var(--sky); border-radius: var(--radius); padding: 20px 24px;
+    display: flex; align-items: center; gap: 16px; text-align: left;
   }
-  .app-callout .emoji { font-size: 1.8rem; flex-shrink: 0; }
-  .app-callout h3 { font-size: 0.92rem; margin-bottom: 3px; }
-  .app-callout p { font-size: 0.8rem; color: var(--gray); line-height: 1.45; }
+  .app-callout .emoji { font-size: 2rem; flex-shrink: 0; }
+  .app-callout h3 { font-size: 1rem; margin-bottom: 4px; }
+  .app-callout p { font-size: 0.85rem; color: var(--gray); line-height: 1.5; }
 
-  .printbar { text-align: center; padding: 18px 28px 0; }
-  .printbtn { display: inline-flex; align-items: center; gap: 6px; background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.85rem; padding: 10px 22px; border: none; border-radius: 50px; cursor: pointer; }
+  .printbar { text-align: center; padding: 22px 36px 0; }
+  .printbtn { display: inline-flex; align-items: center; gap: 7px; background: var(--orange); color: var(--white); font-weight: 700; font-size: 0.9rem; padding: 12px 26px; border: none; border-radius: 50px; cursor: pointer; }
 
-  .body { padding: 26px 28px 8px; }
-  .section { margin-bottom: 26px; border-radius: var(--radius); padding: 18px 20px 20px; }
+  .body { padding: 32px 36px 12px; }
+  .section { margin-bottom: 34px; border-radius: var(--radius); padding: 26px 28px 28px; }
   .sec-1 { background: var(--butter); } .sec-2 { background: var(--sky); }
   .sec-3 { background: var(--mint); } .sec-4 { background: var(--lavender); }
-  .sec-header { display: flex; align-items: center; gap: 9px; margin-bottom: 13px; }
-  .sec-icon { font-size: 1.3rem; }
-  .sec-title { font-size: 1.02rem; font-weight: 600; color: var(--maroon); }
-  .checklist { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 8px; }
-  .item { display: flex; align-items: flex-start; gap: 9px; background: var(--white); border-radius: 10px; padding: 9px 12px; }
-  .checkbox { width: 18px; height: 18px; flex-shrink: 0; margin-top: 2px; border: 2px solid var(--magenta); border-radius: 6px; }
-  .item-name { font-size: 0.85rem; font-weight: 700; color: var(--maroon); }
-  .item-tip { font-size: 0.73rem; color: var(--gray); margin-top: 2px; }
 
-  .shopcta { margin: 6px 28px 28px; background: linear-gradient(135deg, var(--purple), var(--magenta)); border-radius: var(--radius); padding: 20px 24px; text-align: center; color: var(--white); }
-  .shopcta h3 { font-family: 'Fredoka', sans-serif; font-size: 1.05rem; margin-bottom: 6px; }
-  .shopcta p { font-size: 0.85rem; color: rgba(255,255,255,0.85); margin-bottom: 14px; }
-  .shopcta a { display: inline-block; background: var(--white); color: var(--magenta); font-weight: 700; font-size: 0.85rem; padding: 9px 22px; border-radius: 50px; }
+  .sec-header { margin-bottom: 20px; }
+  .sec-header-top { display: flex; align-items: center; gap: 12px; margin-bottom: 6px; }
+  .sec-icon { font-size: 1.7rem; }
+  .sec-title { font-size: 1.2rem; font-weight: 600; color: var(--maroon); }
+  .sec-desc { font-size: 0.86rem; color: var(--gray); padding-left: 44px; }
 
-  .footer { background: var(--maroon); color: rgba(255,255,255,0.6); padding: 20px 28px; text-align: center; font-size: 0.8rem; }
+  .checklist { display: flex; flex-direction: column; gap: 12px; }
+  .item {
+    display: flex; align-items: flex-start; gap: 14px; background: var(--white);
+    border-radius: 12px; padding: 14px 18px;
+  }
+  .checkbox { width: 20px; height: 20px; flex-shrink: 0; margin-top: 3px; border: 2.5px solid var(--magenta); border-radius: 6px; }
+  .item-name { font-size: 0.95rem; font-weight: 700; color: var(--maroon); margin-bottom: 4px; }
+  .item-tip { font-size: 0.82rem; color: var(--gray); line-height: 1.55; }
+
+  .shopcta { margin: 8px 36px 32px; background: linear-gradient(135deg, var(--purple), var(--magenta)); border-radius: var(--radius); padding: 24px 28px; text-align: center; color: var(--white); }
+  .shopcta h3 { font-family: 'Fredoka', sans-serif; font-size: 1.15rem; margin-bottom: 8px; }
+  .shopcta p { font-size: 0.9rem; color: rgba(255,255,255,0.85); margin-bottom: 16px; }
+  .shopcta a { display: inline-block; background: var(--white); color: var(--magenta); font-weight: 700; font-size: 0.88rem; padding: 10px 24px; border-radius: 50px; }
+
+  .footer { background: var(--maroon); color: rgba(255,255,255,0.6); padding: 22px 28px; text-align: center; font-size: 0.82rem; }
   .footer strong { color: var(--orange); }
 
-  /* Second banner — only ever shown on the printed page 2, never on screen */
   .print-page-2-header { display: none; }
 
   @media print {
-    html, body { padding: 0; background: white; font-size: 92%; }
+    html, body { padding: 0; background: white; font-size: 90%; }
     .page { box-shadow: none; max-width: 100%; }
     .noprint { display: none; }
 
@@ -73,9 +77,9 @@
     /* Compact banner instead of full height — object-position tuned to this specific banner
        image so the "The Pixie Packed Family" wordmark (roughly 40-55% down the source image)
        stays visible in the cropped strip instead of getting cut off. */
-    .banner-img { max-height: 82px; object-fit: cover; object-position: center 42%; }
+    .banner-img { max-height: 78px; object-fit: cover; object-position: center 42%; }
 
-    .title-bar { padding: 10px 20px; }
+    .title-bar { padding: 12px 20px 8px; }
     .title-bar p { display: none; } /* subtitle isn't essential once printed, saves a line */
 
     .app-callout { margin: 10px 20px 0; padding: 8px 14px; }
@@ -83,28 +87,28 @@
     .app-callout h3 { font-size: 0.78rem; }
     .app-callout p { font-size: 0.68rem; line-height: 1.3; }
 
-    .body { padding: 12px 20px 4px; }
-    .section { margin-bottom: 10px; padding: 10px 12px 12px; border-radius: 10px; page-break-inside: avoid; }
-    .sec-header { margin-bottom: 6px; page-break-after: avoid; }
+    .body { padding: 14px 20px 4px; }
+    .section { margin-bottom: 12px; padding: 12px 14px 14px; border-radius: 10px; page-break-inside: avoid; }
+    .sec-header { margin-bottom: 8px; page-break-after: avoid; }
+    .sec-header-top { gap: 8px; margin-bottom: 3px; }
     .sec-icon { font-size: 1rem; }
-    .sec-title { font-size: 0.85rem; }
+    .sec-title { font-size: 0.88rem; }
+    .sec-desc { font-size: 0.66rem; padding-left: 26px; }
 
-    .checklist { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 5px; }
-    .item { padding: 4px 8px; border-radius: 6px; page-break-inside: avoid; }
-    .checkbox { width: 13px; height: 13px; border-radius: 4px; }
-    .item-name { font-size: 0.72rem; }
-    .item-tip { font-size: 0.62rem; margin-top: 0; }
+    .checklist { gap: 5px; }
+    .item { padding: 5px 9px; border-radius: 6px; gap: 8px; page-break-inside: avoid; }
+    .checkbox { width: 12px; height: 12px; border-radius: 4px; margin-top: 1px; }
+    .item-name { font-size: 0.72rem; margin-bottom: 1px; }
+    .item-tip { font-size: 0.6rem; line-height: 1.3; }
 
     .footer { padding: 8px 20px; font-size: 0.65rem; }
 
     /* Split the checklist across two pages roughly evenly (Essentials + Sun & Weather on
        page 1; In the Park Bag + Traveling With Family on page 2), with the banner repeated
-       at the top of page 2 too — rather than leaving page 2 mostly empty. */
+       at the top of page 2 too — rather than leaving one page mostly empty. */
     .print-page-2 { page-break-before: always; }
-    .print-page-2-header {
-      display: block; margin: 0 0 12px;
-    }
-    .print-page-2-header .banner-img { max-height: 82px; object-fit: cover; object-position: center 42%; }
+    .print-page-2-header { display: block; margin: 0 0 10px; }
+    .print-page-2-header .banner-img { max-height: 78px; object-fit: cover; object-position: center 42%; }
     .print-page-2-header .title-bar { padding: 8px 20px 2px; }
     .print-page-2-header .title-bar p { display: none; }
   }
@@ -133,30 +137,38 @@
 
   <div class="body">
     <div class="print-page print-page-1">
+
     <div class="section sec-1">
-      <div class="sec-header"><span class="sec-icon">🎫</span><span class="sec-title">Essentials</span></div>
+      <div class="sec-header">
+        <div class="sec-header-top"><span class="sec-icon">🎫</span><span class="sec-title">Essentials</span></div>
+        <p class="sec-desc">The things you truly cannot have a park day without.</p>
+      </div>
       <div class="checklist">
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Park tickets / MagicBand</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Phone + portable charger</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Wallet / ID</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Mickey/Minnie ears</div><div class="item-tip">Because every park day deserves a little magic</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Hand sanitizer</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Small first aid kit</div><div class="item-tip">Band-aids, pain reliever, blister pads</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Park tickets / MagicBand</div><div class="item-tip">Have your digital tickets loaded in the My Disney Experience app before you leave the room, and know your MagicBand/tap method for each person in your group — fumbling for tickets at the gate slows everyone down.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Phone + portable charger</div><div class="item-tip">Between the park map, mobile ordering, Lightning Lane, and ride photos, phones drain fast. Bring a charger rated for at least one full charge, and keep the cable somewhere easy to grab, not buried at the bottom of a bag.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Wallet / ID</div><div class="item-tip">One tap-to-pay card plus a little cash covers you — a few vendors and food carts occasionally have card reader issues.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Mickey/Minnie ears</div><div class="item-tip">Because every park day deserves a little magic — and they make for great photos in front of the castle.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Hand sanitizer</div><div class="item-tip">Clip a travel-size bottle to your bag. You'll reach for it constantly between rides, snacks, and character meet-and-greets.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Small first aid kit</div><div class="item-tip">Band-aids, pain reliever, and blister pads. Small blisters from all-day walking are, by far, the most common minor injury in the parks.</div></div></div>
       </div>
     </div>
 
     <div class="section sec-2">
-      <div class="sec-header"><span class="sec-icon">☀️</span><span class="sec-title">Sun &amp; Weather</span></div>
+      <div class="sec-header">
+        <div class="sec-header-top"><span class="sec-icon">☀️</span><span class="sec-title">Sun &amp; Weather</span></div>
+        <p class="sec-desc">Florida sun and surprise afternoon storms both call for a plan.</p>
+      </div>
       <div class="checklist">
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Sunscreen (SPF 30+)</div><div class="item-tip">Reapply midday</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">SPF lip balm</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Sunglasses</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Hat or visor</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Small compact umbrella</div><div class="item-tip">Great for shade, not just rain</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Cooling towel</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Poncho or light rain jacket</div><div class="item-tip">Florida afternoons can surprise you</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Sunscreen (SPF 30+)</div><div class="item-tip">Apply before you even leave the resort, and set a phone reminder to reapply roughly every two hours — sooner if you've been on a water ride.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">SPF lip balm</div><div class="item-tip">Lips burn just as easily as skin, and it's the spot people forget most often.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Sunglasses</div><div class="item-tip">Bring a strap or clip so they don't get lost on a drop ride or roller coaster.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Hat or visor</div><div class="item-tip">A wide-brim hat gives noticeably more shade than a cap for the long stretches of standing in line.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Small compact umbrella</div><div class="item-tip">Great for shade during a long midday wait, not just for sudden rain.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Cooling towel</div><div class="item-tip">Wet it down at any restroom sink and drape it around your neck between rides — makes a bigger difference than it sounds.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Poncho or light rain jacket</div><div class="item-tip">Florida afternoons can bring a fast-moving storm even on a sunny morning. Pack one even if the forecast looks totally clear.</div></div></div>
       </div>
     </div>
+
     </div>
 
     <div class="print-page print-page-2">
@@ -166,36 +178,43 @@
     </div>
 
     <div class="section sec-3">
-      <div class="sec-header"><span class="sec-icon">🎒</span><span class="sec-title">In the Park Bag</span></div>
+      <div class="sec-header">
+        <div class="sec-header-top"><span class="sec-icon">🎒</span><span class="sec-title">In the Park Bag</span></div>
+        <p class="sec-desc">What actually earns its space in the bag you're carrying all day.</p>
+      </div>
       <div class="checklist">
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Refillable water bottle</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Snacks</div><div class="item-tip">Protein bars, crackers, fruit snacks</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Sanitizing wipes</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Full-body deodorant spray or stick</div><div class="item-tip">A midday refresh goes a long way</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Anti-chafing cream</div><div class="item-tip">Especially on long walking days</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Autograph book + pen</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Ziplock bags</div><div class="item-tip">Wet swimsuits, trash, extra snacks</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Comfortable, broken-in shoes</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Extra pair of socks</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Refillable water bottle</div><div class="item-tip">Free ice water is available at every quick-service counter — just ask. You don't need to buy a drink to fill up.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Snacks</div><div class="item-tip">Protein bars, crackers, fruit snacks — genuinely helpful for avoiding a hangry meltdown while you're stuck waiting in a food line.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Sanitizing wipes</div><div class="item-tip">Useful for sticky hands after snacks or a character meet-and-greet, when a sink isn't nearby.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Full-body deodorant spray or stick</div><div class="item-tip">A midday refresh in a restroom goes a long way on a hot, humid Florida day.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Anti-chafing cream</div><div class="item-tip">Especially important on long walking days — apply it before symptoms start, not after you already feel it.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Autograph book + pen</div><div class="item-tip">Bring two pens in case one runs out of ink mid-day — it happens more than you'd think.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Ziplock bags</div><div class="item-tip">Great for a wet swimsuit, trash on the go, or keeping a phone dry on a water ride.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Comfortable, broken-in shoes</div><div class="item-tip">Never wear brand-new shoes to the parks — break them in for at least a couple of weeks beforehand.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Extra pair of socks</div><div class="item-tip">A dry pair after a water ride makes the rest of the day noticeably more comfortable.</div></div></div>
       </div>
     </div>
 
     <div class="section sec-4">
-      <div class="sec-header"><span class="sec-icon">👨‍👩‍👧‍👦</span><span class="sec-title">Traveling With Family</span></div>
+      <div class="sec-header">
+        <div class="sec-header-top"><span class="sec-icon">👨‍👩‍👧‍👦</span><span class="sec-title">Traveling With Family</span></div>
+        <p class="sec-desc">For strollers, sensory breaks, and keeping everyone together.</p>
+      </div>
       <div class="checklist">
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Stroller or wheelchair/ECV plan</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Stroller/ECV clip-on fan</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Personal handheld fan</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Pennies for penny pressing</div><div class="item-tip">A fun, cheap souvenir tradition</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Trading pins + lanyard</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Bubble wands</div><div class="item-tip">A big hit for little ones in line</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Change of clothes for little ones</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Any needed medications</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Comfort item</div><div class="item-tip">A favorite small toy for sensory breaks</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Noise-reducing headphones</div><div class="item-tip">Helpful for loud attractions or crowds</div></div></div>
-        <div class="item"><div class="checkbox"></div><div><div class="item-name">Meeting point plan if separated</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Stroller or wheelchair/ECV plan</div><div class="item-tip">Decide in advance whether you're renting on-site or bringing your own, and know the stroller parking rules at each attraction you plan to ride.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Stroller/ECV clip-on fan</div><div class="item-tip">Battery-powered fans clip directly onto a stroller or ECV handle for hands-free cooling while you push.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Personal handheld fan</div><div class="item-tip">A misting fan is worth the extra bulk in your bag on the hottest days — the difference is real.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Pennies for penny pressing</div><div class="item-tip">A fun, cheap souvenir tradition — bring a mix of pennies and quarters, since most machines take both.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Trading pins + lanyard</div><div class="item-tip">Cast Members are almost always happy to trade if you simply ask — a nice, easy way to interact with them.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Bubble wands</div><div class="item-tip">A big hit for little ones stuck waiting in line — keeps hands busy and moods up.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Change of clothes for little ones</div><div class="item-tip">Useful after a water ride or a spill, not just for babies — pack for whoever in your group is most likely to need it.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Any needed medications</div><div class="item-tip">Keep them in original, labeled containers in case you need to show them at bag check or security.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Comfort item</div><div class="item-tip">A favorite small toy or object for sensory breaks when the parks get loud, crowded, or overwhelming.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Noise-reducing headphones</div><div class="item-tip">Helpful for loud attractions, parades, or fireworks for anyone in your group who's sensitive to noise.</div></div></div>
+        <div class="item"><div class="checkbox"></div><div><div class="item-name">Meeting point plan if separated</div><div class="item-tip">Pick one specific, easy-to-describe landmark in each park before you go in — not just "by the castle," which is where everyone else says too.</div></div></div>
       </div>
     </div>
+
     </div>
   </div>
 
