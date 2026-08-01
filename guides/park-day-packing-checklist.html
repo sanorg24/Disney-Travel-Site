@@ -59,6 +59,9 @@
   .footer { background: var(--maroon); color: rgba(255,255,255,0.6); padding: 20px 28px; text-align: center; font-size: 0.8rem; }
   .footer strong { color: var(--orange); }
 
+  /* Second banner — only ever shown on the printed page 2, never on screen */
+  .print-page-2-header { display: none; }
+
   @media print {
     html, body { padding: 0; background: white; font-size: 92%; }
     .page { box-shadow: none; max-width: 100%; }
@@ -81,18 +84,29 @@
     .app-callout p { font-size: 0.68rem; line-height: 1.3; }
 
     .body { padding: 12px 20px 4px; }
-    .section { margin-bottom: 10px; padding: 10px 12px 12px; border-radius: 10px; }
-    .sec-header { margin-bottom: 6px; }
+    .section { margin-bottom: 10px; padding: 10px 12px 12px; border-radius: 10px; page-break-inside: avoid; }
+    .sec-header { margin-bottom: 6px; page-break-after: avoid; }
     .sec-icon { font-size: 1rem; }
     .sec-title { font-size: 0.85rem; }
 
     .checklist { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 5px; }
-    .item { padding: 4px 8px; border-radius: 6px; }
+    .item { padding: 4px 8px; border-radius: 6px; page-break-inside: avoid; }
     .checkbox { width: 13px; height: 13px; border-radius: 4px; }
     .item-name { font-size: 0.72rem; }
     .item-tip { font-size: 0.62rem; margin-top: 0; }
 
     .footer { padding: 8px 20px; font-size: 0.65rem; }
+
+    /* Split the checklist across two pages roughly evenly (Essentials + Sun & Weather on
+       page 1; In the Park Bag + Traveling With Family on page 2), with the banner repeated
+       at the top of page 2 too — rather than leaving page 2 mostly empty. */
+    .print-page-2 { page-break-before: always; }
+    .print-page-2-header {
+      display: block; margin: 0 0 12px;
+    }
+    .print-page-2-header .banner-img { max-height: 82px; object-fit: cover; object-position: center 42%; }
+    .print-page-2-header .title-bar { padding: 8px 20px 2px; }
+    .print-page-2-header .title-bar p { display: none; }
   }
 </style>
 </head>
@@ -118,6 +132,7 @@
   </div>
 
   <div class="body">
+    <div class="print-page print-page-1">
     <div class="section sec-1">
       <div class="sec-header"><span class="sec-icon">🎫</span><span class="sec-title">Essentials</span></div>
       <div class="checklist">
@@ -141,6 +156,13 @@
         <div class="item"><div class="checkbox"></div><div><div class="item-name">Cooling towel</div></div></div>
         <div class="item"><div class="checkbox"></div><div><div class="item-name">Poncho or light rain jacket</div><div class="item-tip">Florida afternoons can surprise you</div></div></div>
       </div>
+    </div>
+    </div>
+
+    <div class="print-page print-page-2">
+    <div class="print-page-2-header">
+      <img class="banner-img" src="../photos/brand-banner.jpg" alt="The Pixie Packed Family">
+      <div class="title-bar"><h1>Ultimate Park Day Packing Checklist</h1></div>
     </div>
 
     <div class="section sec-3">
@@ -173,6 +195,7 @@
         <div class="item"><div class="checkbox"></div><div><div class="item-name">Noise-reducing headphones</div><div class="item-tip">Helpful for loud attractions or crowds</div></div></div>
         <div class="item"><div class="checkbox"></div><div><div class="item-name">Meeting point plan if separated</div></div></div>
       </div>
+    </div>
     </div>
   </div>
 
