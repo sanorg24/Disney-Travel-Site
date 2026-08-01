@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disney Vacation Planning Guide | The Pixie Packed Family</title>
+<meta name="description" content="The complete Disney Vacation Planning Guide from The Pixie Packed Family — vacation overview, packing list, and day-by-day itinerary pages.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Caveat:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #7b5fe0; --magenta: #c23f97; --coral: #e76e8c; --orange: #eda268;
+    --maroon: #5c2a38; --pink-bg: #fbe0ec; --gold: #e8c468; --cream: #fff8f3;
+    --gray: #8c7c85; --ink: #3a2733; --white: #ffffff;
+    --radius: 12px; --shadow: 0 6px 22px rgba(92,42,56,0.09);
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Quicksand', -apple-system, sans-serif; background: var(--pink-bg); color: var(--ink); padding: 26px 16px 60px; }
+  .script { font-family: 'Caveat', cursive; }
+
+  .gradient-text {
+    background: linear-gradient(90deg, var(--purple), var(--magenta) 45%, var(--coral) 75%, var(--orange));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+
+  .sheet {
+    max-width: 900px; margin: 0 auto 30px; background: var(--white); border-radius: 18px;
+    box-shadow: 0 16px 50px rgba(92,42,56,0.16); padding: 14px 38px 6px; position: relative; overflow: hidden;
+  }
+
+  input[type=text] {
+    font-family: 'Quicksand', sans-serif; font-size: 0.85rem; color: var(--ink);
+    border: none; border-bottom: 1.5px solid var(--coral); background: transparent;
+    width: 100%; padding: 3px 2px; outline: none;
+  }
+  input[type=text]::placeholder { color: #c9b8c0; }
+  input[type=text]:focus { border-bottom-color: var(--magenta); }
+
+  /* ===== Header ===== */
+  .gheader { position: relative; padding: 2px 0 10px; text-align: center; }
+  .firework { position: absolute; width: 220px; height: 220px; pointer-events: none;
+    background: repeating-conic-gradient(from 0deg, rgba(231,110,140,0.22) 0deg 3deg, transparent 3deg 12deg);
+    border-radius: 50%; mask-image: radial-gradient(circle, black 0%, transparent 72%); }
+  .firework-1 { top: -50px; left: -40px; }
+  .firework-2 { top: 10px; left: 120px; width: 140px; height: 140px;
+    background: repeating-conic-gradient(from 15deg, rgba(232,196,104,0.22) 0deg 3deg, transparent 3deg 14deg); }
+  .star-accent { position: absolute; color: var(--pink-bg); opacity: 0.9; pointer-events: none; }
+
+  .gheader .kicker { font-family: 'Fredoka', sans-serif; font-size: 1.1rem; color: var(--maroon); letter-spacing: 1px; margin-bottom: -6px; }
+  .gheader h1 { font-family: 'Caveat', cursive; font-weight: 700; font-size: clamp(2.8rem, 7vw, 3.8rem); line-height: 1; margin: 0; }
+  .gheader h1 .line2 { display: block; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(2rem, 6vw, 2.9rem); letter-spacing: 2px; margin-top: -6px; }
+  .gheader .url { font-family: 'Caveat', cursive; font-weight: 600; font-size: 1.3rem; color: var(--purple); margin-top: 8px; }
+
+  /* ===== Boxes ===== */
+  .box { border: 2px solid var(--maroon); border-radius: 10px; overflow: hidden; background: var(--white); }
+  .box-head { background: var(--coral); padding: 5px 16px; font-family: 'Caveat', cursive; font-weight: 700; font-size: 1.25rem; color: var(--maroon); text-align: center; }
+  .box-body { padding: 8px 14px 10px; }
+  .field-row { padding: 3px 0; }
+  .field-row label { display: block; font-size: 0.7rem; color: var(--gray); margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+  .check-row { display: flex; align-items: center; gap: 8px; padding: 3px 0; }
+  .check-box { width: 15px; height: 15px; border: 2px solid var(--maroon); border-radius: 3px; flex-shrink: 0; }
+
+  /* ===== Top two-up (dates / itinerary) ===== */
+  .top-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 10px; }
+  .top-box { border: 2px solid var(--maroon); border-radius: 10px; display: flex; overflow: hidden; }
+  .top-box .tab { background: var(--coral); width: 14px; flex-shrink: 0; }
+  .top-box .tab-content { flex: 1; padding: 6px 14px; }
+  .top-box .tab-content .lbl { font-family: 'Caveat', cursive; font-weight: 700; font-size: 1.15rem; color: var(--maroon); margin-bottom: 6px; }
+
+  /* ===== Main grid: resort / budget / prepack ===== */
+  .main-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1.05fr; grid-template-rows: auto auto; gap: 10px; margin-bottom: 10px;
+  }
+  .cell-resort { grid-column: 1; grid-row: 1; }
+  .cell-budget { grid-column: 2; grid-row: 1; }
+  .cell-prepack { grid-column: 3; grid-row: 1 / span 2; }
+  .cell-todo { grid-column: 1 / span 2; grid-row: 2; }
+
+  .prepack-list { display: flex; flex-direction: column; gap: 3px; }
+
+  .todo-table { width: 100%; border-collapse: collapse; }
+  .todo-table th { background: var(--coral); color: var(--maroon); font-family: 'Caveat', cursive; font-weight: 700; font-size: 1.05rem; padding: 6px 10px; text-align: left; border: 1px solid var(--maroon); }
+  .todo-table td { border: 1px solid #e8d5dd; padding: 3px 10px; height: 19px; }
+  .todo-table td input { border: none; }
+  .todo-table td:first-child { border-left: 1px solid var(--maroon); }
+  .todo-table td:last-child { border-right: 1px solid var(--maroon); }
+  .todo-table tr:last-child td { border-bottom: 1px solid var(--maroon); }
+
+  /* ===== Docs / Dining row ===== */
+  .bottom-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 10px; }
+
+  /* ===== Notes ===== */
+  .notes-box { border: 2px solid var(--maroon); border-radius: 12px; padding: 14px 20px 8px; position: relative; margin-top: 6px; }
+  .notes-label { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--coral); border: 2px solid var(--maroon); border-radius: 20px; padding: 4px 22px; font-family: 'Caveat', cursive; font-weight: 700; font-size: 1.2rem; color: var(--maroon); white-space: nowrap; }
+  .notes-lines { display: flex; flex-direction: column; gap: 9px; margin-top: 4px; }
+  .notes-lines .nline { border-bottom: 1px solid #e8d5dd; height: 1px; }
+
+  .page-footer { text-align: center; font-size: 0.62rem; color: var(--gray); margin-top: 2px; }
+
+  @media print {
+    @page { size: letter; margin: 0.3in; }
+    body { background: white; padding: 0; }
+    .sheet { box-shadow: none; border-radius: 0; max-width: 100%; padding: 10px 22px 4px; }
+    .sheet:not(:last-child) { page-break-after: always; }
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    input[type=text] { font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Vacation Overview</div>
+    <h1><span class="gradient-text">Disney</span><span class="line2 gradient-text">VACATION</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="top-row">
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">Travel Dates</div>
+        <input type="text" placeholder="Departure – Return">
+      </div>
+    </div>
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">Travel Itinerary</div>
+        <input type="text" placeholder="Flight / drive details">
+        <input type="text" placeholder="" style="margin-top:6px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="box cell-resort">
+      <div class="box-head">Resort</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Resort name"></div>
+        <div class="field-row"><input type="text" placeholder="Room type / view"></div>
+        <div class="field-row"><input type="text" placeholder="Check-in / check-out"></div>
+      </div>
+    </div>
+
+    <div class="box cell-budget">
+      <div class="box-head">Budget / Disney Gift Cards</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Total trip budget"></div>
+        <div class="field-row"><input type="text" placeholder="Gift card balance"></div>
+        <div class="field-row"><input type="text" placeholder="Spending money set aside"></div>
+      </div>
+    </div>
+
+    <div class="box cell-prepack">
+      <div class="box-head">Pre-Packing List</div>
+      <div class="box-body">
+        <div class="prepack-list">
+          <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+          <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+          <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+          <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+          <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+          <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+          <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+          <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+          <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box cell-todo">
+      <table class="todo-table">
+        <thead><tr><th style="width:32%;">To-Do List</th><th>Activity</th></tr></thead>
+        <tbody>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="box">
+      <div class="box-head">Important Documents</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Dining Reservations</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+</body>
+</html>
