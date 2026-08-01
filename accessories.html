@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Park Day Accessories | The Pixie Packed Family</title>
-<meta name="description" content="Hats, ears, headbands, backpacks, and Loungefly bags for Disney park days — curated Amazon picks from The Pixie Packed Family.">
+<meta name="description" content="Hats, ears, headbands, backpacks, Loungefly, Pandora, and footwear for Disney park days — curated Amazon picks from The Pixie Packed Family.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -24,40 +24,38 @@
   .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 
   header { background: var(--maroon); position: sticky; top: 0; z-index: 50; }
-  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.2rem; font-weight: 600; }
-  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
   .navlinks a { color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; }
   .navlinks a:hover { background: rgba(255,255,255,0.12); color: var(--gold); }
 
-  .pagehero { background: var(--pink-bg); padding: 56px 24px 44px; text-align: center; }
-  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.75rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
-  .pagehero h1 { font-size: clamp(1.9rem, 4.2vw, 2.7rem); margin-bottom: 12px; }
-  .pagehero p { color: var(--gray); max-width: 520px; margin: 0 auto; }
+  .pagehero { background: var(--pink-bg); padding: 48px 20px 40px; text-align: center; }
+  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
+  .pagehero h1 { font-size: clamp(1.7rem, 6vw, 2.6rem); margin-bottom: 12px; }
+  .pagehero p { color: var(--gray); max-width: 540px; margin: 0 auto; font-size: 0.95rem; }
 
-  .jumplinks { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 20px 24px 0; }
-  .jumplinks a { background: var(--white); box-shadow: var(--shadow); padding: 9px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 700; color: var(--maroon); }
-  .jumplinks a:hover { background: var(--gold); }
+  .hub-section { padding: 48px 16px 60px; }
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
+  .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--purple); color: var(--white); align-self: flex-start; }
 
-  .category { padding: 50px 24px; scroll-margin-top: 80px; }
-  .category:nth-child(even) { background: var(--white); }
-  .cat-title { font-size: 1.4rem; margin-bottom: 4px; }
-  .cat-sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 26px; }
-
-  .subgroup-title { font-size: 1.05rem; margin: 30px 0 14px; color: var(--maroon); }
-  .subgroup-title:first-of-type { margin-top: 6px; }
-
-  .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 18px; }
-  .prod-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; display: flex; flex-direction: column; }
-  .prod-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
-  .prod-card img { width: 100%; height: 170px; object-fit: contain; background: var(--white); padding: 10px; }
-  .prod-card-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
-  .prod-card-body h3 { font-size: 0.82rem; margin-bottom: 10px; font-weight: 600; flex: 1; line-height: 1.35; }
-  .prod-card-body a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 8px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
-
-  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 24px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
-  .footlinks { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
+  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
+  .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
   .footlinks a:hover { color: var(--gold); }
+
+  @media (max-width: 640px) {
+    nav.wrap { justify-content: center; text-align: center; height: auto; }
+    .pagehero { padding: 40px 16px 30px; }
+    .hub-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 400px) {
+    .hub-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -72,253 +70,51 @@
 <section class="pagehero">
   <span class="eyebrow">Shop the Parks</span>
   <h1>Park Day Accessories</h1>
-  <p>Hats, ears, headbands, backpacks, and Loungefly bags that make park days easier — and more magical.</p>
+  <p>Hats, ears, headbands, backpacks, Loungefly, Pandora, and footwear that make park days easier — and more magical. Tap a category to shop.</p>
 </section>
 
-<div class="jumplinks">
-  <a href="#hats">Hats</a>
-  <a href="#ears">Ears &amp; Headbands</a>
-  <a href="#backpacks">Backpacks</a>
-  <a href="#loungefly">Loungefly</a>
-  <a href="#pandora">Pandora</a>
-  <a href="#footwear">Footwear</a>
-</div>
-
-<section class="category" id="hats">
+<section class="hub-section">
   <div class="wrap">
-    <h2 class="cat-title">Hats</h2>
-    <p class="cat-sub">Sun protection with a little extra park-day personality.</p>
-    <div class="prod-grid">
-      <div class="prod-card">
-        <img src="photos/hat-lets-get-wild.jpg" alt="Let's Get Wild Safari Trucker Hat">
-        <div class="prod-card-body"><h3>"Let's Get Wild" Safari Trucker Hat</h3><a href="https://amzn.to/4xinvYl" target="_blank" rel="noopener">Shop on Amazon →</a></div>
+    <div class="hub-grid">
+      <div class="hub-card">
+        <div class="picon">🧢</div>
+        <h3>Hats</h3>
+        <p>Sun protection with a little extra park-day personality.</p>
+        <a class="btn-sm" href="accessories-hats.html">Shop Hats →</a>
       </div>
-      <div class="prod-card">
-        <img src="photos/hat-mission-boonie.jpg" alt="Mission Boonie Sun Hat">
-        <div class="prod-card-body"><h3>Mission Cooling Boonie Sun Hat</h3><a href="https://amzn.to/3S5GuWX" target="_blank" rel="noopener">Shop on Amazon →</a></div>
+      <div class="hub-card">
+        <div class="picon">🎀</div>
+        <h3>Ears &amp; Headbands</h3>
+        <p>The finishing touch on any park outfit.</p>
+        <a class="btn-sm" href="accessories-ears-headbands.html">Shop Ears &amp; Headbands →</a>
       </div>
-      <div class="prod-card">
-        <img src="photos/hat-lionking.jpg" alt="Lion King Embroidered Cap">
-        <div class="prod-card-body"><h3>Lion King Embroidered Cap</h3><a href="https://amzn.to/4fKdgEK" target="_blank" rel="noopener">Shop on Amazon →</a></div>
+      <div class="hub-card">
+        <div class="picon">🎒</div>
+        <h3>Backpacks</h3>
+        <p>Comfortable, practical bags built for a full day of walking.</p>
+        <a class="btn-sm" href="accessories-backpacks.html">Shop Backpacks →</a>
       </div>
-      <div class="prod-card">
-        <img src="photos/hat-starwars.jpg" alt="Star Wars Cap">
-        <div class="prod-card-body"><h3>Star Wars Cap</h3><a href="https://amzn.to/4fDUEX6" target="_blank" rel="noopener">Shop on Amazon →</a></div>
+      <div class="hub-card">
+        <div class="picon">👜</div>
+        <h3>Loungefly</h3>
+        <p>Collectible mini backpacks and wallets for the Disney lover in your family.</p>
+        <a class="btn-sm" href="accessories-loungefly.html">Shop Loungefly →</a>
       </div>
-      <div class="prod-card">
-        <img src="photos/hat-ratatouille-silhouette.jpg" alt="Ratatouille Remy Silhouette Cap">
-        <div class="prod-card-body"><h3>Ratatouille Remy Silhouette Cap</h3><a href="https://amzn.to/4pOl50O" target="_blank" rel="noopener">Shop on Amazon →</a></div>
+      <div class="hub-card">
+        <div class="picon">💎</div>
+        <h3>Pandora</h3>
+        <p>Charms and bracelets to build a Disney story piece by piece.</p>
+        <a class="btn-sm" href="accessories-pandora.html">Shop Pandora →</a>
       </div>
-      <div class="prod-card">
-        <img src="photos/hat-disney-trucker-pink.jpg" alt="Pink Disney Mickey and Minnie Trucker Hat">
-        <div class="prod-card-body"><h3>Pink Disney Mickey &amp; Minnie Trucker Hat</h3><a href="https://amzn.to/4vZJn9w" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/hat-cooling-boonie-white.jpg" alt="White Cooling Boonie Sun Hat">
-        <div class="prod-card-body"><h3>White Cooling Boonie Sun Hat</h3><a href="https://amzn.to/4wz7g9d" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/hat-ponytail-maroon.jpg" alt="Distressed Maroon Ponytail Trucker Hat">
-        <div class="prod-card-body"><h3>Distressed Ponytail Trucker Hat (Maroon)</h3><a href="https://amzn.to/4wBAYdR" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/hat-leopard-mission.jpg" alt="Mission Leopard Print Cooling Cap">
-        <div class="prod-card-body"><h3>Mission Leopard Print Cooling Cap</h3><a href="https://amzn.to/4wBl8zR" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/hat-baby-bear-ears-pink.jpg" alt="Pink Baby Sun Hat with Bear Ears">
-        <div class="prod-card-body"><h3>Baby Sun Hat with Bear Ears (Pink)</h3><a href="https://amzn.to/4fwn8Dk" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/hat-mickey-bucket-blue.jpg" alt="Mickey Mouse Blue Toddler Bucket Hat">
-        <div class="prod-card-body"><h3>Mickey Mouse Toddler Bucket Hat (Blue)</h3><a href="https://amzn.to/4fJqaTH" target="_blank" rel="noopener">Shop on Amazon →</a></div>
+      <div class="hub-card">
+        <div class="picon">👟</div>
+        <h3>Footwear</h3>
+        <p>Comfortable, park-tested shoes for all-day walking.</p>
+        <a class="btn-sm" href="accessories-footwear.html">Shop Footwear →</a>
       </div>
     </div>
   </div>
 </section>
-
-<section class="category" id="ears">
-  <div class="wrap">
-    <h2 class="cat-title">Ears &amp; Headbands</h2>
-    <p class="cat-sub">The finishing touch on any park outfit.</p>
-    <div class="prod-grid">
-      <div class="prod-card">
-        <img src="photos/ears-pearl-brown.jpg" alt="Pearl Brown Minnie Ears">
-        <div class="prod-card-body"><h3>Pearl &amp; Bow Minnie Ears (Brown)</h3><a href="https://amzn.to/3Tk8MgR" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/ears-purple-polka.jpg" alt="Purple Polka Dot Minnie Ears">
-        <div class="prod-card-body"><h3>Purple Polka Dot Minnie Ears</h3><a href="https://amzn.to/4w2k46X" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/ears-leopard.jpg" alt="Leopard Print Minnie Ears">
-        <div class="prod-card-body"><h3>Leopard Print Minnie Ears</h3><a href="https://amzn.to/4xbnzJ6" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-pastel-polkadot-blue-bow.jpg" alt="Pastel Polka Dot Minnie Ears Headband with Blue Bow">
-        <div class="prod-card-body"><h3>Pastel Polka Dot Minnie Ears Headband (Blue Bow)</h3><a href="https://amzn.to/4fKnuoS" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-snowwhite-stainedglass.jpg" alt="Snow White Stained Glass Ears Headband">
-        <div class="prod-card-body"><h3>Snow White Stained Glass Ears Headband</h3><a href="https://amzn.to/3RGovX0" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-tiana-stainedglass.jpg" alt="Princess and the Frog Tiana Stained Glass Ears Headband">
-        <div class="prod-card-body"><h3>Tiana Stained Glass Ears Headband</h3><a href="https://amzn.to/4bnTHRq" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-crochet-flowers-blue.jpg" alt="Crochet Flower Minnie Ears Headband">
-        <div class="prod-card-body"><h3>Crochet Flower Minnie Ears Headband</h3><a href="https://amzn.to/4pRjPKj" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-black-sequin-pink-bow.jpg" alt="Black Sequin Minnie Ears Headband with Pink Polka Dot Bow">
-        <div class="prod-card-body"><h3>Black Sequin Minnie Ears Headband (Pink Polka Dot Bow)</h3><a href="https://amzn.to/4g3QiKa" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-bluey-sequin.jpg" alt="Bluey Sequin Ears Headband">
-        <div class="prod-card-body"><h3>Bluey Sequin Ears Headband</h3><a href="https://amzn.to/4x9catm" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-pearl-bow-set.jpg" alt="Pearl Bow Ears Headband Set, White and Pink">
-        <div class="prod-card-body"><h3>Pearl Bow Ears Headband Set (White &amp; Pink)</h3><a href="https://amzn.to/3TPQO5P" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-pastel-pearl-mickey-bow-pink.jpg" alt="Pastel Pearl Mickey Bow Baby Headband, Pink">
-        <div class="prod-card-body"><h3>Pastel Pearl Mickey Bow Baby Headband (Pink)</h3><a href="https://amzn.to/4g6nFvT" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-pastel-mickey-pearl-elastic.jpg" alt="Pastel Mickey Pearl Bow Baby Headband with Elastic Band">
-        <div class="prod-card-body"><h3>Pastel Mickey Pearl Bow Baby Headband</h3><a href="https://amzn.to/3RMs2mC" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-galaxy-sequin-bow.jpg" alt="Pastel Galaxy Sequin Bow Ears Headband">
-        <div class="prod-card-body"><h3>Pastel Galaxy Sequin Bow Ears Headband</h3><a href="https://amzn.to/3TwRb5l" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/headband-pink-sequin-bow.jpg" alt="Pink Sequin Bow Ears Headband">
-        <div class="prod-card-body"><h3>Pink Sequin Bow Ears Headband</h3><a href="https://amzn.to/4z74MRc" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="category" id="backpacks">
-  <div class="wrap">
-    <h2 class="cat-title">Backpacks</h2>
-    <p class="cat-sub">Comfortable, practical bags built for a full day of walking.</p>
-    <div class="prod-grid">
-      <div class="prod-card">
-        <img src="photos/backpack-waterfly-green.jpg" alt="Waterfly Green Hiking Backpack">
-        <div class="prod-card-body"><h3>Waterfly Packable Backpack (Green)</h3><a href="https://amzn.to/4g4s1Uh" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/backpack-waterfly-navy.jpg" alt="Waterfly Navy Hiking Backpack">
-        <div class="prod-card-body"><h3>Waterfly Packable Backpack (Navy)</h3><a href="https://amzn.to/4h7c3tG" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-      <div class="prod-card">
-        <img src="photos/backpack-highsierra-black.jpg" alt="High Sierra Black Backpack">
-        <div class="prod-card-body"><h3>High Sierra Loop Backpack</h3><a href="https://amzn.to/4fzUSOM" target="_blank" rel="noopener">Shop on Amazon →</a></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="category" id="loungefly">
-  <div class="wrap">
-    <h2 class="cat-title">Loungefly</h2>
-    <p class="cat-sub">Collectible mini backpacks and wallets for the Disney lover in your family.</p>
-
-    <h3 class="subgroup-title">Backpacks</h3>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/accessories-loungefly-01.jpg" alt="Minnie Mouse Polka Dot Red Bow Mini Backpack"><div class="prod-card-body"><h3>Minnie Mouse Polka Dot Red Bow Mini Backpack</h3><a href="https://amzn.to/4z9VZOv" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-02.jpg" alt="Minnie Mouse Daisy Hat Blue Polka Dot Mini Backpack"><div class="prod-card-body"><h3>Minnie Mouse Daisy Hat Blue Polka Dot Mini Backpack</h3><a href="https://amzn.to/4h90mm9" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-03.jpg" alt="Minnie Mouse Pink Quilted Bow Mini Backpack"><div class="prod-card-body"><h3>Minnie Mouse Pink Quilted Bow Mini Backpack</h3><a href="https://amzn.to/4vWrush" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-04.jpg" alt="Minnie Mouse Pink Sequin Bow Mini Backpack"><div class="prod-card-body"><h3>Minnie Mouse Pink Sequin Bow Mini Backpack</h3><a href="https://amzn.to/44VZLwZ" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-05.jpg" alt="Minnie Mouse White Quilted Red Bow Mini Backpack"><div class="prod-card-body"><h3>Minnie Mouse White Quilted Red Bow Mini Backpack</h3><a href="https://amzn.to/3TnoeJ5" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-06.jpg" alt="Beauty and the Beast Rose Print Mini Backpack"><div class="prod-card-body"><h3>Beauty and the Beast Rose Print Mini Backpack</h3><a href="https://amzn.to/3RsYla9" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-07.jpg" alt="Minnie Mouse White Sequin Bow Mini Backpack"><div class="prod-card-body"><h3>Minnie Mouse White Sequin Bow Mini Backpack</h3><a href="https://amzn.to/4pOdXBA" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-08.jpg" alt="Disney Princess Cream Crown Charm Mini Backpack"><div class="prod-card-body"><h3>Disney Princess Cream Crown Charm Mini Backpack</h3><a href="https://amzn.to/3S4HPxe" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-09.jpg" alt="Disney Princess Sketch Style Mini Backpack"><div class="prod-card-body"><h3>Disney Princess Sketch-Style Mini Backpack</h3><a href="https://amzn.to/4wCGltc" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-10.jpg" alt="Tiana Leaf and Lotus Mini Backpack"><div class="prod-card-body"><h3>Princess and the Frog Tiana Leaf Mini Backpack</h3><a href="https://amzn.to/4yQNeZ9" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-11.jpg" alt="Cinderella Castle White and Silver Mini Backpack"><div class="prod-card-body"><h3>Cinderella Castle Wedding Mini Backpack</h3><a href="https://amzn.to/454z5tV" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-12.jpg" alt="Iridescent Blue Minnie Ears and Bow Mini Backpack"><div class="prod-card-body"><h3>Iridescent Blue Minnie Ears &amp; Bow Mini Backpack</h3><a href="https://amzn.to/3TMQ9SI" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-13.jpg" alt="Straw Woven Minnie Ears Mini Backpack"><div class="prod-card-body"><h3>Straw-Woven Minnie Ears Mini Backpack</h3><a href="https://amzn.to/4wA0TlS" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-14.jpg" alt="Iridescent Pink Minnie Ears and Bow Mini Backpack"><div class="prod-card-body"><h3>Iridescent Pink Minnie Ears &amp; Bow Mini Backpack</h3><a href="https://amzn.to/4h983J4" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-15.jpg" alt="Burgundy Mini Backpack with Black Velvet Bow"><div class="prod-card-body"><h3>Burgundy Mini Backpack with Black Velvet Bow</h3><a href="https://amzn.to/4xeDmHh" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-16.jpg" alt="Floral Mini Backpack with Pink Sequin Bow"><div class="prod-card-body"><h3>Floral Mini Backpack with Pink Sequin Bow</h3><a href="https://amzn.to/3Tm5iuh" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-17.jpg" alt="Mickey and Minnie Mouse Pattern Mini Backpack with Navy Quilted Pocket"><div class="prod-card-body"><h3>Mickey &amp; Minnie Pattern Mini Backpack (Navy Quilted Pocket)</h3><a href="https://amzn.to/4bnQgKw" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-
-    <h3 class="subgroup-title">Wallets</h3>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/accessories-loungefly-wallet-01.jpg" alt="Minnie Mouse Burgundy Ears and Bow Wallet"><div class="prod-card-body"><h3>Minnie Mouse Burgundy Ears &amp; Bow Wallet</h3><a href="https://amzn.to/4fzwqOU" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-wallet-02.jpg" alt="Minnie Mouse Black and White Polka Dot Bow Wallet"><div class="prod-card-body"><h3>Minnie Mouse Black &amp; White Polka Dot Bow Wallet</h3><a href="https://amzn.to/4h8eWKP" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-wallet-03.jpg" alt="Mickey and Minnie Mouse Kissing Wallet"><div class="prod-card-body"><h3>Mickey &amp; Minnie Kissing Wallet</h3><a href="https://amzn.to/45FhoRL" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-wallet-04.jpg" alt="Beauty and the Beast Belle Floral Wallet"><div class="prod-card-body"><h3>Beauty and the Beast Belle Floral Wallet</h3><a href="https://amzn.to/4x5PNow" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-wallet-05.jpg" alt="Classic Mickey Mouse Cream Wallet"><div class="prod-card-body"><h3>Classic Mickey Mouse Cream Wallet</h3><a href="https://amzn.to/4bjZ30a" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-wallet-06.jpg" alt="Disney Princess Floral Wallet"><div class="prod-card-body"><h3>Disney Princess Floral Wallet</h3><a href="https://amzn.to/45yme3f" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-loungefly-wallet-07.jpg" alt="Minnie Mouse Pink Floral Bow Wallet"><div class="prod-card-body"><h3>Minnie Mouse Pink Floral Bow Wallet</h3><a href="https://amzn.to/4brhP5D" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="category" id="pandora">
-  <div class="wrap">
-    <h2 class="cat-title">Pandora</h2>
-    <p class="cat-sub">Charms and bracelets to build a Disney story piece by piece.</p>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/accessories-pandora-01.jpg" alt="Mickey Mouse Moments Snake Chain Bracelet"><div class="prod-card-body"><h3>Mickey Mouse Moments Snake Chain Bracelet</h3><a href="https://amzn.to/4pNGTJU" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-02.jpg" alt="Pandora Moments Snake Chain Bracelet with Heart Clasp"><div class="prod-card-body"><h3>Pandora Moments Snake Chain Bracelet</h3><a href="https://amzn.to/4h4gfu8" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-03.jpg" alt="Minnie Mouse Sparkling Red Bow Dangle Charm"><div class="prod-card-body"><h3>Minnie Mouse Sparkling Red Bow Dangle Charm</h3><a href="https://amzn.to/4vUs0Hb" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-04.jpg" alt="Mickey and Minnie Mouse Hug Dangle Charm"><div class="prod-card-body"><h3>Mickey &amp; Minnie Hug Dangle Charm</h3><a href="https://amzn.to/4xil484" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-05.jpg" alt="Minnie Mouse Pave Heart Dangle Charm"><div class="prod-card-body"><h3>Minnie Mouse Pave Heart Dangle Charm</h3><a href="https://amzn.to/4ySUGTA" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-06.jpg" alt="Lilo and Stitch Charm"><div class="prod-card-body"><h3>Lilo &amp; Stitch Charm</h3><a href="https://amzn.to/4hCQe5m" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-07.jpg" alt="Cinderella Glass Slipper Dangle Charm"><div class="prod-card-body"><h3>Cinderella Glass Slipper Dangle Charm</h3><a href="https://amzn.to/45yourf" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-08.jpg" alt="Dumbo Charm"><div class="prod-card-body"><h3>Dumbo Charm</h3><a href="https://amzn.to/4g6yjCU" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-09.jpg" alt="Mickey and Minnie Mouse Mom Heart Charm"><div class="prod-card-body"><h3>Mickey &amp; Minnie "Mom" Heart Charm</h3><a href="https://amzn.to/4wtUN6x" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-10.jpg" alt="Family Tree of Life Charm"><div class="prod-card-body"><h3>Family Tree of Life Charm</h3><a href="https://amzn.to/4g6yqOQ" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-11.jpg" alt="Up Balloons and House Dangle Charm"><div class="prod-card-body"><h3>Up Balloons &amp; House Dangle Charm</h3><a href="https://amzn.to/4wAdxBC" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/accessories-pandora-12.jpg" alt="The Nightmare Before Christmas Jack and Sally Charm"><div class="prod-card-body"><h3>Nightmare Before Christmas Jack &amp; Sally Charm</h3><a href="https://amzn.to/4fN6kXu" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="category" id="footwear">
-  <div class="wrap">
-    <h2 class="cat-title">Footwear</h2>
-    <p class="cat-sub">Comfortable, park-tested shoes for all-day walking.</p>
-    <h3 class="subgroup-title">Men's</h3>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/footwear-on-cloud5-navy.jpg" alt="On Cloud 5 Running Shoe, Navy and White"><div class="prod-card-body"><h3>On Cloud 5 Running Shoe (Navy)</h3><a href="https://amzn.to/4hILdbm" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-on-cloudx-white.jpg" alt="On Cloud X Running Shoe, White and Black"><div class="prod-card-body"><h3>On Cloud X Running Shoe (White/Black)</h3><a href="https://amzn.to/4fJQ2yv" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-on-cloudmonster-white.jpg" alt="On Cloudmonster Running Shoe, White and Grey"><div class="prod-card-body"><h3>On Cloudmonster Running Shoe (White)</h3><a href="https://amzn.to/3RJYrKn" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-on-cloudsurfer-yellow.jpg" alt="On Running Shoe, Pale Yellow"><div class="prod-card-body"><h3>On Running Shoe (Pale Yellow)</h3><a href="https://amzn.to/4ySf2wk" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-on-cloudspark-red.jpg" alt="On Running Shoe, White and Red"><div class="prod-card-body"><h3>On Running Shoe (White/Red)</h3><a href="https://amzn.to/4bqi94G" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-on-cloudswift-navy.jpg" alt="On Cloudswift Running Shoe, Navy"><div class="prod-card-body"><h3>On Cloudswift Running Shoe (Navy)</h3><a href="https://amzn.to/3TQfYRQ" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-hoka-white-black.jpg" alt="HOKA Running Shoe, White and Black"><div class="prod-card-body"><h3>HOKA Running Shoe (White/Black)</h3><a href="https://amzn.to/4pTkon4" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-hoka-sage-green.jpg" alt="HOKA Running Shoe, Sage Green"><div class="prod-card-body"><h3>HOKA Running Shoe (Sage Green)</h3><a href="https://amzn.to/4xfOX8Y" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-heydude-mickey-grey.jpg" alt="Hey Dude Mickey Mouse Print Loafer, Grey"><div class="prod-card-body"><h3>Hey Dude Mickey Mouse Print Loafer (Grey)</h3><a href="https://amzn.to/4bYYHMz" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-heydude-toystory-woody.jpg" alt="Hey Dude Toy Story Woody Print Loafer"><div class="prod-card-body"><h3>Hey Dude Toy Story Woody Loafer</h3><a href="https://amzn.to/4fMae2O" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-water-shoes-navy.jpg" alt="Quick-Dry Water Shoes, Navy and White"><div class="prod-card-body"><h3>Quick-Dry Water Shoes (Navy/White)</h3><a href="https://amzn.to/4vZLcDo" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-
-    <h3 class="subgroup-title">Women's</h3>
-    <div class="prod-grid">
-      <div class="prod-card"><img src="photos/footwear-w-on-cloud5-lilac.jpg" alt="On Cloud 5 Running Shoe, Lilac"><div class="prod-card-body"><h3>On Cloud 5 Running Shoe (Lilac)</h3><a href="https://amzn.to/4vXx3H7" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-w-on-cloud-periwinkle.jpg" alt="On Running Shoe, Periwinkle Blue"><div class="prod-card-body"><h3>On Running Shoe (Periwinkle)</h3><a href="https://amzn.to/4vZxxfG" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-w-on-cloudmonster-mint.jpg" alt="On Cloudmonster Running Shoe, Mint Green"><div class="prod-card-body"><h3>On Cloudmonster Running Shoe (Mint)</h3><a href="https://amzn.to/45wfDGC" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-w-on-cloudmonster-cream-pink.jpg" alt="On Cloudmonster Running Shoe, Cream and Pink"><div class="prod-card-body"><h3>On Cloudmonster Running Shoe (Cream/Pink)</h3><a href="https://amzn.to/4pQJyCN" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-w-on-cloudswift-grey.jpg" alt="On Running Shoe, Light Grey"><div class="prod-card-body"><h3>On Running Shoe (Light Grey)</h3><a href="https://amzn.to/4fHk7Ph" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-w-hoka-transport-cream.jpg" alt="HOKA Transport Shoe, Cream"><div class="prod-card-body"><h3>HOKA Transport Shoe (Cream)</h3><a href="https://amzn.to/4x6uYJC" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-w-hoka-bondi-white.jpg" alt="HOKA Bondi Running Shoe, White"><div class="prod-card-body"><h3>HOKA Bondi Running Shoe (White)</h3><a href="https://amzn.to/4fwOqJP" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-w-crocs-mickey-minnie-clog.jpg" alt="Crocs Classic Clog, Mickey and Minnie Print"><div class="prod-card-body"><h3>Crocs Classic Clog (Mickey &amp; Minnie Print)</h3><a href="https://amzn.to/3Sa1UCe" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-w-crocs-minnie-bow-clog.jpg" alt="Crocs Classic Clog, White with Red Minnie Bow"><div class="prod-card-body"><h3>Crocs Classic Clog (Minnie Bow, White/Red)</h3><a href="https://amzn.to/4g2YDhf" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-      <div class="prod-card"><img src="photos/footwear-w-crocs-minnie-maryjane.jpg" alt="Crocs Minnie Mouse Mary Jane, Red and Black"><div class="prod-card-body"><h3>Crocs Minnie Mouse Mary Jane (Red/Black)</h3><a href="https://amzn.to/3TzRDQb" target="_blank" rel="noopener">Shop on Amazon →</a></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- Add more <section class="category"> blocks here as new accessory subcategories come in -->
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
