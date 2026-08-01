@@ -46,7 +46,7 @@
   }
 
   header { background: var(--maroon); position: sticky; top: 0; z-index: 50; }
-  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; flex-wrap: wrap; gap: 8px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.2rem; font-weight: 600; }
   .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; }
   .navlinks { display: flex; gap: 4px; }
@@ -79,6 +79,8 @@
   .findlist { list-style: none; }
   .findlist li { display: flex; gap: 10px; align-items: flex-start; padding: 8px 0; font-size: 0.94rem; color: var(--ink); }
   .findlist li::before { content: '✦'; color: var(--coral); flex-shrink: 0; margin-top: 2px; }
+  .findlist li a { font-weight: 700; color: var(--magenta); border-bottom: 1px solid rgba(194,63,151,0.25); }
+  .findlist li a:hover { color: var(--coral); border-color: rgba(231,110,140,0.4); }
 
   /* OUR STORY */
   .story { background: var(--pink-bg); }
@@ -197,6 +199,7 @@
       <a href="#mission">About</a>
       <a href="#story">Our Story</a>
       <a href="#picks">Shop Picks</a>
+      <a href="blog.html">Blog</a>
       <a href="#guides">Free Guides</a>
       <a href="#follow">Follow</a>
     </div>
@@ -238,12 +241,12 @@
       <div>
         <h3 style="margin-bottom:16px; font-size:1.1rem;">What You'll Find</h3>
         <ul class="findlist">
-          <li>Disney World travel tips and planning guides</li>
-          <li>Resort tours and honest reviews</li>
-          <li>Amazon finds for Disney vacations</li>
-          <li>Disney outfit inspiration</li>
-          <li>Family travel content across Facebook, Instagram, TikTok, and YouTube</li>
-          <li>Practical advice for traveling with a loved one with disabilities, kids, grandparents, and multigenerational families</li>
+          <li><a href="blog.html#tag=travel-tips">Disney World travel tips and planning guides</a></li>
+          <li><a href="blog.html#tag=resort-reviews">Resort tours and honest reviews</a></li>
+          <li><a href="blog.html#tag=amazon-finds">Amazon finds for Disney vacations</a></li>
+          <li><a href="blog.html#tag=outfit-inspiration">Disney outfit inspiration</a></li>
+          <li><a href="#follow">Family travel content across Facebook, Instagram, TikTok, and YouTube</a></li>
+          <li><a href="blog.html#tag=family-accessibility">Practical advice for traveling with a loved one with disabilities, kids, grandparents, and multigenerational families</a></li>
         </ul>
       </div>
     </div>
@@ -370,6 +373,7 @@
     <a href="#mission">About</a>
     <a href="#story">Our Story</a>
     <a href="#picks">Shop Picks</a>
+    <a href="blog.html">Blog</a>
     <a href="#guides">Free Guides</a>
     <a data-placeholder="true" href="#">Etsy Shop</a>
   </div>
