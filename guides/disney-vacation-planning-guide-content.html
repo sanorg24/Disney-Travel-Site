@@ -107,9 +107,45 @@
     * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
     input[type=text] { font-size: 0.78rem; }
   }
+
+  .glance-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .mini-grid-2x2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 12px; }
+  .mini-grid-2x2 input[type=text] { font-size: 0.8rem; }
+  .cover-sheet { min-height: 640px; display: flex; flex-direction: column; justify-content: space-between; padding: 34px 40px 26px !important; }
+  .cover-fireworks { position: relative; height: 140px; }
+  .cover-body { text-align: center; margin-top: 40px; }
+  .cover-title { font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: clamp(2.1rem, 6vw, 3rem); line-height: 1.3; }
+  .cover-date { font-family: 'Fredoka', sans-serif; font-size: 1.1rem; color: var(--purple); margin-top: 34px; }
+  .cover-line { display: inline-block; width: 220px; border-bottom: 2px solid var(--orange); margin-left: 6px; }
+  .cover-footer { text-align: center; font-family: 'Fredoka', sans-serif; font-weight: 700; font-size: 1rem; color: var(--purple); }
+  @media print {
+    .cover-sheet { min-height: 0; padding: 40px 40px 30px !important; }
+  }
+
+  /* ===== Outfit Planner table (4 columns instead of 2) ===== */
+  .outfit-table-box { margin-bottom: 4px; }
+  .outfit-table th { font-size: 0.92rem; }
+  .outfit-table td input[type=text] { font-size: 0.78rem; }
 </style>
 </head>
 <body>
+
+<div class="sheet cover-sheet">
+
+  <div class="cover-fireworks">
+    <div class="firework firework-1" style="width:320px;height:320px;top:-60px;left:-60px;"></div>
+    <div class="firework firework-2" style="width:200px;height:200px;top:20px;left:180px;"></div>
+    <span class="star-accent" style="top:6%; right:8%; font-size:2.4rem; color:var(--pink-bg);">✦</span>
+  </div>
+
+  <div class="cover-body">
+    <h1 class="cover-title gradient-text">Our Disney World<br>Vacation</h1>
+    <div class="cover-date">Date: <span class="cover-line"></span></div>
+  </div>
+
+  <div class="cover-footer">PixiePackedFamily.com</div>
+
+</div>
 
 <div class="sheet">
 
@@ -184,7 +220,6 @@
           <tr><td><input type="text"></td><td><input type="text"></td></tr>
           <tr><td><input type="text"></td><td><input type="text"></td></tr>
           <tr><td><input type="text"></td><td><input type="text"></td></tr>
-          <tr><td><input type="text"></td><td><input type="text"></td></tr>
         </tbody>
       </table>
     </div>
@@ -213,6 +248,1002 @@
     <div class="notes-label">Notes</div>
     <div class="notes-lines">
       <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Trip at a Glance</div>
+    <h1><span class="gradient-text">Disney</span><span class="line2 gradient-text">VACATION</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="glance-grid">
+    <div class="box">
+      <div class="box-head">Day 1</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Date"></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Day 2</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Date"></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Day 3</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Date"></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Day 4</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Date"></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Day 5</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Date"></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Day 6</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Date"></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Plan Your Looks</div>
+    <h1><span class="gradient-text">Outfit</span><span class="line2 gradient-text">PLANNER</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="box outfit-table-box">
+    <table class="todo-table outfit-table">
+      <thead><tr><th style="width:16%;">Day / Date</th><th>Outfit Idea / Theme</th><th>Who's Wearing It</th><th style="width:22%;">Shoes / Accessories</th></tr></thead>
+      <tbody>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+          <tr><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td><td><input type="text" placeholder=""></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bottom-row" style="margin-top:14px;">
+    <div class="box">
+      <div class="box-head">Outfit Inspiration Ideas</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Laundry / Packing Reminders</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Getting There</div>
+    <h1><span class="gradient-text">Travel</span><span class="line2 gradient-text">DAY</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="top-row">
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">Flight / Drive Details</div>
+        <input type="text" placeholder="Airline, flight #, or driving route">
+      </div>
+    </div>
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">Transportation &amp; Check-In</div>
+        <input type="text" placeholder="Magical Express / rideshare / rental car">
+        <input type="text" placeholder="Resort check-in time" style="margin-top:6px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="box cell-resort">
+      <div class="box-head">Travel Essentials</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="IDs / passports / tickets"></div>
+        <div class="field-row"><input type="text" placeholder="Chargers &amp; headphones"></div>
+        <div class="field-row"><input type="text" placeholder="Medications"></div>
+      </div>
+    </div>
+
+    <div class="box cell-budget">
+      <div class="box-head">Snacks &amp; Entertainment</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Road/flight snacks"></div>
+        <div class="field-row"><input type="text" placeholder="Movies / games downloaded"></div>
+        <div class="field-row"><input type="text" placeholder="Comfort items"></div>
+      </div>
+    </div>
+
+    <div class="box cell-prepack">
+      <div class="box-head">Must-Do's Upon Arrival</div>
+      <div class="box-body">
+        <div class="prepack-list">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box cell-todo">
+      <table class="todo-table">
+        <thead><tr><th style="width:32%;">Meals / Snacks / Drinks</th><th>Location / Mobile Order / Reservations</th></tr></thead>
+        <tbody>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="box">
+      <div class="box-head">Luggage / Bags</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Grocery / Delivery Order</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Park Day Itinerary</div>
+    <h1><span class="gradient-text">Magic Kingdom</span><span class="line2 gradient-text">DAY</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="top-row">
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">Date</div>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="mini-grid-2x2">
+          <input type="text" placeholder="Opening">
+          <input type="text" placeholder="Closing">
+          <input type="text" placeholder="Early Entry">
+          <input type="text" placeholder="Break">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="box cell-resort">
+      <div class="box-head">Multi-Pass Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-budget">
+      <div class="box-head">Individual Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-prepack">
+      <div class="box-head">Must-Do's</div>
+      <div class="box-body">
+        <div class="prepack-list">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box cell-todo">
+      <table class="todo-table">
+        <thead><tr><th style="width:32%;">Meals / Snacks / Drinks</th><th>Location / Mobile Order / Reservations</th></tr></thead>
+        <tbody>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="box">
+      <div class="box-head">Shows / Characters / Location / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Parades / Fireworks / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Park Day Itinerary</div>
+    <h1><span class="gradient-text">EPCOT</span><span class="line2 gradient-text">DAY</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="top-row">
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">Date</div>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="mini-grid-2x2">
+          <input type="text" placeholder="Opening">
+          <input type="text" placeholder="Closing">
+          <input type="text" placeholder="Early Entry">
+          <input type="text" placeholder="Break">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="box cell-resort">
+      <div class="box-head">Multi-Pass Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-budget">
+      <div class="box-head">Individual Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-prepack">
+      <div class="box-head">Must-Do's</div>
+      <div class="box-body">
+        <div class="prepack-list">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box cell-todo">
+      <table class="todo-table">
+        <thead><tr><th style="width:32%;">Meals / Snacks / Drinks</th><th>Location / Mobile Order / Reservations</th></tr></thead>
+        <tbody>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="box">
+      <div class="box-head">Shows / Characters / Location / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Parades / Fireworks / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Park Day Itinerary</div>
+    <h1><span class="gradient-text">Hollywood Studios</span><span class="line2 gradient-text">DAY</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="top-row">
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">Date</div>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="mini-grid-2x2">
+          <input type="text" placeholder="Opening">
+          <input type="text" placeholder="Closing">
+          <input type="text" placeholder="Early Entry">
+          <input type="text" placeholder="Break">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="box cell-resort">
+      <div class="box-head">Multi-Pass Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-budget">
+      <div class="box-head">Individual Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-prepack">
+      <div class="box-head">Must-Do's</div>
+      <div class="box-body">
+        <div class="prepack-list">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box cell-todo">
+      <table class="todo-table">
+        <thead><tr><th style="width:32%;">Meals / Snacks / Drinks</th><th>Location / Mobile Order / Reservations</th></tr></thead>
+        <tbody>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="box">
+      <div class="box-head">Shows / Characters / Location / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Parades / Fireworks / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Park Day Itinerary</div>
+    <h1><span class="gradient-text">Animal Kingdom</span><span class="line2 gradient-text">DAY</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="top-row">
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">Date</div>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="mini-grid-2x2">
+          <input type="text" placeholder="Opening">
+          <input type="text" placeholder="Closing">
+          <input type="text" placeholder="Early Entry">
+          <input type="text" placeholder="Break">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="box cell-resort">
+      <div class="box-head">Multi-Pass Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-budget">
+      <div class="box-head">Individual Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-prepack">
+      <div class="box-head">Must-Do's</div>
+      <div class="box-body">
+        <div class="prepack-list">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box cell-todo">
+      <table class="todo-table">
+        <thead><tr><th style="width:32%;">Meals / Snacks / Drinks</th><th>Location / Mobile Order / Reservations</th></tr></thead>
+        <tbody>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="box">
+      <div class="box-head">Shows / Characters / Location / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Parades / Fireworks / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Park Hopping Itinerary</div>
+    <h1><span class="gradient-text">Park-Hopping</span><span class="line2 gradient-text">DAY</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="top-row">
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">2nd Park</div>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <input type="text" placeholder="Park Hours: ">
+        <input type="text" placeholder="Transportation: " style="margin-top:6px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="box cell-resort">
+      <div class="box-head">Multi-Pass Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-budget">
+      <div class="box-head">Individual Lightning Lanes</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-prepack">
+      <div class="box-head">Must-Do's</div>
+      <div class="box-body">
+        <div class="prepack-list">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box cell-todo">
+      <table class="todo-table">
+        <thead><tr><th style="width:32%;">Meals / Snacks / Drinks</th><th>Location / Mobile Order / Reservations</th></tr></thead>
+        <tbody>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="box">
+      <div class="box-head">Shows / Characters / Location / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Parades / Fireworks / Time</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">One Epic Day</div>
+    <h1><span class="gradient-text">4 Parks</span><span class="line2 gradient-text">1 DAY</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="glance-grid">
+    <div class="box">
+      <div class="box-head">Park 1</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Park Open"></div>
+        <div class="field-row"><input type="text" placeholder="Transportation"></div>
+        <div class="field-row"><input type="text" placeholder="Ride"></div>
+        <div class="field-row"><input type="text" placeholder="Photo Spot"></div>
+        <div class="field-row"><input type="text" placeholder="Snack"></div>
+        <div class="field-row"><input type="text" placeholder="Show / Parade / Character"></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Park 2</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Time"></div>
+        <div class="field-row"><input type="text" placeholder="Transportation"></div>
+        <div class="field-row"><input type="text" placeholder="Ride"></div>
+        <div class="field-row"><input type="text" placeholder="Photo Spot"></div>
+        <div class="field-row"><input type="text" placeholder="Snack"></div>
+        <div class="field-row"><input type="text" placeholder="Show / Parade / Character"></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Park 3</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Time"></div>
+        <div class="field-row"><input type="text" placeholder="Transportation"></div>
+        <div class="field-row"><input type="text" placeholder="Ride"></div>
+        <div class="field-row"><input type="text" placeholder="Photo Spot"></div>
+        <div class="field-row"><input type="text" placeholder="Snack"></div>
+        <div class="field-row"><input type="text" placeholder="Show / Parade / Character"></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Park 4</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder="Park Closing"></div>
+        <div class="field-row"><input type="text" placeholder="Transportation"></div>
+        <div class="field-row"><input type="text" placeholder="Ride"></div>
+        <div class="field-row"><input type="text" placeholder="Photo Spot"></div>
+        <div class="field-row"><input type="text" placeholder="Snack"></div>
+        <div class="field-row"><input type="text" placeholder="Show / Parade / Character"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+      <div class="nline"></div>
+    </div>
+  </div>
+
+  <div class="page-footer">The Pixie Packed Family — Disney Vacation Planning Guide</div>
+
+</div>
+
+<div class="sheet">
+
+  <div class="gheader">
+    <div class="firework firework-1"></div>
+    <div class="firework firework-2"></div>
+    <span class="star-accent" style="top:2px; right:10%; font-size:1.4rem;">✦</span>
+    <div class="kicker script" style="font-size:1.6rem;">Rest / Resort Day</div>
+    <h1><span class="gradient-text">Rest/Resort</span><span class="line2 gradient-text">DAY</span></h1>
+    <div class="url">pixiepackedfamily.com</div>
+  </div>
+
+  <div class="top-row">
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <div class="lbl">Date</div>
+        <input type="text" placeholder="">
+      </div>
+    </div>
+    <div class="top-box">
+      <div class="tab"></div>
+      <div class="tab-content">
+        <input type="text" placeholder="">
+        <input type="text" placeholder="" style="margin-top:6px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="main-grid">
+    <div class="box cell-resort">
+      <div class="box-head">Resort Activities</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-budget">
+      <div class="box-head">Non-Resort Activities</div>
+      <div class="box-body">
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+        <div class="field-row"><input type="text" placeholder=""></div>
+      </div>
+    </div>
+
+    <div class="box cell-prepack">
+      <div class="box-head">To-Do's</div>
+      <div class="box-body">
+        <div class="prepack-list">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="box cell-todo">
+      <table class="todo-table">
+        <thead><tr><th style="width:32%;">Meals / Snacks / Drinks</th><th>Location / Mobile Order / Reservations</th></tr></thead>
+        <tbody>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+          <tr><td><input type="text"></td><td><input type="text"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="bottom-row">
+    <div class="box">
+      <div class="box-head">Extras</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="box-head">Laundry / Pre-Packing</div>
+      <div class="box-body">
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+        <div class="check-row"><div class="check-box"></div><input type="text" placeholder=""></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="notes-box">
+    <div class="notes-label">Notes</div>
+    <div class="notes-lines">
       <div class="nline"></div>
       <div class="nline"></div>
       <div class="nline"></div>
