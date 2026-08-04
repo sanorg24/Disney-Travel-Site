@@ -33,9 +33,33 @@
   .product-section { padding: 48px 24px 60px; }
   .product-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 44px; align-items: start; }
 
-  .preview-frame { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); border: 6px solid var(--white); }
-  .preview-frame img { width: 100%; display: block; }
-  .preview-badge { position: absolute; top: 14px; left: 14px; background: var(--maroon); color: var(--white); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 6px 14px; border-radius: 20px; }
+  /* ===== Carousel ===== */
+  .preview-carousel { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); border: 6px solid var(--white); background: var(--white); }
+  .carousel-track { position: relative; aspect-ratio: 4 / 5; overflow: hidden; }
+  .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s ease; }
+  .carousel-slide.active { opacity: 1; }
+  .carousel-slide img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+    -webkit-user-select: none; -moz-user-select: none; user-select: none;
+    -webkit-user-drag: none; -webkit-touch-callout: none;
+    pointer-events: none;
+  }
+
+  .preview-badge { position: absolute; top: 14px; left: 14px; z-index: 5; background: var(--maroon); color: var(--white); font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 6px 14px; border-radius: 20px; }
+
+  /* Never let these preview images make it into a print job */
+  @media print {
+    .preview-carousel { display: none !important; }
+  }
+
+  .carousel-arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 38px; height: 38px; border-radius: 50%; border: none; background: rgba(255,255,255,0.92); color: var(--maroon); font-size: 1.1rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 3px 10px rgba(92,42,56,0.25); transition: background 0.2s ease; }
+  .carousel-arrow:hover { background: var(--white); }
+  .carousel-arrow.prev { left: 12px; }
+  .carousel-arrow.next { right: 12px; }
+
+  .carousel-dots { position: absolute; bottom: 14px; left: 0; right: 0; z-index: 5; display: flex; justify-content: center; gap: 8px; }
+  .carousel-dot { width: 9px; height: 9px; border-radius: 50%; border: none; padding: 0; background: rgba(255,255,255,0.55); cursor: pointer; transition: background 0.2s ease, transform 0.2s ease; }
+  .carousel-dot.active { background: var(--white); transform: scale(1.25); }
 
   .product-info .eyebrow { text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.75rem; color: var(--magenta); font-weight: 700; margin-bottom: 10px; }
   .product-info h1 { font-size: clamp(1.7rem, 3.6vw, 2.3rem); margin-bottom: 14px; }
@@ -78,9 +102,29 @@
 <section class="product-section">
   <div class="wrap product-grid">
 
-    <div class="preview-frame">
-      <span class="preview-badge">Preview — Purchase to Unlock</span>
-      <img src="../photos/vacation-guide-preview.jpg" alt="Preview of the Disney Vacation Planning Guide, Vacation Overview page">
+    <div class="preview-carousel" id="previewCarousel" oncontextmenu="return false;">
+      <span class="preview-badge">Preview Pages</span>
+
+      <div class="carousel-track">
+        <div class="carousel-slide active">
+          <img src="../photos/vacation-guide-carousel-1.jpg" alt="Preview of the Disney Vacation Planning Guide, Vacation Overview page" draggable="false">
+        </div>
+        <div class="carousel-slide">
+          <img src="../photos/vacation-guide-carousel-2.jpg" alt="Preview of the Disney Vacation Planning Guide, Park Day Itinerary page" draggable="false">
+        </div>
+        <div class="carousel-slide">
+          <img src="../photos/vacation-guide-carousel-3.jpg" alt="Preview of the Disney Vacation Planning Guide, Packing List page" draggable="false">
+        </div>
+      </div>
+
+      <button class="carousel-arrow prev" type="button" aria-label="Previous preview">&#8249;</button>
+      <button class="carousel-arrow next" type="button" aria-label="Next preview">&#8250;</button>
+
+      <div class="carousel-dots">
+        <button class="carousel-dot active" type="button" aria-label="Show preview 1"></button>
+        <button class="carousel-dot" type="button" aria-label="Show preview 2"></button>
+        <button class="carousel-dot" type="button" aria-label="Show preview 3"></button>
+      </div>
     </div>
 
     <div class="product-info">
@@ -89,11 +133,11 @@
       <p class="lede">A complete, fillable planning system for your whole trip — plan it once, print it or use it digitally, and walk into the parks with a real plan instead of a pile of sticky notes.</p>
 
       <div class="price-row">
-        <span class="price">$9</span>
+        <span class="price">$4</span>
         <span class="price-note">one-time purchase · instant digital download</span>
       </div>
 
-      <button class="buy-btn" data-placeholder="true">🛒 Buy Now — $9</button>
+      <button class="buy-btn" data-placeholder="true">🛒 Buy Now — $4</button>
 
       <div class="includes">
         <h3>What's Included</h3>
@@ -119,6 +163,43 @@
   <div class="footlinks"><a href="../index.html">Home</a><a href="../index.html#mission">About</a><a href="../outfits.html">Themed Outfits</a><a href="../apparel.html">Apparel</a><a href="../accessories.html">Accessories</a><a href="../holidays.html">Holidays &amp; Festivals</a><a href="../sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
 </footer>
+
+<script>
+(function () {
+  const carousel = document.getElementById('previewCarousel');
+  const slides = carousel.querySelectorAll('.carousel-slide');
+  const dots = carousel.querySelectorAll('.carousel-dot');
+  const prevBtn = carousel.querySelector('.carousel-arrow.prev');
+  const nextBtn = carousel.querySelector('.carousel-arrow.next');
+  let index = 0;
+  let timer;
+
+  function show(i) {
+    index = (i + slides.length) % slides.length;
+    slides.forEach((s, n) => s.classList.toggle('active', n === index));
+    dots.forEach((d, n) => d.classList.toggle('active', n === index));
+  }
+
+  function next() { show(index + 1); }
+  function prev() { show(index - 1); }
+
+  function startAutoplay() {
+    timer = setInterval(next, 4500);
+  }
+  function stopAutoplay() {
+    clearInterval(timer);
+  }
+
+  nextBtn.addEventListener('click', () => { next(); stopAutoplay(); startAutoplay(); });
+  prevBtn.addEventListener('click', () => { prev(); stopAutoplay(); startAutoplay(); });
+  dots.forEach((d, n) => d.addEventListener('click', () => { show(n); stopAutoplay(); startAutoplay(); }));
+
+  carousel.addEventListener('mouseenter', stopAutoplay);
+  carousel.addEventListener('mouseleave', startAutoplay);
+
+  startAutoplay();
+})();
+</script>
 
 </body>
 </html>
