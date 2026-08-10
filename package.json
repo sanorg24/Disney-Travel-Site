@@ -1,0 +1,12 @@
+{
+  "name": "pixie-packed-family-eleventy-pilot",
+  "version": "0.0.0-checkpoint4",
+  "private": true,
+  "description": "Checkpoint 4.1: additive Eleventy/CMS scaffolding for the Backpacks pilot. Not yet wired to any deployment.",
+  "scripts": {
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.6"
+  }
+}
