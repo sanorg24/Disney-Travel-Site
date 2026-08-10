@@ -1,0 +1,46 @@
+name: Checkpoint 4.2 - Build and test artifact (branch-only, no deploy)
+
+# Triggers automatically on pushes to checkpoint-4-pilot, since
+# workflow_dispatch requires the workflow file to be on the repository's
+# default branch (main) to be manually runnable, and this workflow must
+# stay off main entirely until Checkpoint 4.3A. workflow_dispatch is left
+# in place for later, once this workflow does live on main -- it has no
+# effect while the workflow is staged only on this feature branch.
+#
+# This workflow does NOT call actions/deploy-pages and does NOT publish
+# anything. Pages source remains "Deploy from a branch" throughout
+# Checkpoint 4.2. The deploy step is added later, as its own explicit
+# change, in Checkpoint 4.3A.
+on:
+  push:
+    branches:
+      - checkpoint-4-pilot
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout checkpoint-4-pilot
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with Eleventy
+        run: npx @11ty/eleventy
+
+      - name: Upload build output for inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: checkpoint-4-2-site-build
+          path: _site
+          retention-days: 14
