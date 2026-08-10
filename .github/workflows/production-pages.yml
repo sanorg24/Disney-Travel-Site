@@ -1,0 +1,63 @@
+name: Checkpoint 4.3A - Production Pages deployment (manual only)
+
+# Pinned to the exact Checkpoint 4.2-verified commit on checkpoint-4-pilot
+# (114fdff5181ac215eb16117f61a5020e8ddf9efe), not the mutable branch name.
+# This guarantees the first production deployment builds precisely the
+# revision that passed every 4.2 artifact check, unaffected by anything
+# committed to checkpoint-4-pilot afterward.
+#
+# Manual trigger only for 4.3A -- this is the deployment-engine cutover
+# step, not the Backpacks CMS content cutover (that's 4.3B, separately
+# approved). Static accessories-backpacks.html stays the live production
+# page; the CMS-generated version stays at cms-preview/ only. admin/ and
+# the four internal docs are excluded by the pinned source's own
+# eleventy.config.js -- already verified in Checkpoint 4.2.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout pinned Checkpoint 4.2 revision
+        uses: actions/checkout@v4
+        with:
+          ref: 114fdff5181ac215eb16117f61a5020e8ddf9efe
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with Eleventy
+        run: npx @11ty/eleventy
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
