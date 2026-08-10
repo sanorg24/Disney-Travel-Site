@@ -10,10 +10,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("photos");
   eleventyConfig.addPassthroughCopy("guides");
   eleventyConfig.addPassthroughCopy("CNAME");
-  eleventyConfig.addPassthroughCopy("CLAUDE.md");
-  eleventyConfig.addPassthroughCopy("ARCHITECTURE.md");
-  eleventyConfig.addPassthroughCopy("PROJECT-CONTEXT.md");
-  eleventyConfig.addPassthroughCopy("CHANGELOG.md");
   eleventyConfig.addPassthroughCopy("accessories-backpacks.html");
   eleventyConfig.addPassthroughCopy("accessories-ears-headbands.html");
   eleventyConfig.addPassthroughCopy("accessories-footwear.html");
@@ -40,8 +36,11 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("sun-travel-personal-care.html");
   eleventyConfig.addPassthroughCopy("sun-travel-sunscreen.html");
 
-  // --- New, additive: Sveltia admin (not yet connected to any real repo) -
-  eleventyConfig.addPassthroughCopy("admin");
+  // --- Checkpoint 4.2: admin/ intentionally NOT passthrough-copied here.
+  // The Sveltia admin source files remain present in the repo on this
+  // branch for development, but must not appear in the production
+  // artifact until Checkpoint 4.4, after real authentication and the
+  // safe save/PR workflow are proven. See CLAUDE.md / ARCHITECTURE.md.
 
   // --- CMS content collections (Backpacks pilot only) --------------------
   eleventyConfig.addCollection("backpackProducts", function (collectionApi) {
