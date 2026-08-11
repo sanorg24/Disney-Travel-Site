@@ -1,0 +1,36 @@
+# Checkpoint 4.1: explicitly exclude every existing hand-authored page and
+# doc from Eleventy's template processing. These are handled instead by
+# explicit passthrough-copy in eleventy.config.js, so they reach the build
+# output completely unmodified -- this file exists so there is zero
+# ambiguity about whether Eleventy might try to "process" them.
+
+accessories-ears-headbands.html
+accessories-footwear.html
+accessories-hats.html
+accessories-loungefly.html
+accessories-pandora.html
+accessories.html
+apparel-family-tees.htm
+apparel-kids.html
+apparel-mens.html
+apparel-womens.html
+apparel.html
+blog-6-ways-our-disney-loving-family-actually-saves-money-at-walt.html
+blog-welcome-to-the-blog.html
+blog-why-good-shoes-can-make-or-break-your-disney-vacation-for-ev.html
+blog.html
+holidays-family-halloween.html
+holidays.html
+index.html
+outfits.html
+sun-travel-cooling-fans.html
+sun-travel-essentials.html
+sun-travel-hair-care.html
+sun-travel-personal-care.html
+sun-travel-sunscreen.html
+guides/
+
+CLAUDE.md
+ARCHITECTURE.md
+PROJECT-CONTEXT.md
+CHANGELOG.md
