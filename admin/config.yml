@@ -1,0 +1,52 @@
+# Checkpoint 4.1 -- additive scaffolding only.
+# This file is NOT wired to the real repository. No backend.repo value is
+# set to the real "sanorg24/Disney-Travel-Site" identity, and no auth
+# (base_url/OAuth) is configured. Real repository connection is scoped to
+# Checkpoint 4.4, as its own separate, explicitly approved step.
+
+media_folder: "/photos"
+public_folder: "/photos"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "content/products"
+    create: true
+    delete: true
+    slug: "{{fields.name}}"
+    thumbnail: image
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
