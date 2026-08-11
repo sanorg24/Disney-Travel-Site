@@ -1,10 +1,6 @@
 ---
-permalink: "cms-preview/accessories-backpacks.html"
+permalink: "accessories-backpacks.html"
 ---
-<!-- CHECKPOINT 4.1 -- CMS-generated pilot version of the Backpacks page.
-     This is a verification artifact only. It is intentionally NOT built
-     at the production accessories-backpacks.html path. That page remains
-     the untouched, hand-authored static file, passthrough-copied as-is. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,10 +40,17 @@ permalink: "cms-preview/accessories-backpacks.html"
   .pagehero h1 { font-size: clamp(1.7rem, 6vw, 2.6rem); margin-bottom: 12px; }
   .pagehero p { color: var(--gray); max-width: 520px; margin: 0 auto; font-size: 0.95rem; }
 
+  .jumplinks { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 20px 16px 0; }
+  .jumplinks a { background: var(--white); box-shadow: var(--shadow); padding: 9px 16px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; color: var(--maroon); }
+  .jumplinks a:hover { background: var(--gold); }
+
   .category { padding: 40px 16px 56px; scroll-margin-top: 80px; }
   .category:nth-child(even) { background: var(--white); }
   .cat-title { font-size: 1.35rem; margin-bottom: 4px; }
   .cat-sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 26px; }
+
+  .subgroup-title { font-size: 1.05rem; margin: 30px 0 14px; color: var(--maroon); }
+  .subgroup-title:first-of-type { margin-top: 6px; }
 
   .prod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
   .prod-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; display: flex; flex-direction: column; }
@@ -56,6 +59,15 @@ permalink: "cms-preview/accessories-backpacks.html"
   .prod-card-body { padding: 12px 14px 14px; flex: 1; display: flex; flex-direction: column; }
   .prod-card-body h3 { font-size: 0.8rem; margin-bottom: 10px; font-weight: 600; flex: 1; line-height: 1.35; }
   .prod-card-body a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 9px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
+
+  /* Hub page cards (accessories.html) */
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
+  .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--purple); color: var(--white); align-self: flex-start; }
 
   footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
   .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
@@ -67,6 +79,10 @@ permalink: "cms-preview/accessories-backpacks.html"
     .pagehero { padding: 40px 16px 30px; }
     .prod-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
     .prod-card img { height: 120px; }
+    .hub-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 400px) {
+    .hub-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -75,12 +91,12 @@ permalink: "cms-preview/accessories-backpacks.html"
 <header>
   <nav class="wrap">
     <div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
-    <div class="navlinks"><a href="/accessories.html">← Back to Accessories</a><a href="/index.html">Home</a></div>
+    <div class="navlinks"><a href="accessories.html">← Back to Accessories</a><a href="index.html">Home</a></div>
   </nav>
 </header>
 
 <section class="pagehero">
-  <span class="eyebrow">Park Day Accessories — CMS PREVIEW</span>
+  <span class="eyebrow">Park Day Accessories</span>
   <h1>Backpacks</h1>
   <p>Comfortable, practical bags built for a full day of walking.</p>
 </section>
@@ -100,10 +116,12 @@ permalink: "cms-preview/accessories-backpacks.html"
   </div>
 </section>
 
+<!-- Add more <div class="prod-card"> blocks inside the prod-grid above as new items come in -->
+
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <div class="footlinks"><a href="/index.html">Home</a><a href="/outfits.html">Themed Outfits</a><a href="/apparel.html">Apparel</a><a href="/accessories.html">Accessories</a><a href="/holidays.html">Holidays &amp; Festivals</a><a href="/sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
-  <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases. (CMS PREVIEW BUILD)</p>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
 </footer>
 
 </body>
