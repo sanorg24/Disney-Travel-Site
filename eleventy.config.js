@@ -10,7 +10,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("photos");
   eleventyConfig.addPassthroughCopy("guides");
   eleventyConfig.addPassthroughCopy("CNAME");
-  eleventyConfig.addPassthroughCopy("accessories-backpacks.html");
   eleventyConfig.addPassthroughCopy("accessories-ears-headbands.html");
   eleventyConfig.addPassthroughCopy("accessories-footwear.html");
   eleventyConfig.addPassthroughCopy("accessories-hats.html");
