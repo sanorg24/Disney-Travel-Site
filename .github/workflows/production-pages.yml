@@ -21,10 +21,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout pinned Checkpoint 4.3B revision
+      - name: Checkout current main
         uses: actions/checkout@v4
         with:
-          ref: 679c9417d94625ac5690236b451e1be509be842a
+          ref: main
 
       - name: Set up Node
         uses: actions/setup-node@v4
