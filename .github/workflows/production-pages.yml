@@ -10,6 +10,9 @@ name: Checkpoint 4.3A - Production Pages deployment (manual only)
 # excluded by the pinned source's eleventy.config.js.
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
