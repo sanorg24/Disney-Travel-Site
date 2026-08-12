@@ -4,6 +4,11 @@
 # (base_url/OAuth) is configured. Real repository connection is scoped to
 # Checkpoint 4.4, as its own separate, explicitly approved step.
 
+backend:
+  name: github
+  repo: sanorg24/Disney-Travel-Site
+  branch: cms-edits
+  
 media_folder: "/photos"
 public_folder: "/photos"
 
