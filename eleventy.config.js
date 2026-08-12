@@ -34,7 +34,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("sun-travel-hair-care.html");
   eleventyConfig.addPassthroughCopy("sun-travel-personal-care.html");
   eleventyConfig.addPassthroughCopy("sun-travel-sunscreen.html");
-
+eleventyConfig.addPassthroughCopy("admin");
   // --- Checkpoint 4.2: admin/ intentionally NOT passthrough-copied here.
   // The Sveltia admin source files remain present in the repo on this
   // branch for development, but must not appear in the production
