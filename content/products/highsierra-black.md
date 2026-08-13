@@ -1,5 +1,5 @@
 ---
-name: High Sierra Loop Backpack
+name: High Sierra Loop Backpack, black
 image: /photos/backpack-highsierra-black.jpg
 alt: High Sierra Black Backpack
 amazon_url: https://amzn.to/4fzUSOM
