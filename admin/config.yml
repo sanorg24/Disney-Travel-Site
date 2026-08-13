@@ -32,6 +32,7 @@ collections:
         name: "alt"
         widget: "string"
         required: false
+        hint: "Briefly describe what is shown in the product image."
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
@@ -51,6 +52,47 @@ collections:
         widget: "number"
         value_type: "int"
         required: false
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options:
+          - { label: "Backpacks", value: "backpacks" }
+          - { label: "Hats", value: "hats" }
+          - { label: "Ears & Headbands", value: "ears-headbands" }
+          - { label: "Loungefly", value: "loungefly" }
+          - { label: "Pandora", value: "pandora" }
+          - { label: "Footwear", value: "footwear" }
+          - { label: "Matching Family Tees", value: "family-tees" }
+          - { label: "Men's Apparel", value: "mens" }
+          - { label: "Women's Apparel", value: "womens" }
+          - { label: "Kids' Apparel", value: "kids" }
+          - { label: "Sunscreen", value: "sunscreen" }
+          - { label: "Hair Care", value: "hair-care" }
+          - { label: "Cooling & Fans", value: "cooling-fans" }
+          - { label: "Travel & Personal Care", value: "personal-care" }
+          - { label: "Holidays (Family Halloween / MNSSHP)", value: "family-halloween" }
+        hint: "Which shop page this product belongs to. Please choose carefully -- there is no default, to avoid a product accidentally landing on the wrong page."
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+        hint: "Optional -- a short personal note or recommendation about this product. Leave blank to skip it."
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+        hint: "Optional -- a personal or family photo to show alongside this product. Leave blank to skip it."
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe the personal photo, for accessibility. Only used if a Personal Photo is uploaded above."
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^https?://", "Must be a full web address starting with http:// or https://"]
+        hint: "Optional -- a link to a video about this product. Shown as a simple 'Watch our video' link. Leave blank to skip it."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
         widget: "hidden"

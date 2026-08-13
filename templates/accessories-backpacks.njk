@@ -60,6 +60,11 @@ permalink: "accessories-backpacks.html"
   .prod-card-body h3 { font-size: 0.8rem; margin-bottom: 10px; font-weight: 600; flex: 1; line-height: 1.35; }
   .prod-card-body a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 9px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
 
+  .pixie-tip { font-size: 0.72rem; color: var(--magenta); font-style: italic; line-height: 1.4; margin-bottom: 8px; white-space: pre-line; }
+  .pixie-photo { width: 100%; border-radius: 10px; margin-bottom: 8px; height: auto; }
+  .pixie-video-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.72rem; font-weight: 700; color: var(--purple); margin-bottom: 8px; }
+  .pixie-video-link:hover { text-decoration: underline; }
+
   /* Hub page cards (accessories.html) */
   .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
   .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
@@ -109,7 +114,7 @@ permalink: "accessories-backpacks.html"
 {%- for product in collections.backpackProducts %}
       <div class="prod-card">
         <img src="{{ product.image }}" alt="{{ product.alt }}">
-        <div class="prod-card-body"><h3>{{ product.name }}</h3><a href="{{ product.amazon_url }}" target="_blank" rel="noopener">Shop on Amazon →</a></div>
+        <div class="prod-card-body"><h3>{{ product.name }}</h3>{% if product.pixie_tip %}<p class="pixie-tip">💡 {{ product.pixie_tip }}</p>{% endif %}{% if product.personal_photo %}<img class="pixie-photo" src="{{ product.personal_photo }}" alt="{{ product.personal_photo_alt or 'Personal photo from The Pixie Packed Family' }}">{% endif %}{% if product.personal_video_url %}<a class="pixie-video-link" href="{{ product.personal_video_url }}" target="_blank" rel="noopener">▶ Watch our video</a>{% endif %}<a href="{{ product.amazon_url }}" target="_blank" rel="noopener">Shop on Amazon →</a></div>
       </div>
 {%- endfor %}
     </div>

@@ -34,18 +34,16 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("sun-travel-hair-care.html");
   eleventyConfig.addPassthroughCopy("sun-travel-personal-care.html");
   eleventyConfig.addPassthroughCopy("sun-travel-sunscreen.html");
-eleventyConfig.addPassthroughCopy("admin");
-  // --- Checkpoint 4.2: admin/ intentionally NOT passthrough-copied here.
-  // The Sveltia admin source files remain present in the repo on this
-  // branch for development, but must not appear in the production
-  // artifact until Checkpoint 4.4, after real authentication and the
-  // safe save/PR workflow are proven. See CLAUDE.md / ARCHITECTURE.md.
+  eleventyConfig.addPassthroughCopy("admin");
 
-  // --- CMS content collections (Backpacks pilot only) --------------------
+  // --- CMS content collections --------------------------------------------
+  // Backpacks: published products whose category is specifically "backpacks".
+  // As more Amazon categories launch, each gets its own collection here using
+  // the same pattern -- filter by category, no data-model change required.
   eleventyConfig.addCollection("backpackProducts", function (collectionApi) {
     return collectionApi.getFilteredByGlob("content/products/*.md")
       .map((item) => item.data)
-      .filter((p) => p.status === "published")
+      .filter((p) => p.status === "published" && p.category === "backpacks")
       .sort((a, b) => (a.order || 0) - (b.order || 0));
   });
 
