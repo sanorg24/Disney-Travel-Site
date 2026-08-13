@@ -4,7 +4,7 @@ image: /photos/pasted-image-1786659326322.png
 alt: ''
 amazon_url: https://amzn.to/4wuiAmd
 image_source: amazon
-status: draft
+status: published
 order: 1
 permalink: false
 ---
