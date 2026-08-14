@@ -60,13 +60,19 @@ permalink: "accessories-backpacks.html"
   .prod-card-body h3 { font-size: 0.8rem; margin-bottom: 10px; font-weight: 600; flex: 1; line-height: 1.35; }
   .prod-card-body a { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 9px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
 
-  .prod-card--personal { grid-column: span 2; }
+  .pixie-featured { padding: 8px 16px 56px; }
+  .pixie-featured .cat-sub { margin-bottom: 20px; }
+  .pixie-featured-card { display: flex; gap: 28px; background: var(--pink-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; margin-top: 20px; }
+  .pixie-featured-image { flex: 0 0 260px; width: 260px; height: 260px; object-fit: contain; background: var(--white); border-radius: 12px; padding: 16px; }
+  .pixie-featured-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+  .pixie-featured-content h3 { font-size: 1.1rem; margin-bottom: 12px; }
+  .pixie-featured-content a { align-self: flex-start; }
 
-  .pixie-tip-block { background: var(--white); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; border-left: 3px solid var(--gold); }
+  .pixie-tip-block { background: var(--white); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; border-left: 3px solid var(--gold); }
   .pixie-tip-label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.6px; font-weight: 700; color: var(--magenta); margin-bottom: 6px; }
   .pixie-tip-text { font-size: 0.95rem; line-height: 1.6; color: var(--ink); white-space: pre-line; }
-  .pixie-photo { width: 100%; max-height: 280px; object-fit: cover; border-radius: 12px; margin-bottom: 12px; }
-  .pixie-video-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; font-weight: 700; color: var(--purple); margin-bottom: 10px; }
+  .pixie-photo { max-width: 100%; width: auto; height: auto; max-height: 360px; border-radius: 12px; margin-bottom: 14px; }
+  .pixie-video-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; font-weight: 700; color: var(--purple); margin-bottom: 12px; }
   .pixie-video-link:hover { text-decoration: underline; }
 
   /* Hub page cards (accessories.html) */
@@ -88,7 +94,9 @@ permalink: "accessories-backpacks.html"
     .pagehero { padding: 40px 16px 30px; }
     .prod-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
     .prod-card img { height: 120px; }
-    .pixie-photo { max-height: 200px; }
+    .pixie-photo { max-height: 240px; }
+    .pixie-featured-card { flex-direction: column; gap: 16px; padding: 18px; }
+    .pixie-featured-image { width: 100%; height: 180px; flex: none; }
     .hub-grid { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 400px) {
@@ -117,16 +125,47 @@ permalink: "accessories-backpacks.html"
     <p class="cat-sub">Comfortable, practical bags built for a full day of walking.</p>
     <div class="prod-grid">
 {%- for product in collections.backpackProducts %}
-      <div class="prod-card{% if product.pixie_tip or product.personal_photo %} prod-card--personal{% endif %}">
+{%- if not (product.pixie_tip or product.personal_photo or product.personal_video_url) %}
+      <div class="prod-card">
         <img src="{{ product.image }}" alt="{{ product.alt }}">
-        <div class="prod-card-body"><h3>{{ product.name }}</h3>{% if product.pixie_tip %}<div class="pixie-tip-block"><span class="pixie-tip-label">💡 Our Pixie Packed Tip</span><p class="pixie-tip-text">{{ product.pixie_tip }}</p></div>{% endif %}{% if product.personal_photo %}<img class="pixie-photo" src="{{ product.personal_photo }}" alt="{{ product.personal_photo_alt or 'Personal photo from The Pixie Packed Family' }}">{% endif %}{% if product.personal_video_url %}<a class="pixie-video-link" href="{{ product.personal_video_url }}" target="_blank" rel="noopener">▶ Watch our video</a>{% endif %}<a href="{{ product.amazon_url }}" target="_blank" rel="noopener">Shop on Amazon →</a></div>
+        <div class="prod-card-body"><h3>{{ product.name }}</h3><a href="{{ product.amazon_url }}" target="_blank" rel="noopener">Shop on Amazon →</a></div>
       </div>
+{%- endif %}
 {%- endfor %}
     </div>
   </div>
 </section>
 
 <!-- Add more <div class="prod-card"> blocks inside the prod-grid above as new items come in -->
+
+{%- if (collections.backpackProducts | selectattr("pixie_tip") | list | length) > 0 or (collections.backpackProducts | selectattr("personal_photo") | list | length) > 0 or (collections.backpackProducts | selectattr("personal_video_url") | list | length) > 0 %}
+<section class="pixie-featured" id="pixie-recommends">
+  <div class="wrap">
+    <h2 class="cat-title">Our Family Recommends</h2>
+    <p class="cat-sub">Personal picks and tips from The Pixie Packed Family.</p>
+{%- for product in collections.backpackProducts %}
+{%- if product.pixie_tip or product.personal_photo or product.personal_video_url %}
+    <div class="pixie-featured-card">
+      <img class="pixie-featured-image" src="{{ product.image }}" alt="{{ product.alt }}">
+      <div class="pixie-featured-content">
+        <h3>{{ product.name }}</h3>
+{%- if product.pixie_tip %}
+        <div class="pixie-tip-block"><span class="pixie-tip-label">💡 Our Pixie Packed Tip</span><p class="pixie-tip-text">{{ product.pixie_tip }}</p></div>
+{%- endif %}
+{%- if product.personal_photo %}
+        <img class="pixie-photo" src="{{ product.personal_photo }}" alt="{{ product.personal_photo_alt or 'Personal photo from The Pixie Packed Family' }}">
+{%- endif %}
+{%- if product.personal_video_url %}
+        <a class="pixie-video-link" href="{{ product.personal_video_url }}" target="_blank" rel="noopener">▶ Watch our video</a>
+{%- endif %}
+        <a href="{{ product.amazon_url }}" target="_blank" rel="noopener">Shop on Amazon →</a>
+      </div>
+    </div>
+{%- endif %}
+{%- endfor %}
+  </div>
+</section>
+{%- endif %}
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
