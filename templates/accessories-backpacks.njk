@@ -67,11 +67,12 @@ permalink: "accessories-backpacks.html"
   .pixie-featured-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
   .pixie-featured-content h3 { font-size: 1.1rem; margin-bottom: 12px; }
   .pixie-featured-content a { align-self: flex-start; }
+  .pixie-shop-btn { display: inline-flex; align-items: center; justify-content: center; gap: 5px; padding: 9px; border-radius: 8px; font-weight: 700; font-size: 0.76rem; background: #ff9900; color: var(--white); }
 
   .pixie-tip-block { background: var(--white); border-radius: 10px; padding: 14px 16px; margin-bottom: 14px; border-left: 3px solid var(--gold); }
   .pixie-tip-label { display: block; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.6px; font-weight: 700; color: var(--magenta); margin-bottom: 6px; }
   .pixie-tip-text { font-size: 0.95rem; line-height: 1.6; color: var(--ink); white-space: pre-line; }
-  .pixie-photo { max-width: 100%; width: auto; height: auto; max-height: 360px; border-radius: 12px; margin-bottom: 14px; }
+  .pixie-photo { align-self: flex-start; width: auto; height: auto; max-width: min(280px, 100%); border-radius: 12px; margin-bottom: 14px; }
   .pixie-video-link { display: inline-flex; align-items: center; gap: 4px; font-size: 0.78rem; font-weight: 700; color: var(--purple); margin-bottom: 12px; }
   .pixie-video-link:hover { text-decoration: underline; }
 
@@ -94,7 +95,6 @@ permalink: "accessories-backpacks.html"
     .pagehero { padding: 40px 16px 30px; }
     .prod-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
     .prod-card img { height: 120px; }
-    .pixie-photo { max-height: 240px; }
     .pixie-featured-card { flex-direction: column; gap: 16px; padding: 18px; }
     .pixie-featured-image { width: 100%; height: 180px; flex: none; }
     .hub-grid { grid-template-columns: 1fr 1fr; }
@@ -158,7 +158,7 @@ permalink: "accessories-backpacks.html"
 {%- if product.personal_video_url %}
         <a class="pixie-video-link" href="{{ product.personal_video_url }}" target="_blank" rel="noopener">▶ Watch our video</a>
 {%- endif %}
-        <a href="{{ product.amazon_url }}" target="_blank" rel="noopener">Shop on Amazon →</a>
+        <a class="pixie-shop-btn" href="{{ product.amazon_url }}" target="_blank" rel="noopener">Shop on Amazon →</a>
       </div>
     </div>
 {%- endif %}
