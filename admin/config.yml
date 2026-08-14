@@ -91,7 +91,7 @@ collections:
         name: "personal_video_url"
         widget: "string"
         required: false
-        pattern: ["^https?://", "Must be a full web address starting with http:// or https://"]
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
         hint: "Optional -- a link to a video about this product. Shown as a simple 'Watch our video' link. Leave blank to skip it."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
