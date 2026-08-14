@@ -6,5 +6,6 @@ amazon_url: https://amzn.to/4fzUSOM
 image_source: uploaded
 status: published
 order: 3
+category: backpacks
 permalink: false
 ---
