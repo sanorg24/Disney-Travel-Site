@@ -72,6 +72,20 @@ collections:
           - { label: "Travel & Personal Care", value: "personal-care" }
           - { label: "Holidays (Family Halloween / MNSSHP)", value: "family-halloween" }
         hint: "Which shop page this product belongs to. Please choose carefully -- there is no default, to avoid a product accidentally landing on the wrong page."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "select"
+        required: false
+        options:
+          - { label: "(none -- most categories)", value: "" }
+          - { label: "Loungefly: Backpacks", value: "loungefly-backpacks" }
+          - { label: "Loungefly: Wallets", value: "loungefly-wallets" }
+          - { label: "Footwear: Men's", value: "footwear-mens" }
+          - { label: "Footwear: Women's", value: "footwear-womens" }
+          - { label: "Family Halloween: Unisex", value: "halloween-unisex" }
+          - { label: "Family Halloween: Women's", value: "halloween-womens" }
+          - { label: "Family Halloween: Youth", value: "halloween-youth" }
+        hint: "Only used for Loungefly, Footwear, and Family Halloween, which are split into sub-sections. Leave as (none) for every other category."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -93,6 +107,62 @@ collections:
         required: false
         pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
         hint: "Optional -- a link to a video about this product. Shown as a simple 'Watch our video' link. Leave blank to skip it."
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+
+  - name: "looks"
+    label: "Looks"
+    folder: "content/looks"
+    create: true
+    delete: true
+    slug: "{{fields.title}}"
+    thumbnail: "collage_image"
+    fields:
+      - label: "Look Title"
+        name: "title"
+        widget: "string"
+      - label: "Theme Section"
+        name: "theme"
+        widget: "select"
+        required: false
+        options:
+          - { label: "(none)", value: "" }
+          - { label: "Park Day Outfits", value: "park-day-outfits" }
+          - { label: "Disney Characters", value: "disney-characters" }
+          - { label: "Mickey's Not-So-Scary Halloween Party", value: "mnsshp" }
+        hint: "Which section of the Outfits page this Look appears under."
+      - label: "Collage / Cover Image"
+        name: "collage_image"
+        widget: "image"
+      - label: "Image Alt Text"
+        name: "collage_image_alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the collage image."
+      - label: "Our Pixie Packed Note"
+        name: "pixie_note"
+        widget: "text"
+        required: false
+        hint: "Optional -- a short personal note about this Look. Leave blank to skip it."
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Items in this Look"
+        name: "items"
+        widget: "list"
+        fields:
+          - { label: "Item Label", name: "label", widget: "string" }
+          - { label: "Amazon Affiliate URL", name: "amazon_url", widget: "string", pattern: ["^https://(amzn\\.to/|(www\\.)?amazon\\.com/)", "Must be an amzn.to link or a full amazon.com affiliate link."] }
+        hint: "Each product/item shown for this Look. The same item can also appear in other Looks or in a product category -- that's expected, not a duplicate to merge."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
         widget: "hidden"

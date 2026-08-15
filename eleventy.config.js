@@ -10,41 +10,56 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("photos");
   eleventyConfig.addPassthroughCopy("guides");
   eleventyConfig.addPassthroughCopy("CNAME");
-  eleventyConfig.addPassthroughCopy("accessories-ears-headbands.html");
-  eleventyConfig.addPassthroughCopy("accessories-footwear.html");
-  eleventyConfig.addPassthroughCopy("accessories-hats.html");
-  eleventyConfig.addPassthroughCopy("accessories-loungefly.html");
-  eleventyConfig.addPassthroughCopy("accessories-pandora.html");
   eleventyConfig.addPassthroughCopy("accessories.html");
-  eleventyConfig.addPassthroughCopy("apparel-family-tees.htm");
-  eleventyConfig.addPassthroughCopy("apparel-kids.html");
-  eleventyConfig.addPassthroughCopy("apparel-mens.html");
-  eleventyConfig.addPassthroughCopy("apparel-womens.html");
   eleventyConfig.addPassthroughCopy("apparel.html");
   eleventyConfig.addPassthroughCopy("blog-6-ways-our-disney-loving-family-actually-saves-money-at-walt.html");
   eleventyConfig.addPassthroughCopy("blog-welcome-to-the-blog.html");
   eleventyConfig.addPassthroughCopy("blog-why-good-shoes-can-make-or-break-your-disney-vacation-for-ev.html");
   eleventyConfig.addPassthroughCopy("blog.html");
-  eleventyConfig.addPassthroughCopy("holidays-family-halloween.html");
   eleventyConfig.addPassthroughCopy("holidays.html");
   eleventyConfig.addPassthroughCopy("index.html");
-  eleventyConfig.addPassthroughCopy("outfits.html");
-  eleventyConfig.addPassthroughCopy("sun-travel-cooling-fans.html");
   eleventyConfig.addPassthroughCopy("sun-travel-essentials.html");
-  eleventyConfig.addPassthroughCopy("sun-travel-hair-care.html");
-  eleventyConfig.addPassthroughCopy("sun-travel-personal-care.html");
-  eleventyConfig.addPassthroughCopy("sun-travel-sunscreen.html");
   eleventyConfig.addPassthroughCopy("admin");
 
   // --- CMS content collections --------------------------------------------
   // Backpacks: published products whose category is specifically "backpacks".
-  // As more Amazon categories launch, each gets its own collection here using
-  // the same pattern -- filter by category, no data-model change required.
+  // Left exactly as-is -- Backpacks is the production-proven reference and
+  // is not being refactored onto the shared layout in this rollout.
   eleventyConfig.addCollection("backpackProducts", function (collectionApi) {
     return collectionApi.getFilteredByGlob("content/products/*.md")
       .map((item) => item.data)
       .filter((p) => p.status === "published" && p.category === "backpacks")
       .sort((a, b) => (a.order || 0) - (b.order || 0));
+  });
+
+  // All other categories: one generic collection of every published
+  // product, any category. The shared category-page layout filters this
+  // per-page (by page.slug) using plain Nunjucks equality checks, not
+  // selectattr's "equalto" test, which does not work reliably in this
+  // Nunjucks setup (discovered and documented earlier in this project).
+  eleventyConfig.addCollection("allProducts", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("content/products/*.md")
+      .map((item) => item.data)
+      .filter((p) => p.status === "published")
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+  });
+
+  // Plain JS filter, not a Nunjucks selectattr("equalto") chain -- that
+  // form was found unreliable in this Nunjucks setup earlier in this
+  // project. Real JS string comparison has no such ambiguity.
+  eleventyConfig.addFilter("byCategory", function (products, slug) {
+    return (products || []).filter((p) => p.category === slug);
+  });
+
+  eleventyConfig.addCollection("allLooks", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("content/looks/*.md")
+      .map((item) => item.data)
+      .filter((l) => l.status === "published")
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+  });
+
+  eleventyConfig.addFilter("byTheme", function (looks, theme) {
+    return (looks || []).filter((l) => l.theme === theme);
   });
 
   return {
