@@ -116,12 +116,9 @@ permalink: "{{ page.permalink }}"
 </head>
 <body>
 
-<header>
-  <nav class="wrap">
-    <div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
-    <div class="navlinks"><a href="{{ page.backLinkHref }}">{{ page.backLinkLabel }}</a><a href="index.html">Home</a></div>
-  </nav>
-</header>
+{% set backLinkHref = page.backLinkHref %}
+{% set backLinkLabel = page.backLinkLabel %}
+{% include "header.njk" %}
 
 <section class="pagehero">
   <span class="eyebrow">{{ page.eyebrow }}</span>
