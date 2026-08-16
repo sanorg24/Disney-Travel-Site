@@ -25,6 +25,64 @@ export default function (eleventyConfig) {
   // Backpacks: published products whose category is specifically "backpacks".
   // Left exactly as-is -- Backpacks is the production-proven reference and
   // is not being refactored onto the shared layout in this rollout.
+  // --- Taxonomy validation ---------------------------------------------
+  // Runs on every build. Hard-fails (stops the build) if any published
+  // Product references a Category or Subgroup slug that doesn't exist in
+  // the taxonomy, or a Subgroup whose parent Category doesn't match the
+  // Product's own Category -- these are genuine data errors. Inactive
+  // (but existing) taxonomy references only produce a visible warning
+  // and do not fail the build -- retiring a Category/Subgroup must never
+  // break a deployment or hide already-published products.
+  eleventyConfig.addCollection("taxonomyValidation", function (collectionApi) {
+    const categories = collectionApi.getFilteredByGlob("content/taxonomy/categories/*.md").map((i) => i.data);
+    const subgroups = collectionApi.getFilteredByGlob("content/taxonomy/subgroups/*.md").map((i) => i.data);
+    const products = collectionApi.getFilteredByGlob("content/products/*.md")
+      .map((i) => i.data)
+      .filter((p) => p.status === "published");
+
+    const categoryBySlug = new Map(categories.map((c) => [c.slug, c]));
+    const subgroupBySlug = new Map(subgroups.map((s) => [s.slug, s]));
+
+    const errors = [];
+    const warnings = [];
+
+    for (const p of products) {
+      const cat = categoryBySlug.get(p.category);
+      if (!cat) {
+        errors.push(`Product "${p.name}" references unknown Category "${p.category}".`);
+      } else if (cat.active === false) {
+        warnings.push(`Product "${p.name}" references inactive Category "${p.category}" (${cat.label}).`);
+      }
+
+      if (p.subgroup) {
+        const sg = subgroupBySlug.get(p.subgroup);
+        if (!sg) {
+          errors.push(`Product "${p.name}" references unknown Subgroup "${p.subgroup}".`);
+        } else {
+          if (sg.category !== p.category) {
+            errors.push(`Product "${p.name}" has Subgroup "${p.subgroup}" whose parent Category ` +
+              `"${sg.category}" does not match the Product's own Category "${p.category}".`);
+          }
+          if (sg.active === false) {
+            warnings.push(`Product "${p.name}" references inactive Subgroup "${p.subgroup}" (${sg.label}).`);
+          }
+        }
+      }
+    }
+
+    if (warnings.length) {
+      console.warn("\n\u26A0\uFE0F  Taxonomy warnings (build continues):");
+      warnings.forEach((w) => console.warn("  - " + w));
+    }
+    if (errors.length) {
+      throw new Error(
+        "Taxonomy validation failed -- build stopped:\n" +
+        errors.map((e) => "  - " + e).join("\n")
+      );
+    }
+    return { errors, warnings, checkedProducts: products.length };
+  });
+
   eleventyConfig.addCollection("backpackProducts", function (collectionApi) {
     return collectionApi.getFilteredByGlob("content/products/*.md")
       .map((item) => item.data)
