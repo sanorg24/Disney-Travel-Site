@@ -1,8 +1,8 @@
-# Checkpoint 4.1 -- additive scaffolding only.
-# This file is NOT wired to the real repository. No backend.repo value is
-# set to the real "sanorg24/Disney-Travel-Site" identity, and no auth
-# (base_url/OAuth) is configured. Real repository connection is scoped to
-# Checkpoint 4.4, as its own separate, explicitly approved step.
+# Sveltia CMS configuration for The Pixie Packed Family.
+# backend.repo is the real repository; branch is the working branch
+# Sveltia writes to (cms-edits), never main directly. Saves become a
+# PR that a human reviews and merges -- see CLAUDE.md/ARCHITECTURE.md
+# for the full CMS -> cms-edits -> PR -> merge -> deploy workflow.
 
 backend:
   name: github
@@ -13,8 +13,1210 @@ media_folder: "/photos"
 public_folder: "/photos"
 
 collections:
+  # ------------------------------------------------------------------
+  # Filtered Category views -- for FINDING, EDITING, and HIDING/REMOVING
+  # existing products. Every one of these reads/writes the exact same
+  # files as the master "Products" collection below -- none of this is a
+  # separate or duplicate copy of any product. Add new products from the
+  # master Products collection instead -- these filtered views do not
+  # automatically set a new product's Category.
+  # ------------------------------------------------------------------
+  - { divider: true }
+  # ---- ACCESSORIES ----
+  - name: "products_backpacks"
+    label: "Backpacks"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "backpacks" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_hats"
+    label: "Hats"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "hats" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_ears_headbands"
+    label: "Ears & Headbands"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "ears-headbands" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_loungefly"
+    label: "Loungefly"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "loungefly" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_pandora"
+    label: "Pandora"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "pandora" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_footwear"
+    label: "Footwear"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "footwear" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - { divider: true }
+  # ---- APPAREL ----
+  - name: "products_family_tees"
+    label: "Matching Family Tees"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "family-tees" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_mens"
+    label: "Men's Apparel"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "mens" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_womens"
+    label: "Women's Apparel"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "womens" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_kids"
+    label: "Kids' Apparel"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "kids" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - { divider: true }
+  # ---- SUN & TRAVEL ----
+  - name: "products_sunscreen"
+    label: "Sunscreen"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "sunscreen" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_hair_care"
+    label: "Hair Care"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "hair-care" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_cooling_fans"
+    label: "Cooling & Fans"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "cooling-fans" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - name: "products_personal_care"
+    label: "Travel & Personal Care"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "personal-care" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+  - { divider: true }
+  # ---- HOLIDAYS ----
+  - name: "products_family_halloween"
+    label: "Family Halloween"
+    folder: "content/products"
+    create: true
+    delete: true
+    filter: { field: "category", value: "family-halloween" }
+    sortable_fields:
+      fields: ["subgroup", "order", "name"]
+      default: { field: "subgroup", direction: "ascending" }
+    thumbnail: "image"
+    fields:
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+      - label: "Product Image"
+        name: "image"
+        widget: "image"
+        required: false
+      - label: "Image Alt Text"
+        name: "alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the product image."
+      - label: "Amazon Affiliate URL"
+        name: "amazon_url"
+        widget: "string"
+        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+      - label: "Image Source"
+        name: "image_source"
+        widget: "select"
+        options: ["uploaded", "amazon"]
+        default: "uploaded"
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published", "hidden"]
+        default: "draft"
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Subgroup"
+        name: "subgroup"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: false
+      - label: "Our Pixie Packed Tip"
+        name: "pixie_tip"
+        widget: "text"
+        required: false
+      - label: "Personal Photo"
+        name: "personal_photo"
+        widget: "image"
+        required: false
+      - label: "Personal Photo Alt Text"
+        name: "personal_photo_alt"
+        widget: "string"
+        required: false
+      - label: "Personal Video URL"
+        name: "personal_video_url"
+        widget: "string"
+        required: false
+        pattern: ["^$|^https?://", "Must be a full web address starting with http:// or https://, or left blank."]
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+
   - name: "products"
-    label: "Products"
+    label: "Products (All -- use this to Create New)"
     folder: "content/products"
     create: true
     delete: true
@@ -54,38 +1256,21 @@ collections:
         required: false
       - label: "Category"
         name: "category"
-        widget: "select"
-        options:
-          - { label: "Backpacks", value: "backpacks" }
-          - { label: "Hats", value: "hats" }
-          - { label: "Ears & Headbands", value: "ears-headbands" }
-          - { label: "Loungefly", value: "loungefly" }
-          - { label: "Pandora", value: "pandora" }
-          - { label: "Footwear", value: "footwear" }
-          - { label: "Matching Family Tees", value: "family-tees" }
-          - { label: "Men's Apparel", value: "mens" }
-          - { label: "Women's Apparel", value: "womens" }
-          - { label: "Kids' Apparel", value: "kids" }
-          - { label: "Sunscreen", value: "sunscreen" }
-          - { label: "Hair Care", value: "hair-care" }
-          - { label: "Cooling & Fans", value: "cooling-fans" }
-          - { label: "Travel & Personal Care", value: "personal-care" }
-          - { label: "Holidays (Family Halloween / MNSSHP)", value: "family-halloween" }
-        hint: "Which shop page this product belongs to. Please choose carefully -- there is no default, to avoid a product accidentally landing on the wrong page."
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        hint: "Which shop page this product belongs to. Choosing a Category here does NOT create a new page or move this product's public URL -- it only assigns this product to an existing shop page."
       - label: "Subgroup"
         name: "subgroup"
-        widget: "select"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
         required: false
-        options:
-          - { label: "(none -- most categories)", value: "" }
-          - { label: "Loungefly: Backpacks", value: "loungefly-backpacks" }
-          - { label: "Loungefly: Wallets", value: "loungefly-wallets" }
-          - { label: "Footwear: Men's", value: "footwear-mens" }
-          - { label: "Footwear: Women's", value: "footwear-womens" }
-          - { label: "Family Halloween: Unisex", value: "halloween-unisex" }
-          - { label: "Family Halloween: Women's", value: "halloween-womens" }
-          - { label: "Family Halloween: Youth", value: "halloween-youth" }
-        hint: "Only used for Loungefly, Footwear, and Family Halloween, which are split into sub-sections. Leave as (none) for every other category."
+        hint: "Only used for Loungefly, Footwear, and Family Halloween, which are split into sub-sections. Leave blank for every other category."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -163,6 +1348,131 @@ collections:
           - { label: "Item Label", name: "label", widget: "string" }
           - { label: "Amazon Affiliate URL", name: "amazon_url", widget: "string", pattern: ["^https://(amzn\\.to/|(www\\.)?amazon\\.com/)", "Must be an amzn.to link or a full amazon.com affiliate link."] }
         hint: "Each product/item shown for this Look. The same item can also appear in other Looks or in a product category -- that's expected, not a duplicate to merge."
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+
+  # ------------------------------------------------------------------
+  # Taxonomy -- editable Groups/Categories/Subgroups. Renaming a Label
+  # here is a safe, CMS-only change. Structural changes -- a brand new
+  # Category or Group actually appearing as a live page or a new
+  # sidebar entry above -- still require a code/config update from
+  # Troy; adding a taxonomy record here does not do that by itself.
+  # ------------------------------------------------------------------
+  - name: "taxonomy_groups"
+    label: "TAXONOMY: Groups"
+    folder: "content/taxonomy/groups"
+    create: true
+    delete: true
+    slug: "{{fields.slug}}"
+    sortable_fields:
+      fields: ["order", "label"]
+      default: { field: "order", direction: "ascending" }
+    fields:
+      - label: "Display Label"
+        name: "label"
+        widget: "string"
+        hint: "Safe to rename anytime -- this is just the display name."
+      - label: "Stable Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Permanent internal ID. Do not change after Categories are assigned to this Group unless you are deliberately performing a planned structural migration."
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Marks this Group as retired for new assignments. Does NOT hide any existing page, sidebar entry, or product -- those all stay exactly as they are unless changed separately by Troy."
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+
+  - name: "taxonomy_categories"
+    label: "TAXONOMY: Categories"
+    folder: "content/taxonomy/categories"
+    create: true
+    delete: true
+    slug: "{{fields.slug}}"
+    sortable_fields:
+      fields: ["group", "order", "label"]
+      default: { field: "order", direction: "ascending" }
+    fields:
+      - label: "Display Label"
+        name: "label"
+        widget: "string"
+        hint: "Safe to rename anytime -- this is just the display name shown in dropdowns. It does NOT change the public page title/heading or the sidebar collection name; those are separate and still require a code/config update from Troy."
+      - label: "Stable Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Permanent internal ID used by Products and the public URL. Do not change after Products are assigned to this Category unless you are deliberately performing a planned structural migration."
+      - label: "Group"
+        name: "group"
+        widget: "relation"
+        collection: "taxonomy_groups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Marks this Category as retired for new assignments. Does NOT remove its public page, its sidebar entry, or any existing product -- those all stay exactly as they are unless changed separately by Troy."
+      - label: "Public Page Permalink (reference only)"
+        name: "permalink_path"
+        widget: "string"
+        required: false
+        hint: "Informational only -- changing this does not move or create the public page. That still requires a code update from Troy."
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+
+  - name: "taxonomy_subgroups"
+    label: "TAXONOMY: Subgroups"
+    folder: "content/taxonomy/subgroups"
+    create: true
+    delete: true
+    slug: "{{fields.slug}}"
+    sortable_fields:
+      fields: ["category", "order", "label"]
+      default: { field: "order", direction: "ascending" }
+    fields:
+      - label: "Display Label"
+        name: "label"
+        widget: "string"
+        hint: "Safe to rename anytime. Does NOT change the heading shown on the public category page -- that still requires a code/config update from Troy."
+      - label: "Stable Slug"
+        name: "slug"
+        widget: "string"
+        hint: "Permanent internal ID used by Products. Do not change after Products are assigned to this Subgroup unless you are deliberately performing a planned structural migration."
+      - label: "Category"
+        name: "category"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Marks this Subgroup as retired for new assignments. Does NOT remove any existing product from view -- those stay exactly as they are unless changed separately."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
         widget: "hidden"
