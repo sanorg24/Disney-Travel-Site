@@ -110,12 +110,9 @@ permalink: "accessories-backpacks.html"
 </head>
 <body>
 
-<header>
-  <nav class="wrap">
-    <div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
-    <div class="navlinks"><a href="accessories.html">← Back to Accessories</a><a href="index.html">Home</a></div>
-  </nav>
-</header>
+{% set backLinkHref = "accessories.html" %}
+{% set backLinkLabel = "← Back to Accessories" %}
+{% include "header.njk" %}
 
 <section class="pagehero">
   <span class="eyebrow">Park Day Accessories</span>

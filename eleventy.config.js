@@ -13,7 +13,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("accessories.html");
   eleventyConfig.addPassthroughCopy("apparel.html");
   eleventyConfig.addPassthroughCopy("blog-6-ways-our-disney-loving-family-actually-saves-money-at-walt.html");
-  eleventyConfig.addPassthroughCopy("blog-welcome-to-the-blog.html");
   eleventyConfig.addPassthroughCopy("blog-why-good-shoes-can-make-or-break-your-disney-vacation-for-ev.html");
   eleventyConfig.addPassthroughCopy("blog.html");
   eleventyConfig.addPassthroughCopy("holidays.html");
