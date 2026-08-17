@@ -15,5 +15,9 @@ items:
     amazon_url: https://amzn.to/4wuWFeE
   - label: Disney Boys Romper
     amazon_url: https://amzn.to/4g37hwr
+  - label: Crocs Kids' Disney Pixar Toy Story/Lotso
+    amazon_url: https://amzn.to/4hAobna
+  - label: Crocs Kids' Disney Pixar Toy Story/Buzz Light Year
+    amazon_url: https://amzn.to/4wYWTvw
 permalink: false
 ---

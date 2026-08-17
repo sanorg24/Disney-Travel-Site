@@ -1,10 +1,10 @@
 ---
 title: Animal Kingdom Outfits for Kids
 theme: park-day-outfits
-collage_image: /photos/pasted-image-1786968443873.png
+collage_image: /photos/pasted-image-1787005888179.png
 collage_image_alt: ''
 pixie_note: ''
-status: draft
+status: published
 order: 11
 items:
   - label: Disney Mickey Baby Boys 3-piece set
