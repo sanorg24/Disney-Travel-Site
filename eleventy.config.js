@@ -12,7 +12,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy("accessories.html");
   eleventyConfig.addPassthroughCopy("apparel.html");
-  eleventyConfig.addPassthroughCopy("blog.html");
   eleventyConfig.addPassthroughCopy("holidays.html");
   eleventyConfig.addPassthroughCopy("index.html");
   eleventyConfig.addPassthroughCopy("sun-travel-essentials.html");
