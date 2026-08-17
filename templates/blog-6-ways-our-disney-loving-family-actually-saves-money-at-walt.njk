@@ -1,3 +1,6 @@
+---
+permalink: "blog-6-ways-our-disney-loving-family-actually-saves-money-at-walt.html"
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,12 +59,10 @@
 </head>
 <body>
 
-<header>
-  <nav class="wrap">
-    <a class="brand" href="index.html"><span class="mark">✦</span> The Pixie Packed Family</a>
-    <div class="navlinks"><a href="blog.html">← Back to Blog</a><a href="index.html">Home</a></div>
-  </nav>
-</header>
+{% set backLinkHref = "blog.html" %}
+{% set backLinkLabel = "← Back to Blog" %}
+{% set brandHref = "index.html" %}
+{% include "header.njk" %}
 
 <section class="articlehero">
   <span class="blog-tag">Travel Tips</span>
