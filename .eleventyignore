@@ -4,11 +4,7 @@
 # output completely unmodified -- this file exists so there is zero
 # ambiguity about whether Eleventy might try to "process" them.
 
-accessories.html
-apparel.html
-holidays.html
 index.html
-sun-travel-essentials.html
 guides/
 
 CLAUDE.md
