@@ -10,11 +10,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("photos");
   eleventyConfig.addPassthroughCopy("guides");
   eleventyConfig.addPassthroughCopy("CNAME");
-  eleventyConfig.addPassthroughCopy("accessories.html");
-  eleventyConfig.addPassthroughCopy("apparel.html");
-  eleventyConfig.addPassthroughCopy("holidays.html");
   eleventyConfig.addPassthroughCopy("index.html");
-  eleventyConfig.addPassthroughCopy("sun-travel-essentials.html");
   eleventyConfig.addPassthroughCopy("admin");
 
   // --- CMS content collections --------------------------------------------

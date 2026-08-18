@@ -1,10 +1,13 @@
+---
+permalink: "holidays.html"
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Park Day Accessories | The Pixie Packed Family</title>
-<meta name="description" content="Hats, ears, headbands, backpacks, Loungefly, Pandora, and footwear for Disney park days — curated Amazon picks from The Pixie Packed Family.">
+<title>Holidays &amp; Festivals | The Pixie Packed Family</title>
+<meta name="description" content="Holiday and festival-themed Disney apparel and gear, starting with Family Halloween and MNSSHP picks, from The Pixie Packed Family.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -42,7 +45,7 @@
   .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
   .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
   .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
-  .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--purple); color: var(--white); align-self: flex-start; }
+  .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--coral); color: var(--white); align-self: flex-start; }
 
   footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
   .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
@@ -60,65 +63,31 @@
 </head>
 <body>
 
-<header>
-  <nav class="wrap">
-    <div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
-    <div class="navlinks"><a href="index.html">← Back to Home</a></div>
-  </nav>
-</header>
+{% include "header.njk" %}
 
 <section class="pagehero">
   <span class="eyebrow">Shop the Parks</span>
-  <h1>Park Day Accessories</h1>
-  <p>Hats, ears, headbands, backpacks, Loungefly, Pandora, and footwear that make park days easier — and more magical. Tap a category to shop.</p>
+  <h1>Holidays &amp; Festivals</h1>
+  <p>Seasonal Disney apparel and gear for holidays and festivals throughout the year. Tap a holiday to shop.</p>
 </section>
 
 <section class="hub-section">
   <div class="wrap">
     <div class="hub-grid">
       <div class="hub-card">
-        <div class="picon">🧢</div>
-        <h3>Hats</h3>
-        <p>Sun protection with a little extra park-day personality.</p>
-        <a class="btn-sm" href="accessories-hats.html">Shop Hats →</a>
+        <div class="picon">🎃</div>
+        <h3>Family Halloween / MNSSHP</h3>
+        <p>Spooky-cute matching looks for Mickey's Not-So-Scary Halloween Party and family Halloween fun.</p>
+        <a class="btn-sm" href="holidays-family-halloween.html">Shop Halloween →</a>
       </div>
-      <div class="hub-card">
-        <div class="picon">🎀</div>
-        <h3>Ears &amp; Headbands</h3>
-        <p>The finishing touch on any park outfit.</p>
-        <a class="btn-sm" href="accessories-ears-headbands.html">Shop Ears &amp; Headbands →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">🎒</div>
-        <h3>Backpacks</h3>
-        <p>Comfortable, practical bags built for a full day of walking.</p>
-        <a class="btn-sm" href="accessories-backpacks.html">Shop Backpacks →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">👜</div>
-        <h3>Loungefly</h3>
-        <p>Collectible mini backpacks and wallets for the Disney lover in your family.</p>
-        <a class="btn-sm" href="accessories-loungefly.html">Shop Loungefly →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">💎</div>
-        <h3>Pandora</h3>
-        <p>Charms and bracelets to build a Disney story piece by piece.</p>
-        <a class="btn-sm" href="accessories-pandora.html">Shop Pandora →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">👟</div>
-        <h3>Footwear</h3>
-        <p>Comfortable, park-tested shoes for all-day walking.</p>
-        <a class="btn-sm" href="accessories-footwear.html">Shop Footwear →</a>
-      </div>
+      <!-- Add a new hub-card block here for each new holiday/festival, plus its own holidays-[name].html page -->
     </div>
   </div>
 </section>
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
 </footer>
 
