@@ -4,7 +4,6 @@
 # output completely unmodified -- this file exists so there is zero
 # ambiguity about whether Eleventy might try to "process" them.
 
-index.html
 guides/
 
 CLAUDE.md
