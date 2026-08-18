@@ -1,0 +1,157 @@
+---
+permalink: "shop.html"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Disney Finds | The Pixie Packed Family</title>
+<meta name="description" content="Shop all of The Pixie Packed Family's curated Disney vacation finds — apparel, park day accessories, sun & travel essentials, themed outfit inspiration, and holiday picks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #7b5fe0; --magenta: #c23f97; --coral: #e76e8c; --orange: #eda268;
+    --maroon: #5c2a38; --pink-bg: #fbe0ec; --gold: #e8c468; --cream: #fff8f3;
+    --gray: #7a6f78; --ink: #3a2733; --white: #ffffff;
+    --radius: 16px; --shadow: 0 6px 26px rgba(92,42,56,0.12); --shadow-lg: 0 16px 44px rgba(92,42,56,0.20);
+  }
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Quicksand', -apple-system, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+  h1, h2, h3 { font-family: 'Fredoka', sans-serif; }
+  a { color: inherit; text-decoration: none; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+  header { background: var(--maroon); position: sticky; top: 0; z-index: 50; }
+  nav.wrap { display: flex; align-items: center; justify-content: space-between; height: 70px; flex-wrap: wrap; gap: 8px; padding-top: 10px; padding-bottom: 10px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--white); font-size: 1.2rem; font-weight: 600; }
+  .brand .mark { width: 36px; height: 36px; border-radius: 50%; background: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.15rem; flex-shrink: 0; }
+  .navlinks a { color: rgba(255,255,255,0.85); font-size: 0.88rem; font-weight: 600; padding: 8px 14px; border-radius: 8px; }
+  .navlinks a:hover { background: rgba(255,255,255,0.12); color: var(--gold); }
+
+  .hamburger-btn { display: none; background: none; border: none; color: var(--white); font-size: 1.6rem; cursor: pointer; padding: 6px 8px; line-height: 1; }
+  .mobile-menu { display: none; flex-direction: column; background: var(--maroon); border-top: 1px solid rgba(255,255,255,0.12); }
+  .mobile-menu a { color: rgba(255,255,255,0.9); font-size: 0.95rem; font-weight: 600; padding: 14px 24px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .mobile-menu a:hover { background: rgba(255,255,255,0.08); color: var(--gold); }
+  .mobile-menu.open { display: flex; }
+
+  .pagehero { background: var(--pink-bg); padding: 48px 20px 40px; text-align: center; }
+  .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
+  .pagehero h1 { font-size: clamp(1.7rem, 6vw, 2.6rem); margin-bottom: 12px; }
+  .pagehero p { color: var(--gray); max-width: 540px; margin: 0 auto; font-size: 0.95rem; }
+
+  .hub-section { padding: 48px 16px 60px; }
+  .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .hub-photo { width: 100%; height: 150px; object-fit: cover; }
+  .hub-card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
+  .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+  .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
+  .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--purple); color: var(--white); align-self: flex-start; }
+
+  footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
+  .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
+  .footlinks a:hover { color: var(--gold); }
+
+  @media (max-width: 800px) {
+    .navlinks { display: none; }
+    .hamburger-btn { display: block; }
+  }
+  @media (max-width: 640px) {
+    nav.wrap { justify-content: center; text-align: center; height: auto; }
+    .pagehero { padding: 40px 16px 30px; }
+    .hub-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 400px) {
+    .hub-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+{% set fullNav = true %}
+{% include "header.njk" %}
+
+<section class="pagehero">
+  <span class="eyebrow">Shop the Parks</span>
+  <h1>Shop Disney Finds</h1>
+  <p>Real gear our family uses and recommends for Disney vacations — organized so you can find exactly what you're looking for. Tap a category to shop.</p>
+</section>
+
+<section class="hub-section">
+  <div class="wrap">
+    <div class="hub-grid">
+      <a class="hub-card" href="apparel.html">
+        <img class="hub-photo" src="photos/apparel-family-01.jpg" alt="Apparel">
+        <div class="hub-card-body">
+          <h3>Apparel</h3>
+          <p>Matching family tees plus Disney apparel for men, women, and kids.</p>
+          <span class="btn-sm">Shop Apparel →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="accessories.html">
+        <img class="hub-photo" src="photos/accessories-loungefly-01.jpg" alt="Park Day Accessories">
+        <div class="hub-card-body">
+          <h3>Park Day Accessories</h3>
+          <p>Hats, ears, headbands, backpacks, and more for a comfortable, magical day.</p>
+          <span class="btn-sm">Shop Accessories →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="sun-travel-essentials.html">
+        <img class="hub-photo" src="photos/sun-travel-01.jpg" alt="Sun, Travel & Personal Care">
+        <div class="hub-card-body">
+          <h3>Sun, Travel &amp; Personal Care</h3>
+          <p>Sunscreen, hair care, cooling gear, and travel-friendly picks for hot park days.</p>
+          <span class="btn-sm">Shop Essentials →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="outfits.html">
+        <img class="hub-photo" src="photos/outfit-mnsshp.jpg" alt="Themed Outfit Inspiration">
+        <div class="hub-card-body">
+          <h3>Themed Outfit Inspiration</h3>
+          <p>Character-inspired outfits, organized by park event and theme, each with shoppable links.</p>
+          <span class="btn-sm">See Themed Outfits →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="holidays.html">
+        <img class="hub-photo" src="photos/holiday-mnsshp-01.jpg" alt="Holidays & Festivals">
+        <div class="hub-card-body">
+          <h3>Holidays &amp; Festivals</h3>
+          <p>Seasonal Disney apparel, starting with Family Halloween and MNSSHP picks.</p>
+          <span class="btn-sm">Shop Holidays →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
+</footer>
+
+<script>
+  var hamburgerBtn = document.getElementById('hamburger-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  hamburgerBtn.addEventListener('click', function () {
+    var isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    hamburgerBtn.textContent = isOpen ? '✕' : '☰';
+  });
+  mobileMenu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+      hamburgerBtn.textContent = '☰';
+    });
+  });
+</script>
+
+</body>
+</html>
