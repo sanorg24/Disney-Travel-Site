@@ -40,9 +40,10 @@ permalink: "holidays.html"
 
   .hub-section { padding: 48px 16px 60px; }
   .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
   .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-  .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .hub-photo { width: 100%; height: 150px; object-fit: cover; }
+  .hub-card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
   .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
   .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
   .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--coral); color: var(--white); align-self: flex-start; }
@@ -74,12 +75,14 @@ permalink: "holidays.html"
 <section class="hub-section">
   <div class="wrap">
     <div class="hub-grid">
-      <div class="hub-card">
-        <div class="picon">🎃</div>
-        <h3>Family Halloween / MNSSHP</h3>
-        <p>Spooky-cute matching looks for Mickey's Not-So-Scary Halloween Party and family Halloween fun.</p>
-        <a class="btn-sm" href="holidays-family-halloween.html">Shop Halloween →</a>
-      </div>
+      <a class="hub-card" href="holidays-family-halloween.html">
+        <img class="hub-photo" src="photos/holiday-mnsshp-01.jpg" alt="Family Halloween / MNSSHP">
+        <div class="hub-card-body">
+          <h3>Family Halloween / MNSSHP</h3>
+          <p>Spooky-cute matching looks for Mickey's Not-So-Scary Halloween Party and family Halloween fun.</p>
+          <span class="btn-sm">Shop Halloween →</span>
+        </div>
+      </a>
       <!-- Add a new hub-card block here for each new holiday/festival, plus its own holidays-[name].html page -->
     </div>
   </div>
@@ -87,7 +90,7 @@ permalink: "holidays.html"
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Shop Disney Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
 </footer>
 

@@ -40,9 +40,10 @@ permalink: "accessories.html"
 
   .hub-section { padding: 48px 16px 60px; }
   .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
   .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-  .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .hub-photo { width: 100%; height: 150px; object-fit: cover; }
+  .hub-card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
   .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
   .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
   .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--purple); color: var(--white); align-self: flex-start; }
@@ -74,49 +75,61 @@ permalink: "accessories.html"
 <section class="hub-section">
   <div class="wrap">
     <div class="hub-grid">
-      <div class="hub-card">
-        <div class="picon">🧢</div>
-        <h3>Hats</h3>
-        <p>Sun protection with a little extra park-day personality.</p>
-        <a class="btn-sm" href="accessories-hats.html">Shop Hats →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">🎀</div>
-        <h3>Ears &amp; Headbands</h3>
-        <p>The finishing touch on any park outfit.</p>
-        <a class="btn-sm" href="accessories-ears-headbands.html">Shop Ears &amp; Headbands →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">🎒</div>
-        <h3>Backpacks</h3>
-        <p>Comfortable, practical bags built for a full day of walking.</p>
-        <a class="btn-sm" href="accessories-backpacks.html">Shop Backpacks →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">👜</div>
-        <h3>Loungefly</h3>
-        <p>Collectible mini backpacks and wallets for the Disney lover in your family.</p>
-        <a class="btn-sm" href="accessories-loungefly.html">Shop Loungefly →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">💎</div>
-        <h3>Pandora</h3>
-        <p>Charms and bracelets to build a Disney story piece by piece.</p>
-        <a class="btn-sm" href="accessories-pandora.html">Shop Pandora →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">👟</div>
-        <h3>Footwear</h3>
-        <p>Comfortable, park-tested shoes for all-day walking.</p>
-        <a class="btn-sm" href="accessories-footwear.html">Shop Footwear →</a>
-      </div>
+      <a class="hub-card" href="accessories-hats.html">
+        <img class="hub-photo" src="photos/hat-mickey-bucket-blue.jpg" alt="Hats">
+        <div class="hub-card-body">
+          <h3>Hats</h3>
+          <p>Sun protection with a little extra park-day personality.</p>
+          <span class="btn-sm">Shop Hats →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="accessories-ears-headbands.html">
+        <img class="hub-photo" src="photos/ears-pearl-brown.jpg" alt="Ears & Headbands">
+        <div class="hub-card-body">
+          <h3>Ears &amp; Headbands</h3>
+          <p>The finishing touch on any park outfit.</p>
+          <span class="btn-sm">Shop Ears &amp; Headbands →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="accessories-backpacks.html">
+        <img class="hub-photo" src="photos/backpack-highsierra-black.jpg" alt="Backpacks">
+        <div class="hub-card-body">
+          <h3>Backpacks</h3>
+          <p>Comfortable, practical bags built for a full day of walking.</p>
+          <span class="btn-sm">Shop Backpacks →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="accessories-loungefly.html">
+        <img class="hub-photo" src="photos/accessories-loungefly-01.jpg" alt="Loungefly">
+        <div class="hub-card-body">
+          <h3>Loungefly</h3>
+          <p>Collectible mini backpacks and wallets for the Disney lover in your family.</p>
+          <span class="btn-sm">Shop Loungefly →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="accessories-pandora.html">
+        <img class="hub-photo" src="photos/accessories-pandora-01.jpg" alt="Pandora">
+        <div class="hub-card-body">
+          <h3>Pandora</h3>
+          <p>Charms and bracelets to build a Disney story piece by piece.</p>
+          <span class="btn-sm">Shop Pandora →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="accessories-footwear.html">
+        <img class="hub-photo" src="photos/footwear-heydude-mickey-grey.jpg" alt="Footwear">
+        <div class="hub-card-body">
+          <h3>Footwear</h3>
+          <p>Comfortable, park-tested shoes for all-day walking.</p>
+          <span class="btn-sm">Shop Footwear →</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Shop Disney Outfits</a><a href="apparel.html">Apparel</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
 </footer>
 

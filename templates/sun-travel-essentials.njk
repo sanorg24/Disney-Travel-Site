@@ -40,9 +40,10 @@ permalink: "sun-travel-essentials.html"
 
   .hub-section { padding: 48px 16px 60px; }
   .hub-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 20px; }
-  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 26px 22px; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
+  .hub-card { background: var(--pink-bg); border-radius: var(--radius); padding: 0; overflow: hidden; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; box-shadow: var(--shadow); }
   .hub-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-  .hub-card .picon { font-size: 2.1rem; margin-bottom: 10px; }
+  .hub-photo { width: 100%; height: 150px; object-fit: cover; }
+  .hub-card-body { padding: 20px 22px 24px; display: flex; flex-direction: column; flex: 1; }
   .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
   .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
   .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--orange); color: var(--white); align-self: flex-start; }
@@ -74,37 +75,45 @@ permalink: "sun-travel-essentials.html"
 <section class="hub-section">
   <div class="wrap">
     <div class="hub-grid">
-      <div class="hub-card">
-        <div class="picon">🧴</div>
-        <h3>Sunscreen</h3>
-        <p>Broad-spectrum protection for every member of the family, from lips to scalp.</p>
-        <a class="btn-sm" href="sun-travel-sunscreen.html">Shop Sunscreen →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">💇</div>
-        <h3>Hair Care</h3>
-        <p>Frizz-fighting, detangling, and styling essentials for humid park days and post-swim hair.</p>
-        <a class="btn-sm" href="sun-travel-hair-care.html">Shop Hair Care →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">🌬️</div>
-        <h3>Cooling &amp; Fans</h3>
-        <p>Portable ways to beat the Florida heat, from handheld fans to stroller-mounted misters.</p>
-        <a class="btn-sm" href="sun-travel-cooling-fans.html">Shop Cooling &amp; Fans →</a>
-      </div>
-      <div class="hub-card">
-        <div class="picon">🧳</div>
-        <h3>Travel &amp; Personal Care</h3>
-        <p>Travel-size personal care essentials to keep everyone fresh and comfortable on long park days.</p>
-        <a class="btn-sm" href="sun-travel-personal-care.html">Shop Travel &amp; Personal Care →</a>
-      </div>
+      <a class="hub-card" href="sun-travel-sunscreen.html">
+        <img class="hub-photo" src="photos/sun-travel-01.jpg" alt="Sunscreen">
+        <div class="hub-card-body">
+          <h3>Sunscreen</h3>
+          <p>Broad-spectrum protection for every member of the family, from lips to scalp.</p>
+          <span class="btn-sm">Shop Sunscreen →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="sun-travel-hair-care.html">
+        <img class="hub-photo" src="photos/sun-travel-21.jpg" alt="Hair Care">
+        <div class="hub-card-body">
+          <h3>Hair Care</h3>
+          <p>Frizz-fighting, detangling, and styling essentials for humid park days and post-swim hair.</p>
+          <span class="btn-sm">Shop Hair Care →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="sun-travel-cooling-fans.html">
+        <img class="hub-photo" src="photos/sun-travel-11.jpg" alt="Cooling & Fans">
+        <div class="hub-card-body">
+          <h3>Cooling &amp; Fans</h3>
+          <p>Portable ways to beat the Florida heat, from handheld fans to stroller-mounted misters.</p>
+          <span class="btn-sm">Shop Cooling &amp; Fans →</span>
+        </div>
+      </a>
+      <a class="hub-card" href="sun-travel-personal-care.html">
+        <img class="hub-photo" src="photos/sun-travel-14.jpg" alt="Travel & Personal Care">
+        <div class="hub-card-body">
+          <h3>Travel &amp; Personal Care</h3>
+          <p>Travel-size personal care essentials to keep everyone fresh and comfortable on long park days.</p>
+          <span class="btn-sm">Shop Travel &amp; Personal Care →</span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Themed Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a></div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Shop Disney Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
 </footer>
 
