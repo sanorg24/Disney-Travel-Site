@@ -111,6 +111,55 @@ export default function (eleventyConfig) {
     return (looks || []).filter((l) => l.theme === theme);
   });
 
+  // --- Blog content collection -------------------------------------------
+  // Each post lives as content/blog/<slug>.md; content/blog/blog.json (an
+  // Eleventy directory data file) applies the shared layout, permalink
+  // pattern, and "blogPosts" tag to every post automatically, so individual
+  // post front matter only needs the content fields (title/date/tag/
+  // excerpt/hero image/body) -- no per-post template or manual Blog Hub
+  // card editing required going forward.
+  eleventyConfig.addCollection("blogPosts", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("content/blog/*.md")
+      .filter((item) => item.data.status === "published")
+      .sort((a, b) => {
+        const dateA = new Date(a.data.date).getTime();
+        const dateB = new Date(b.data.date).getTime();
+        if (dateB !== dateA) return dateB - dateA; // newest first
+        return a.data.title.localeCompare(b.data.title); // deterministic tiebreak for same-date posts
+      });
+  });
+
+  // Single structured-date formatter, used identically by both the Blog
+  // Hub cards and each article's own page -- one source of truth, no
+  // duplicated hand-typed date strings.
+  eleventyConfig.addFilter("isoDate", function (d) {
+    if (!d) return "";
+    const date = (d instanceof Date) ? d : new Date(d);
+    if (isNaN(date.getTime())) return String(d);
+    return date.toISOString().slice(0, 10);
+  });
+
+  // Maps a Blog post's stored category slug to the human-readable label
+  // already used by the Blog Hub's filter buttons.
+  // Eleventy's collection-item .url always includes a leading "/" (URL
+  // path from domain root). Every other link in this codebase is a bare
+  // relative path (e.g. href="apparel.html"), so this strips that leading
+  // slash to match the existing convention rather than introduce a new one.
+  eleventyConfig.addFilter("stripLeadingSlash", function (url) {
+    return (url || "").replace(/^\//, "");
+  });
+
+  eleventyConfig.addFilter("tagLabel", function (slug) {
+    const labels = {
+      "travel-tips": "Travel Tips",
+      "disney-news": "Disney News",
+      "amazon-finds": "Amazon Finds",
+      "outfit-inspiration": "Outfit Inspiration",
+      "family-accessibility": "Family & Accessibility"
+    };
+    return labels[slug] || slug;
+  });
+
   return {
     dir: {
       input: ".",

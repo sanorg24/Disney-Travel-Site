@@ -1,13 +1,10 @@
----
-permalink: "blog-welcome-to-the-blog.html"
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to The Pixie Packed Family Blog | The Pixie Packed Family</title>
-<meta name="description" content="What you'll find on The Pixie Packed Family blog — travel tips, resort reviews, Amazon finds, outfit inspiration, and family & accessibility advice.">
+<title>{{ title }} | The Pixie Packed Family</title>
+<meta name="description" content="{{ meta_description }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -39,9 +36,12 @@ permalink: "blog-welcome-to-the-blog.html"
   .articlehero h1 { font-size: clamp(1.6rem, 5.5vw, 2.3rem); margin-bottom: 10px; }
   .articlehero .meta { color: var(--gray); font-size: 0.85rem; }
 
+  .article-hero-img { width: 100%; height: auto; display: block; max-width: 760px; margin: 0 auto; border-radius: 0; }
+
   article { padding: 40px 20px 60px; }
   article p { margin-bottom: 18px; font-size: 1rem; color: var(--ink); }
   article h2 { font-size: 1.25rem; margin: 30px 0 12px; }
+  article img { width: 100%; height: auto; display: block; margin: 28px auto; border-radius: var(--radius); }
 
   .back-link { display: inline-block; margin: 30px 0 0; font-weight: 700; font-size: 0.9rem; }
 
@@ -65,19 +65,17 @@ permalink: "blog-welcome-to-the-blog.html"
 {% include "header.njk" %}
 
 <section class="articlehero">
-  <span class="blog-tag">Travel Tips</span>
-  <h1>Welcome to The Pixie Packed Family Blog</h1>
-  <div class="meta">2026</div>
+  <span class="blog-tag">{{ tag | tagLabel }}</span>
+  <h1>{{ title }}</h1>
+  <div class="meta">{{ date | isoDate }}</div>
 </section>
 
+{% if hero_image %}
+<img class="article-hero-img" src="{{ hero_image }}" alt="{{ hero_alt }}">
+{% endif %}
+
 <article class="wrap">
-  <p>Hi, we're so glad you found your way here! This is where we'll be sharing everything we learn along the way — real trip planning advice, honest resort reviews, Amazon finds that actually make a difference, outfit inspiration for every park event, and practical tips for traveling with kids, grandparents, and loved ones with disabilities.</p>
-
-  <h2>What you'll find here</h2>
-  <p>Nothing ever gets taken down — so whether you're researching a specific resort, looking for park day packing ideas, or trying to find that one outfit idea you saw a few months back, it'll always be here to find using the topic filters on the <a href="blog.html">blog page</a>.</p>
-
-  <p>Thanks for being part of our story — we can't wait to be a small part of yours. See you in the parks!</p>
-
+  {{ content | safe }}
   <a class="back-link" href="blog.html">← Back to all posts</a>
 </article>
 

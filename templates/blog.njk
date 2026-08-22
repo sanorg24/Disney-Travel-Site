@@ -44,9 +44,10 @@ permalink: "blog.html"
   .filter-btn.active { background: var(--magenta); color: var(--white); }
 
   .blog-section { padding: 40px 16px 60px; }
-  .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; }
-  .blog-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; }
+  .blog-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; }
+  .blog-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; transition: transform .18s, box-shadow .18s; flex: 1 1 260px; max-width: 340px; }
   .blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .blog-card-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; object-position: center 25%; display: block; }
   .blog-card-top { background: linear-gradient(135deg, var(--purple), var(--magenta)); padding: 22px 22px 18px; }
   .blog-tag { display: inline-block; background: rgba(255,255,255,0.22); color: var(--white); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; padding: 5px 10px; border-radius: 20px; margin-bottom: 10px; }
   .blog-card-top h3 { color: var(--white); font-size: 1.1rem; }
@@ -65,7 +66,7 @@ permalink: "blog.html"
   @media (max-width: 640px) {
     nav.wrap { justify-content: center; text-align: center; height: auto; }
     .pagehero { padding: 40px 16px 30px; }
-    .blog-grid { grid-template-columns: 1fr; }
+    .blog-card { flex: 1 1 100%; max-width: 420px; }
   }
 </style>
 </head>
@@ -91,53 +92,22 @@ permalink: "blog.html"
 <section class="blog-section">
   <div class="wrap">
     <div class="blog-grid" id="blog-grid">
-      <a class="blog-card" data-tag="travel-tips" href="blog-6-ways-our-disney-loving-family-actually-saves-money-at-walt.html">
+      {%- for post in collections.blogPosts %}
+      <a class="blog-card" data-tag="{{ post.data.tag }}" href="{{ post.url | stripLeadingSlash }}">
+        {%- if post.data.hero_image %}
+        <img class="blog-card-img" src="{{ post.data.hero_image }}" alt="{{ post.data.hero_alt }}">
+        {%- endif %}
         <div class="blog-card-top">
-          <span class="blog-tag">Travel Tips</span>
-          <h3>6 Ways Our Disney-Loving Family Actually Saves Money at Walt Disney World (Without Losing the Magic)</h3>
+          <span class="blog-tag">{{ post.data.tag | tagLabel }}</span>
+          <h3>{{ post.data.title }}</h3>
         </div>
         <div class="blog-card-body">
-          <span class="blog-date">2026-08-03</span>
-          <p>Disney trips don't have to drain your bank account. Here's exactly how our family cuts costs at Walt Disney World while still having the most magical time possible.</p>
+          <span class="blog-date">{{ post.data.date | isoDate }}</span>
+          <p>{{ post.data.excerpt }}</p>
           <span class="read-more">Read More →</span>
         </div>
       </a>
-
-      <a class="blog-card" data-tag="travel-tips" href="blog-why-good-shoes-can-make-or-break-your-disney-vacation-for-ev.html">
-        <div class="blog-card-top">
-          <span class="blog-tag">Travel Tips</span>
-          <h3>Why Good Shoes Can Make or Break Your Disney Vacation (For Every Member of the Family)</h3>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-date">2026-08-02</span>
-          <p>You will walk more at Disney than almost anywhere else on earth — and your feet will tell the tale. Here's exactly what to look for in park shoes for adults and little ones alike, so everyone crosses the finish line happy.</p>
-          <span class="read-more">Read More →</span>
-        </div>
-      </a>
-
-
-      <!-- ================================================================
-           ADD NEW POSTS HERE — newest first.
-           1. Create the new article page (copy blog-welcome-to-the-blog.html
-              as a starting template and edit its content).
-           2. Copy one blog-card block below, update the tag, title, date,
-              excerpt, and href to point at the new article page.
-           3. Never delete old blog-card blocks — that's what keeps every
-              past article findable through the filter buttons.
-      ================================================================= -->
-
-      <a class="blog-card" data-tag="travel-tips" href="blog-welcome-to-the-blog.html">
-        <div class="blog-card-top">
-          <span class="blog-tag">Travel Tips</span>
-          <h3>Welcome to The Pixie Packed Family Blog</h3>
-        </div>
-        <div class="blog-card-body">
-          <span class="blog-date">2026</span>
-          <p>New here? Start with a quick look at what you'll find on the blog — planning guides, Disney news, Amazon finds, outfit inspiration, and family &amp; accessibility tips.</p>
-          <span class="read-more">Read More →</span>
-        </div>
-      </a>
-
+      {%- endfor %}
     </div>
     <p class="empty-state" id="empty-state">No posts in this category yet — check back soon!</p>
   </div>
