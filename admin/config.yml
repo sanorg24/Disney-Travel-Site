@@ -1477,3 +1477,65 @@ collections:
         name: "permalink"
         widget: "hidden"
         default: false
+
+  # ------------------------------------------------------------------
+  # Blog -- one content file per article. The public URL, page layout,
+  # and Blog Hub card are all generated automatically from these fields;
+  # no code/template change is needed to publish a new post. Place inline
+  # photographs directly in the Body editor (drag, drop, paste, or the
+  # toolbar's image button) exactly where they should appear in the
+  # article -- no separate field and no HTML needed.
+  # ------------------------------------------------------------------
+  - { divider: true }
+  - name: "blog_posts"
+    label: "Blog Posts"
+    folder: "content/blog"
+    create: true
+    slug: "{{slug}}"
+    thumbnail: "hero_image"
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+      - label: "Category"
+        name: "tag"
+        widget: "select"
+        options:
+          - { label: "Travel Tips", value: "travel-tips" }
+          - { label: "Disney News", value: "disney-news" }
+          - { label: "Amazon Finds", value: "amazon-finds" }
+          - { label: "Outfit Inspiration", value: "outfit-inspiration" }
+          - { label: "Family & Accessibility", value: "family-accessibility" }
+      - label: "Excerpt"
+        name: "excerpt"
+        widget: "text"
+        hint: "Shown on the Blog Hub card. Can read like a hook to click through -- it does not need to match the SEO description below."
+      - label: "Meta Description"
+        name: "meta_description"
+        widget: "text"
+        hint: "The article's search-engine/page description. Separate from the Excerpt above -- these can say different things."
+      - label: "Featured/Hero Image"
+        name: "hero_image"
+        widget: "image"
+        required: false
+        hint: "Shown near the top of the article and reused automatically as this post's Blog Hub card image."
+      - label: "Featured/Hero Image Alt Text"
+        name: "hero_alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe what is shown in the Featured/Hero image."
+      - label: "Status"
+        name: "status"
+        widget: "select"
+        options: ["draft", "published"]
+        default: "draft"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        hint: "Write the article here. To add a photo, drag it in, paste it, or use the toolbar's image button, right where you want it to appear -- no HTML needed."
