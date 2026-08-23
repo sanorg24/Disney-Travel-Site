@@ -101,14 +101,19 @@ permalink: "index.html"
   /* GUIDES */
   .guides { background: var(--white); }
   .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
-  .guide-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--pink-bg); max-width: 420px; }
-  .guide-top { background: var(--pink-bg); padding: 26px 24px 14px; }
-  .guide-top .picon { font-size: 2.2rem; margin-bottom: 8px; }
-  .guide-top strong { font-family: 'Fredoka', sans-serif; font-size: 1.1rem; color: var(--maroon); }
-  .guide-body { background: var(--white); padding: 18px 24px 24px; }
-  .guide-body p { font-size: 0.88rem; color: var(--gray); margin-bottom: 16px; }
-  .guide-foot { display: flex; align-items: center; justify-content: space-between; }
-  .price { font-family: 'Fredoka', sans-serif; font-weight: 700; color: var(--maroon); }
+  .guide-card { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: var(--pink-bg); max-width: 420px; transition: transform .18s, box-shadow .18s; }
+  .guide-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .guide-card-link { display: block; }
+  .guide-card-graphic { width: 100%; height: auto; display: block; }
+  .guide-card-cta { padding: 16px 20px 20px; text-align: center; background: var(--white); }
+
+  .kit-form-fullwidth { margin-top: 32px; max-width: 100%; overflow-x: hidden; background: var(--pink-bg); border-radius: var(--radius); padding: 28px 24px; box-shadow: var(--shadow); }
+
+  @media (max-width: 640px) {
+    .guides .grid2 { grid-template-columns: 1fr; }
+    .guides .guide-card { max-width: 420px; margin: 0 auto; }
+    .kit-form-fullwidth { padding: 20px 16px; margin-top: 24px; }
+  }
 
   /* BLOG TEASER */
   .blogteaser { background: var(--cream); }
@@ -218,23 +223,20 @@ permalink: "index.html"
     <h2 class="stitle">Downloadable Trip Guides</h2>
     <p class="ssub">Printable, practical guides made for real families — not generic park blogs.</p>
     <div class="grid2">
+      <a class="guide-card guide-card-link" href="guides/ultimate-park-day-packing-checklist.pdf">
+        <img class="guide-card-graphic" src="photos/promo-park-day-checklist.png" alt="Ultimate Park Day Packing Checklist — free printable 1-page PDF, get your free checklist">
+      </a>
+      <a class="guide-card guide-card-link" href="#kit-signup">
+        <img class="guide-card-graphic" src="photos/promo-ultimate-packing-list.png" alt="The Ultimate Disney Packing List — free with email signup, sign up below">
+      </a>
       <div class="guide-card">
-        <div class="guide-top"><div class="picon">🎒</div><strong>Ultimate Park Day Packing Checklist</strong></div>
-        <div class="guide-body"><p>A printable, 1-page checklist covering Essentials, Sun &amp; Weather, your Park Bag, and Traveling With Family — everything you need for a smooth day in the parks.</p><div class="guide-foot"><span class="price" style="color:var(--coral)">FREE</span><a class="btn-sm" href="guides/ultimate-park-day-packing-checklist.pdf" style="background:var(--coral)">Get It →</a></div></div>
-      </div>
-      <div class="guide-card">
-        <div class="guide-top"><div class="picon">🧳</div><strong>The Ultimate Disney Packing List</strong></div>
-        <div class="guide-body">
-          <p>A more complete 7-page Disney vacation packing resource, sent straight to your inbox.</p>
-          <div class="guide-foot"><span class="price" style="color:var(--purple)">FREE WITH EMAIL</span></div>
-        </div>
-      </div>
-      <div class="guide-card">
-        <div class="guide-top"><div class="picon">📘</div><strong>Disney Vacation Planner</strong></div>
-        <div class="guide-body"><p>A 13-page printable Disney vacation planner — plan every park day, outfit, and to-do in one place.</p><div class="guide-foot"><span class="price" style="color:var(--purple)">$4 DIGITAL DOWNLOAD</span><a class="btn-sm" href="https://disneylife0.gumroad.com/l/wqgoxx" target="_blank" rel="noopener" style="background:var(--purple)">Get the Planner →</a></div></div>
+        <a class="guide-card-link" href="https://disneylife0.gumroad.com/l/wqgoxx" target="_blank" rel="noopener">
+          <img class="guide-card-graphic" src="photos/promo-vacation-planner.png" alt="Disney Vacation Planner — 13-page printable planner, $4 digital download">
+        </a>
+        <div class="guide-card-cta"><a class="btn-sm" href="https://disneylife0.gumroad.com/l/wqgoxx" target="_blank" rel="noopener" style="background:var(--purple)">Get the Planner →</a></div>
       </div>
     </div>
-    <div class="kit-form-fullwidth" style="margin-top:32px;">
+    <div class="kit-form-fullwidth" id="kit-signup">
       <script async data-uid="97edddd727" src="https://the-pixie-packed-family.kit.com/97edddd727/index.js"></script>
     </div>
   </div>
