@@ -4,7 +4,7 @@ date: 2026-08-03
 tag: "travel-tips"
 excerpt: "Disney trips don't have to drain your bank account. Here's exactly how our family cuts costs at Walt Disney World while still having the most magical time possible."
 meta_description: "Disney trips don't have to drain your bank account. Here's exactly how our family cuts costs at Walt Disney World while still having the most magical time possible."
-hero_image: "photos/blog-6-ways-hero-family-castle.jpg"
+hero_image: "photos/blog-6-ways-hero-v2.png"
 hero_alt: "The Pixie Packed Family together in front of Cinderella Castle at Magic Kingdom, with the two youngest children's faces covered by pink Minnie bows for privacy"
 status: "published"
 ---

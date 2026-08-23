@@ -4,7 +4,7 @@ date: 2026-08-02
 tag: "travel-tips"
 excerpt: "There's no single magical pair of 'Disney shoes' that works for every family member — here's how we found what actually works for each of us, and how you can find what works for you."
 meta_description: "There isn't one perfect Disney shoe for everyone. Here's how our family figured out what actually works for each of us — and how you can do the same before your trip."
-hero_image: "photos/blog-shoes-hero-family.jpg"
+hero_image: "photos/blog-shoes-hero-v2.png"
 hero_alt: "Pixie Packed Family together during a Disney park day, wearing the different shoes that work for each member of the family."
 status: "published"
 ---
