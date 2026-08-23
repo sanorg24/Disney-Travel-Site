@@ -43,8 +43,8 @@ permalink: "outfits.html"
   .cat-title { font-size: 1.4rem; margin-bottom: 4px; }
   .cat-sub { color: var(--gray); font-size: 0.9rem; margin-bottom: 26px; }
 
-  .outfit-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 20px; }
-  .outfit-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; }
+  .outfit-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .outfit-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; flex: 1 1 210px; max-width: 300px; }
   .outfit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
   .outfit-card img { width: 100%; height: auto; } /* full photo, never cropped */
   .outfit-card-body { padding: 14px 16px 16px; }
