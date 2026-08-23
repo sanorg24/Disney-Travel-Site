@@ -106,8 +106,8 @@ export default [
     catTitle: "Footwear",
     catSub: "Comfortable, park-tested shoes for all-day walking.",
     hasSubgroups: true,
-    subgroupOrder: ["footwear-mens", "footwear-womens"],
-    subgroupLabels: { "footwear-mens": "Men's", "footwear-womens": "Women's" }
+    subgroupOrder: ["footwear-mens", "footwear-womens", "footwear-kids"],
+    subgroupLabels: { "footwear-mens": "Men's", "footwear-womens": "Women's", "footwear-kids": "Kids" }
   },
   {
     slug: "family-tees",
