@@ -152,9 +152,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("tagLabel", function (slug) {
     const labels = {
       "travel-tips": "Travel Tips",
-      "disney-news": "Disney News",
-      "amazon-finds": "Amazon Finds",
-      "outfit-inspiration": "Outfit Inspiration",
+      "disney-news": "Disney News & Updates",
+      "outfit-inspiration": "Outfits & Packing",
       "family-accessibility": "Family & Accessibility"
     };
     return labels[slug] || slug;

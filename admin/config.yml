@@ -1508,9 +1508,8 @@ collections:
         widget: "select"
         options:
           - { label: "Travel Tips", value: "travel-tips" }
-          - { label: "Disney News", value: "disney-news" }
-          - { label: "Amazon Finds", value: "amazon-finds" }
-          - { label: "Outfit Inspiration", value: "outfit-inspiration" }
+          - { label: "Disney News & Updates", value: "disney-news" }
+          - { label: "Outfits & Packing", value: "outfit-inspiration" }
           - { label: "Family & Accessibility", value: "family-accessibility" }
       - label: "Excerpt"
         name: "excerpt"
