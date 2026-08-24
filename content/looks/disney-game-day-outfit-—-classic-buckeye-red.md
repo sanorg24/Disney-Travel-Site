@@ -2,8 +2,8 @@
 title: Disney Game Day Outfit — Classic Buckeye Red
 theme: park-day-outfits
 collage_image: /photos/pasted-image-1787573069242.png
-collage_image_alt: Disney game day outfit featuring a red Ohio State Disney T-shirt, Minnie-inspired Loungefly backpack and accessories, Buckeyes hat, phone case and black sneakers.
-pixie_note: Start with your team tee, then let the Disney accessories do the rest! A Loungefly, Minnie ears or a fun character accessory can turn a simple game day outfit into a Disney look without everything having to match perfectly. ❤️🏈✨
+collage_image_alt: ''
+pixie_note: 'Our tip: Start with your team tee and let the Disney accessories bring the magic! ❤️🏈✨'
 status: published
 order: 5
 items:
