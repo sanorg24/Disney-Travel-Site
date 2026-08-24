@@ -7,11 +7,11 @@ pixie_note: ''
 status: draft
 order: 11
 items:
-  - label: Disney Mickey Baby Boys 3-piece set
+  - label: Baby Boys 3-piece set- Mickey
     amazon_url: https://amzn.to/4gaFuZC
-  - label: Disney Mickey Boys 2-piece shorts set
+  - label: Boys 2-piece shorts set-Mickey
     amazon_url: https://amzn.to/3SHgxxb
-  - label: Disney Minnie Mouse Girls Dress
+  - label: Girls Dress- Minnie
     amazon_url: https://amzn.to/4zlLYNV
   - label: Girls Animal Kingdom T-shirt
     amazon_url: https://amzn.to/4x3YtfJ
