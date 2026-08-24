@@ -7,19 +7,19 @@ pixie_note: 'Our tip: Start with your team tee and let the Disney accessories br
 status: published
 order: 5
 items:
-  - label: Women's Ohio State Buckeyes Mickey Mouse Vintage Red V-Neck T-Shirt
+  - label: Women's V-Neck T-Shirt
     amazon_url: https://amzn.to/4gPuYsc
-  - label: Loungefly x Disney Minnie Mouse Polka Dot Cosplay Flap Wallet
+  - label: Loungefly x Disney Wallet
     amazon_url: https://amzn.to/3UaNQcw
-  - label: Loungefly Disney Minnie Mouse Polka Dot
+  - label: Loungefly Disney Backpack
     amazon_url: https://amzn.to/4gu6DH9
-  - label: Brooks Women’s Ghost 18 Running Shoe
+  - label: Brooks Women’s Shoe
     amazon_url: https://amzn.to/4zwtGK4
-  - label: NCAA Women's Ohio State Buckeyes Ponytail Cap
+  - label: Ponytail Cap-White
     amazon_url: https://amzn.to/3UerEOE
-  - label: Disney x Minnie Mouse- Touchland Hand Sanitizer & Case Set Travel Size
+  - label: Hand Sanitizer & Case Set
     amazon_url: https://amzn.to/3Ui9Baf
-  - label: Mouse Ears Headbands- Polka Dot-Black and Red
+  - label: Mouse Ears Headband
     amazon_url: https://amzn.to/4yj69er
 permalink: false
 ---
