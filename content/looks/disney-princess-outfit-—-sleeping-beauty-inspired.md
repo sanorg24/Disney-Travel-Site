@@ -13,7 +13,7 @@ items:
     amazon_url: https://amzn.to/4qBBKFm
   - label: Princess - Sleeping Beauty Bracelet
     amazon_url: https://amzn.to/46izmdb
-  - label: Polarized Sunglasses for Women with UV400 Protection
+  - label: Polarized Sunglasses- Women- UV400 Protection
     amazon_url: https://amzn.to/46izmdb
   - label: Mouse Ears Headbands- Pink Sequin
     amazon_url: https://amzn.to/4iloxyk
