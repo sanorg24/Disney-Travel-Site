@@ -7,7 +7,7 @@ pixie_note: ''
 status: published
 order: 9
 items:
-  - label: Marvel Guardians of The Galaxy Star-Lord Flight T-Shirt
+  - label: Marvel - Star-Lord T-Shirt
     amazon_url: https://amzn.to/45GdyIp
   - label: Stretch Mens Golf Shorts 7"
     amazon_url: https://amzn.to/45GxRFA
@@ -15,7 +15,7 @@ items:
     amazon_url: https://amzn.to/3UQ6K8C
   - label: On Men's Cloudmonster
     amazon_url: https://amzn.to/4giEZhq
-  - label: Waterproof Quick Dry Performance Hat
+  - label: Waterproof Quick Dry Hat
     amazon_url: https://amzn.to/4qxrpdH
 permalink: false
 ---
