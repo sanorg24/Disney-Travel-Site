@@ -5,7 +5,7 @@ alt: ''
 amazon_url: https://amzn.to/4wQHNap
 image_source: uploaded
 status: published
-order: 9
+order: 8
 category: backpacks
 subgroup: ''
 pixie_tip: ''
