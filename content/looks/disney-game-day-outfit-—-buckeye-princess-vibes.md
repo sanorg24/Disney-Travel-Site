@@ -7,15 +7,15 @@ pixie_note: Who says princesses can’t be Buckeyes? 👑❤️🏈
 status: published
 order: 8
 items:
-  - label: Vibes T-shirt
+  - label: Disney- Ohio State Vibes T-shirt
     amazon_url: https://amzn.to/4xYTFsa
-  - label: Loungefly Disney Backpack
+  - label: Loungefly Disney-Cinderella Castle Backpack
     amazon_url: https://amzn.to/3Uwrouo
-  - label: Loungefly Disney Wallet
+  - label: Loungefly Disney Wallet- White
     amazon_url: https://amzn.to/464oLCR
-  - label: Water Bottle
+  - label: Ohio State Water Bottle
     amazon_url: https://amzn.to/4goRM0v
-  - label: Charm Bracelet
+  - label: Game Day Charm Bracelet
     amazon_url: https://amzn.to/4iqEEuu
   - label: Mouse Ears Headband
     amazon_url: https://amzn.to/4wEoPDT
