@@ -47,7 +47,7 @@ That's why my first Disney park-bag rule is simple:
 
 Don't pack for somebody else's family. Pack for yours.
 
-![](/photos/pasted-image-1787531520960.png)
+![](/photos/pasted-image-1787533813189.png)
 
 2. Florida Heat Changes Everything
 
@@ -73,7 +73,7 @@ That's something we've learned after enough hot Disney days: when everyone start
 
 Comfort wins.
 
-![](/photos/pasted-image-1787531756247.png)
+![](/photos/pasted-image-1787533774939.png)
 
 3. Sometimes the Mouse Ears Stay Home
 
@@ -97,7 +97,7 @@ Cute ears or Florida survival?
 
 Florida survival occasionally wins. 😂
 
-![](/photos/pasted-image-1787532809592.png)
+![](/photos/pasted-image-1787533730330.png)
 
 4. Bring Your Own Drinks and Snacks
 
@@ -161,7 +161,7 @@ The important part is having something.
 
 Because buying emergency rain gear after the sky opens is a lot less fun than pulling something out of your bag and continuing your day.
 
-![](/photos/pasted-image-1787532088788.png)
+![](/photos/pasted-image-1787533681722.png)
 
 7. Make Your Gear Work Harder
 
