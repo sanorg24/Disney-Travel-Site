@@ -7,7 +7,7 @@ image_source: uploaded
 status: published
 order: 21
 category: ears-headbands
-subgroup: halloween-womens
+subgroup: ''
 pixie_tip: ''
 personal_photo: ''
 personal_photo_alt: ''
