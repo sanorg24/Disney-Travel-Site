@@ -9,15 +9,15 @@ order: 4
 items:
   - label: Casual T Shirt Dress
     amazon_url: https://amzn.to/3U9HjyN
-  - label: Loungefly Disney Cinderella Happily Ever After
+  - label: Loungefly Disney Cinderella Backpack
     amazon_url: https://amzn.to/3S4yiGE
-  - label: On Womens Cloud 6
+  - label: On Women's Cloud 6 Shoe
     amazon_url: https://amzn.to/4xXfJDl
   - label: Sterling Silver Ring-Cinderella
     amazon_url: https://amzn.to/4wPYgfg
-  - label: Polarized Sunglasses for Women Fashion UV Protection
+  - label: Polarized Sunglasses-Women- UV Protection
     amazon_url: https://amzn.to/4y4cmL7
-  - label: Mouse Ears Headband with Castle Bows
+  - label: Mouse Ears Headband-Castle Bows
     amazon_url: https://amzn.to/4xYvTfR
 permalink: false
 ---
