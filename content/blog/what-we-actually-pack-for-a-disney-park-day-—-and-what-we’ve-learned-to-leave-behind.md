@@ -4,7 +4,7 @@ date: 2026-08-23
 tag: outfit-inspiration
 excerpt: What should you actually carry into Walt Disney World? After years of park days, our family has learned to pack for the people, weather and day ahead—not somebody else's giant Disney packing list.
 meta_description: Wondering what to pack for a Disney park day? See what our family actually brings for Florida heat, rain, snacks and comfort—and what we've learned to leave behind.
-hero_image: /photos/pasted-image-1787531045812.png
+hero_image: /photos/pasted-image-1787533366168.png
 hero_alt: Family visiting EPCOT on a Walt Disney World park day with lightweight bags and comfortable park gear
 status: published
 ---
