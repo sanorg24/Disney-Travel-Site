@@ -5,7 +5,12 @@ alt: ''
 amazon_url: https://amzn.to/4wuiAmd
 image_source: amazon
 status: published
-order: 1
+order: 5
 category: backpacks
+subgroup: ''
+pixie_tip: ''
+personal_photo: ''
+personal_photo_alt: ''
+personal_video_url: ''
 permalink: false
 ---
