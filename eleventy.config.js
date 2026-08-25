@@ -10,15 +10,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("photos");
   eleventyConfig.addPassthroughCopy("guides");
   eleventyConfig.addPassthroughCopy("CNAME");
-  eleventyConfig.addPassthroughCopy("accessories.html");
-  eleventyConfig.addPassthroughCopy("apparel.html");
-  eleventyConfig.addPassthroughCopy("blog-6-ways-our-disney-loving-family-actually-saves-money-at-walt.html");
-  eleventyConfig.addPassthroughCopy("blog-welcome-to-the-blog.html");
-  eleventyConfig.addPassthroughCopy("blog-why-good-shoes-can-make-or-break-your-disney-vacation-for-ev.html");
-  eleventyConfig.addPassthroughCopy("blog.html");
-  eleventyConfig.addPassthroughCopy("holidays.html");
-  eleventyConfig.addPassthroughCopy("index.html");
-  eleventyConfig.addPassthroughCopy("sun-travel-essentials.html");
   eleventyConfig.addPassthroughCopy("admin");
 
   // --- CMS content collections --------------------------------------------
@@ -90,6 +81,97 @@ export default function (eleventyConfig) {
       .sort((a, b) => (a.order || 0) - (b.order || 0));
   });
 
+  // Taxonomy-driven Shop hub. Resolves active Groups (Groups -> Categories ->
+  // Products) into card-ready data: label/description/URL come straight from
+  // the CMS-editable Group taxonomy file; the card image is derived
+  // deterministically from the Group's first active Category (by order),
+  // then that Category's first published Product (by order) -- Vanessa can
+  // change the featured image seasonally just by reordering, no separate
+  // image field to maintain. A Group whose first Category/Product/image
+  // can't be resolved this way gets cardImage: null and is omitted from the
+  // Shop hub grid (never rendered broken) -- its own landing page still
+  // generates via dynamicGroupPages below.
+  //
+  // Four Groups (accessories, apparel, sun-travel, holidays) already have
+  // their own hand-built dedicated templates/pages and keep them exactly as
+  // they are -- they're excluded from the generic group-page.njk pagination
+  // target (dynamicGroupPages) so we never generate a duplicate page for
+  // them, but they're still included in shopGroups so their Shop hub card
+  // is taxonomy-driven like every other Group.
+  const DEDICATED_GROUP_TEMPLATES = ["accessories", "apparel", "sun-travel", "holidays"];
+
+  function resolveShopGroups(collectionApi) {
+    const groups = collectionApi.getFilteredByGlob("content/taxonomy/groups/*.md")
+      .map((item) => item.data)
+      .filter((g) => g.active)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    const categories = collectionApi.getFilteredByGlob("content/taxonomy/categories/*.md")
+      .map((item) => item.data)
+      .filter((c) => c.active);
+
+    const products = collectionApi.getFilteredByGlob("content/products/*.md")
+      .map((item) => item.data)
+      .filter((p) => p.status === "published");
+
+    function firstItemImage(categorySlug) {
+      const catProducts = products
+        .filter((p) => p.category === categorySlug)
+        .sort((a, b) => (a.order || 0) - (b.order || 0));
+      if (!catProducts.length) return null;
+      const first = catProducts[0];
+      if (!first.image) return null;
+      return { image: first.image, alt: first.alt || "" };
+    }
+
+    return groups.map((g) => {
+      const groupCategories = categories
+        .filter((c) => c.group === g.slug)
+        .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+      let cardImage = null;
+      let cardImageAlt = "";
+      if (groupCategories.length) {
+        const resolved = firstItemImage(groupCategories[0].slug);
+        if (resolved) {
+          cardImage = resolved.image;
+          cardImageAlt = resolved.alt || g.label;
+        }
+      }
+
+      const categoryCards = groupCategories.map((c) => {
+        const resolved = firstItemImage(c.slug);
+        return {
+          slug: c.slug,
+          label: c.label,
+          permalink: c.permalink_path || "",
+          cardImage: resolved ? resolved.image : null,
+          cardImageAlt: resolved ? (resolved.alt || c.label) : "",
+        };
+      });
+
+      return {
+        slug: g.slug,
+        label: g.label,
+        description: g.description || "",
+        permalink: g.permalink_path || "",
+        order: g.order || 0,
+        isDedicated: DEDICATED_GROUP_TEMPLATES.includes(g.slug),
+        cardImage,
+        cardImageAlt,
+        categories: categoryCards,
+      };
+    });
+  }
+
+  eleventyConfig.addCollection("shopGroups", function (collectionApi) {
+    return resolveShopGroups(collectionApi);
+  });
+
+  eleventyConfig.addCollection("dynamicGroupPages", function (collectionApi) {
+    return resolveShopGroups(collectionApi).filter((g) => !g.isDedicated);
+  });
+
   // All other categories: one generic collection of every published
   // product, any category. The shared category-page layout filters this
   // per-page (by page.slug) using plain Nunjucks equality checks, not
@@ -118,6 +200,54 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("byTheme", function (looks, theme) {
     return (looks || []).filter((l) => l.theme === theme);
+  });
+
+  // --- Blog content collection -------------------------------------------
+  // Each post lives as content/blog/<slug>.md; content/blog/blog.json (an
+  // Eleventy directory data file) applies the shared layout, permalink
+  // pattern, and "blogPosts" tag to every post automatically, so individual
+  // post front matter only needs the content fields (title/date/tag/
+  // excerpt/hero image/body) -- no per-post template or manual Blog Hub
+  // card editing required going forward.
+  eleventyConfig.addCollection("blogPosts", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("content/blog/*.md")
+      .filter((item) => item.data.status === "published")
+      .sort((a, b) => {
+        const dateA = new Date(a.data.date).getTime();
+        const dateB = new Date(b.data.date).getTime();
+        if (dateB !== dateA) return dateB - dateA; // newest first
+        return a.data.title.localeCompare(b.data.title); // deterministic tiebreak for same-date posts
+      });
+  });
+
+  // Single structured-date formatter, used identically by both the Blog
+  // Hub cards and each article's own page -- one source of truth, no
+  // duplicated hand-typed date strings.
+  eleventyConfig.addFilter("isoDate", function (d) {
+    if (!d) return "";
+    const date = (d instanceof Date) ? d : new Date(d);
+    if (isNaN(date.getTime())) return String(d);
+    return date.toISOString().slice(0, 10);
+  });
+
+  // Maps a Blog post's stored category slug to the human-readable label
+  // already used by the Blog Hub's filter buttons.
+  // Eleventy's collection-item .url always includes a leading "/" (URL
+  // path from domain root). Every other link in this codebase is a bare
+  // relative path (e.g. href="apparel.html"), so this strips that leading
+  // slash to match the existing convention rather than introduce a new one.
+  eleventyConfig.addFilter("stripLeadingSlash", function (url) {
+    return (url || "").replace(/^\//, "");
+  });
+
+  eleventyConfig.addFilter("tagLabel", function (slug) {
+    const labels = {
+      "travel-tips": "Travel Tips",
+      "disney-news": "Disney News & Updates",
+      "outfit-inspiration": "Outfits & Packing",
+      "family-accessibility": "Family & Accessibility"
+    };
+    return labels[slug] || slug;
   });
 
   return {
