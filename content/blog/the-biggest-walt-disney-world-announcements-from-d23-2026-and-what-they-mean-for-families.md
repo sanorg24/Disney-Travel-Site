@@ -67,7 +67,7 @@ For the rest of us?
 
 A MALEFICENT COASTER?! 😳😂
 
-![](/photos/pasted-image-1787508873851.png)
+[![](/photos/pasted-image-1787508873851.png "Concept art © Disney")](https://disneyparksblog.com/d23-event/)
 
 Disney, you have our attention.
 
@@ -137,7 +137,7 @@ Disney says those experiences are planned to open in 2027 while work continues o
 
 If you're planning a 2027 trip specifically for Monsters, Inc., don't assume that every piece of Monstropolis will necessarily debut simultaneously. Disney specifically distinguishes the 2027 openings from the coaster, which is still under development.
 
-![](/photos/pasted-image-1787509221404.png)
+[![](/photos/pasted-image-1787509221404.png "Concept art © Disney")](https://disneyparksblog.com/d23-event/)
 
 That's something we'll be watching as Disney releases more details.
 
@@ -173,7 +173,7 @@ The mythological Tsukán serpent will be represented by a massive Audio-Animatro
 
 Disney is describing this as an original Indiana Jones story created for Animal Kingdom, which makes this a genuinely new Disney World experience.
 
-![](/photos/pasted-image-1787509945397.png)
+[![](/photos/pasted-image-1787509945397.png "Concept art © Disney")](https://disneyparksblog.com/d23-event/)
 
 Encanto is getting a family attraction
 
@@ -183,7 +183,7 @@ Disney says the attraction will have no height requirement, feature more than 50
 
 Several members of the movie's voice cast are also returning for the attraction.
 
-![](/photos/pasted-image-1787509725677.png)
+[![](/photos/pasted-image-1787509725677.png "Concept art © Disney")](https://disneyparksblog.com/d23-event/)
 
 ✨ What this means for families: THIS is an important detail.
 
@@ -251,20 +251,4 @@ And we're going to be following it every step of the way.
 
 💫 Helping families pack less stress & more pixie dust ✨
 
-Planning a future Walt Disney World vacation? Save this post, because we'll update our planning advice as Disney announces opening dates, height requirements and other details families need to know.
-
-And tell us:
-
-Which D23 announcement has YOUR family the most excited?
-
-Piston Peak? 🚗  
-
-Villains Land? 😈  
-
-Monstropolis? 👹  
-
-Indiana Jones? 🐍  
-
-Dreamfinder & Figment? 💜  
-
-Or something else entirely?
+Concept art © Disney. Source: Disney Parks Blog. Used for news reporting/commentary.
