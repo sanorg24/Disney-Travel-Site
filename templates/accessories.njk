@@ -93,14 +93,18 @@ permalink: "accessories.html"
           <span class="btn-sm">Shop Ears &amp; Headbands →</span>
         </div>
       </a>
-      <a class="hub-card" href="accessories-backpacks.html">
-        <img class="hub-photo" src="photos/backpack-highsierra-black.jpg" alt="Backpacks">
+{%- set accessoriesGroup = collections.shopGroups | selectattr("slug", "equalto", "accessories") | first %}
+{%- set parkBagsCategory = accessoriesGroup.categories | selectattr("slug", "equalto", "backpacks") | first %}
+{%- if parkBagsCategory and parkBagsCategory.cardImage %}
+      <a class="hub-card" href="{{ parkBagsCategory.permalink }}">
+        <img class="hub-photo" src="{{ parkBagsCategory.cardImage }}" alt="{{ parkBagsCategory.cardImageAlt }}">
         <div class="hub-card-body">
-          <h3>Backpacks</h3>
-          <p>Comfortable, practical bags built for a full day of walking.</p>
-          <span class="btn-sm">Shop Backpacks →</span>
+          <h3>{{ parkBagsCategory.label }}</h3>
+          <p></p>
+          <span class="btn-sm">Shop {{ parkBagsCategory.label }} →</span>
         </div>
       </a>
+{%- endif %}
       <a class="hub-card" href="accessories-loungefly.html">
         <img class="hub-photo" src="photos/accessories-loungefly-01.jpg" alt="Loungefly">
         <div class="hub-card-body">
