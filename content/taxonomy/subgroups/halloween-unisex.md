@@ -1,5 +1,5 @@
 ---
-label: "Unisex"
+label: "Family Halloween — Unisex"
 slug: "halloween-unisex"
 category: family-halloween
 order: 1

@@ -1,5 +1,5 @@
 ---
-label: "Women's"
+label: "Footwear — Women's"
 slug: "footwear-womens"
 category: footwear
 order: 2

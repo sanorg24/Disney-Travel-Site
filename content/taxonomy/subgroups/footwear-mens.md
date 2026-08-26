@@ -1,5 +1,5 @@
 ---
-label: "Men's"
+label: "Footwear — Men's"
 slug: "footwear-mens"
 category: footwear
 order: 1

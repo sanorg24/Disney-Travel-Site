@@ -1,5 +1,5 @@
 ---
-label: "Backpacks"
+label: "Loungefly — Backpacks"
 slug: "loungefly-backpacks"
 category: loungefly
 order: 1
