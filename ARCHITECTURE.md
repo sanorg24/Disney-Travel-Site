@@ -1,5 +1,126 @@
 # ARCHITECTURE.md — The Pixie Packed Family
 
+## 🔴 SESSION HANDOFF — 2026-08-24 — READ THIS FIRST (current architecture)
+
+> Everything below this section describes a pure static-HTML, no-build-step architecture. **That
+> is no longer accurate.** This section is the current, verified picture. See
+> PROJECT-CONTEXT.md's handoff section for the branch/PR/task state; this section is the
+> technical "how it actually works now."
+
+### Stack, in one line (current)
+
+**Eleventy (11ty)** static site generator, Nunjucks templates, content authored through
+**Sveltia CMS** (a Decap/Netlify-CMS-compatible, git-backed headless CMS), still deployed as a
+static build to GitHub Pages. There is now a real build step (`npm run build` runs Eleventy);
+the repo has `.github/workflows/` (a production build+deploy workflow triggered on push to
+`main`, and a separate CMS auto-PR workflow — see below).
+
+### Sveltia CMS — how content actually gets published
+
+- **Backend:** `github`, `branch: cms-edits` — Sveltia **never commits directly to `main`**.
+- **`cms-auto-pr.yml`** workflow: triggers on any push to `cms-edits`. If there is no
+  already-open PR from `cms-edits` → `main`, it opens one titled "CMS content updates." If one
+  is already open, it does nothing (the same PR just accumulates the new commit) — this is why
+  a CMS PR must be **merged promptly** after each session; a long-lived open CMS PR keeps
+  absorbing every subsequent save until it's dealt with (this happened once — PR #55 sat open
+  for days, went 90+ commits stale relative to `main`, and had to be carefully audited and its
+  genuinely-valuable content manually extracted onto a fresh branch rather than merged as-is;
+  fully resolved, `cms-edits` was reset to match `main`, see CHANGELOG.md).
+- **A human must merge the CMS PR** — nothing auto-merges. After merging, `cms-edits` does
+  **not** automatically catch up to `main`; someone must explicitly sync it (delete + recreate
+  from `main`, or a force-push) or it starts drifting again.
+- **Content lives in Markdown files with YAML front matter** under `content/` — Products,
+  Looks, Blog posts, and (as of this session) the full Taxonomy hierarchy are all real, editable
+  Sveltia collections, not hard-coded.
+
+### The taxonomy system — three real levels, not two
+
+```
+Groups (content/taxonomy/groups/*.md)
+  └── Categories (content/taxonomy/categories/*.md)  — category.group references a Group's slug
+        └── Subgroups (content/taxonomy/subgroups/*.md) — subgroup.category references a Category's slug
+```
+
+All three levels are real, CMS-editable Sveltia collections (`taxonomy_groups`,
+`taxonomy_categories`, `taxonomy_subgroups`) with `create`/`delete` enabled. **Products**
+reference a Category via `category: <slug>` and, for the 3 categories that use them
+(Footwear, Family Halloween, Loungefly), a Subgroup via `subgroup: <slug>`.
+
+**Critical fact for anyone touching this:** taxonomy content files are read by exactly one
+thing at build time, `eleventy.config.js`'s `taxonomyValidation` collection — it cross-checks
+every Product's `category`/`subgroup` against the real taxonomy files and **fails the build**
+(not just a warning) if a Product references a Category whose parent Group doesn't match, or a
+Subgroup whose parent Category doesn't match. **This validator is intentional and must not be
+weakened or removed** — it caught a real production issue once already (three Ears & Headbands
+products had accidentally been assigned a Family Halloween subgroup through Sveltia's
+unfiltered relation picker; fixed by clearing the bad subgroup values, see CHANGELOG.md).
+
+**Separately, `_data/categoryPages.js`** is a hand-maintained static JS array that actually
+drives each Category's own product-listing page (via `templates/category-page.njk`, a generic
+Eleventy-pagination-over-data template used by 15+ Categories). **This file is NOT read from
+the taxonomy content files** — adding a new Category through Sveltia alone does not make it
+appear on the public site; a matching entry must also be added here by a developer. This is a
+known, deliberate architectural gap (documented, not yet closed) — see "Group-level taxonomy
+now goes further" below for the one piece of this that *was* closed this session.
+
+**As of this session, Group-level taxonomy is different: it's no longer purely a hand-maintained
+JS array problem.** A new `shopGroups` Eleventy collection resolves the Shop hub's Group-level
+cards directly from `content/taxonomy/groups/*.md` (label, description, URL, and a derived
+image — see below), and a new generic `templates/group-page.njk` gives any new Group (that
+doesn't already have its own dedicated template) a real landing page automatically. This closes
+the "new taxonomy entry has zero public effect" gap **at the Group level only** — Category-level
+still requires the `categoryPages.js` step described above.
+
+### Dynamic card-image derivation (new this session)
+
+For any Group or Category card that needs a representative image, instead of a hand-picked
+image field to maintain: **first active Category in the Group (by `order`) → first published
+Product in that Category (by `order`) → that Product's `image` field.** Strict single-path
+lookup — if any link in the chain is missing, the card is cleanly omitted from its grid, never
+rendered broken. This means changing which Product/Category sits at the lowest `order` value
+changes the featured image automatically, with zero code change — **verified against a real
+Vanessa CMS change** (see PROJECT-CONTEXT.md's handoff section for the exact before/after).
+
+### Repository structure (current, high level)
+
+```
+content/
+  products/*.md            → individual Products (Amazon-affiliate items)
+  looks/*.md                → curated "Look" collage entries (Outfits page)
+  blog/*.md                 → Blog posts (+ blog.11tydata.js for computed permalink/status logic)
+  taxonomy/groups/*.md      → top-level Shop areas (Apparel, Accessories, Sun & Park Day
+                               Essentials, Holidays, Travel Essentials)
+  taxonomy/categories/*.md  → sub-areas within a Group (e.g. Hats, Backpacks/Park Bags,
+                               Footwear, Family Halloween, Accessories & Jewelry)
+  taxonomy/subgroups/*.md   → finer split within specific Categories (Footwear
+                               Men's/Women's/Kids; Family Halloween Unisex/Women's/Youth;
+                               Loungefly Backpacks/Wallets)
+_data/categoryPages.js      → hand-maintained data driving each Category's own page (see above)
+templates/*.njk             → Nunjucks templates; category-page.njk and group-page.njk are
+                               generic/reusable; several top-level areas (accessories.njk,
+                               apparel.njk, sun-travel-essentials.njk, holidays.njk,
+                               accessories-backpacks.njk) are still their own dedicated files
+eleventy.config.js           → all Eleventy collections, including taxonomyValidation,
+                               allProducts, backpackProducts, blogPosts, shopGroups,
+                               dynamicGroupPages
+admin/config.yml             → the full Sveltia CMS configuration (every collection/field)
+```
+
+### Draft/publish behavior (Blog)
+
+Blog posts have a `status: draft`/`published` field. As of this session's fix (see
+CHANGELOG.md), a `draft` post is now correctly excluded from **both** the Blog Hub listing
+*and* standalone-page generation (previously, a draft's own page still built and was reachable
+via a guessable URL even though it didn't appear on the Hub — this was fixed via
+`content/blog/blog.11tydata.js`'s `eleventyComputed.permalink`, conditional on `status`).
+
+---
+
+> **Everything below this point describes the pre-migration, pure static-HTML architecture and
+> is now historical.** Useful for brand-era context (the Remy incident, the original hosting
+> setup) but not for understanding how the site actually works today.
+
+
 > Generated by directly cloning and inspecting `sanorg24/Disney-Travel-Site`. Where something
 > couldn't be verified from the repository alone (e.g. GitHub Pages dashboard settings, which
 > aren't stored in the repo itself), it's marked accordingly.

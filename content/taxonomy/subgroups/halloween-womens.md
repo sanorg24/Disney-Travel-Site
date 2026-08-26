@@ -1,5 +1,5 @@
 ---
-label: "Women's"
+label: "Family Halloween — Women's"
 slug: "halloween-womens"
 category: family-halloween
 order: 2

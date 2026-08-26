@@ -1,5 +1,5 @@
 ---
-label: "Wallets"
+label: "Loungefly — Wallets"
 slug: "loungefly-wallets"
 category: loungefly
 order: 2

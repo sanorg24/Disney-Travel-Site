@@ -1,5 +1,5 @@
 ---
-label: "Youth"
+label: "Family Halloween — Youth"
 slug: "halloween-youth"
 category: family-halloween
 order: 3

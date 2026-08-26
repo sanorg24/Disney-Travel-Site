@@ -81,6 +81,97 @@ export default function (eleventyConfig) {
       .sort((a, b) => (a.order || 0) - (b.order || 0));
   });
 
+  // Taxonomy-driven Shop hub. Resolves active Groups (Groups -> Categories ->
+  // Products) into card-ready data: label/description/URL come straight from
+  // the CMS-editable Group taxonomy file; the card image is derived
+  // deterministically from the Group's first active Category (by order),
+  // then that Category's first published Product (by order) -- Vanessa can
+  // change the featured image seasonally just by reordering, no separate
+  // image field to maintain. A Group whose first Category/Product/image
+  // can't be resolved this way gets cardImage: null and is omitted from the
+  // Shop hub grid (never rendered broken) -- its own landing page still
+  // generates via dynamicGroupPages below.
+  //
+  // Four Groups (accessories, apparel, sun-travel, holidays) already have
+  // their own hand-built dedicated templates/pages and keep them exactly as
+  // they are -- they're excluded from the generic group-page.njk pagination
+  // target (dynamicGroupPages) so we never generate a duplicate page for
+  // them, but they're still included in shopGroups so their Shop hub card
+  // is taxonomy-driven like every other Group.
+  const DEDICATED_GROUP_TEMPLATES = ["accessories", "apparel", "sun-travel", "holidays"];
+
+  function resolveShopGroups(collectionApi) {
+    const groups = collectionApi.getFilteredByGlob("content/taxonomy/groups/*.md")
+      .map((item) => item.data)
+      .filter((g) => g.active)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    const categories = collectionApi.getFilteredByGlob("content/taxonomy/categories/*.md")
+      .map((item) => item.data)
+      .filter((c) => c.active);
+
+    const products = collectionApi.getFilteredByGlob("content/products/*.md")
+      .map((item) => item.data)
+      .filter((p) => p.status === "published");
+
+    function firstItemImage(categorySlug) {
+      const catProducts = products
+        .filter((p) => p.category === categorySlug)
+        .sort((a, b) => (a.order || 0) - (b.order || 0));
+      if (!catProducts.length) return null;
+      const first = catProducts[0];
+      if (!first.image) return null;
+      return { image: first.image, alt: first.alt || "" };
+    }
+
+    return groups.map((g) => {
+      const groupCategories = categories
+        .filter((c) => c.group === g.slug)
+        .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+      let cardImage = null;
+      let cardImageAlt = "";
+      if (groupCategories.length) {
+        const resolved = firstItemImage(groupCategories[0].slug);
+        if (resolved) {
+          cardImage = resolved.image;
+          cardImageAlt = resolved.alt || g.label;
+        }
+      }
+
+      const categoryCards = groupCategories.map((c) => {
+        const resolved = firstItemImage(c.slug);
+        return {
+          slug: c.slug,
+          label: c.label,
+          permalink: c.permalink_path || "",
+          cardImage: resolved ? resolved.image : null,
+          cardImageAlt: resolved ? (resolved.alt || c.label) : "",
+        };
+      });
+
+      return {
+        slug: g.slug,
+        label: g.label,
+        description: g.description || "",
+        permalink: g.permalink_path || "",
+        order: g.order || 0,
+        isDedicated: DEDICATED_GROUP_TEMPLATES.includes(g.slug),
+        cardImage,
+        cardImageAlt,
+        categories: categoryCards,
+      };
+    });
+  }
+
+  eleventyConfig.addCollection("shopGroups", function (collectionApi) {
+    return resolveShopGroups(collectionApi);
+  });
+
+  eleventyConfig.addCollection("dynamicGroupPages", function (collectionApi) {
+    return resolveShopGroups(collectionApi).filter((g) => !g.isDedicated);
+  });
+
   // All other categories: one generic collection of every published
   // product, any category. The shared category-page layout filters this
   // per-page (by page.slug) using plain Nunjucks equality checks, not

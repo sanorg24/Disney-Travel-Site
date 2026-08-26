@@ -1,3 +1,175 @@
+# PROJECT-CONTEXT.md — The Pixie Packed Family
+
+## 🔴 SESSION HANDOFF — 2026-08-24 — READ THIS FIRST
+
+> Everything in this section is current, directly verified against the live repository as of
+> this handoff, and supersedes any conflicting statement in the older content below. The
+> content below this section predates a major architecture migration (see note at the boundary)
+> and is preserved for brand/voice/historical value, not as a description of the current stack.
+
+**This project no longer matches the "pure static HTML, no build step" description in the rest
+of this file.** The site now runs on **Eleventy (11ty) with a Sveltia CMS** authoring layer.
+Vanessa creates/edits Products, Looks, Blog posts, and (as of this session) Taxonomy entries
+herself through Sveltia — the CMS usability goal described later in this document has been
+substantially achieved. See ARCHITECTURE.md's new handoff section for the full technical
+picture (Eleventy collections, the three-level taxonomy system, the CMS→GitHub PR workflow).
+
+### Current `main`
+
+- **HEAD:** `9121aaa4ce3a202478048c2452531ea0992fe8de` (PR #78 merged)
+- PR #78 was a routine Sveltia CMS product-order change: **Polka Dots Sling Bag for Women
+  Crossbody Bag** is now `order: 1` in the `backpacks` (publicly labeled "Park Bags") category;
+  the previous order-1 product, the Maelstrom 40L backpack, moved to `order: 5`.
+- `main` is stable, deployed, and not the subject of any pending work.
+
+### Active unmerged branch — `taxonomy-driven-shop-hub`
+
+- **Current HEAD:** `be209c0cb25db91cb17ef221874455326f833316`
+- **Status: committed locally, NOT pushed, NOT merged, NOT yet opened as a PR.**
+- Based on current `main` (already includes PR #78 via a clean merge integration — see below).
+
+**What this branch implements**, in full:
+
+1. **Corrected two malformed taxonomy slugs** that had been saved through Sveltia with their
+   display-label text as the slug value instead of a proper slug (`"Accessories & Jewelry"` →
+   `accessories-jewelry`; `"Travel Essentials"` → `travel-essentials`). Both were unreferenced
+   by any Product at the time, so this was safe to do without any migration risk.
+2. **Extended the Group taxonomy schema** (`content/taxonomy/groups/*.md`) with two new fields:
+   `permalink_path` (each Group's real public URL — necessary because the `sun-travel` Group's
+   actual URL, `sun-travel-essentials.html`, does not match a slug-derived convention) and
+   `description` (the short blurb shown on its Shop hub card). All 4 pre-existing Groups kept
+   their exact existing URLs; only `travel-essentials` is new.
+3. **Approved display-label updates** applied to Group labels: `accessories` → "Park Day
+   Accessories", `holidays` → "Holidays & Festivals" (Apparel and Sun & Park Day Essentials
+   already matched their approved public titles).
+4. **Made the Shop hub (`shop.html`) taxonomy-driven.** A new Eleventy collection,
+   `shopGroups` (in `eleventy.config.js`), resolves every active Group into card-ready data
+   (label, description, URL, and a derived image — see #6 below) and `templates/shop.njk` now
+   loops over it instead of hard-coding each Group's card. The "Shop Disney Outfits" card stays
+   as an explicit, separately-coded entry, since Looks/Outfits are not part of the
+   Group→Category→Product taxonomy at all.
+5. **New generic `templates/group-page.njk`**, paginated over a second collection
+   (`dynamicGroupPages`, same underlying data minus the 4 Groups that already have their own
+   dedicated hand-built templates). This means any *new* Group — starting with
+   `travel-essentials` — automatically gets a real landing page with zero new template code, the
+   same way new Categories already get a page for free via the existing `category-page.njk`. It
+   correctly shows a graceful "Items coming soon — check back shortly!" message when a Group
+   has no Categories yet (currently true for Travel Essentials — it has zero Categories, so its
+   Shop hub card is also correctly omitted, not rendered broken).
+6. **Dynamic Group/Category-card image derivation — no new image field anywhere.** For any Group
+   or Category card that needs a representative image, the build walks: first active Category
+   in the Group (by `order`) → first published Product in that Category (by `order`) → that
+   Product's `image` field. This is a strict single-path lookup (not a fallback search across
+   multiple items) — if any link in that chain is missing, the card is cleanly **omitted**, never
+   rendered broken. This means Vanessa can change a Group's or Category's featured image purely
+   by reordering Products/Categories through Sveltia — **this has now been proven against a real
+   CMS change**, see below.
+7. **Also converted the Park Day Accessories hub's own Backpacks card** (`templates/accessories.njk`)
+   to this same dynamic mechanism — it now reads live from the same `shopGroups` data instead of
+   being separately hard-coded, so its title and image can never drift out of sync with the
+   taxonomy again the way "Backpacks" vs. the already-renamed "Park Bags" label just had.
+8. **8 subgroup CMS display labels disambiguated** (`content/taxonomy/subgroups/*.md`) — e.g.
+   "Women's" → "Footwear — Women's" vs. "Family Halloween — Women's" — since Sveltia shows all
+   subgroups in one flat, unfiltered list with no way to filter by the parent Category selected
+   on the same Product. Confirmed this field is read in exactly one place in code (a build-time
+   console warning), never in any public template — purely a CMS-editing-experience fix, zero
+   public-site rendering impact.
+9. **Added `pattern` regex validation** to both the Group and Category slug fields in
+   `admin/config.yml` (confirmed supported by Sveltia's own current documentation), rejecting
+   spaces/capitals/symbols going forward — directly preventing a repeat of the malformed-slug
+   issue fixed in #1.
+10. **URL preservation, confirmed throughout:** every existing Group/Category/Product/Look/Blog
+    URL is unchanged. The only new URL introduced anywhere is `travel-essentials.html`.
+
+### 🟢 Proven: dynamic image selection responds correctly to a real CMS change
+
+This is the most important thing to know about this branch's core mechanism, because it's now
+been validated against something Vanessa actually did, not just a hypothetical: she reordered
+Products in Sveltia (PR #78) → that PR merged to `main` → this branch was integrated with the
+new `main` (clean merge, zero conflicts, zero file overlap between the two) → **the Park Day
+Accessories Shop hub card automatically switched its image to the new order-1 product, with
+zero code change required.**
+
+- Selected image: `/photos/pasted-image-1787597341183.png`
+- Dimensions: `749×1380` (a meaningful resolution upgrade from the previous order-1 product's
+  135×135px image, which had been flagged as a real, if non-blocking, visual-quality concern
+  in the branch's own implementation report before this CMS change happened)
+
+### 🟡 Open item — do NOT lose this, not yet approved
+
+The most recent commit on this branch (`be209c0`) intentionally left the Park Day Accessories
+hub's Backpacks/Park Bags card with an **empty `<p></p>`** where a description used to be — the
+old hard-coded text ("Comfortable, practical bags built for a full day of walking.") was
+dropped because Category taxonomy data has no `description` field (only Group does). This was a
+deliberate trade-off, not an oversight, but **it has not been approved as final.**
+
+**Proposed next change, for review — NOT yet implemented:** restore a short visitor-facing
+description for this card:
+
+> "Backpacks, crossbody bags, slings, and small park bags for carrying the essentials
+> comfortably."
+
+Implementing this would most likely mean adding a `description` field to the Category taxonomy
+schema (mirroring what Group already has), or a narrower single-card fix — either way, treat
+this as the next decision to bring back to Troy/Vanessa, not something to implement without
+sign-off.
+
+### Current validation state (this session, on `be209c0`, after PR #78 integration)
+
+- Clean Eleventy build: **0 errors**
+- Taxonomy validation: **0 errors, 0 warnings**
+- Internal links: **0 broken** (site-wide checker)
+- Product count: **237** (unchanged by this branch)
+- Look count: **22** (unchanged by this branch)
+- Affiliate-link count: **355** (unchanged by this branch, confirmed via precise regex count)
+- Full recursive diff of the entire generated site against a pre-branch baseline: **exactly 5
+  pages differ anywhere on the whole site** — `admin/config.yml`, `shop.html`,
+  `accessories.html`, `accessories-backpacks.html` (product-grid reorder from PR #78 only), and
+  the new `travel-essentials.html`. Every other page — all other Category pages, every Product,
+  every Look, every Blog post, the homepage — confirmed byte-for-byte identical.
+- **Not yet visually reviewed in an actual browser** (no browser/screenshot capability was
+  available in the session that built this) — recommended before merging, especially the new
+  dynamic cards on `shop.html` and `accessories.html` at both desktop and mobile widths.
+
+### Established workflow for this project — do not skip steps
+
+**AUDIT → RECOMMEND → APPROVE → IMPLEMENT → TEST**, every time, for anything touching taxonomy,
+templates, or CMS configuration. Every batch of work this session followed this exact sequence:
+a read-only audit/report first, explicit approval from Troy/Vanessa, then implementation on a
+dedicated branch, then a full validation pass, then a written report — never skipping ahead to
+implementation without an explicit go-ahead, and never claiming something is "done" without
+having actually run the validation. Continue this pattern.
+
+### DO NOT BREAK — additions from this session
+
+- **`sun-travel` Group's real URL is `sun-travel-essentials.html`, not a slug-derived
+  `sun-travel.html`.** This is why the Group schema needed a real `permalink_path` field rather
+  than assuming a naming convention — don't reintroduce a slug-based URL assumption for Groups.
+- **The 4 pre-existing Groups (`accessories`, `apparel`, `sun-travel`, `holidays`) keep their
+  own dedicated, hand-built templates** (`accessories.njk`, `apparel.njk`,
+  `sun-travel-essentials.njk`, `holidays.njk`) — they are deliberately *not* migrated to the new
+  generic `group-page.njk`, to avoid touching already-live, already-approved pages. Only new
+  Groups going forward use the generic template.
+- **The dynamic image-derivation algorithm is a strict single-path lookup, not a fallback
+  search.** If the first Category's first Product has no image, the card is omitted — the
+  system does not search further down the list for a product that happens to have one. This is
+  intentional (it's what makes "change the #1 item to change the featured image" work
+  predictably) — don't quietly change this to a more forgiving search without approval.
+- **Do not retrofit the dynamic image mechanism onto the 4 existing Groups' own hub-card images**
+  without explicit approval — this was a deliberate scope decision to avoid silently changing
+  already-curated, already-live imagery on Apparel/Sun-Travel/Holidays's own top-level cards
+  (only their taxonomy-driven *Shop hub* card became dynamic; their own internal category-card
+  grids were left alone except for the one explicit Park Bags fix described above).
+
+---
+
+> **Everything below this point was written before the Eleventy + Sveltia CMS migration and
+> describes an earlier, now-superseded static-HTML architecture.** Brand identity, voice,
+> design-system colors/fonts, and historical incidents (e.g. the Remy incident) are still
+> accurate and worth reading. Anything describing file structure, specific page counts, "no
+> build step," or the CMS as a "future upgrade" is out of date — see the handoff section above
+> and ARCHITECTURE.md for the current picture.
+
 [PROJECT-CONTEXT.md](https://github.com/user-attachments/files/30876370/PROJECT-CONTEXT.md)
 [PROJECT-CONTEXT.md](https://github.com/user-attachments/files/30864898/PROJECT-CONTEXT.md)
 # PROJECT-CONTEXT.md — The Pixie Packed Family

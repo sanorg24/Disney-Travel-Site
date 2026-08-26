@@ -1,13 +1,17 @@
 ---
-permalink: "accessories.html"
+pagination:
+  data: collections.dynamicGroupPages
+  size: 1
+  alias: page
+permalink: "{{ page.permalink }}"
 ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Park Day Accessories | The Pixie Packed Family</title>
-<meta name="description" content="Hats, ears, headbands, backpacks, Loungefly, Pandora, and footwear for Disney park days — curated Amazon picks from The Pixie Packed Family.">
+<title>{{ page.label }} | The Pixie Packed Family</title>
+<meta name="description" content="{{ page.description }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -47,6 +51,7 @@ permalink: "accessories.html"
   .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
   .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
   .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--purple); color: var(--white); align-self: flex-start; }
+  .coming-soon { color: var(--gray); font-size: 0.9rem; font-style: italic; background: var(--pink-bg); border-radius: var(--radius); padding: 24px; text-align: center; }
 
   footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
   .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
@@ -70,72 +75,34 @@ permalink: "accessories.html"
 
 <section class="pagehero">
   <span class="eyebrow">Shop the Parks</span>
-  <h1>Park Day Accessories</h1>
-  <p>Hats, ears, headbands, backpacks, Loungefly, Pandora, and footwear that make park days easier — and more magical. Tap a category to shop.</p>
+  <h1>{{ page.label }}</h1>
+  <p>{{ page.description }}</p>
 </section>
 
 <section class="hub-section">
   <div class="wrap">
+{%- set visibleCategories = page.categories | selectattr("cardImage") | list %}
+{%- if visibleCategories.length %}
     <div class="hub-grid">
-      <a class="hub-card" href="accessories-hats.html">
-        <img class="hub-photo" src="photos/hat-mickey-bucket-blue.jpg" alt="Hats">
+{%- for cat in visibleCategories %}
+      <a class="hub-card" href="{{ cat.permalink }}">
+        <img class="hub-photo" src="{{ cat.cardImage }}" alt="{{ cat.cardImageAlt }}">
         <div class="hub-card-body">
-          <h3>Hats</h3>
-          <p>Sun protection with a little extra park-day personality.</p>
-          <span class="btn-sm">Shop Hats →</span>
+          <h3>{{ cat.label }}</h3>
+          <span class="btn-sm">Shop {{ cat.label }} →</span>
         </div>
       </a>
-      <a class="hub-card" href="accessories-ears-headbands.html">
-        <img class="hub-photo" src="photos/ears-pearl-brown.jpg" alt="Ears & Headbands">
-        <div class="hub-card-body">
-          <h3>Ears &amp; Headbands</h3>
-          <p>The finishing touch on any park outfit.</p>
-          <span class="btn-sm">Shop Ears &amp; Headbands →</span>
-        </div>
-      </a>
-{%- set accessoriesGroup = collections.shopGroups | selectattr("slug", "equalto", "accessories") | first %}
-{%- set parkBagsCategory = accessoriesGroup.categories | selectattr("slug", "equalto", "backpacks") | first %}
-{%- if parkBagsCategory and parkBagsCategory.cardImage %}
-      <a class="hub-card" href="{{ parkBagsCategory.permalink }}">
-        <img class="hub-photo" src="{{ parkBagsCategory.cardImage }}" alt="{{ parkBagsCategory.cardImageAlt }}">
-        <div class="hub-card-body">
-          <h3>{{ parkBagsCategory.label }}</h3>
-          <p>Backpacks, crossbody bags, slings, and small park bags for carrying the essentials comfortably.</p>
-          <span class="btn-sm">Shop {{ parkBagsCategory.label }} →</span>
-        </div>
-      </a>
-{%- endif %}
-      <a class="hub-card" href="accessories-loungefly.html">
-        <img class="hub-photo" src="photos/accessories-loungefly-01.jpg" alt="Loungefly">
-        <div class="hub-card-body">
-          <h3>Loungefly</h3>
-          <p>Collectible mini backpacks and wallets for the Disney lover in your family.</p>
-          <span class="btn-sm">Shop Loungefly →</span>
-        </div>
-      </a>
-      <a class="hub-card" href="accessories-pandora.html">
-        <img class="hub-photo" src="photos/accessories-pandora-01.jpg" alt="Pandora">
-        <div class="hub-card-body">
-          <h3>Pandora</h3>
-          <p>Charms and bracelets to build a Disney story piece by piece.</p>
-          <span class="btn-sm">Shop Pandora →</span>
-        </div>
-      </a>
-      <a class="hub-card" href="accessories-footwear.html">
-        <img class="hub-photo" src="photos/footwear-heydude-mickey-grey.jpg" alt="Footwear">
-        <div class="hub-card-body">
-          <h3>Footwear</h3>
-          <p>Comfortable, park-tested shoes for all-day walking.</p>
-          <span class="btn-sm">Shop Footwear →</span>
-        </div>
-      </a>
+{%- endfor %}
     </div>
+{%- else %}
+    <div class="coming-soon">Items coming soon — check back shortly!</div>
+{%- endif %}
   </div>
 </section>
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Shop Disney Outfits</a><a href="apparel.html">Apparel</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Shop Disney Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
 </footer>
 

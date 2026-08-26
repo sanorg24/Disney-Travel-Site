@@ -86,30 +86,18 @@ permalink: "shop.html"
 <section class="hub-section">
   <div class="wrap">
     <div class="hub-grid">
-      <a class="hub-card" href="apparel.html">
-        <img class="hub-photo" src="photos/apparel-family-01.jpg" alt="Apparel">
+{%- for group in collections.shopGroups %}
+{%- if group.cardImage %}
+      <a class="hub-card" href="{{ group.permalink }}">
+        <img class="hub-photo" src="{{ group.cardImage }}" alt="{{ group.cardImageAlt }}">
         <div class="hub-card-body">
-          <h3>Apparel</h3>
-          <p>Matching family tees plus Disney apparel for men, women, and kids.</p>
-          <span class="btn-sm">Shop Apparel →</span>
+          <h3>{{ group.label }}</h3>
+          <p>{{ group.description }}</p>
+          <span class="btn-sm">Shop {{ group.label }} →</span>
         </div>
       </a>
-      <a class="hub-card" href="accessories.html">
-        <img class="hub-photo" src="photos/accessories-loungefly-01.jpg" alt="Park Day Accessories">
-        <div class="hub-card-body">
-          <h3>Park Day Accessories</h3>
-          <p>Hats, ears, headbands, backpacks, and more for a comfortable, magical day.</p>
-          <span class="btn-sm">Shop Accessories →</span>
-        </div>
-      </a>
-      <a class="hub-card" href="sun-travel-essentials.html">
-        <img class="hub-photo" src="photos/sun-travel-01.jpg" alt="Sun, Travel & Personal Care">
-        <div class="hub-card-body">
-          <h3>Sun, Travel &amp; Personal Care</h3>
-          <p>Sunscreen, hair care, cooling gear, and travel-friendly picks for hot park days.</p>
-          <span class="btn-sm">Shop Essentials →</span>
-        </div>
-      </a>
+{%- endif %}
+{%- if group.slug == "sun-travel" %}
       <a class="hub-card" href="outfits.html">
         <img class="hub-photo" src="photos/outfit-mnsshp.jpg" alt="Shop Disney Outfits">
         <div class="hub-card-body">
@@ -118,14 +106,8 @@ permalink: "shop.html"
           <span class="btn-sm">Shop Disney Outfits →</span>
         </div>
       </a>
-      <a class="hub-card" href="holidays.html">
-        <img class="hub-photo" src="photos/holiday-mnsshp-01.jpg" alt="Holidays & Festivals">
-        <div class="hub-card-body">
-          <h3>Holidays &amp; Festivals</h3>
-          <p>Seasonal Disney apparel, starting with Family Halloween and MNSSHP picks.</p>
-          <span class="btn-sm">Shop Holidays →</span>
-        </div>
-      </a>
+{%- endif %}
+{%- endfor %}
     </div>
   </div>
 </section>

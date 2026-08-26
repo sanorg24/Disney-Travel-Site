@@ -1,6 +1,6 @@
 ---
 label: Accessories & Jewelry
-slug: Accessories & Jewelry
+slug: accessories-jewelry
 group: accessories
 order: 7
 active: true
