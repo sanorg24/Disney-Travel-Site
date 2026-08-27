@@ -77,24 +77,30 @@ permalink: "accessories.html"
 <section class="hub-section">
   <div class="wrap">
     <div class="hub-grid">
-      <a class="hub-card" href="accessories-hats.html">
-        <img class="hub-photo" src="photos/hat-mickey-bucket-blue.jpg" alt="Hats">
+{%- set accessoriesGroup = collections.shopGroups | findBySlug("accessories") %}
+{%- set hatsCategory = accessoriesGroup.categories | findBySlug("hats") %}
+{%- if hatsCategory and hatsCategory.hasProducts %}
+      <a class="hub-card" href="{{ hatsCategory.permalink }}">
+        <img class="hub-photo" src="{{ hatsCategory.cardImage | stripLeadingSlash }}" alt="{{ hatsCategory.cardImageAlt | safe }}">
         <div class="hub-card-body">
-          <h3>Hats</h3>
-          <p>Sun protection with a little extra park-day personality.</p>
-          <span class="btn-sm">Shop Hats →</span>
+          <h3>{{ hatsCategory.cardTitle }}</h3>
+          <p>{{ hatsCategory.description }}</p>
+          <span class="btn-sm">Shop {{ hatsCategory.cardTitle }} →</span>
         </div>
       </a>
-      <a class="hub-card" href="accessories-ears-headbands.html">
-        <img class="hub-photo" src="photos/ears-pearl-brown.jpg" alt="Ears & Headbands">
+{%- endif %}
+{%- set earsCategory = accessoriesGroup.categories | findBySlug("ears-headbands") %}
+{%- if earsCategory and earsCategory.hasProducts %}
+      <a class="hub-card" href="{{ earsCategory.permalink }}">
+        <img class="hub-photo" src="{{ earsCategory.cardImage | stripLeadingSlash }}" alt="{{ earsCategory.cardImageAlt | safe }}">
         <div class="hub-card-body">
-          <h3>Ears &amp; Headbands</h3>
-          <p>The finishing touch on any park outfit.</p>
-          <span class="btn-sm">Shop Ears &amp; Headbands →</span>
+          <h3>{{ earsCategory.cardTitle }}</h3>
+          <p>{{ earsCategory.description }}</p>
+          <span class="btn-sm">Shop {{ earsCategory.cardTitle }} →</span>
         </div>
       </a>
-{%- set accessoriesGroup = collections.shopGroups | selectattr("slug", "equalto", "accessories") | first %}
-{%- set parkBagsCategory = accessoriesGroup.categories | selectattr("slug", "equalto", "backpacks") | first %}
+{%- endif %}
+{%- set parkBagsCategory = accessoriesGroup.categories | findBySlug("backpacks") %}
 {%- if parkBagsCategory and parkBagsCategory.cardImage %}
       <a class="hub-card" href="{{ parkBagsCategory.permalink }}">
         <img class="hub-photo" src="{{ parkBagsCategory.cardImage }}" alt="{{ parkBagsCategory.cardImageAlt }}">
@@ -105,30 +111,17 @@ permalink: "accessories.html"
         </div>
       </a>
 {%- endif %}
-      <a class="hub-card" href="accessories-loungefly.html">
-        <img class="hub-photo" src="photos/accessories-loungefly-01.jpg" alt="Loungefly">
+{%- set remainingAccCategories = accessoriesGroup.categories | excludingSlugsWithProducts(["hats", "ears-headbands", "backpacks"]) %}
+{%- for cat in remainingAccCategories %}
+      <a class="hub-card" href="{{ cat.permalink }}">
+        <img class="hub-photo" src="{{ cat.cardImage | stripLeadingSlash }}" alt="{{ cat.cardImageAlt | safe }}">
         <div class="hub-card-body">
-          <h3>Loungefly</h3>
-          <p>Collectible mini backpacks and wallets for the Disney lover in your family.</p>
-          <span class="btn-sm">Shop Loungefly →</span>
+          <h3>{{ cat.cardTitle }}</h3>
+          <p>{{ cat.description }}</p>
+          <span class="btn-sm">Shop {{ cat.cardTitle }} →</span>
         </div>
       </a>
-      <a class="hub-card" href="accessories-pandora.html">
-        <img class="hub-photo" src="photos/accessories-pandora-01.jpg" alt="Pandora">
-        <div class="hub-card-body">
-          <h3>Pandora</h3>
-          <p>Charms and bracelets to build a Disney story piece by piece.</p>
-          <span class="btn-sm">Shop Pandora →</span>
-        </div>
-      </a>
-      <a class="hub-card" href="accessories-footwear.html">
-        <img class="hub-photo" src="photos/footwear-heydude-mickey-grey.jpg" alt="Footwear">
-        <div class="hub-card-body">
-          <h3>Footwear</h3>
-          <p>Comfortable, park-tested shoes for all-day walking.</p>
-          <span class="btn-sm">Shop Footwear →</span>
-        </div>
-      </a>
+{%- endfor %}
     </div>
   </div>
 </section>

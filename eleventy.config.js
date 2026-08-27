@@ -141,12 +141,18 @@ export default function (eleventyConfig) {
 
       const categoryCards = groupCategories.map((c) => {
         const resolved = firstItemImage(c.slug);
+        const catProductCount = products.filter((p) => p.category === c.slug).length;
         return {
           slug: c.slug,
           label: c.label,
+          cardTitle: c.card_title || c.label,
+          buttonLabel: c.button_label || c.card_title || c.label,
+          description: c.description || "",
           permalink: c.permalink_path || "",
-          cardImage: resolved ? resolved.image : null,
-          cardImageAlt: resolved ? (resolved.alt || c.label) : "",
+          cardImage: c.card_image || (resolved ? resolved.image : null),
+          cardImageAlt: c.card_title || c.label || (resolved && resolved.alt) || "",
+          hasProducts: catProductCount > 0,
+          order: c.order || 0,
         };
       });
 
@@ -172,6 +178,86 @@ export default function (eleventyConfig) {
     return resolveShopGroups(collectionApi).filter((g) => !g.isDedicated);
   });
 
+  // Taxonomy-driven Category destination pages. Mirrors resolveShopGroups'
+  // pattern one level down: reads active, published-elsewhere Categories
+  // straight from content/taxonomy/categories/*.md (and their Subgroups
+  // from content/taxonomy/subgroups/*.md) instead of the hand-maintained
+  // _data/categoryPages.js list. Every text field has a sensible computed
+  // default (drawn from the Category's own label/description or its
+  // parent Group's label) so a brand-new CMS Category needs none of the
+  // optional override fields filled in -- but every one of the 14
+  // existing Categories has an explicit override wherever its current
+  // live text/image differs from that default, so migrating to this
+  // collection reproduces today's output exactly.
+  //
+  // "backpacks" is excluded here: it has its own hand-authored dedicated
+  // template (templates/accessories-backpacks.njk) and was never on the
+  // generic category-page.njk mechanism to begin with.
+  const DEDICATED_CATEGORY_TEMPLATES = ["backpacks"];
+
+  function resolveCategoryPages(collectionApi) {
+    const groups = collectionApi.getFilteredByGlob("content/taxonomy/groups/*.md")
+      .map((item) => item.data);
+    const groupBySlug = new Map(groups.map((g) => [g.slug, g]));
+
+    const categories = collectionApi.getFilteredByGlob("content/taxonomy/categories/*.md")
+      .map((item) => item.data)
+      .filter((c) => c.active && !DEDICATED_CATEGORY_TEMPLATES.includes(c.slug));
+
+    const subgroups = collectionApi.getFilteredByGlob("content/taxonomy/subgroups/*.md")
+      .map((item) => item.data)
+      .filter((s) => s.active);
+
+    const products = collectionApi.getFilteredByGlob("content/products/*.md")
+      .map((item) => item.data)
+      .filter((p) => p.status === "published");
+
+    return categories.map((c) => {
+      const group = groupBySlug.get(c.group);
+      const groupLabel = group ? group.label : "";
+      const groupPermalink = group ? group.permalink_path : "";
+
+      const catProducts = products.filter((p) => p.category === c.slug);
+
+      const catSubgroups = subgroups
+        .filter((s) => s.category === c.slug)
+        .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+      const subgroupLabels = {};
+      catSubgroups.forEach((s) => { subgroupLabels[s.slug] = s.display_label || s.label; });
+
+      return {
+        slug: c.slug,
+        permalink: c.permalink_path || "",
+        pageTitle: c.label,
+        metaDescription: c.meta_description || "",
+        eyebrow: c.eyebrow || groupLabel,
+        heroTitle: c.card_title || c.label,
+        heroSubtitle: c.description || "",
+        backLinkHref: groupPermalink,
+        backLinkLabel: c.back_link_label || (groupLabel ? `\u2190 Back to ${groupLabel}` : ""),
+        hasSubgroups: catSubgroups.length > 0,
+        subgroupOrder: catSubgroups.map((s) => s.slug),
+        subgroupLabels,
+        hasProducts: catProducts.length > 0,
+      };
+    });
+  }
+
+  eleventyConfig.addCollection("derivedCategoryPages", function (collectionApi) {
+    return resolveCategoryPages(collectionApi);
+  });
+
+  // Pagination source for category-page.njk: the same data, restricted to
+  // Categories that actually have a permalink set. A Category with no
+  // permalink_path yet (e.g. a brand-new one Vanessa is still setting up,
+  // like accessories-jewelry today) simply doesn't get a page generated --
+  // safer than generating one at a blank/broken URL, and doesn't require
+  // guessing a URL on her behalf.
+  eleventyConfig.addCollection("derivedCategoryPagesWithUrl", function (collectionApi) {
+    return resolveCategoryPages(collectionApi).filter((c) => c.permalink);
+  });
+
   // All other categories: one generic collection of every published
   // product, any category. The shared category-page layout filters this
   // per-page (by page.slug) using plain Nunjucks equality checks, not
@@ -189,6 +275,20 @@ export default function (eleventyConfig) {
   // project. Real JS string comparison has no such ambiguity.
   eleventyConfig.addFilter("byCategory", function (products, slug) {
     return (products || []).filter((p) => p.category === slug);
+  });
+
+  // Same reasoning as byCategory above -- confirmed during this migration
+  // that `selectattr(attr, "equalto", value) | first` does not actually
+  // filter in this Nunjucks setup; it silently returns the array's first
+  // element regardless of the predicate. Plain JS filters below instead.
+  eleventyConfig.addFilter("findBySlug", function (items, slug) {
+    return (items || []).filter((i) => i.slug === slug)[0] || null;
+  });
+
+  eleventyConfig.addFilter("excludingSlugsWithProducts", function (items, slugsToExclude) {
+    return (items || [])
+      .filter((i) => !slugsToExclude.includes(i.slug) && i.hasProducts)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
   });
 
   eleventyConfig.addCollection("allLooks", function (collectionApi) {
