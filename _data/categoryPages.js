@@ -111,7 +111,7 @@ export default [
   },
   {
     slug: "family-tees",
-    permalink: "apparel-family-tees.htm",
+    permalink: "apparel-family-tees.html",
     pageTitle: "Matching Family Tees",
     metaDescription: "Matching family tee sets for Disney vacations — curated Amazon picks from The Pixie Packed Family.",
     backLinkHref: "apparel.html",
