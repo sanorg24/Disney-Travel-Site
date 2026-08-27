@@ -77,14 +77,17 @@ permalink: "holidays.html"
 <section class="hub-section">
   <div class="wrap">
     <div class="hub-grid">
-      <a class="hub-card" href="holidays-family-halloween.html">
-        <img class="hub-photo" src="photos/holiday-mnsshp-01.jpg" alt="Family Halloween / MNSSHP">
+{%- set holidaysGroup = collections.shopGroups | findBySlug("holidays") %}
+{%- for cat in holidaysGroup.categories | excludingSlugsWithProducts([]) %}
+      <a class="hub-card" href="{{ cat.permalink }}">
+        <img class="hub-photo" src="{{ cat.cardImage | stripLeadingSlash }}" alt="{{ cat.cardImageAlt | safe }}">
         <div class="hub-card-body">
-          <h3>Family Halloween / MNSSHP</h3>
-          <p>Spooky-cute matching looks for Mickey's Not-So-Scary Halloween Party and family Halloween fun.</p>
-          <span class="btn-sm">Shop Halloween →</span>
+          <h3>{{ cat.cardTitle | safe }}</h3>
+          <p>{{ cat.description | safe }}</p>
+          <span class="btn-sm">Shop {{ cat.buttonLabel | safe }} →</span>
         </div>
       </a>
+{%- endfor %}
       <!-- Add a new hub-card block here for each new holiday/festival, plus its own holidays-[name].html page -->
     </div>
   </div>
