@@ -27,12 +27,17 @@ export default function (eleventyConfig) {
   eleventyConfig.addCollection("taxonomyValidation", function (collectionApi) {
     const categories = collectionApi.getFilteredByGlob("content/taxonomy/categories/*.md").map((i) => i.data);
     const subgroups = collectionApi.getFilteredByGlob("content/taxonomy/subgroups/*.md").map((i) => i.data);
+    const themes = collectionApi.getFilteredByGlob("content/taxonomy/themes/*.md").map((i) => i.data);
     const products = collectionApi.getFilteredByGlob("content/products/*.md")
       .map((i) => i.data)
       .filter((p) => p.status === "published");
+    const looks = collectionApi.getFilteredByGlob("content/looks/*.md")
+      .map((i) => i.data)
+      .filter((l) => l.status === "published");
 
     const categoryBySlug = new Map(categories.map((c) => [c.slug, c]));
     const subgroupBySlug = new Map(subgroups.map((s) => [s.slug, s]));
+    const themeBySlug = new Map(themes.map((t) => [t.slug, t]));
 
     const errors = [];
     const warnings = [];
@@ -61,6 +66,24 @@ export default function (eleventyConfig) {
       }
     }
 
+    // Looks -> Theme: mirrors the Product -> Category checks above. A
+    // published Look with no Theme, or a Theme slug that doesn't exist,
+    // is a real data error (fatal) -- a Theme that exists but is
+    // inactive only warns, matching the established leniency for
+    // retired-but-referenced taxonomy elsewhere on the site.
+    for (const l of looks) {
+      if (!l.theme) {
+        errors.push(`Look "${l.title}" has no Theme assigned.`);
+      } else {
+        const theme = themeBySlug.get(l.theme);
+        if (!theme) {
+          errors.push(`Look "${l.title}" references unknown Theme "${l.theme}".`);
+        } else if (theme.active === false) {
+          warnings.push(`Look "${l.title}" references inactive Theme "${l.theme}" (${theme.label}).`);
+        }
+      }
+    }
+
     if (warnings.length) {
       console.warn("\n\u26A0\uFE0F  Taxonomy warnings (build continues):");
       warnings.forEach((w) => console.warn("  - " + w));
@@ -71,7 +94,7 @@ export default function (eleventyConfig) {
         errors.map((e) => "  - " + e).join("\n")
       );
     }
-    return { errors, warnings, checkedProducts: products.length };
+    return { errors, warnings, checkedProducts: products.length, checkedLooks: looks.length };
   });
 
   eleventyConfig.addCollection("backpackProducts", function (collectionApi) {
@@ -300,6 +323,36 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("byTheme", function (looks, theme) {
     return (looks || []).filter((l) => l.theme === theme);
+  });
+
+  // Taxonomy-driven Collection Theme sections for the Shop Disney
+  // Collections page (outfits.html). Mirrors the same derive-from-
+  // taxonomy pattern already used for Categories: active Themes, sorted
+  // by order, each paired with its published Looks (matched by the
+  // stable Theme slug) -- a Theme with zero Looks (or inactive) is
+  // simply absent from the result, so templates/outfits.njk never needs
+  // to know about empty/inactive sections. A brand-new Theme created in
+  // Sveltia automatically produces a new section here the moment it has
+  // at least one published Look, with no template change required.
+  eleventyConfig.addCollection("themeSections", function (collectionApi) {
+    const themes = collectionApi.getFilteredByGlob("content/taxonomy/themes/*.md")
+      .map((item) => item.data)
+      .filter((t) => t.active)
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    const looks = collectionApi.getFilteredByGlob("content/looks/*.md")
+      .map((item) => item.data)
+      .filter((l) => l.status === "published")
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+
+    return themes
+      .map((t) => ({
+        slug: t.slug,
+        label: t.label,
+        subtitle: t.subtitle || "",
+        looks: looks.filter((l) => l.theme === t.slug),
+      }))
+      .filter((section) => section.looks.length > 0);
   });
 
   // --- Blog content collection -------------------------------------------
