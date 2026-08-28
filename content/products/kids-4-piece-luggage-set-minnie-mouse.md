@@ -1,5 +1,5 @@
 ---
-name: 4-Piece Kids Luggage Set-Minnie Mouse
+name: 4-Piece Youth Luggage Set-Minnie Mouse
 image: /photos/pasted-image-1787941763655.png
 alt: ''
 amazon_url: https://amzn.to/4ycXbPQ
