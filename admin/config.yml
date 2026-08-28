@@ -1310,14 +1310,13 @@ collections:
         widget: "string"
       - label: "Theme Section"
         name: "theme"
-        widget: "select"
-        required: false
-        options:
-          - { label: "(none)", value: "" }
-          - { label: "Park Day Outfits", value: "park-day-outfits" }
-          - { label: "Disney Characters", value: "disney-characters" }
-          - { label: "Mickey's Not-So-Scary Halloween Party", value: "mnsshp" }
-        hint: "Which section of the Outfits page this Look appears under."
+        widget: "relation"
+        collection: "taxonomy_themes"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        required: true
+        hint: "Which Collection Theme section this Look appears under on the Shop Disney Collections page. To add a new section, create it first under TAXONOMY: Collection Themes."
       - label: "Collage / Cover Image"
         name: "collage_image"
         widget: "image"
@@ -1525,6 +1524,45 @@ collections:
         widget: "boolean"
         default: true
         hint: "Marks this Subgroup as retired for new assignments. Does NOT remove any existing product from view -- those stay exactly as they are unless changed separately."
+      - label: "Page Template Setting (do not change)"
+        name: "permalink"
+        widget: "hidden"
+        default: false
+
+  - name: "taxonomy_themes"
+    label: "TAXONOMY: Collection Themes"
+    folder: "content/taxonomy/themes"
+    create: true
+    delete: true
+    slug: "{{fields.slug}}"
+    sortable_fields:
+      fields: ["order", "label"]
+      default: { field: "order", direction: "ascending" }
+    fields:
+      - label: "Section Heading"
+        name: "label"
+        widget: "string"
+        hint: "The public heading visitors see for this section on the Shop Disney Collections page (e.g. \"Park Day Outfits\"). Also shown in the Theme Section dropdown when creating a Look."
+      - label: "Stable Slug"
+        name: "slug"
+        widget: "string"
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Lowercase letters, numbers, and single hyphens only (e.g. park-day-outfits) -- no spaces, capital letters, or symbols."]
+        hint: "Permanent internal ID used by Looks. Do not change after Looks are assigned to this Theme unless you are deliberately performing a planned structural migration."
+      - label: "Section Subtitle"
+        name: "subtitle"
+        widget: "text"
+        required: false
+        hint: "Optional short line shown under the section heading. Leave blank to show no subtitle."
+      - label: "Display Order"
+        name: "order"
+        widget: "number"
+        value_type: "int"
+        required: false
+      - label: "Active"
+        name: "active"
+        widget: "boolean"
+        default: true
+        hint: "Marks this Theme as retired for new assignments. Does NOT remove any existing Look from view -- those stay exactly as they are unless changed separately."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
         widget: "hidden"
