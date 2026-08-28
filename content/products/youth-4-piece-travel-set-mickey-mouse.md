@@ -1,5 +1,5 @@
 ---
-name: 4-Piece Kids Luggage Set-Mickey Mouse
+name: 4-Piece Youth Luggage Set-Mickey Mouse
 image: /photos/pasted-image-1787942115422.png
 alt: ''
 amazon_url: https://amzn.to/3UnZ3Xe
