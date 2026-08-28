@@ -6,8 +6,8 @@ permalink: "outfits.html"
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop Disney Outfits | The Pixie Packed Family</title>
-<meta name="description" content="Character-inspired Disney park outfits, organized by theme, with shoppable Amazon links for every piece.">
+<title>Shop Disney Collections | The Pixie Packed Family</title>
+<meta name="description" content="Curated Disney collections — from park-day outfits to travel-day favorites, park bag essentials, and more — with shoppable Amazon links for every piece.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -69,29 +69,24 @@ permalink: "outfits.html"
 {% include "header.njk" %}
 
 <section class="pagehero">
-  <span class="eyebrow">Shop the Look</span>
-  <h1>Shop Disney Outfits</h1>
-  <p>Putting together the perfect Disney outfit is part of the fun! I create each look with real park days, special events, and Disney magic in mind—giving you outfit inspiration and making it easy to find the pieces you love. ✨</p>
+  <span class="eyebrow">Shop the Collection</span>
+  <h1>Shop Disney Collections</h1>
+  <p>From park-day outfits to travel-day favorites, park bag essentials, and more—I put together each collection with real Disney trips in mind, so you can shop the pieces you need without the guesswork. ✨</p>
 </section>
 
 <div class="wrap">
   <p class="affiliate-disclosure">A quick note: Some links on this page are Amazon affiliate links, which means we may earn a small commission if you purchase through them—at no extra cost to you. ✨</p>
 </div>
 
-{%- set themeDefs = [
-  { value: "park-day-outfits", label: "Park Day Outfits", sub: "Everyday outfit inspiration for a magical day at the parks." },
-  { value: "disney-characters", label: "Disney Characters", sub: "Character-inspired looks and jewelry for your favorite Disney faces." },
-  { value: "mnsshp", label: "Mickey's Not-So-Scary Halloween Party", sub: "Spooky-cute looks for MNSSHP nights at Magic Kingdom." }
-] %}
-{%- for theme in themeDefs %}
-{%- set themeLooksList = collections.allLooks | byTheme(theme.value) %}
-{%- if themeLooksList | length > 0 %}
+{%- for section in collections.themeSections %}
 <section class="category">
   <div class="wrap">
-    <h2 class="cat-title">{{ theme.label }}</h2>
-    <p class="cat-sub">{{ theme.sub }}</p>
+    <h2 class="cat-title">{{ section.label }}</h2>
+{%- if section.subtitle %}
+    <p class="cat-sub">{{ section.subtitle }}</p>
+{%- endif %}
     <div class="outfit-grid">
-{%- for look in themeLooksList %}
+{%- for look in section.looks %}
       <div class="outfit-card">
         <img src="{{ look.collage_image }}" alt="{{ look.collage_image_alt }}">
         <div class="outfit-card-body">
@@ -110,12 +105,11 @@ permalink: "outfits.html"
     </div>
   </div>
 </section>
-{%- endif %}
 {%- endfor %}
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
-  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Shop Disney Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
+  <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Shop Disney Collections</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate I earn from qualifying purchases.</p>
 </footer>
 
