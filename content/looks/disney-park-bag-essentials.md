@@ -1,6 +1,6 @@
 ---
 title: Disney Park Bag Essentials
-theme: park-day-outfits
+theme: park-day-essentials
 collage_image: /photos/pasted-image-1786969280736.png
 collage_image_alt: ''
 pixie_note: Extra shout out to the personal handheld fan, it works absolutely wonderfully and the Inis Voyager set, this scent reminds me of Flight of Passage.
