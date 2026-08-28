@@ -1,5 +1,5 @@
 ---
-name: 4-Piece Kids Luggage Set-Cars
+name: 4-Piece Youth Luggage Set-Cars
 image: /photos/pasted-image-1787941888640.png
 alt: ''
 amazon_url: https://amzn.to/4y6OTZx
