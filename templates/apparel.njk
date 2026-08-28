@@ -77,38 +77,17 @@ permalink: "apparel.html"
 <section class="hub-section">
   <div class="wrap">
     <div class="hub-grid">
-      <a class="hub-card" href="apparel-family-tees.htm">
-        <img class="hub-photo" src="photos/apparel-family-01.jpg" alt="Matching Family Tees">
+{%- set apparelGroup = collections.shopGroups | findBySlug("apparel") %}
+{%- for cat in apparelGroup.categories | excludingSlugsWithProducts([]) %}
+      <a class="hub-card" href="{{ cat.permalink }}">
+        <img class="hub-photo" src="{{ cat.cardImage | stripLeadingSlash }}" alt="{{ cat.cardImageAlt | safe }}">
         <div class="hub-card-body">
-          <h3>Matching Family Tees</h3>
-          <p>Coordinated park-day outfits the whole crew will actually want to wear.</p>
-          <span class="btn-sm">Shop Family Tees →</span>
+          <h3>{{ cat.cardTitle | safe }}</h3>
+          <p>{{ cat.description | safe }}</p>
+          <span class="btn-sm">Shop {{ cat.buttonLabel | safe }} →</span>
         </div>
       </a>
-      <a class="hub-card" href="apparel-mens.html">
-        <img class="hub-photo" src="photos/apparel-mens-06.jpg" alt="Men's">
-        <div class="hub-card-body">
-          <h3>Men's</h3>
-          <p>Disney apparel and shorts for dad.</p>
-          <span class="btn-sm">Shop Men's →</span>
-        </div>
-      </a>
-      <a class="hub-card" href="apparel-womens.html">
-        <img class="hub-photo" src="photos/apparel-womens-01.jpg" alt="Women's">
-        <div class="hub-card-body">
-          <h3>Women's</h3>
-          <p>Disney-inspired tees, tanks, shorts, and comfy loungewear for mom.</p>
-          <span class="btn-sm">Shop Women's →</span>
-        </div>
-      </a>
-      <a class="hub-card" href="apparel-kids.html">
-        <img class="hub-photo" src="photos/pasted-image-1786942976920.png" alt="Kids">
-        <div class="hub-card-body">
-          <h3>Kids</h3>
-          <p>Disney apparel for the little ones.</p>
-          <span class="btn-sm">Shop Kids →</span>
-        </div>
-      </a>
+{%- endfor %}
     </div>
   </div>
 </section>
@@ -116,7 +95,7 @@ permalink: "apparel.html"
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
   <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Shop Disney Outfits</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
-  <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
+  <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate I earn from qualifying purchases.</p>
 </footer>
 
 </body>

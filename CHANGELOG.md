@@ -7,6 +7,78 @@
 > confirmed by a commit or file inspection is marked **[from conversation]**; anything genuinely
 > uncertain is marked **[uncertain]**.
 
+## 🔴 SESSION HANDOFF ADDENDUM — 2026-08-24
+
+> Placed here, out of strict chronological order, for visibility to a fresh session. The
+> dated entries below this point (2026-07-26 onward) are the original historical log; this
+> addendum covers everything since, up through the most recent merged PR (#78) and the current
+> unmerged branch. See PROJECT-CONTEXT.md and ARCHITECTURE.md's own handoff sections for full
+> detail — this is a chronological summary.
+
+### Merged to `main` (real, shipped, verified via git history this session)
+
+- **Eleventy + Sveltia CMS migration** completed and live — the site moved from pure static
+  HTML to an Eleventy build with a full Sveltia CMS authoring layer (Products, Looks, Blog,
+  and now Taxonomy all CMS-editable). This is the single biggest change since the original
+  static-HTML changelog below was written.
+- **Blog infrastructure**, content-collection-driven (not hand-authored templates per post),
+  with a working CMS authoring path, draft/published status, and category filtering.
+- **Blog draft-suppression fix**: a `draft` post's standalone page no longer builds at all
+  (previously it built and was reachable by URL even though hidden from the Blog Hub) — fixed
+  via `content/blog/blog.11tydata.js`'s computed, status-conditional `permalink`.
+- **A stale, long-open CMS PR (#55) was safely resolved**: audited in full, its genuinely
+  valuable content (a handful of Products, a Look update) manually extracted onto a fresh
+  branch and merged, the stale PR closed, and `cms-edits` reset to match `main` so future CMS
+  saves start clean. **Lesson recorded for the operating rule below.**
+- **Downloadable Trip Guides + Kit presentation** redone using Vanessa's approved promotional
+  graphics, with the Kit signup form properly contained/integrated on mobile.
+- **Multiple Shop/taxonomy polish batches**: fixed back-navigation gaps across every
+  first-level Shop hub, fixed incomplete-row centering on card grids (Shop hub, Accessories
+  hub, Outfits), removed several duplicate heading/description blocks, corrected HTML entity
+  double-escaping bugs, and fixed a genuine taxonomy build failure (three Ears & Headbands
+  products had been mis-assigned a Family Halloween subgroup through Sveltia's CMS).
+- **PR #77 / #78 (direct Sveltia CMS taxonomy + product-order saves):** Park Bags relabeled
+  (category slug `backpacks` unchanged), a new "Accessories & Jewelry" category created, a new
+  "Travel Essentials" Group created (both had malformed slugs at creation — since corrected on
+  the branch below), and a routine product-order change putting the **Polka Dots Sling Bag for
+  Women Crossbody Bag** at order 1 in Park Bags (previous order-1, the Maelstrom backpack,
+  moved to order 5).
+
+### Committed but NOT YET merged — branch `taxonomy-driven-shop-hub`
+
+**Do not treat this as shipped.** Fully implemented and validated locally (see
+PROJECT-CONTEXT.md's handoff section for the complete list and validation results), currently
+at commit `be209c0cb25db91cb17ef221874455326f833316`, based on `main` at
+`9121aaa4ce3a202478048c2452531ea0992fe8de` (includes PR #78). Not pushed, no PR opened yet.
+
+Headline items: corrected the two malformed taxonomy slugs from PR #77; made the Shop hub's
+Group-level cards taxonomy-driven (reading from real CMS data instead of hard-coded
+per-Group markup); added a generic Group landing-page template so new Groups (starting with
+Travel Essentials) get a real page automatically; built a dynamic, no-new-image-field
+card-image derivation mechanism (Group/Category → first item by order → its image) that has
+now been **proven against a real Vanessa CMS change** (the order-1 product swap above
+automatically updated the Park Day Accessories card's image, with zero code change); relabeled
+8 Sveltia subgroup display labels for disambiguation; added slug-format validation to the CMS
+to prevent a repeat of the malformed-slug issue.
+
+**Open item, not yet approved:** the Park Day Accessories hub's Backpacks/Park Bags card lost
+its old description text as part of making it dynamic (Category taxonomy has no description
+field yet). Proposed replacement text, pending Troy/Vanessa review:
+> "Backpacks, crossbody bags, slings, and small park bags for carrying the essentials
+> comfortably."
+
+### Operating rule established this session (record and follow)
+
+**AUDIT → RECOMMEND → APPROVE → IMPLEMENT → TEST**, every time, for anything touching taxonomy,
+templates, or CMS configuration — never skip straight to implementation without an explicit
+go-ahead, and never report something as complete without having actually validated it (clean
+build + 0 taxonomy warnings + 0 broken links + a full regression diff against a pre-change
+baseline, at minimum). Also: **merge each CMS-generated PR promptly**, and **explicitly
+re-sync `cms-edits` to `main` after every merge** — merging does not do this automatically, and
+letting it drift is exactly what caused the PR #55 incident above.
+
+---
+
 ## 2026-07-26 — Project start
 
 - Repository created, first `index.html` committed.

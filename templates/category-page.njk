@@ -1,6 +1,6 @@
 ---
 pagination:
-  data: categoryPages
+  data: collections.derivedCategoryPagesWithUrl
   size: 1
   alias: page
 permalink: "{{ page.permalink }}"
@@ -43,6 +43,8 @@ permalink: "{{ page.permalink }}"
   .pagehero .eyebrow { text-transform: uppercase; letter-spacing: 2px; font-size: 0.72rem; color: var(--magenta); font-weight: 700; margin-bottom: 14px; }
   .pagehero h1 { font-size: clamp(1.7rem, 6vw, 2.6rem); margin-bottom: 12px; }
   .pagehero p { color: var(--gray); max-width: 520px; margin: 0 auto; font-size: 0.95rem; }
+
+  .affiliate-disclosure { background: var(--cream); color: var(--gray); font-size: 0.85rem; line-height: 1.5; text-align: center; padding: 12px 20px; border-radius: var(--radius); margin: 22px auto 0; max-width: 640px; }
 
   .jumplinks { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 20px 16px 0; }
   .jumplinks a { background: var(--white); box-shadow: var(--shadow); padding: 9px 16px; border-radius: 50px; font-size: 0.82rem; font-weight: 700; color: var(--maroon); }
@@ -126,6 +128,10 @@ permalink: "{{ page.permalink }}"
   <p>{{ page.heroSubtitle }}</p>
 </section>
 
+<div class="wrap">
+  <p class="affiliate-disclosure">A quick note: Some links on this page are Amazon affiliate links, which means we may earn a small commission if you purchase through them—at no extra cost to you. ✨</p>
+</div>
+
 {%- set categoryProducts = collections.allProducts | byCategory(page.slug) %}
 {%- set standardCount = (categoryProducts | rejectattr("pixie_tip") | rejectattr("personal_photo") | rejectattr("personal_video_url") | list | length) %}
 <section class="category"{% if page.hasSectionHeader %} id="{{ page.sectionId }}"{% endif %}>
@@ -201,7 +207,7 @@ permalink: "{{ page.permalink }}"
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
   <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="outfits.html">Shop Disney Outfits</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
-  <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate, The Pixie Packed Family earns from qualifying purchases.</p>
+  <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate I earn from qualifying purchases.</p>
 </footer>
 
 </body>

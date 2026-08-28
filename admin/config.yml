@@ -1377,6 +1377,7 @@ collections:
       - label: "Stable Slug"
         name: "slug"
         widget: "string"
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Lowercase letters, numbers, and single hyphens only (e.g. travel-essentials) -- no spaces, capital letters, or symbols."]
         hint: "Permanent internal ID. Do not change after Categories are assigned to this Group unless you are deliberately performing a planned structural migration."
       - label: "Display Order"
         name: "order"
@@ -1388,6 +1389,16 @@ collections:
         widget: "boolean"
         default: true
         hint: "Marks this Group as retired for new assignments. Does NOT hide any existing page, sidebar entry, or product -- those all stay exactly as they are unless changed separately by Troy."
+      - label: "Page URL"
+        name: "permalink_path"
+        widget: "string"
+        required: false
+        hint: "The exact public page filename for this Group, e.g. accessories.html. Leave set to whatever Troy configures -- changing this after the page is live will break its URL."
+      - label: "Shop Card Description"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Short blurb shown on this Group's Shop hub card."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
         widget: "hidden"
@@ -1410,6 +1421,7 @@ collections:
       - label: "Stable Slug"
         name: "slug"
         widget: "string"
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Lowercase letters, numbers, and single hyphens only (e.g. accessories-jewelry) -- no spaces, capital letters, or symbols."]
         hint: "Permanent internal ID used by Products and the public URL. Do not change after Products are assigned to this Category unless you are deliberately performing a planned structural migration."
       - label: "Group"
         name: "group"
@@ -1428,11 +1440,46 @@ collections:
         widget: "boolean"
         default: true
         hint: "Marks this Category as retired for new assignments. Does NOT remove its public page, its sidebar entry, or any existing product -- those all stay exactly as they are unless changed separately by Troy."
-      - label: "Public Page Permalink (reference only)"
+      - label: "Card / Page Description"
+        name: "description"
+        widget: "text"
+        required: false
+        hint: "Shown on this Category's hub card and as the intro text on its own page. Leave blank only if you're fine with no description text showing."
+      - label: "Meta Description"
+        name: "meta_description"
+        widget: "text"
+        required: false
+        hint: "Used for search engines and link previews for this Category's page. If left blank, no meta description is set."
+      - label: "Card / Hero Title (optional override)"
+        name: "card_title"
+        widget: "string"
+        required: false
+        hint: "Leave blank to use the Display Label above for the hub card and page heading. Only set this if you want shorter/different public-facing text than the Label (e.g. Label \"Men's Apparel\" but card/heading just \"Men's\")."
+      - label: "Hero Eyebrow (optional override)"
+        name: "eyebrow"
+        widget: "string"
+        required: false
+        hint: "Small label shown above the page heading. Leave blank to use the parent Group's Display Label automatically. Only set this if this Category's page should show different eyebrow text than its Group."
+      - label: "Back Link Text (optional override)"
+        name: "back_link_label"
+        widget: "string"
+        required: false
+        hint: "The \"← Back to ...\" link text at the top of this Category's page. Leave blank to automatically use \"← Back to\" plus the parent Group's Display Label. Only set this if you want different text."
+      - label: "Hub Card Button Text (optional override)"
+        name: "button_label"
+        widget: "string"
+        required: false
+        hint: "Leave blank to use Card/Hero Title above for the hub card's \"Shop ... →\" button. Only set this if the button should say something shorter/different than the card title."
+      - label: "Card Image (optional override)"
+        name: "card_image"
+        widget: "image"
+        required: false
+        hint: "Leave blank to automatically use the first published Product's photo in this Category (by that Product's Display Order). Only set this if you want a specific image instead of that default."
+      - label: "Public Page Permalink"
         name: "permalink_path"
         widget: "string"
         required: false
-        hint: "Informational only -- changing this does not move or create the public page. That still requires a code update from Troy."
+        hint: "The exact public page filename for this Category, e.g. accessories-hats.html. This now directly controls where the page is generated -- changing it after the page is live will change/break its URL, so only edit deliberately."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
         widget: "hidden"
@@ -1448,14 +1495,19 @@ collections:
       fields: ["category", "order", "label"]
       default: { field: "order", direction: "ascending" }
     fields:
-      - label: "Display Label"
+      - label: "Display Label (internal/dropdown)"
         name: "label"
         widget: "string"
-        hint: "Safe to rename anytime. Does NOT change the heading shown on the public category page -- that still requires a code/config update from Troy."
+        hint: "Shown in CMS dropdowns (e.g. when picking a Subgroup for a Product). Safe to rename anytime. This is NOT what visitors see as the section heading -- that's the separate 'Public Heading' field below."
       - label: "Stable Slug"
         name: "slug"
         widget: "string"
+        pattern: ['^[a-z0-9]+(-[a-z0-9]+)*$', "Lowercase letters, numbers, and single hyphens only (e.g. loungefly-backpacks) -- no spaces, capital letters, or symbols."]
         hint: "Permanent internal ID used by Products. Do not change after Products are assigned to this Subgroup unless you are deliberately performing a planned structural migration."
+      - label: "Public Heading"
+        name: "display_label"
+        widget: "string"
+        hint: "The short heading visitors actually see on the Category page above this Subgroup's products (e.g. \"Men's\", \"Backpacks\"). Keep it short -- this is what's shown, not the longer internal label above."
       - label: "Category"
         name: "category"
         widget: "relation"

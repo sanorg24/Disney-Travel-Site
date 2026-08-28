@@ -6,7 +6,7 @@ amazon_url: https://amzn.to/4gy8w5t
 image_source: uploaded
 status: published
 order: 1
-category: Accessories & Jewelry
+category: accessories-jewelry
 subgroup: ''
 pixie_tip: ''
 personal_photo: ''
