@@ -1,5 +1,5 @@
 ---
-name: 4-Piece Luggage Set- Moana
+name: 4-Piece Kids Luggage Set- Moana
 image: /photos/pasted-image-1787942728891.png
 alt: ''
 amazon_url: https://amzn.to/4gXD3Lt
