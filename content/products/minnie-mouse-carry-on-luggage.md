@@ -1,5 +1,5 @@
 ---
-name: Minnie Mouse Carry-On Luggage
+name: Carry-On Luggage-Minnie Mouse Pink
 image: /photos/pasted-image-1787940837667.png
 alt: ''
 amazon_url: https://amzn.to/4ccQ9Sv
