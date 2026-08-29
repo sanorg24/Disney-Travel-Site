@@ -8,7 +8,7 @@ permalink_path: "apparel-kids.html"
 description: "Disney apparel for the little ones."
 meta_description: "Disney apparel for kids — curated Amazon picks from The Pixie Packed Family."
 card_title: "Kids"
-card_image: "/photos/pasted-image-1786942976920.png"
+card_image: ''
 eyebrow: "Shop the Parks"
 permalink: false
 ---
