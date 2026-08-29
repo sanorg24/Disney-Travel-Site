@@ -1222,6 +1222,9 @@ collections:
     delete: true
     slug: "{{fields.name}}"
     thumbnail: image
+    view_groups:
+      - label: "Category"
+        field: "category"
     fields:
       - label: "Product Name"
         name: "name"
