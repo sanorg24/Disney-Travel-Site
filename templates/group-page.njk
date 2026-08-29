@@ -89,6 +89,9 @@ permalink: "{{ page.permalink }}"
         <img class="hub-photo" src="{{ cat.cardImage }}" alt="{{ cat.cardImageAlt }}">
         <div class="hub-card-body">
           <h3>{{ cat.label }}</h3>
+{%- if cat.description %}
+          <p>{{ cat.description }}</p>
+{%- endif %}
           <span class="btn-sm">Shop {{ cat.label }} →</span>
         </div>
       </a>
