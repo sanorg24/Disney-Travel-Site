@@ -1481,7 +1481,7 @@ collections:
         name: "permalink_path"
         widget: "string"
         required: false
-        hint: "The exact public page filename for this Category, e.g. accessories-hats.html. This now directly controls where the page is generated -- changing it after the page is live will change/break its URL, so only edit deliberately."
+        hint: "Controls the public page URL for this Category, e.g. accessories-hats.html. Fine to leave blank while you're still setting this Category up. But it must be filled in before you assign any published Products to it -- without it, those Products won't be reachable on the live site. Once set and live, avoid changing it casually, since that changes the public URL."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
         widget: "hidden"
