@@ -84,6 +84,65 @@ export default function (eleventyConfig) {
       }
     }
 
+    // Category-level validation: unlike the reference checks above, which
+    // verify Products/Looks point at something real, these checks verify
+    // each Category record is internally complete and non-conflicting on
+    // its own. This is what would have caught the Resort Essentials
+    // incident -- a Category with a fully valid, correctly-referenced
+    // Product relationship, but no permalink of its own, so it built
+    // successfully yet was unreachable on the public site.
+    const groups = collectionApi.getFilteredByGlob("content/taxonomy/groups/*.md").map((i) => i.data);
+    const groupBySlug = new Map(groups.map((g) => [g.slug, g]));
+
+    const publishedCountByCategory = new Map();
+    for (const p of products) {
+      publishedCountByCategory.set(p.category, (publishedCountByCategory.get(p.category) || 0) + 1);
+    }
+
+    const categorySlugSeen = new Map();
+    const categoryPermalinkSeen = new Map();
+
+    for (const c of categories) {
+      if (c.active) {
+        if (!groupBySlug.has(c.group)) {
+          errors.push(`Category "${c.label}" (${c.slug}) references unknown Group "${c.group}".`);
+        }
+
+        const publishedCount = publishedCountByCategory.get(c.slug) || 0;
+        if (publishedCount > 0 && !c.permalink_path) {
+          errors.push(`Category "${c.label}" (${c.slug}) has ${publishedCount} published Product(s) ` +
+            `but no permalink_path set -- it would be unreachable on the public site. An active ` +
+            `Category with zero published Products may still have a blank permalink_path while it ` +
+            `is being built out.`);
+        }
+      }
+
+      // Duplicate slug/permalink checks apply regardless of active state --
+      // a retired Category still occupies its slug/permalink, and a
+      // collision is a structural problem either way. Scoped strictly to
+      // Category-to-Category comparisons only; never compared against any
+      // hardcoded template permalink (e.g. the backpacks dedicated-template
+      // page, which intentionally shares its URL with a Category record
+      // that the generic Category-page mechanism deliberately skips).
+      if (c.slug) {
+        if (categorySlugSeen.has(c.slug)) {
+          errors.push(`Duplicate Category slug "${c.slug}" -- used by both ` +
+            `"${categorySlugSeen.get(c.slug)}" and "${c.label}".`);
+        } else {
+          categorySlugSeen.set(c.slug, c.label);
+        }
+      }
+
+      if (c.permalink_path) {
+        if (categoryPermalinkSeen.has(c.permalink_path)) {
+          errors.push(`Duplicate Category permalink_path "${c.permalink_path}" -- used by both ` +
+            `"${categoryPermalinkSeen.get(c.permalink_path)}" and "${c.label}".`);
+        } else {
+          categoryPermalinkSeen.set(c.permalink_path, c.label);
+        }
+      }
+    }
+
     if (warnings.length) {
       console.warn("\n\u26A0\uFE0F  Taxonomy warnings (build continues):");
       warnings.forEach((w) => console.warn("  - " + w));
@@ -94,7 +153,7 @@ export default function (eleventyConfig) {
         errors.map((e) => "  - " + e).join("\n")
       );
     }
-    return { errors, warnings, checkedProducts: products.length, checkedLooks: looks.length };
+    return { errors, warnings, checkedProducts: products.length, checkedLooks: looks.length, checkedCategories: categories.length };
   });
 
   eleventyConfig.addCollection("backpackProducts", function (collectionApi) {
