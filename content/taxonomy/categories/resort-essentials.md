@@ -11,6 +11,6 @@ eyebrow: ''
 back_link_label: ''
 button_label: ''
 card_image: ''
-permalink_path: ''
+permalink_path: travel-resort-essentials-resort-essentials.html
 permalink: false
 ---
