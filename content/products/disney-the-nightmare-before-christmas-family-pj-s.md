@@ -7,7 +7,7 @@ image_source: uploaded
 status: published
 order: 3
 category: family-halloween
-subgroup: ''
+subgroup: halloween-unisex
 pixie_tip: ''
 personal_photo: ''
 personal_photo_alt: ''
