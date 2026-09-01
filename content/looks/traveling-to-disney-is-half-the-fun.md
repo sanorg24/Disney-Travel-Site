@@ -1,5 +1,5 @@
 ---
-title: Traveling to Disney is Half the Fun
+title: Traveling to Disney in Comfort and Style
 theme: travel-day
 collage_image: /photos/pasted-image-1788224838137.png
 collage_image_alt: ''
