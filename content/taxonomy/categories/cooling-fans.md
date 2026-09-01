@@ -1,13 +1,16 @@
 ---
-label: "Cooling & Fans"
-slug: "cooling-fans"
+label: Park Day Essentials
+slug: park-day-essentials
 group: sun-travel
-order: 3
+order: 1
 active: true
-permalink_path: "sun-travel-cooling-fans.html"
-description: "Portable ways to beat the Florida heat, from handheld fans to stroller-mounted misters."
-meta_description: "Portable cooling gear and fans for hot park days — curated Amazon picks from The Pixie Packed Family."
-eyebrow: "Shop the Parks"
-back_link_label: "← Back to Sun, Travel & Personal Care"
+description: Everything we like to have with us for a Disney park day! From portable chargers, fans and water bottles to ponchos, umbrellas, pin lanyards and those little must-haves that help keep the day comfortable and stress-free. ✨
+meta_description: Find Disney park day essentials including portable chargers, fans, ponchos, water bottles, rain gear and more to help make park days easier and more comfortable.
+card_title: ''
+eyebrow: Shop the Parks
+back_link_label: ← Back to Sun, Travel & Personal Care
+button_label: ''
+card_image: ''
+permalink_path: sun-travel-cooling-fans.html
 permalink: false
 ---
