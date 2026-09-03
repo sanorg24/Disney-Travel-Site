@@ -40,6 +40,19 @@ jobs:
       - name: Build with Eleventy
         run: npx @11ty/eleventy
 
+      - name: Normalize GA4 measurement ID across built HTML
+        shell: bash
+        run: |
+          find _site -type f -name '*.html' -exec sed -i 's/G-YLXOLMRWKY/G-7VBK2SEFD1/g' {} +
+          if grep -RIl 'G-YLXOLMRWKY' _site --include='*.html'; then
+            echo 'ERROR: Legacy GA4 measurement ID remains in built HTML.'
+            exit 1
+          fi
+          if ! grep -RIl 'G-7VBK2SEFD1' _site --include='*.html' >/dev/null; then
+            echo 'ERROR: Current GA4 measurement ID was not found in built HTML.'
+            exit 1
+          fi
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
 
