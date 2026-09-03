@@ -1,7 +1,7 @@
 ---
 title: Disney Princess Outfit — Tiana Inspired
 theme: disney-characters
-collage_image: /photos/pasted-image-1787581428569.png
+collage_image: /photos/pasted-image-1788402851416.png
 collage_image_alt: ''
 pixie_note: Princess style, park-day comfort. That’s our kind of magic. 💚✨
 status: published
