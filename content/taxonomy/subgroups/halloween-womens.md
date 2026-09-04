@@ -1,9 +1,9 @@
 ---
-label: "Family Halloween — Women's"
-slug: "halloween-womens"
+label: Family Halloween — Ears/Headbands
+slug: halloween-womens
+display_label: Ears/Headbands
 category: family-halloween
 order: 2
 active: true
-display_label: "Women's"
 permalink: false
 ---
