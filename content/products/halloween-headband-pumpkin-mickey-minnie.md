@@ -7,7 +7,7 @@ image_source: uploaded
 status: published
 order: 2
 category: family-halloween
-subgroup: loungefly-backpacks
+subgroup: halloween-womens
 pixie_tip: ''
 personal_photo: ''
 personal_photo_alt: ''
