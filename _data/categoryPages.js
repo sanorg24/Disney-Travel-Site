@@ -199,7 +199,7 @@ export default [
     heroSubtitle: "Spooky-cute matching looks for Mickey's Not-So-Scary Halloween Party and family Halloween fun.",
     hasSectionHeader: false,
     hasSubgroups: true,
-    subgroupOrder: ["halloween-unisex", "halloween-womens", "halloween-youth"],
-    subgroupLabels: { "halloween-unisex": "Unisex", "halloween-womens": "Women's", "halloween-youth": "Youth" }
+    subgroupOrder: ["halloween-unisex", "halloween-womens", "halloween-youth", "halloween-backpacks"],
+    subgroupLabels: { "halloween-unisex": "Unisex", "halloween-womens": "Ears/Headbands", "halloween-youth": "Youth", "halloween-backpacks": "Backpacks" }
   }
 ];
