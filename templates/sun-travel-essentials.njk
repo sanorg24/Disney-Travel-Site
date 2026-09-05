@@ -7,8 +7,14 @@ permalink: "sun-travel-essentials.html"
 {% include "analytics.njk" %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sun, Travel &amp; Personal Care Essentials | The Pixie Packed Family</title>
-<meta name="description" content="Sunscreen, hair care, cooling fans, and travel-friendly personal care picks for Disney parks and family trips, from The Pixie Packed Family.">
+{%- set pageTitle = "Sun, Travel & Personal Care Essentials | The Pixie Packed Family" %}
+{%- set pageDescription = "Sunscreen, hair care, cooling fans, and travel-friendly personal care picks for Disney parks and family trips, from The Pixie Packed Family." %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+{%- set ogTitle = pageTitle %}
+{%- set ogDescription = pageDescription %}
+{%- set ogImage = "/photos/sun-travel-01.jpg" %}
+{% include "seo-meta.njk" %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">

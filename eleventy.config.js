@@ -384,6 +384,75 @@ export default function (eleventyConfig) {
     return (looks || []).filter((l) => l.theme === theme);
   });
 
+  // Single implementation of the Pinterest-anchor sanitizer, reused by
+  // both the safeAnchor template filter (what actually renders as
+  // id="look-...") and the lookAnchorValidation build check below, so
+  // validation always checks the exact value that ends up on the page.
+  // Several existing Look filenames contain curly apostrophes, em dashes,
+  // or an emoji (e.g. "men's-epcot-...", "a-little-park-day-magic-✨") --
+  // those are valid in an HTML id attribute but unsafe/fragile once
+  // copied into a URL field, so this only reshapes the *anchor string*;
+  // it never touches the underlying filename, and is not a new Stable Slug.
+  function computeSafeAnchor(slug) {
+    return String(slug || "")
+      .normalize("NFKD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/['’]/g, "")
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "");
+  }
+
+  eleventyConfig.addFilter("safeAnchor", computeSafeAnchor);
+
+  // Build-time validation: every published Look's Pinterest anchor must
+  // be non-empty and unique across all published Looks. A collision
+  // would silently send two different Pinterest Pins to the same
+  // outfit, and an empty anchor would render an unusable id="look-" --
+  // both are real data errors, so this fails the build the same way
+  // taxonomyValidation does (loud, with the conflicting Looks named)
+  // rather than only warning.
+  eleventyConfig.addCollection("lookAnchorValidation", function (collectionApi) {
+    const looks = collectionApi.getFilteredByGlob("content/looks/*.md")
+      .filter((item) => item.data.status === "published");
+
+    const errors = [];
+    const seenBy = new Map(); // anchor -> [identity strings]
+
+    for (const item of looks) {
+      const anchor = computeSafeAnchor(item.fileSlug);
+      const identity = `"${item.data.title || "(untitled)"}" (${item.inputPath})`;
+
+      if (!anchor) {
+        errors.push(
+          `Look ${identity} produced an empty/invalid Pinterest anchor from fileSlug "${item.fileSlug}".`
+        );
+        continue;
+      }
+
+      if (!seenBy.has(anchor)) seenBy.set(anchor, []);
+      seenBy.get(anchor).push(identity);
+    }
+
+    for (const [anchor, identities] of seenBy) {
+      if (identities.length > 1) {
+        errors.push(
+          `Duplicate Pinterest anchor "look-${anchor}" produced by ${identities.length} Looks: ` +
+          identities.join(" and ") + "."
+        );
+      }
+    }
+
+    if (errors.length) {
+      throw new Error(
+        "Look anchor validation failed -- build stopped:\n" +
+        errors.map((e) => "  - " + e).join("\n")
+      );
+    }
+
+    return { checkedLooks: looks.length, uniqueAnchors: seenBy.size };
+  });
+
   // Taxonomy-driven Collection Theme sections for the Shop Disney
   // Collections page (outfits.html). Mirrors the same derive-from-
   // taxonomy pattern already used for Categories: active Themes, sorted
@@ -399,8 +468,15 @@ export default function (eleventyConfig) {
       .filter((t) => t.active)
       .sort((a, b) => (a.order || 0) - (b.order || 0));
 
+    // anchorSlug carries Eleventy's own fileSlug (the Look's filename
+    // stem) through onto each Look so templates/outfits.njk can render a
+    // stable, unique per-Look anchor id (#look-<anchorSlug>) for direct
+    // Pinterest-Pin linking. This is purely additive: it is not a new
+    // Stable Slug field, doesn't touch the CMS schema, and the filename
+    // itself is untouched -- Sveltia only sets it once at Look creation
+    // and does not rename the file when the title changes later.
     const looks = collectionApi.getFilteredByGlob("content/looks/*.md")
-      .map((item) => item.data)
+      .map((item) => ({ ...item.data, anchorSlug: item.fileSlug }))
       .filter((l) => l.status === "published")
       .sort((a, b) => (a.order || 0) - (b.order || 0));
 
@@ -412,6 +488,34 @@ export default function (eleventyConfig) {
         looks: looks.filter((l) => l.theme === t.slug),
       }))
       .filter((section) => section.looks.length > 0);
+  });
+
+  // --- Sitemap URL list ---------------------------------------------------
+  // Eleventy's built-in collections.all only includes the *first* paginated
+  // output of a template unless that template opts into
+  // pagination.addAllPagesToCollections -- which category-page.njk and
+  // group-page.njk don't, and changing that is out of scope here. So
+  // rather than alter those two production templates, this collection
+  // reuses the same resolveCategoryPages/resolveShopGroups data they
+  // already render from to fill in the rest, de-duplicated (via Set)
+  // against whatever collections.all does supply on its own.
+  eleventyConfig.addCollection("sitemapUrls", function (collectionApi) {
+    const urls = new Set();
+
+    collectionApi.getAll().forEach((item) => {
+      if (item.data && item.data.eleventyExcludeFromCollections) return;
+      if (item.url) urls.add(item.url);
+    });
+
+    resolveCategoryPages(collectionApi)
+      .filter((c) => c.permalink)
+      .forEach((c) => urls.add("/" + c.permalink));
+
+    resolveShopGroups(collectionApi)
+      .filter((g) => !g.isDedicated && g.permalink)
+      .forEach((g) => urls.add("/" + g.permalink));
+
+    return Array.from(urls).sort();
   });
 
   // --- Blog content collection -------------------------------------------

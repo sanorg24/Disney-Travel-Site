@@ -7,8 +7,13 @@ permalink: "accessories-backpacks.html"
 {% include "analytics.njk" %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Backpacks | The Pixie Packed Family</title>
-<meta name="description" content="Practical park-day backpacks — curated Amazon picks from The Pixie Packed Family.">
+{%- set pageTitle = "Backpacks | The Pixie Packed Family" %}
+{%- set pageDescription = "Practical park-day backpacks — curated Amazon picks from The Pixie Packed Family." %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+{%- set ogTitle = pageTitle %}
+{%- set ogDescription = pageDescription %}
+{% include "seo-meta.njk" %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">

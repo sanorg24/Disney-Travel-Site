@@ -7,8 +7,14 @@ permalink: "index.html"
 {% include "analytics.njk" %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Pixie Packed Family | Disney Tips, Outfits &amp; Planning Guides</title>
-<meta name="description" content="Real-family Disney park tips, outfit inspiration, helpful planning guides, and tried-and-loved favorites to make Disney days easier and more magical. ✨">
+{%- set pageTitle = "The Pixie Packed Family | Disney Tips, Outfits & Planning Guides" %}
+{%- set pageDescription = "Real-family Disney park tips, outfit inspiration, helpful planning guides, and tried-and-loved favorites to make Disney days easier and more magical. ✨" %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+{%- set ogTitle = pageTitle %}
+{%- set ogDescription = pageDescription %}
+{%- set ogImage = "/photos/family-castle.jpg" %}
+{% include "seo-meta.njk" %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">

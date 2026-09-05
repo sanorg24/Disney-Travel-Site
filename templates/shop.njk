@@ -7,8 +7,13 @@ permalink: "shop.html"
 {% include "analytics.njk" %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop Disney Finds | The Pixie Packed Family</title>
-<meta name="description" content="Shop all of The Pixie Packed Family's curated Disney vacation finds — apparel, park day accessories, sun & travel essentials, themed outfit inspiration, and holiday picks.">
+{%- set pageTitle = "Shop Disney Finds | The Pixie Packed Family" %}
+{%- set pageDescription = "Shop all of The Pixie Packed Family's curated Disney vacation finds — apparel, park day accessories, sun & travel essentials, themed outfit inspiration, and holiday picks." %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+{%- set ogTitle = pageTitle %}
+{%- set ogDescription = pageDescription %}
+{% include "seo-meta.njk" %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">

@@ -7,8 +7,14 @@ permalink: "accessories.html"
 {% include "analytics.njk" %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Park Day Accessories | The Pixie Packed Family</title>
-<meta name="description" content="Hats, ears, headbands, backpacks, Loungefly, Pandora, and footwear for Disney park days — curated Amazon picks from The Pixie Packed Family.">
+{%- set pageTitle = "Park Day Accessories | The Pixie Packed Family" %}
+{%- set pageDescription = "Hats, ears, headbands, backpacks, Loungefly, Pandora, and footwear for Disney park days — curated Amazon picks from The Pixie Packed Family." %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+{%- set ogTitle = pageTitle %}
+{%- set ogDescription = pageDescription %}
+{%- set ogImage = "/photos/accessories-loungefly-01.jpg" %}
+{% include "seo-meta.njk" %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
