@@ -1,0 +1,21 @@
+{#-
+  Shared canonical + Open Graph + Twitter Card metadata partial.
+  Include this after the page's own <title> and meta description tags.
+  Expects (all optional except ogTitle/ogDescription):
+    ogTitle       - reuse the page's own <title> content
+    ogDescription - reuse the page's own meta description content
+    ogImage       - site-relative path to a real image for this page
+                    (falls back to site.defaultSocialImage when omitted
+                    or blank, so og:image/twitter:image are never broken)
+    ogType        - "website" (default) or "article" for blog posts
+-#}
+<link rel="canonical" href="{{ site.siteUrl }}{{ page.url }}">
+<meta property="og:type" content="{{ ogType | default('website') }}">
+<meta property="og:url" content="{{ site.siteUrl }}{{ page.url }}">
+<meta property="og:title" content="{{ ogTitle }}">
+<meta property="og:description" content="{{ ogDescription }}">
+<meta property="og:image" content="{{ site.siteUrl }}{{ ogImage | default(site.defaultSocialImage, true) }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ ogTitle }}">
+<meta name="twitter:description" content="{{ ogDescription }}">
+<meta name="twitter:image" content="{{ site.siteUrl }}{{ ogImage | default(site.defaultSocialImage, true) }}">

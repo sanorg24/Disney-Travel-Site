@@ -7,8 +7,13 @@ permalink: "privacy-policy.html"
 {% include "analytics.njk" %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Privacy Policy | The Pixie Packed Family</title>
-<meta name="description" content="Privacy Policy for The Pixie Packed Family, including information about analytics, email communications, affiliate links, cookies, and third-party services.">
+{%- set pageTitle = "Privacy Policy | The Pixie Packed Family" %}
+{%- set pageDescription = "Privacy Policy for The Pixie Packed Family, including information about analytics, email communications, affiliate links, cookies, and third-party services." %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+{%- set ogTitle = pageTitle %}
+{%- set ogDescription = pageDescription %}
+{% include "seo-meta.njk" %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">

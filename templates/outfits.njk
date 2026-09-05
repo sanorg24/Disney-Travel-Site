@@ -7,8 +7,13 @@ permalink: "outfits.html"
 {% include "analytics.njk" %}
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Shop Disney Collections | The Pixie Packed Family</title>
-<meta name="description" content="Curated Disney collections — from park-day outfits to travel-day favorites, park bag essentials, and more — with shoppable Amazon links for every piece.">
+{%- set pageTitle = "Shop Disney Collections | The Pixie Packed Family" %}
+{%- set pageDescription = "Curated Disney collections — from park-day outfits to travel-day favorites, park bag essentials, and more — with shoppable Amazon links for every piece." %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+{%- set ogTitle = pageTitle %}
+{%- set ogDescription = pageDescription %}
+{% include "seo-meta.njk" %}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -58,7 +63,7 @@ permalink: "outfits.html"
   .back-to-directory a:hover, .back-to-directory a:focus-visible { color: var(--magenta); outline: none; }
 
   .outfit-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-  .outfit-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; flex: 1 1 210px; max-width: 300px; }
+  .outfit-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; flex: 1 1 210px; max-width: 300px; scroll-margin-top: 90px; }
   .outfit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
   .outfit-card img { width: 100%; height: auto; } /* full photo, never cropped */
   .outfit-card-body { padding: 14px 16px 16px; }
@@ -111,7 +116,7 @@ permalink: "outfits.html"
 {%- endif %}
     <div class="outfit-grid">
 {%- for look in section.looks %}
-      <div class="outfit-card">
+      <div class="outfit-card" id="look-{{ look.anchorSlug | safeAnchor }}">
         <img src="{{ look.collage_image }}" alt="{{ look.collage_image_alt }}">
         <div class="outfit-card-body">
           <h3>{{ look.title }}</h3>

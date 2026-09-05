@@ -1,0 +1,20 @@
+---
+permalink: "sitemap.xml"
+eleventyExcludeFromCollections: true
+---
+{#-
+  Sitemap built from the sitemapUrls collection (eleventy.config.js),
+  which already resolves the full deduplicated set of public page URLs --
+  including every Category/Group page Eleventy's default pagination
+  behavior would otherwise only partially expose. Looks/Products/taxonomy
+  records and drafts are never in that set (they resolve to url:false),
+  so no Look-anchor URLs are invented here.
+-#}
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for url in collections.sitemapUrls %}
+  <url>
+    <loc>{{ site.siteUrl }}{{ url }}</loc>
+  </url>
+{%- endfor %}
+</urlset>
