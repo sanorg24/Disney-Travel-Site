@@ -1,4 +1,4 @@
-name: Hero LCP A-B Comparison
+name: Hero LCP A-B Comparison — JPG + fetchpriority
 
 on:
   push:
@@ -36,11 +36,24 @@ jobs:
           npm ci
           npx @11ty/eleventy
 
-      - name: Build B — original JPG hero
+      - name: Build B — JPG hero
         working-directory: B-jpg
         run: |
           npm ci
           npx @11ty/eleventy
+
+      - name: Add fetchpriority only to B hero
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('B-jpg/_site/index.html')
+          s = p.read_text()
+          old = '<img src="photos/family-castle.jpg" alt="The Pixie Packed Family at Magic Kingdom">'
+          new = '<img src="photos/family-castle.jpg" alt="The Pixie Packed Family at Magic Kingdom" fetchpriority="high">'
+          if old not in s:
+              raise SystemExit('Expected hero img markup not found')
+          p.write_text(s.replace(old, new, 1))
+          PY
 
       - name: Install Lighthouse test tools
         run: npm install --no-save lighthouse http-server
@@ -58,7 +71,7 @@ jobs:
             --quiet
           kill $SERVER_PID || true
 
-      - name: Run B — JPG control
+      - name: Run B — JPG + fetchpriority
         run: |
           npx http-server B-jpg/_site -p 8081 -c-1 > /tmp/lh-b-http.log 2>&1 &
           SERVER_PID=$!
@@ -66,7 +79,7 @@ jobs:
           npx lighthouse http://127.0.0.1:8081/index.html \
             --only-categories=performance \
             --output=json \
-            --output-path=./lighthouse-B-jpg.json \
+            --output-path=./lighthouse-B-jpg-priority.json \
             --chrome-flags="--headless --no-sandbox --disable-gpu" \
             --quiet
           kill $SERVER_PID || true
@@ -88,10 +101,10 @@ jobs:
             };
           }
           const A = metrics('lighthouse-A-main.json');
-          const B = metrics('lighthouse-B-jpg.json');
+          const B = metrics('lighthouse-B-jpg-priority.json');
           console.log(JSON.stringify({
             A_current_main_webp_fetchpriority: A,
-            B_original_jpg_control: B,
+            B_jpg_fetchpriority: B,
             B_minus_A_lcp_ms: B.lcp_ms - A.lcp_ms,
             B_minus_A_performance_points: B.performance - A.performance
           }, null, 2));
@@ -100,8 +113,8 @@ jobs:
       - name: Upload A-B Lighthouse reports
         uses: actions/upload-artifact@v4
         with:
-          name: hero-lcp-ab-reports
+          name: hero-lcp-jpg-priority-ab-reports
           path: |
             lighthouse-A-main.json
-            lighthouse-B-jpg.json
+            lighthouse-B-jpg-priority.json
           retention-days: 3
