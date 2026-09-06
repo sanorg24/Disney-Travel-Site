@@ -29,6 +29,49 @@ jobs:
       - name: Build with Eleventy
         run: npx @11ty/eleventy
 
+      - name: Install Lighthouse test tools
+        run: npm install --no-save lighthouse http-server
+
+      - name: Serve built site
+        run: |
+          npx http-server _site -p 8080 -c-1 > /tmp/hero-lcp-http.log 2>&1 &
+          echo $! > /tmp/hero-lcp-http.pid
+          sleep 3
+
+      - name: Run Lighthouse mobile audit
+        run: |
+          npx lighthouse http://127.0.0.1:8080/index.html \
+            --only-categories=performance \
+            --output=json \
+            --output-path=./hero-lcp-lighthouse.json \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet
+
+      - name: Print key LCP metrics
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const r = JSON.parse(fs.readFileSync('hero-lcp-lighthouse.json', 'utf8'));
+          const a = r.audits;
+          const out = {
+            performance: Math.round((r.categories.performance.score || 0) * 100),
+            fcp_ms: a['first-contentful-paint']?.numericValue,
+            lcp_ms: a['largest-contentful-paint']?.numericValue,
+            tbt_ms: a['total-blocking-time']?.numericValue,
+            cls: a['cumulative-layout-shift']?.numericValue,
+            speed_index_ms: a['speed-index']?.numericValue,
+            lcp_element: a['largest-contentful-paint-element']?.details?.items?.[0]?.node?.snippet || null
+          };
+          console.log(JSON.stringify(out, null, 2));
+          NODE
+
+      - name: Upload Lighthouse report
+        uses: actions/upload-artifact@v4
+        with:
+          name: hero-lcp-lighthouse-report
+          path: hero-lcp-lighthouse.json
+          retention-days: 3
+
       - name: Upload preview artifact
         uses: actions/upload-artifact@v4
         with:
