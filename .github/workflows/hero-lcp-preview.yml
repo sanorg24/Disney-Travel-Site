@@ -1,4 +1,4 @@
-name: Hero LCP Preview Build
+name: Hero LCP A-B Comparison
 
 on:
   push:
@@ -10,71 +10,98 @@ permissions:
   contents: read
 
 jobs:
-  build-preview:
+  compare:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout test branch
+      - name: Checkout current main into A
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: A-main
+
+      - name: Checkout JPG test branch into B
         uses: actions/checkout@v4
         with:
           ref: hero-lcp-control-test
+          path: B-jpg
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      - name: Install dependencies
-        run: npm ci
+      - name: Build A — current main
+        working-directory: A-main
+        run: |
+          npm ci
+          npx @11ty/eleventy
 
-      - name: Build with Eleventy
-        run: npx @11ty/eleventy
+      - name: Build B — original JPG hero
+        working-directory: B-jpg
+        run: |
+          npm ci
+          npx @11ty/eleventy
 
       - name: Install Lighthouse test tools
         run: npm install --no-save lighthouse http-server
 
-      - name: Serve built site
+      - name: Run A — current main
         run: |
-          npx http-server _site -p 8080 -c-1 > /tmp/hero-lcp-http.log 2>&1 &
-          echo $! > /tmp/hero-lcp-http.pid
+          npx http-server A-main/_site -p 8080 -c-1 > /tmp/lh-a-http.log 2>&1 &
+          SERVER_PID=$!
           sleep 3
-
-      - name: Run Lighthouse mobile audit
-        run: |
           npx lighthouse http://127.0.0.1:8080/index.html \
             --only-categories=performance \
             --output=json \
-            --output-path=./hero-lcp-lighthouse.json \
+            --output-path=./lighthouse-A-main.json \
             --chrome-flags="--headless --no-sandbox --disable-gpu" \
             --quiet
+          kill $SERVER_PID || true
 
-      - name: Print key LCP metrics
+      - name: Run B — JPG control
+        run: |
+          npx http-server B-jpg/_site -p 8081 -c-1 > /tmp/lh-b-http.log 2>&1 &
+          SERVER_PID=$!
+          sleep 3
+          npx lighthouse http://127.0.0.1:8081/index.html \
+            --only-categories=performance \
+            --output=json \
+            --output-path=./lighthouse-B-jpg.json \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet
+          kill $SERVER_PID || true
+
+      - name: Print A-B comparison
         run: |
           node - <<'NODE'
           const fs = require('fs');
-          const r = JSON.parse(fs.readFileSync('hero-lcp-lighthouse.json', 'utf8'));
-          const a = r.audits;
-          const out = {
-            performance: Math.round((r.categories.performance.score || 0) * 100),
-            fcp_ms: a['first-contentful-paint']?.numericValue,
-            lcp_ms: a['largest-contentful-paint']?.numericValue,
-            tbt_ms: a['total-blocking-time']?.numericValue,
-            cls: a['cumulative-layout-shift']?.numericValue,
-            speed_index_ms: a['speed-index']?.numericValue,
-            lcp_element: a['largest-contentful-paint-element']?.details?.items?.[0]?.node?.snippet || null
-          };
-          console.log(JSON.stringify(out, null, 2));
+          function metrics(file) {
+            const r = JSON.parse(fs.readFileSync(file, 'utf8'));
+            const a = r.audits;
+            return {
+              performance: Math.round((r.categories.performance.score || 0) * 100),
+              fcp_ms: Math.round(a['first-contentful-paint']?.numericValue || 0),
+              lcp_ms: Math.round(a['largest-contentful-paint']?.numericValue || 0),
+              tbt_ms: Math.round(a['total-blocking-time']?.numericValue || 0),
+              cls: a['cumulative-layout-shift']?.numericValue,
+              speed_index_ms: Math.round(a['speed-index']?.numericValue || 0)
+            };
+          }
+          const A = metrics('lighthouse-A-main.json');
+          const B = metrics('lighthouse-B-jpg.json');
+          console.log(JSON.stringify({
+            A_current_main_webp_fetchpriority: A,
+            B_original_jpg_control: B,
+            B_minus_A_lcp_ms: B.lcp_ms - A.lcp_ms,
+            B_minus_A_performance_points: B.performance - A.performance
+          }, null, 2));
           NODE
 
-      - name: Upload Lighthouse report
+      - name: Upload A-B Lighthouse reports
         uses: actions/upload-artifact@v4
         with:
-          name: hero-lcp-lighthouse-report
-          path: hero-lcp-lighthouse.json
-          retention-days: 3
-
-      - name: Upload preview artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: hero-lcp-preview-site
-          path: _site
+          name: hero-lcp-ab-reports
+          path: |
+            lighthouse-A-main.json
+            lighthouse-B-jpg.json
           retention-days: 3
