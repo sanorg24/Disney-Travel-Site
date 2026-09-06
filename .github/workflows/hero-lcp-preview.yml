@@ -1,0 +1,37 @@
+name: Hero LCP Preview Build
+
+on:
+  push:
+    branches:
+      - hero-lcp-control-test
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout test branch
+        uses: actions/checkout@v4
+        with:
+          ref: hero-lcp-control-test
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build with Eleventy
+        run: npx @11ty/eleventy
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: hero-lcp-preview-site
+          path: _site
+          retention-days: 3
