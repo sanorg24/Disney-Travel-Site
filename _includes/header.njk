@@ -1,3 +1,7 @@
+{% if page.url == '/' %}
+<link rel="preload" as="image" href="photos/family-castle.jpg" fetchpriority="high">
+<style>.hero-photo{aspect-ratio:933/1400}</style>
+{% endif %}
 <header>
   <nav class="wrap">
     {% if fullNav %}<div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
