@@ -1,4 +1,4 @@
-name: Hero LCP A-B Comparison — JPG + dimensions
+name: Hero LCP A-B Comparison — candidate branch
 
 on:
   push:
@@ -19,11 +19,11 @@ jobs:
           ref: main
           path: A-main
 
-      - name: Checkout JPG test branch into B
+      - name: Checkout candidate branch into B
         uses: actions/checkout@v4
         with:
           ref: hero-lcp-control-test
-          path: B-jpg
+          path: B-candidate
 
       - name: Set up Node
         uses: actions/setup-node@v4
@@ -36,24 +36,11 @@ jobs:
           npm ci
           npx @11ty/eleventy
 
-      - name: Build B — JPG hero
-        working-directory: B-jpg
+      - name: Build B — candidate branch
+        working-directory: B-candidate
         run: |
           npm ci
           npx @11ty/eleventy
-
-      - name: Add fetchpriority and intrinsic dimensions to B hero
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('B-jpg/_site/index.html')
-          s = p.read_text()
-          old = '<img src="photos/family-castle.jpg" alt="The Pixie Packed Family at Magic Kingdom">'
-          new = '<img src="photos/family-castle.jpg" alt="The Pixie Packed Family at Magic Kingdom" width="933" height="1400" fetchpriority="high">'
-          if old not in s:
-              raise SystemExit('Expected hero img markup not found')
-          p.write_text(s.replace(old, new, 1))
-          PY
 
       - name: Install Lighthouse test tools
         run: npm install --no-save lighthouse http-server
@@ -71,15 +58,15 @@ jobs:
             --quiet
           kill $SERVER_PID || true
 
-      - name: Run B — JPG + dimensions + fetchpriority
+      - name: Run B — candidate branch
         run: |
-          npx http-server B-jpg/_site -p 8081 -c-1 > /tmp/lh-b-http.log 2>&1 &
+          npx http-server B-candidate/_site -p 8081 -c-1 > /tmp/lh-b-http.log 2>&1 &
           SERVER_PID=$!
           sleep 3
           npx lighthouse http://127.0.0.1:8081/index.html \
             --only-categories=performance \
             --output=json \
-            --output-path=./lighthouse-B-jpg-dimensions.json \
+            --output-path=./lighthouse-B-candidate.json \
             --chrome-flags="--headless --no-sandbox --disable-gpu" \
             --quiet
           kill $SERVER_PID || true
@@ -101,10 +88,10 @@ jobs:
             };
           }
           const A = metrics('lighthouse-A-main.json');
-          const B = metrics('lighthouse-B-jpg-dimensions.json');
+          const B = metrics('lighthouse-B-candidate.json');
           console.log(JSON.stringify({
-            A_current_main_webp_fetchpriority: A,
-            B_jpg_dimensions_fetchpriority: B,
+            A_current_main: A,
+            B_candidate_branch: B,
             B_minus_A_lcp_ms: B.lcp_ms - A.lcp_ms,
             B_minus_A_performance_points: B.performance - A.performance
           }, null, 2));
@@ -113,8 +100,8 @@ jobs:
       - name: Upload A-B Lighthouse reports
         uses: actions/upload-artifact@v4
         with:
-          name: hero-lcp-jpg-dimensions-ab-reports
+          name: hero-lcp-candidate-ab-reports
           path: |
             lighthouse-A-main.json
-            lighthouse-B-jpg-dimensions.json
+            lighthouse-B-candidate.json
           retention-days: 3
