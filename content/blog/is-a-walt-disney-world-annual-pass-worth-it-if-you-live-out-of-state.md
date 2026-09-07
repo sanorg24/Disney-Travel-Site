@@ -4,7 +4,7 @@ date: 2026-09-07
 tag: disney-news
 excerpt: Our family’s experience, the perks people overlook, and the Disney math you should do before buying
 meta_description: Wondering if a Walt Disney World Annual Pass is worth it for an out-of-state family? See the perks, savings and Disney math our family considered.
-hero_image: /photos/pasted-image-1788791317266.png
+hero_image: /photos/pasted-image-1788796419802.png
 hero_alt: Vanessa, Troy and Arianna together in front of Cinderella Castle at Walt Disney World.
 status: published
 ---
@@ -216,7 +216,7 @@ We don’t.
 
 There’s no pressure to turn the vacation into a PhotoPass scavenger hunt just because we paid for Memory Maker for that particular trip.
 
-![Vanessa, Troy and Seth pose together near a fountain at EPCOT while Seth holds out his hand for a Disney PhotoPass Remy Magic Shot.](/photos/image.jpeg "Sometimes the best PhotoPass pictures are the ones we never could have taken ourselves. Getting Seth to hold his hand out just right for this Remy Magic Shot was half the fun. 😂")
+![Vanessa, Troy and Seth pose together near a fountain at EPCOT while Seth holds out his hand for a Disney PhotoPass Remy Magic Shot.](/photos/pasted-image-1788796636053.png "Sometimes the best PhotoPass pictures are the ones we never could have taken ourselves. Getting Seth to hold his hand out just right for this Remy Magic Shot was half the fun. 😂")
 
 The Annual Pass PhotoPass Downloads add-on currently costs \*\*$109 plus tax for the year\*\* and includes eligible PhotoPass photographer images, Magic Shots and selected attraction photos and videos captured while the benefit is valid.
 
@@ -268,7 +268,7 @@ Another Loungefly that is apparently COMPLETELY different from the other Loungef
 
 That 💩 adds up fast. 😂🛍️
 
-![Disney Pandora Groot charm purchased during a Walt Disney World trip.](/photos/image.jpeg "Exhibit A: apparently the Passholder merchandise discount knows exactly where to find me. 😂")
+![Disney Pandora Groot charm purchased during a Walt Disney World trip.](/photos/pasted-image-1788795616596.png "Exhibit A: apparently the Passholder merchandise discount knows exactly where to find me. 😂")
 
 For example:
 
@@ -310,7 +310,7 @@ I would never buy an Annual Pass assuming every Disney Resort stay is automatica
 
 But when a Passholder offer lines up with a vacation you were already taking?
 
-That can be another very nice perk.![Disney Pandora Groot charm purchased during a Walt Disney World trip.](/photos/image.jpeg "Exhibit A: apparently the Passholder merchandise discount knows exactly where to find me. 😂")
+That can be another very nice perk.![Disney’s Pop Century Resort television displaying a Happy Anniversary message for Troy and Vanessa.](/photos/pasted-image-1788795871619.png)
 
 One other part of Disney Resort reservations that has worked well for us personally is flexibility.
 
@@ -356,7 +356,7 @@ And one of my biggest fears before buying them turned out to be wrong.
 
 Going more often didn’t make Disney feel less special.
 
-In some ways, being Passholders allowed us to enjoy it MORE.![Vanessa’s family, including Grandma Trudy, together at Walt Disney World during Disney Starlight.](/photos/image.jpeg "Apparently Seth took the whole “slow down” part VERY seriously. 😂 A quick nap before Disney Starlight!")
+In some ways, being Passholders allowed us to enjoy it MORE.![Vanessa’s family, including Grandma Trudy, together at Walt Disney World during Disney Starlight.](/photos/pasted-image-1788796358438.png "Apparently Seth took the whole “slow down” part VERY seriously. 😂 A quick nap before Disney Starlight!")
 
 \*\*THE BIGGEST SURPRISE?\*\*
 
@@ -570,7 +570,7 @@ And I can answer that from an interesting perspective now.
 
 We originally made this decision while living OUT OF STATE.
 
-Today our circumstances are very different.![Vanessa and Troy celebrating their anniversary together at Walt Disney World.](/photos/image.jpeg)
+Today our circumstances are very different.![Vanessa and Troy celebrating their anniversary together at Walt Disney World.](/photos/pasted-image-1788796735263.png)
 
 We live in Florida, and Troy works for Disney, which gives our family access to other admission benefits.
 
@@ -630,4 +630,4 @@ And it’s something no ticket-price calculator ever showed me. ❤️
 
 ***
 
-\*\*Important:\*\* Annual Pass prices, benefits, discounts, policies and availability can change. Always check Walt Disney World’s current Annual Pass information before purchasing.
+\*\*Important:\*\* Annual Pass prices, benefits, discounts, policies and availability can change. Always check[ Walt Disney World’s current Annual Pass ](https://disneyworld.disney.go.com/passholder-program/)information before purchasing.
