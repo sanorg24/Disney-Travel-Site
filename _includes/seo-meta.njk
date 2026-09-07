@@ -1,6 +1,12 @@
 {#-
   Shared canonical + Open Graph + Twitter Card metadata partial.
   Include this after the page's own <title> and meta description tags.
+
+  Also emits narrowly-scoped JSON-LD structured data:
+  - Organization + WebSite on the homepage
+  - Article on blog posts
+  - BreadcrumbList on taxonomy-driven Group and Category pages
+
   Expects (all optional except ogTitle/ogDescription):
     ogTitle       - reuse the page's own <title> content
     ogDescription - reuse the page's own meta description content
@@ -8,10 +14,26 @@
                     (falls back to site.defaultSocialImage when omitted
                     or blank, so og:image/twitter:image are never broken)
     ogType        - "website" (default) or "article" for blog posts
+
+  NOTE: taxonomy pagination aliases their current item as `page`, which means
+  Eleventy's usual page.url is unavailable there. Prefer page.url when it
+  exists, otherwise fall back to the taxonomy item's explicit permalink.
 -#}
-<link rel="canonical" href="{{ site.siteUrl }}{{ page.url }}">
+
+{%- set canonicalUrl = site.siteUrl -%}
+{%- if page.url -%}
+  {%- if page.url == "/index.html" or page.url == "index.html" -%}
+    {%- set canonicalUrl = site.siteUrl ~ "/" -%}
+  {%- else -%}
+    {%- set canonicalUrl = site.siteUrl ~ page.url -%}
+  {%- endif -%}
+{%- elif page.permalink -%}
+  {%- set canonicalUrl = site.siteUrl ~ "/" ~ page.permalink -%}
+{%- endif -%}
+
+<link rel="canonical" href="{{ canonicalUrl }}">
 <meta property="og:type" content="{{ ogType | default('website') }}">
-<meta property="og:url" content="{{ site.siteUrl }}{{ page.url }}">
+<meta property="og:url" content="{{ canonicalUrl }}">
 <meta property="og:title" content="{{ ogTitle }}">
 <meta property="og:description" content="{{ ogDescription }}">
 <meta property="og:image" content="{{ site.siteUrl }}{{ ogImage | default(site.defaultSocialImage, true) }}">
@@ -19,3 +41,123 @@
 <meta name="twitter:title" content="{{ ogTitle }}">
 <meta name="twitter:description" content="{{ ogDescription }}">
 <meta name="twitter:image" content="{{ site.siteUrl }}{{ ogImage | default(site.defaultSocialImage, true) }}">
+
+{# Homepage: Organization + WebSite. #}
+{%- if canonicalUrl == site.siteUrl ~ "/" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": {{ (site.siteUrl ~ "/#organization") | dump | safe }},
+      "name": "The Pixie Packed Family",
+      "url": {{ (site.siteUrl ~ "/") | dump | safe }}
+    },
+    {
+      "@type": "WebSite",
+      "@id": {{ (site.siteUrl ~ "/#website") | dump | safe }},
+      "url": {{ (site.siteUrl ~ "/") | dump | safe }},
+      "name": "The Pixie Packed Family",
+      "publisher": {
+        "@id": {{ (site.siteUrl ~ "/#organization") | dump | safe }}
+      }
+    }
+  ]
+}
+</script>
+{%- endif -%}
+
+{# Blog posts: Article. #}
+{%- if ogType == "article" -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": {{ title | dump | safe }},
+  "description": {{ meta_description | dump | safe }},
+  {%- if hero_image %}
+  "image": {{ (site.siteUrl ~ hero_image) | dump | safe }},
+  {%- endif %}
+  "datePublished": {{ (date | isoDate) | dump | safe }},
+  "mainEntityOfPage": {{ canonicalUrl | dump | safe }},
+  "author": {
+    "@type": "Organization",
+    "name": "The Pixie Packed Family",
+    "url": {{ (site.siteUrl ~ "/") | dump | safe }}
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "The Pixie Packed Family",
+    "url": {{ (site.siteUrl ~ "/") | dump | safe }}
+  }
+}
+</script>
+{%- endif -%}
+
+{# Taxonomy-driven Group pages: Home > Shop > Group. #}
+{%- if page.categories and page.label and page.permalink -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": {{ (site.siteUrl ~ "/") | dump | safe }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shop",
+      "item": {{ (site.siteUrl ~ "/shop.html") | dump | safe }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ page.label | dump | safe }},
+      "item": {{ canonicalUrl | dump | safe }}
+    }
+  ]
+}
+</script>
+{%- endif -%}
+
+{# Taxonomy-driven Category pages: Home > Shop > parent Group > Category. #}
+{%- if page.backLinkHref and page.pageTitle and page.permalink -%}
+  {%- set parentName = page.backLinkLabel | default("Shop", true) | replace("← Back to ", "") -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": {{ (site.siteUrl ~ "/") | dump | safe }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Shop",
+      "item": {{ (site.siteUrl ~ "/shop.html") | dump | safe }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": {{ parentName | dump | safe }},
+      "item": {{ (site.siteUrl ~ "/" ~ page.backLinkHref) | dump | safe }}
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": {{ page.pageTitle | dump | safe }},
+      "item": {{ canonicalUrl | dump | safe }}
+    }
+  ]
+}
+</script>
+{%- endif -%}
