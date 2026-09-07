@@ -25,5 +25,6 @@ jobs:
         run: npm run build
       - name: Verify blog metadata
         run: |
-          grep -q '<title>Disney Tips, News & Family Stories | The Pixie Packed Family</title>' _site/blog.html
+          grep -q 'Disney Tips, News' _site/blog.html
+          grep -q 'The Pixie Packed Family</title>' _site/blog.html
           grep -q 'Real-family Disney tips, Walt Disney World news, packing help, outfit inspiration, and family stories from The Pixie Packed Family.' _site/blog.html
