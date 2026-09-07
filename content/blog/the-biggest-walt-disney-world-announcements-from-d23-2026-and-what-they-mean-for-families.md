@@ -27,9 +27,9 @@ As a family that spends a lot of time at Walt Disney World, some of these announ
 
 So rather than just give you another giant list of Disney announcements, let's break down the biggest news park by park — and what families should actually know about it.
 
-🏰 MAGIC KINGDOM
+## 🏰 MAGIC KINGDOM
 
-Piston Peak is bringing Cars to Frontierland
+### Piston Peak is bringing Cars to Frontierland
 
 We already knew a Cars-themed area was coming to Magic Kingdom, but D23 gave us a much better idea of what we're actually getting.
 
@@ -45,7 +45,7 @@ For younger racers, Miss Fritter's Daredevil Spin-Along will bring the demolitio
 
 And as a family with a pretty serious Cars fan, this one hits especially close to home for us. ❤️![](/photos/D23_INLINE_01_Seth_with_Cruz_Ramirez.jpeg)
 
-Villains Land sounds absolutely HUGE
+### Villains Land sounds absolutely HUGE
 
 Okay, Disney Villains fans.
 
@@ -71,7 +71,7 @@ A MALEFICENT COASTER?! 😳😂
 
 Disney, you have our attention.
 
-Carousel of Progress is moving into a new tomorrow
+### Carousel of Progress is moving into a new tomorrow
 
 There's also big news for one of Magic Kingdom's classics.
 
@@ -83,9 +83,9 @@ The refreshed attraction is scheduled for late spring 2027.
 
 Yes, I'm counting air conditioning as a family-planning benefit. 😂
 
-🌐 EPCOT
+## 🌐 EPCOT
 
-Spaceship Earth is getting its first major update in nearly 20 years
+### Spaceship Earth is getting its first major update in nearly 20 years
 
 This is a BIG one.
 
@@ -101,7 +101,7 @@ Losing the heart of Spaceship Earth wouldn't.
 
 Disney's description so far makes me hopeful they're aiming for the former.
 
-Dreamfinder AND Figment are returning together! 💜🌈
+### Dreamfinder AND Figment are returning together! 💜🌈
 
 Figment fans, we need to talk.
 
@@ -119,9 +119,9 @@ And anything that gives Figment more love gets an automatic thumbs-up around her
 
 ![](/photos/pasted-image-1787509509979.png)
 
-🎬 DISNEY'S HOLLYWOOD STUDIOS
+## 🎬 DISNEY'S HOLLYWOOD STUDIOS
 
-We're going to Monstropolis in 2027
+### We're going to Monstropolis in 2027
 
 Disney gave us a much clearer picture of the new Monstropolis land inspired by Monsters, Inc.
 
@@ -141,7 +141,7 @@ If you're planning a 2027 trip specifically for Monsters, Inc., don't assume tha
 
 That's something we'll be watching as Disney releases more details.
 
-Smugglers Run has a new Fortnite adventure — right now
+### Smugglers Run has a new Fortnite adventure — right now
 
 This one isn't years away.
 
@@ -153,9 +153,9 @@ Guests can link their Disney and Epic Games accounts to access a custom Smuggler
 
 And after watching Seth pilot the Millennium Falcon himself, I can tell you that attraction can create some pretty unforgettable family moments. ❤️
 
-🌳 DISNEY'S ANIMAL KINGDOM
+## 🌳 DISNEY'S ANIMAL KINGDOM
 
-Indiana Jones is heading into a completely original adventure
+### Indiana Jones is heading into a completely original adventure
 
 We already knew Indiana Jones was coming to Animal Kingdom's new Tropical Americas land.
 
@@ -175,7 +175,7 @@ Disney is describing this as an original Indiana Jones story created for Animal 
 
 [![](/photos/pasted-image-1787509945397.png "Concept art © Disney")](https://disneyparksblog.com/d23-event/)
 
-Encanto is getting a family attraction
+### Encanto is getting a family attraction
 
 Tropical Americas will also bring the Madrigal family to Animal Kingdom in Antonio's Fiesta de Encanto.
 
@@ -191,7 +191,7 @@ With so many headline-grabbing thrill attractions coming to Walt Disney World, a
 
 That's exactly the kind of detail we're going to keep watching as these lands develop.
 
-And THE YETI IS COMING BACK TO LIFE 😳
+### And THE YETI IS COMING BACK TO LIFE 😳
 
 Yes.
 
@@ -207,7 +207,7 @@ And if your kids have only ever experienced the Yeti as it operates today, event
 
 ![](/photos/pasted-image-1787509832962.png)
 
-So…when is all of this actually opening?
+## So…when is all of this actually opening?
 
 Here's the important part for families planning Walt Disney World vacations:
 
@@ -225,7 +225,7 @@ Because knowing that something cool is coming is fun.
 
 Knowing whether it'll be open when your family gets there is useful. 😉
 
-✨ What we're most excited about
+## ✨ What we're most excited about
 
 Trying to pick one favorite announcement is almost impossible.
 
