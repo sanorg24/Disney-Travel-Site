@@ -4,24 +4,8 @@
 {% endif %}
 <header>
   <nav class="wrap">
-    {% if fullNav %}<div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
-    <div class="navlinks">
-      <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
-      <a href="index.html#guides">Guides</a>
-      <a href="blog.html">Blog</a>
-      <a href="our-story.html">Our Story</a>
-    </div>
-    <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false">☰</button>{% elif brandHref %}<a class="brand" href="{{ brandHref }}"><span class="mark">✦</span> The Pixie Packed Family</a>{% else %}<div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>{% endif %}
-    {% if not fullNav %}<div class="navlinks">{% if backLinkHref %}<a href="{{ backLinkHref }}">{{ backLinkLabel }}</a><a href="index.html">Home</a>{% else %}<a href="index.html">← Back to Home</a>{% endif %}</div>{% endif %}
+    <div class="brand">The Pixie Packed Family</div>
+    <button class="hamburger-btn" id="hamburger-btn" aria-label="Open menu" aria-expanded="false" style="display:none">☰</button>
   </nav>
-  {%- if fullNav %}
-  <div class="mobile-menu" id="mobile-menu">
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="index.html#guides">Guides</a>
-    <a href="blog.html">Blog</a>
-    <a href="our-story.html">Our Story</a>
-  </div>
-  {%- endif %}
+  <div class="mobile-menu" id="mobile-menu" style="display:none"></div>
 </header>
