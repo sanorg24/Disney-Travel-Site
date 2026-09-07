@@ -1,0 +1,32 @@
+name: Blog rendering validation
+
+on:
+  push:
+    branches:
+      - blog-inline-media-rendering
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build site
+        run: npm run build
+      - name: Verify annual-pass article output hooks
+        run: |
+          test -f "_site/blog-is-a-walt-disney-world-annual-pass-worth-it-if-you-live-out-of-state.html"
+          grep -q 'title="Exhibit A: apparently the Passholder merchandise discount knows exactly where to find me.' "_site/blog-is-a-walt-disney-world-annual-pass-worth-it-if-you-live-out-of-state.html"
+          grep -q 'className = '\''article-inline-caption'\''' "_site/blog-is-a-walt-disney-world-annual-pass-worth-it-if-you-live-out-of-state.html"
+          grep -q 'var re = /\\\*\\\*' "_site/blog-is-a-walt-disney-world-annual-pass-worth-it-if-you-live-out-of-state.html"
+          grep -q 'src="/photos/pasted-image-1788796419802.png"' "_site/blog-is-a-walt-disney-world-annual-pass-worth-it-if-you-live-out-of-state.html"
