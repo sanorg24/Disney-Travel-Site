@@ -6,10 +6,8 @@
   <title>Content Manager | The Pixie Packed Family</title>
 </head>
 <body>
-  <!-- Sveltia CMS, loaded from CDN. NOT yet configured with any real
-       GitHub authentication -- backend below is intentionally left
-       unconfigured for real use. Checkpoint 4.4 will address real
-       repository authentication as its own separate, approved step. -->
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
+  <!-- Pin Sveltia CMS to a known-good release so upstream regressions do not
+       change TPPF's production admin without review. -->
+  <script src="https://unpkg.com/@sveltia/cms@0.203.2/dist/sveltia-cms.js"></script>
 </body>
 </html>
