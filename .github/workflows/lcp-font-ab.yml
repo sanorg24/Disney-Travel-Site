@@ -1,0 +1,121 @@
+name: LCP Fonts A-B
+
+on:
+  push:
+    branches:
+      - lcp-font-system-test
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout baseline twice
+        uses: actions/checkout@v4
+        with:
+          ref: hero-lcp-production-candidate
+          path: source
+
+      - name: Duplicate source
+        run: |
+          cp -a source A-fonts
+          cp -a source B-system
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build both
+        run: |
+          cd A-fonts
+          npm ci
+          npx @11ty/eleventy
+          cd ../B-system
+          npm ci
+          npx @11ty/eleventy
+
+      - name: Remove Google fonts and force system fonts in B
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('B-system/_site/index.html')
+          s = p.read_text()
+          start = s.find('<link rel="preconnect" href="https://fonts.googleapis.com">')
+          end = s.find('<style>', start)
+          if start != -1 and end != -1:
+              s = s[:start] + s[end:]
+          s = s.replace("font-family: 'Quicksand', -apple-system, sans-serif;", "font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;")
+          s = s.replace("h1, h2, h3, .display { font-family: 'Fredoka', sans-serif; }", "h1, h2, h3, .display { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }")
+          s = s.replace(".signature { font-family: 'Fredoka', sans-serif;", ".signature { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;")
+          p.write_text(s)
+          PY
+
+      - name: Install Lighthouse tooling
+        run: npm install --no-save lighthouse http-server
+
+      - name: Run custom-font baseline
+        run: |
+          npx http-server A-fonts/_site -p 8080 -c-1 > /tmp/lh-a.log 2>&1 &
+          PID=$!
+          sleep 3
+          npx lighthouse http://127.0.0.1:8080/index.html --only-categories=performance --output=json --output-path=./lighthouse-A.json --chrome-flags="--headless --no-sandbox --disable-gpu" --quiet
+          kill $PID || true
+
+      - name: Run system-font variant
+        run: |
+          npx http-server B-system/_site -p 8081 -c-1 > /tmp/lh-b.log 2>&1 &
+          PID=$!
+          sleep 3
+          npx lighthouse http://127.0.0.1:8081/index.html --only-categories=performance --output=json --output-path=./lighthouse-B.json --chrome-flags="--headless --no-sandbox --disable-gpu" --quiet
+          kill $PID || true
+
+      - name: Print comparison
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          function metrics(file) {
+            const r = JSON.parse(fs.readFileSync(file,'utf8'));
+            const a = r.audits;
+            const details = a['largest-contentful-paint-element']?.details?.items || [];
+            const rows = details?.[1]?.items || [];
+            const phase = Object.fromEntries(rows.map(x => [x.phase, Math.round(x.timing || 0)]));
+            const node = details?.[0]?.items?.[0]?.node;
+            return {
+              performance: Math.round((r.categories.performance.score || 0) * 100),
+              fcp_ms: Math.round(a['first-contentful-paint']?.numericValue || 0),
+              lcp_ms: Math.round(a['largest-contentful-paint']?.numericValue || 0),
+              tbt_ms: Math.round(a['total-blocking-time']?.numericValue || 0),
+              cls: a['cumulative-layout-shift']?.numericValue,
+              speed_index_ms: Math.round(a['speed-index']?.numericValue || 0),
+              lcp_selector: node?.selector,
+              lcp_breakdown_ms: {
+                ttfb: phase['TTFB'] || 0,
+                load_delay: phase['Load Delay'] || 0,
+                load_time: phase['Load Time'] || 0,
+                render_delay: phase['Render Delay'] || 0
+              }
+            };
+          }
+          const A = metrics('lighthouse-A.json');
+          const B = metrics('lighthouse-B.json');
+          console.log(JSON.stringify({
+            A_custom_fonts: A,
+            B_system_fonts: B,
+            B_minus_A_lcp_ms: B.lcp_ms - A.lcp_ms,
+            B_minus_A_render_delay_ms: B.lcp_breakdown_ms.render_delay - A.lcp_breakdown_ms.render_delay,
+            B_minus_A_performance_points: B.performance - A.performance
+          }, null, 2));
+          NODE
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lcp-font-ab
+          path: |
+            lighthouse-A.json
+            lighthouse-B.json
+          retention-days: 3
