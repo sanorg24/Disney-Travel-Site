@@ -570,7 +570,7 @@ And I can answer that from an interesting perspective now.
 
 We originally made this decision while living OUT OF STATE.
 
-Today our circumstances are very different.![Vanessa and Troy celebrating their anniversary together at Walt Disney World.](/photos/image.jpeg)
+Today our circumstances are very different.
 
 We live in Florida, and Troy works for Disney, which gives our family access to other admission benefits.
 
