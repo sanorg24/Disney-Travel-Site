@@ -1,0 +1,90 @@
+name: LCP Candidate Final Sanity
+
+on:
+  push:
+    branches:
+      - lcp-candidate-final-sanity
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  sanity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout candidate
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build
+        run: |
+          npm ci
+          npx @11ty/eleventy
+
+      - name: Verify final hero markup placement
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          s = Path('_site/index.html').read_text()
+          head = s.split('</head>', 1)[0]
+          body = s.split('</head>', 1)[1]
+
+          assert '<link rel="preload" as="image" href="photos/family-castle.jpg" fetchpriority="high">' in head
+          assert '<link rel="preload" as="image" href="photos/family-castle.jpg" fetchpriority="high">' not in body
+          assert 'aspect-ratio: 933 / 1400' in s
+          assert 'width="933" height="1400" fetchpriority="high"' in s
+          print('Hero preload is in <head>; geometry and priority attributes are present.')
+          PY
+
+      - name: Install Lighthouse tooling
+        run: npm install --no-save lighthouse http-server
+
+      - name: Run Lighthouse
+        run: |
+          npx http-server _site -p 8080 -c-1 > /tmp/lh.log 2>&1 &
+          PID=$!
+          sleep 3
+          npx lighthouse http://127.0.0.1:8080/index.html \
+            --only-categories=performance \
+            --output=json \
+            --output-path=./lighthouse.json \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet
+          kill $PID || true
+
+      - name: Print metrics
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const r = JSON.parse(fs.readFileSync('lighthouse.json','utf8'));
+          const a = r.audits;
+          const details = a['largest-contentful-paint-element']?.details?.items || [];
+          const rows = details?.[1]?.items || [];
+          const phase = Object.fromEntries(rows.map(x => [x.phase, Math.round(x.timing || 0)]));
+          console.log(JSON.stringify({
+            performance: Math.round((r.categories.performance.score || 0) * 100),
+            fcp_ms: Math.round(a['first-contentful-paint']?.numericValue || 0),
+            lcp_ms: Math.round(a['largest-contentful-paint']?.numericValue || 0),
+            tbt_ms: Math.round(a['total-blocking-time']?.numericValue || 0),
+            cls: a['cumulative-layout-shift']?.numericValue,
+            speed_index_ms: Math.round(a['speed-index']?.numericValue || 0),
+            lcp_breakdown_ms: {
+              ttfb: phase['TTFB'] || 0,
+              load_delay: phase['Load Delay'] || 0,
+              load_time: phase['Load Time'] || 0,
+              render_delay: phase['Render Delay'] || 0
+            }
+          }, null, 2));
+          NODE
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lcp-candidate-final-sanity
+          path: lighthouse.json
+          retention-days: 3
