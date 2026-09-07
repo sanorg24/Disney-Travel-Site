@@ -4,8 +4,8 @@ date: 2026-09-07
 tag: disney-news
 excerpt: Our family’s experience, the perks people overlook, and the Disney math you should do before buying
 meta_description: Wondering if a Walt Disney World Annual Pass is worth it for an out-of-state family? See the perks, savings and Disney math our family considered.
-hero_image: ''
-hero_alt: ''
+hero_image: /photos/pasted-image-1788791317266.png
+hero_alt: Vanessa, Troy and Arianna together in front of Cinderella Castle at Walt Disney World.
 status: draft
 ---
 
@@ -94,15 +94,10 @@ Disney currently lists the Incredi-Pass at \*\*$1,629 plus tax per person age 3 
 It currently includes:
 
 - No blockout dates
-
 - Park Hopper privileges
-
 - Standard theme-park parking
-
 - Discounts at select dining locations
-
 - Up to 20% off select merchandise
-
 - The ability to hold up to five theme-park reservations at a time on a rolling basis
 
 ### Don’t Let the “5 Reservations” Rule Scare You
@@ -154,21 +149,13 @@ Because admission is only one piece of the Disney puzzle.
 When you do your own Disney math, think about:
 
 - Park Hopper
-
 - PhotoPass / Memory Maker
-
 - Theme-park parking
-
 - Merchandise discounts
-
 - Dining discounts
-
 - Resort offers
-
 - Water Park & Sports options
-
 - Arrival- and departure-day park time
-
 - Renewal savings
 
 And then there are benefits that aren’t quite as easy to put into a calculator.
@@ -229,6 +216,8 @@ We don’t.
 
 There’s no pressure to turn the vacation into a PhotoPass scavenger hunt just because we paid for Memory Maker for that particular trip.
 
+![Vanessa, Troy and Seth pose together near a fountain at EPCOT while Seth holds out his hand for a Disney PhotoPass Remy Magic Shot.](/photos/image.jpeg "Sometimes the best PhotoPass pictures are the ones we never could have taken ourselves. Getting Seth to hold his hand out just right for this Remy Magic Shot was half the fun. 😂")
+
 The Annual Pass PhotoPass Downloads add-on currently costs \*\*$109 plus tax for the year\*\* and includes eligible PhotoPass photographer images, Magic Shots and selected attraction photos and videos captured while the benefit is valid.
 
 For comparison, Disney currently lists Memory Maker at \*\*$185 when purchased at least three days in advance\*\* or \*\*$210 at the regular price\*\*.
@@ -279,6 +268,8 @@ Another Loungefly that is apparently COMPLETELY different from the other Loungef
 
 That 💩 adds up fast. 😂🛍️
 
+![Disney Pandora Groot charm purchased during a Walt Disney World trip.](/photos/image.jpeg "Exhibit A: apparently the Passholder merchandise discount knows exactly where to find me. 😂")
+
 For example:
 
 \*\*$1,000 in eligible merchandise receiving a 20% discount = $200 saved.\*\*
@@ -319,7 +310,7 @@ I would never buy an Annual Pass assuming every Disney Resort stay is automatica
 
 But when a Passholder offer lines up with a vacation you were already taking?
 
-That can be another very nice perk.
+That can be another very nice perk.![Disney Pandora Groot charm purchased during a Walt Disney World trip.](/photos/image.jpeg "Exhibit A: apparently the Passholder merchandise discount knows exactly where to find me. 😂")
 
 One other part of Disney Resort reservations that has worked well for us personally is flexibility.
 
@@ -365,7 +356,7 @@ And one of my biggest fears before buying them turned out to be wrong.
 
 Going more often didn’t make Disney feel less special.
 
-In some ways, being Passholders allowed us to enjoy it MORE.
+In some ways, being Passholders allowed us to enjoy it MORE.![Vanessa’s family, including Grandma Trudy, together at Walt Disney World during Disney Starlight.](/photos/image.jpeg "Apparently Seth took the whole “slow down” part VERY seriously. 😂 A quick nap before Disney Starlight!")
 
 \*\*THE BIGGEST SURPRISE?\*\*
 
@@ -464,33 +455,21 @@ Just don’t stop at ticket prices.
 Look at what your family would REALLY buy during those vacations:
 
 - Theme-park tickets
-
 - Park Hopper
-
 - Memory Maker / PhotoPass
-
 - Theme-park parking
-
 - Eligible Disney merchandise
-
 - Dining where you’d use Passholder discounts
-
 - Resort stays and applicable Passholder offers
-
 - Water parks, mini golf or other eligible activities
-
 - Optional Annual Pass add-ons
 
 Then think about the things that are harder to put into a spreadsheet:
 
 - Would you use the parks on arrival day?
-
 - Would a late-flight departure day become another park opportunity?
-
 - Would included Park Hopper change how you vacation?
-
 - Would being able to take shorter park days make Disney more relaxing?
-
 - What flexibility would actually matter to YOUR family?
 
 \*\*SAVINGS AND VALUE ARE NOT ALWAYS THE SAME THING.\*\*
@@ -591,7 +570,7 @@ And I can answer that from an interesting perspective now.
 
 We originally made this decision while living OUT OF STATE.
 
-Today our circumstances are very different.
+Today our circumstances are very different.![Vanessa and Troy celebrating their anniversary together at Walt Disney World.](/photos/image.jpeg)
 
 We live in Florida, and Troy works for Disney, which gives our family access to other admission benefits.
 
@@ -649,6 +628,6 @@ That turned out to be one of the biggest perks of all.
 
 And it’s something no ticket-price calculator ever showed me. ❤️
 
----
+***
 
 \*\*Important:\*\* Annual Pass prices, benefits, discounts, policies and availability can change. Always check Walt Disney World’s current Annual Pass information before purchasing.
