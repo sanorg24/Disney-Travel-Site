@@ -15,6 +15,7 @@ permalink: "index.html"
 {%- set ogDescription = pageDescription %}
 {%- set ogImage = "/photos/family-castle.jpg" %}
 {% include "seo-meta.njk" %}
+<link rel="preload" as="image" href="photos/family-castle.jpg" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload"
@@ -85,7 +86,7 @@ permalink: "index.html"
   .btn:hover { transform: translateY(-2px); }
   .btn-gold { background: var(--gold); color: var(--maroon); }
   .btn-outline { border-color: var(--maroon); color: var(--maroon); }
-  .hero-photo { border-radius: 22px; overflow: hidden; box-shadow: var(--shadow-lg); border: 6px solid var(--white); transform: rotate(1.5deg); }
+  .hero-photo { aspect-ratio: 933 / 1400; border-radius: 22px; overflow: hidden; box-shadow: var(--shadow-lg); border: 6px solid var(--white); transform: rotate(1.5deg); }
   .hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
 
   section { padding: 64px 24px; }
@@ -185,7 +186,7 @@ permalink: "index.html"
         <a class="btn btn-outline" href="guides/ultimate-park-day-packing-checklist.pdf">Get the Free Park Day Checklist</a>
       </div>
     </div>
-    <div class="hero-photo"><img src="photos/family-castle.jpg" alt="The Pixie Packed Family at Magic Kingdom"></div>
+    <div class="hero-photo"><img src="photos/family-castle.jpg" alt="The Pixie Packed Family at Magic Kingdom" width="933" height="1400" fetchpriority="high"></div>
   </div>
 </section>
 
