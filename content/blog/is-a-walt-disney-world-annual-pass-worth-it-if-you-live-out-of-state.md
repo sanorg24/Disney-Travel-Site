@@ -6,7 +6,7 @@ excerpt: Our family’s experience, the perks people overlook, and the Disney ma
 meta_description: Wondering if a Walt Disney World Annual Pass is worth it for an out-of-state family? See the perks, savings and Disney math our family considered.
 hero_image: /photos/pasted-image-1788791317266.png
 hero_alt: Vanessa, Troy and Arianna together in front of Cinderella Castle at Walt Disney World.
-status: draft
+status: published
 ---
 
 Fair warning: there’s a lot to unpack here. 😂
@@ -570,7 +570,7 @@ And I can answer that from an interesting perspective now.
 
 We originally made this decision while living OUT OF STATE.
 
-Today our circumstances are very different.
+Today our circumstances are very different.![Vanessa and Troy celebrating their anniversary together at Walt Disney World.](/photos/image.jpeg)
 
 We live in Florida, and Troy works for Disney, which gives our family access to other admission benefits.
 
