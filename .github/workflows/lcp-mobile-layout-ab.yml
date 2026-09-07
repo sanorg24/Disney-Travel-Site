@@ -1,0 +1,111 @@
+name: LCP Mobile Layout A-B
+
+on:
+  push:
+    branches:
+      - lcp-mobile-layout-test
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout candidate baseline
+        uses: actions/checkout@v4
+        with:
+          ref: hero-lcp-production-candidate
+          path: A-baseline
+
+      - name: Checkout mobile layout variant
+        uses: actions/checkout@v4
+        with:
+          ref: lcp-mobile-layout-test
+          path: B-layout
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build baseline
+        run: |
+          cd A-baseline
+          npm ci
+          npx @11ty/eleventy
+
+      - name: Build layout variant
+        run: |
+          cd B-layout
+          npm ci
+          npx @11ty/eleventy
+
+      - name: Install Lighthouse tooling
+        run: npm install --no-save lighthouse http-server
+
+      - name: Run baseline
+        run: |
+          npx http-server A-baseline/_site -p 8080 -c-1 > /tmp/lh-a.log 2>&1 &
+          PID=$!
+          sleep 3
+          npx lighthouse http://127.0.0.1:8080/index.html \
+            --only-categories=performance \
+            --output=json \
+            --output-path=./lighthouse-A.json \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet
+          kill $PID || true
+
+      - name: Run mobile layout variant
+        run: |
+          npx http-server B-layout/_site -p 8081 -c-1 > /tmp/lh-b.log 2>&1 &
+          PID=$!
+          sleep 3
+          npx lighthouse http://127.0.0.1:8081/index.html \
+            --only-categories=performance \
+            --output=json \
+            --output-path=./lighthouse-B.json \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet
+          kill $PID || true
+
+      - name: Print A-B comparison
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          function metrics(file) {
+            const r = JSON.parse(fs.readFileSync(file,'utf8'));
+            const a = r.audits;
+            const lcpEl = a['largest-contentful-paint-element']?.details?.items?.[0]?.items?.[0]?.node;
+            return {
+              performance: Math.round((r.categories.performance.score || 0) * 100),
+              fcp_ms: Math.round(a['first-contentful-paint']?.numericValue || 0),
+              lcp_ms: Math.round(a['largest-contentful-paint']?.numericValue || 0),
+              tbt_ms: Math.round(a['total-blocking-time']?.numericValue || 0),
+              cls: a['cumulative-layout-shift']?.numericValue,
+              speed_index_ms: Math.round(a['speed-index']?.numericValue || 0),
+              lcp_top_px: lcpEl?.boundingRect?.top,
+              lcp_height_px: lcpEl?.boundingRect?.height
+            };
+          }
+          const A = metrics('lighthouse-A.json');
+          const B = metrics('lighthouse-B.json');
+          console.log(JSON.stringify({
+            A_candidate_baseline: A,
+            B_mobile_layout_variant: B,
+            B_minus_A_lcp_ms: B.lcp_ms - A.lcp_ms,
+            B_minus_A_performance_points: B.performance - A.performance,
+            B_minus_A_lcp_top_px: (B.lcp_top_px ?? 0) - (A.lcp_top_px ?? 0)
+          }, null, 2));
+          NODE
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lcp-mobile-layout-ab
+          path: |
+            lighthouse-A.json
+            lighthouse-B.json
+          retention-days: 3
