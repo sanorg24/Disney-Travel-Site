@@ -630,4 +630,4 @@ And it’s something no ticket-price calculator ever showed me. ❤️
 
 ***
 
-\*\*Important:\*\* Annual Pass prices, benefits, discounts, policies and availability can change. Always check[ Walt Disney World’s current Annual Pass ](https://disneyworld.disney.go.com/passholder-program/)information before purchasing.
+**Important**: Annual Pass prices, benefits, discounts, policies and availability can change. Always check[ Walt Disney World’s current Annual Pass ](https://disneyworld.disney.go.com/passholder-program/)information before purchasing.
