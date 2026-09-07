@@ -4,7 +4,7 @@ date: 2026-09-07
 tag: disney-news
 excerpt: Tiana's Bayou Adventure is expected to close for refurbishment beginning November 2, 2026. Here's what families with upcoming Magic Kingdom trips should know.
 meta_description: Tiana's Bayou Adventure is expected to close for refurbishment November 2, 2026 — no official reopening date confirmed yet. Here's what to know before your trip.
-hero_image: /photos/pasted-image-1788809569589.png
+hero_image: /photos/TRSC3975.JPG
 hero_alt: Vanessa, Troy, Seth and Grandma Trudy riding Tiana’s Bayou Adventure at Magic Kingdom with the attraction sign and Disney PhotoPass ride effects visible.
 status: published
 ---
@@ -17,6 +17,6 @@ If you're visiting around that timeframe, keep an eye on Disney's official attra
 
 ## Why This One Is Special to Us
 
-The Princess and the Frog has always been a favorite for Arianna and me, so we watched this one come together with a little more excitement than usual. We counted down through the construction and finally got to ride Tiana's Bayou Adventure for the first time in August 2024.![Vanessa, Troy and Arianna riding Tiana’s Bayou Adventure at Magic Kingdom with the attraction sign and Disney PhotoPass ride effects visible.](/photos/20260907-152911.png)
+The Princess and the Frog has always been a favorite for Arianna and me, so we watched this one come together with a little more excitement than usual. We counted down through the construction and finally got to ride Tiana's Bayou Adventure for the first time in August 2024.![](/photos/IMG_3260%20-%20Copy.JPG)
 
-And yes, after all that waiting, we loved it. 😂 In fact, we rode it more than once on that first trip. The music, the colors, and the whole atmosphere made it feel like the movie had come to life around us. 🐸💚![Vanessa, Troy and Arianna Disney Photo Magic shot with Princess Tiana](/photos/pasted-image-1788820020818.png)
+And yes, after all that waiting, we loved it. 😂 In fact, we rode it more than once on that first trip. The music, the colors, and the whole atmosphere made it feel like the movie had come to life around us. 🐸💚![Vanessa, Troy and Arianna Disney Photo Magic shot with Princess Tiana](/photos/IMG_1825%20-%20Copy.JPG)
