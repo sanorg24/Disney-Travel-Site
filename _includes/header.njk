@@ -1,6 +1,15 @@
 {% if page.url == '/' %}
 <link rel="preload" as="image" href="photos/family-castle.jpg" fetchpriority="high">
-<style>.hero-photo{aspect-ratio:933/1400}</style>
+<style>
+.hero-photo{aspect-ratio:933/1400}
+@media (max-width:800px){
+  .hero{padding-top:28px}
+  .hero-inner{gap:24px}
+  .hero-text .eyebrow{margin-bottom:8px}
+  .hero-text h1{margin-bottom:10px}
+  .hero-text p.sub{margin-bottom:16px}
+}
+</style>
 {% endif %}
 <header>
   <nav class="wrap">
