@@ -1,0 +1,36 @@
+name: Schema validation
+
+on:
+  push:
+    branches:
+      - seo-structured-data
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build site
+        run: npm run build
+      - name: Verify structured data output
+        run: |
+          grep -q 'application/ld+json' _site/index.html
+          grep -q '"@type": "WebSite"' _site/index.html
+          grep -R -q '"@type": "Article"' _site
+          grep -R -q '"@type": "BreadcrumbList"' _site
+      - name: Upload generated site
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-validation-site
+          path: _site
