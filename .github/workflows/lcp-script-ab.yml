@@ -1,0 +1,144 @@
+name: LCP Script Mutation A-B
+
+on:
+  push:
+    branches:
+      - lcp-script-mutation-test
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout baseline source
+        uses: actions/checkout@v4
+        with:
+          ref: hero-lcp-production-candidate
+          path: source
+
+      - name: Duplicate source
+        run: |
+          cp -a source A-scripts
+          cp -a source B-noscripts
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build both
+        run: |
+          cd A-scripts
+          npm ci
+          npx @11ty/eleventy
+          cd ../B-noscripts
+          npm ci
+          npx @11ty/eleventy
+
+      - name: Strip homepage scripts from B only
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('B-noscripts/_site/index.html')
+          s = p.read_text()
+
+          # Remove external scripts, including Google Analytics and Kit.
+          s = re.sub(r'<script\b[^>]*\bsrc=["\'][^"\']+["\'][^>]*>\s*</script>', '', s, flags=re.I)
+
+          # Remove inline scripts. This includes gtag setup and hamburger/menu JS.
+          s = re.sub(r'<script\b(?![^>]*\bsrc=)[^>]*>.*?</script>', '', s, flags=re.I | re.S)
+
+          p.write_text(s)
+          PY
+
+      - name: Verify B has no scripts
+        run: |
+          if grep -qi '<script' B-noscripts/_site/index.html; then
+            echo 'Unexpected script tag remains in B'
+            grep -in '<script' B-noscripts/_site/index.html
+            exit 1
+          fi
+          echo 'B homepage contains no script tags.'
+
+      - name: Install Lighthouse tooling
+        run: npm install --no-save lighthouse http-server
+
+      - name: Run normal-script baseline
+        run: |
+          npx http-server A-scripts/_site -p 8080 -c-1 > /tmp/lh-a.log 2>&1 &
+          PID=$!
+          sleep 3
+          npx lighthouse http://127.0.0.1:8080/index.html \
+            --only-categories=performance \
+            --output=json \
+            --output-path=./lighthouse-A.json \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet
+          kill $PID || true
+
+      - name: Run no-script variant
+        run: |
+          npx http-server B-noscripts/_site -p 8081 -c-1 > /tmp/lh-b.log 2>&1 &
+          PID=$!
+          sleep 3
+          npx lighthouse http://127.0.0.1:8081/index.html \
+            --only-categories=performance \
+            --output=json \
+            --output-path=./lighthouse-B.json \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet
+          kill $PID || true
+
+      - name: Print comparison
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          function metrics(file) {
+            const r = JSON.parse(fs.readFileSync(file,'utf8'));
+            const a = r.audits;
+            const details = a['largest-contentful-paint-element']?.details?.items || [];
+            const rows = details?.[1]?.items || [];
+            const phase = Object.fromEntries(rows.map(x => [x.phase, Math.round(x.timing || 0)]));
+            const node = details?.[0]?.items?.[0]?.node;
+            return {
+              performance: Math.round((r.categories.performance.score || 0) * 100),
+              fcp_ms: Math.round(a['first-contentful-paint']?.numericValue || 0),
+              lcp_ms: Math.round(a['largest-contentful-paint']?.numericValue || 0),
+              tbt_ms: Math.round(a['total-blocking-time']?.numericValue || 0),
+              cls: a['cumulative-layout-shift']?.numericValue,
+              speed_index_ms: Math.round(a['speed-index']?.numericValue || 0),
+              lcp_selector: node?.selector,
+              lcp_top_px: node?.boundingRect?.top,
+              lcp_height_px: node?.boundingRect?.height,
+              lcp_breakdown_ms: {
+                ttfb: phase['TTFB'] || 0,
+                load_delay: phase['Load Delay'] || 0,
+                load_time: phase['Load Time'] || 0,
+                render_delay: phase['Render Delay'] || 0
+              }
+            };
+          }
+          const A = metrics('lighthouse-A.json');
+          const B = metrics('lighthouse-B.json');
+          console.log(JSON.stringify({
+            A_normal_scripts: A,
+            B_no_scripts: B,
+            B_minus_A_lcp_ms: B.lcp_ms - A.lcp_ms,
+            B_minus_A_render_delay_ms: B.lcp_breakdown_ms.render_delay - A.lcp_breakdown_ms.render_delay,
+            B_minus_A_performance_points: B.performance - A.performance
+          }, null, 2));
+          NODE
+
+      - name: Upload reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: lcp-script-ab
+          path: |
+            lighthouse-A.json
+            lighthouse-B.json
+          retention-days: 3
