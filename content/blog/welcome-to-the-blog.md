@@ -6,7 +6,7 @@ excerpt: New here? Start with a quick look at what you'll find on the blog — p
 meta_description: What you'll find on The Pixie Packed Family blog — travel tips, resort reviews, Amazon finds, outfit inspiration, and family & accessibility advice.
 hero_image: /photos/pasted-image-1787692794176.png
 hero_alt: ''
-status: published
+status: draft
 ---
 
 Hi, we're so glad you found your way here! This is where we'll be sharing everything we learn along the way — real trip planning advice, honest resort reviews, Amazon finds that actually make a difference, outfit inspiration for every park event, and practical tips for traveling with kids, grandparents, and loved ones with disabilities.
