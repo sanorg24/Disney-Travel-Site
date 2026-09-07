@@ -29,7 +29,7 @@ When Seth is with us, our setup looks very different because we need to make sur
 
 So instead of giving you another giant list of things you must carry into Disney World, here's what years of Disney park days have taught our family about packing smarter.
 
-1. Start With the People — Not the Packing List
+## 1. Start With the People — Not the Packing List
 
 Before deciding what goes in your park bag, think about the people going with you.
 
@@ -49,7 +49,7 @@ Don't pack for somebody else's family. Pack for yours.
 
 ![](/photos/pasted-image-1787533813189.png)
 
-2. Florida Heat Changes Everything
+## 2. Florida Heat Changes Everything
 
 If you're visiting Walt Disney World during the hotter months, staying cool isn't just something we think about after we get uncomfortable.
 
@@ -75,7 +75,7 @@ Comfort wins.
 
 ![](/photos/pasted-image-1787533774939.png)
 
-3. Sometimes the Mouse Ears Stay Home
+## 3. Sometimes the Mouse Ears Stay Home
 
 I love my Disney ears.
 
@@ -99,7 +99,7 @@ Florida survival occasionally wins. 😂
 
 ![](/photos/pasted-image-1787533730330.png)
 
-4. Bring Your Own Drinks and Snacks
+## 4. Bring Your Own Drinks and Snacks
 
 We almost always have drinks with us, and when Seth is along, having familiar snacks readily available can make the day much easier.
 
@@ -117,7 +117,7 @@ Especially if someone in your group has particular preferences, needs familiar f
 
 The goal is to make the park day easier—not make your bag heavier just because a packing list told you to bring something.
 
-5. Your Park Bag Doesn't Have to Be a Backpack
+## 5. Your Park Bag Doesn't Have to Be a Backpack
 
 This might be one of the biggest changes I've made over the years.
 
@@ -139,7 +139,7 @@ A few hours at EPCOT?
 
 You probably don't need the same bag you'd pack for rope drop through fireworks at Magic Kingdom.
 
-6. Prepare for Rain — Without Packing for a Hurricane
+## 6. Prepare for Rain — Without Packing for a Hurricane
 
 If you've spent much time in Florida, you already know where this is going.
 
@@ -163,7 +163,7 @@ Because buying emergency rain gear after the sky opens is a lot less fun than pu
 
 ![](/photos/pasted-image-1787533681722.png)
 
-7. Make Your Gear Work Harder
+## 7. Make Your Gear Work Harder
 
 One thing we've learned from traveling with Seth is how valuable it is when something can serve more than one purpose—or when we can make our existing setup work better.
 
@@ -183,7 +183,7 @@ The biggest bag isn't automatically the best bag.
 
 Sometimes a smaller, well-organized setup is much easier to live with for eight hours.
 
-8. Don't Pack Your Fears
+## 8. Don't Pack Your Fears
 
 This might be the biggest lesson we've learned.
 
@@ -215,7 +215,7 @@ If we unexpectedly need something, chances are we're going to be able to figure 
 
 I'd rather solve one unusual problem occasionally than carry the solution to fifty imaginary problems on every park day.
 
-What Usually Makes Our Disney Park-Day Cut
+## What Usually Makes Our Disney Park-Day Cut
 
 Our exact setup changes, but these are the kinds of things that consistently earn space:
 
@@ -247,7 +247,7 @@ You can always add what your family needs.
 
 That's the whole point.
 
-Pack for Your Family, Not the Internet
+## Pack for Your Family, Not the Internet
 
 If I could go back and give my earlier Disney-planning self one piece of advice, it would be this:
 
@@ -277,7 +277,7 @@ The goal is spending less time worrying about everything you brought—and more 
 
 ✨ Helping families pack less stress & more pixie dust.
 
-Before You Head to the Parks...
+## Before You Head to the Parks...
 
 Need help figuring out what deserves a spot in your suitcase before you even get to the park?
 
