@@ -68,6 +68,17 @@
     margin: 32px auto;
     border-radius: var(--radius);
   }
+  article img.has-visible-caption { margin-bottom: 8px; }
+  .article-inline-caption {
+    display: block;
+    max-width: 680px;
+    margin: 0 auto 32px;
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    font-style: italic;
+  }
 
   .back-link { display: inline-block; margin: 30px 0 0; font-weight: 700; font-size: 0.9rem; }
 
@@ -83,6 +94,7 @@
     article p { font-size: 1.02rem; line-height: 1.8; }
     article h2 { font-size: 1.22rem; margin: 38px 0 14px; }
     article h3 { font-size: 1.05rem; margin: 26px 0 10px; }
+    .article-inline-caption { font-size: 0.88rem; margin-bottom: 28px; }
   }
 </style>
 </head>
@@ -113,6 +125,69 @@
   <div class="footlinks"><a href="index.html">Home</a><a href="index.html#mission">About</a><a href="blog.html">Blog</a><a href="apparel.html">Apparel</a><a href="accessories.html">Accessories</a><a href="holidays.html">Holidays &amp; Festivals</a><a href="sun-travel-essentials.html">Sun, Travel &amp; Personal Care</a></div>
   <p style="font-size:0.75rem; color:rgba(255,255,255,0.35); max-width:600px; margin:12px auto 0;">As an Amazon Associate I earn from qualifying purchases.</p>
 </footer>
+
+<script>
+(function () {
+  var article = document.querySelector('article.wrap');
+  if (!article) return;
+
+  // Sveltia stores an inline image's Title as the Markdown image title.
+  // Markdown renders that as an img title attribute, which browsers only
+  // expose as a tooltip. Promote non-empty titles to visible captions while
+  // leaving alt text and any enclosing link untouched.
+  article.querySelectorAll('img[title]').forEach(function (img) {
+    var title = (img.getAttribute('title') || '').trim();
+    if (!title || img.nextElementSibling && img.nextElementSibling.classList.contains('article-inline-caption')) return;
+
+    img.classList.add('has-visible-caption');
+    var caption = document.createElement('span');
+    caption.className = 'article-inline-caption';
+    caption.textContent = title;
+
+    var mediaNode = img.parentElement && img.parentElement.tagName === 'A' ? img.parentElement : img;
+    mediaNode.insertAdjacentElement('afterend', caption);
+  });
+
+  // The CMS rich-text editor can escape manually typed Markdown emphasis as
+  // \*\*text\*\*. Eleventy correctly treats the escapes as literal asterisks,
+  // so repair only paired ** markers in rendered blog text. Existing <strong>
+  // output from the CMS toolbar is already HTML and is left unchanged.
+  var walker = document.createTreeWalker(article, NodeFilter.SHOW_TEXT);
+  var nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+
+  nodes.forEach(function (node) {
+    var parent = node.parentElement;
+    if (!parent || parent.closest('code, pre, script, style')) return;
+
+    var text = node.nodeValue;
+    if (!text || text.indexOf('**') === -1) return;
+
+    var re = /\*\*([^*\n]+?)\*\*/g;
+    var match;
+    var lastIndex = 0;
+    var fragment = document.createDocumentFragment();
+    var changed = false;
+
+    while ((match = re.exec(text)) !== null) {
+      changed = true;
+      if (match.index > lastIndex) {
+        fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+      }
+      var strong = document.createElement('strong');
+      strong.textContent = match[1];
+      fragment.appendChild(strong);
+      lastIndex = re.lastIndex;
+    }
+
+    if (!changed) return;
+    if (lastIndex < text.length) {
+      fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+    }
+    node.parentNode.replaceChild(fragment, node);
+  });
+})();
+</script>
 
 </body>
 </html>
