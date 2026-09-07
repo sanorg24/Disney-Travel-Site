@@ -1,0 +1,92 @@
+name: LCP Render Diagnostics
+
+on:
+  push:
+    branches:
+      - lcp-render-diagnostics
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout diagnostic branch
+        uses: actions/checkout@v4
+        with:
+          ref: lcp-render-diagnostics
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install site dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npx @11ty/eleventy
+
+      - name: Install Lighthouse tooling
+        run: npm install --no-save lighthouse http-server
+
+      - name: Serve built site
+        run: |
+          npx http-server _site -p 8080 -c-1 > /tmp/lcp-http.log 2>&1 &
+          echo $! > /tmp/lcp-http.pid
+          sleep 3
+
+      - name: Run Lighthouse and save trace assets
+        run: |
+          mkdir -p diagnostics
+          npx lighthouse http://127.0.0.1:8080/index.html \
+            --only-categories=performance \
+            --output=json \
+            --output-path=./diagnostics/lighthouse.json \
+            --save-assets \
+            --chrome-flags="--headless --no-sandbox --disable-gpu" \
+            --quiet
+
+      - name: Print render-delay diagnostics
+        run: |
+          node - <<'NODE'
+          const fs = require('fs');
+          const r = JSON.parse(fs.readFileSync('diagnostics/lighthouse.json','utf8'));
+          const a = r.audits;
+          const pick = id => ({
+            id,
+            title: a[id]?.title,
+            score: a[id]?.score,
+            numericValue: a[id]?.numericValue,
+            displayValue: a[id]?.displayValue,
+            details: a[id]?.details
+          });
+          const ids = [
+            'largest-contentful-paint',
+            'largest-contentful-paint-element',
+            'lcp-lazy-loaded',
+            'prioritize-lcp-image',
+            'render-blocking-resources',
+            'font-display',
+            'mainthread-work-breakdown',
+            'bootup-time',
+            'long-tasks',
+            'layout-shifts',
+            'uses-rel-preload',
+            'network-dependency-tree'
+          ];
+          console.log(JSON.stringify(ids.map(pick), null, 2));
+          NODE
+
+      - name: Upload diagnostics
+        uses: actions/upload-artifact@v4
+        with:
+          name: lcp-render-diagnostics
+          path: |
+            diagnostics
+            *.trace.json
+            *.devtoolslog.json
+          if-no-files-found: warn
+          retention-days: 3
