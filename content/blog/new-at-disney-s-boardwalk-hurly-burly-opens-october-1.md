@@ -41,4 +41,8 @@ This also feels like the kind of addition that could work really well on a slowe
 
 Just remember the biggest planning detail: \*\*families with children will need to visit before 9 PM\*\*, when Hurly-Burly becomes limited to guests ages 21 and older.
 
-Want to see the latest details? Visit Disney's official Hurly-Burly page for current hours, menu information and availability.[https://disneyworld.disney.go.com/en_CA/dining/boardwalk/hurly-burly-lounge/?utm_source=chatgpt.com](https://disneyworld.disney.go.com/en_CA/dining/boardwalk/hurly-burly-lounge/?utm_source=chatgpt.com)
+Want to see the latest details? Visit Disney's official Hurly-Burly page for current hours, menu information and availability. [https://disneyworld.disney.go.com/en_CA/dining/boardwalk/hurly-burly-lounge/?utm_source=chatgpt.com](https://disneyworld.disney.go.com/en_CA/dining/boardwalk/hurly-burly-lounge/?utm_source=chatgpt.com)
+
+Spending more time at Walt Disney World? Keep exploring our Disney News & Updates for more family-focused changes, openings and planning details that may affect your trip.
+
+[https://www.pixiepackedfamily.com/blog.html#tag=disney-news](https://www.pixiepackedfamily.com/blog.html#tag=disney-news)
