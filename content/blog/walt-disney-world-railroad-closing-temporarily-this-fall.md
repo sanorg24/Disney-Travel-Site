@@ -4,8 +4,8 @@ date: 2026-09-08
 tag: disney-news
 excerpt: The Walt Disney World Railroad temporarily closes beginning September 28, 2026 for routine refurbishment. Here’s what Magic Kingdom families should know before visiting this fall.
 meta_description: The Walt Disney World Railroad closes September 28, 2026 for refurbishment. Here’s what Magic Kingdom families should know before visiting this fall.
-hero_image: ''
-hero_alt: ''
+hero_image: /photos/pasted-image-1788885936365.png
+hero_alt: Walt Disney World Railroad locomotive at Magic Kingdom.
 status: draft
 ---
 
