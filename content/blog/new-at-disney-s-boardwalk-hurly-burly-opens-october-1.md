@@ -43,6 +43,6 @@ Just remember the biggest planning detail: \*\*families with children will need 
 
 Want to see the latest details? Visit Disney's official Hurly-Burly page for current hours, menu information and availability. [https://disneyworld.disney.go.com/en_CA/dining/boardwalk/hurly-burly-lounge/?utm_source=chatgpt.com](https://disneyworld.disney.go.com/en_CA/dining/boardwalk/hurly-burly-lounge/?utm_source=chatgpt.com)
 
-Spending more time at Walt Disney World? Keep exploring our Disney News & Updates for more family-focused changes, openings and planning details that may affect your trip.
+Want to see the latest details? Visit [Disney's official Hurly-Burly page](https://disneyworld.disney.go.com/en_CA/dining/boardwalk/hurly-burly-lounge/) for current hours, menu information and availability.
 
-[https://www.pixiepackedfamily.com/blog.html#tag=disney-news](https://www.pixiepackedfamily.com/blog.html#tag=disney-news)
+Spending more time at Walt Disney World? Keep exploring our [Disney News & Updates](https://www.pixiepackedfamily.com/blog.html#tag=disney-news) for more family-focused changes, openings and planning details that may affect your trip.
