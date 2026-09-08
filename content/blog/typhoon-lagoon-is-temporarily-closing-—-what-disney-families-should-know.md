@@ -21,7 +21,6 @@ During the closure, \*\*Disney’s Blizzard Beach Water Park\*\* will remain the
 
 The timing also lines up with the end of \*\*Cool KIDS’ SUMMER\*\*, which ran from May 26 through September 8 and included extra summer fun across Walt Disney World—including both Disney water parks being open.
 
-
 September 8 also marks the final eligible arrival date for the \*\*2026 Disney Resort check-in-day water park benefit\*\*. Eligible Disney Resorts Collection hotel guests arriving from May 26 through September 8 could receive water park admission on their check-in day as part of their stay.
 
 That benefit isn’t disappearing for good—Disney has already confirmed it will return for eligible Disney Resort hotel guests in \*\*summer 2027\*\*, with additional dates and details still to come.
@@ -31,3 +30,5 @@ That benefit isn’t disappearing for good—Disney has already confirmed it wil
 If you were planning a Typhoon Lagoon day after September 8, check Disney’s current water park calendar before your vacation and take a look at Blizzard Beach instead.
 
 Disney has not announced a reopening date for Typhoon Lagoon, so we won’t guess. Refurbishment schedules and park availability can always change.
+
+Before you go: Check Disney's Typhoon Lagoon page for the latest operating information and water park availability.[https://disneyworld.disney.go.com/en_CA/destinations/typhoon-lagoon/?utm_source=chatgpt.com](https://disneyworld.disney.go.com/en_CA/destinations/typhoon-lagoon/?utm_source=chatgpt.com)
