@@ -33,4 +33,4 @@ Disney has not announced a reopening date for Typhoon Lagoon, so we won’t gues
 
 Before you go: Check Disney's Typhoon Lagoon page for the latest operating information and water park availability. [https://disneyworld.disney.go.com/en_CA/destinations/typhoon-lagoon/?utm_source=chatgpt.com](https://disneyworld.disney.go.com/en_CA/destinations/typhoon-lagoon/?utm_source=chatgpt.com)
 
-Planning a water-park or non-theme-park day? You may also want to check out our Park Day Packing Checklist for the practical things that help make a long Disney day easier. [https://www.pixiepackedfamily.com/index.html#kit-signup](https://www.pixiepackedfamily.com/index.html#kit-signup)
+Want to keep up with these changes as Disney shares more dates, details and opening information? Follow our [Disney News & Updates](https://www.pixiepackedfamily.com/blog.html#tag=disney-news) for the latest family-focused updates that may affect future Walt Disney World trips.
