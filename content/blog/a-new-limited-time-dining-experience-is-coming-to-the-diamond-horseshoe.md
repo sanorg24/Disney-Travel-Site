@@ -39,4 +39,6 @@ It \*\*will be available during Mickey's Very Merry Christmas Party\*\*, so holi
 
 As with any limited-time Disney dining offering, menus, availability and other details can change. Check [Disney's official Diamond Horseshoe page](https://disneyworld.disney.go.com/en_CA/dining/magic-kingdom/diamond-horseshoe-lounge/) before your visit for the latest information.
 
+Image credit: Disney.
+
 Planning more Magic Kingdom time this fall? Keep exploring our [Disney News & Updates](https://www.pixiepackedfamily.com/blog.html#tag=disney-news) for more family-focused changes, openings and planning details that may affect your trip.
