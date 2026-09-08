@@ -29,6 +29,6 @@ Disney currently lists the closure as beginning September 28 with an expected re
 
 ![Family standing in front of the Magic Kingdom train station at Walt Disney World.](/photos/20260908-113752.png)
 
-Because refurbishment schedules can change, check the Walt Disney World Railroad page shortly before your visit for the latest operating information. [https://disneyworld.disney.go.com/attractions/magic-kingdom/walt-disney-world-railroad/](https://disneyworld.disney.go.com/attractions/magic-kingdom/walt-disney-world-railroad/)
+Because refurbishment schedules can change, check [Disney's Walt Disney World Railroad page](https://disneyworld.disney.go.com/attractions/magic-kingdom/walt-disney-world-railroad/) shortly before your visit for the latest operating information.
 
-If you're planning a full Magic Kingdom day, our Park Day Packing Checklist can also help you think through the little things that make a long day of walking, waiting and park-hopping around Magic Kingdom easier. [https://www.pixiepackedfamily.com/index.html#kit-signup](https://www.pixiepackedfamily.com/index.html#kit-signup)
+If you're planning a full Magic Kingdom day, our [Park Day Packing Checklist](https://www.pixiepackedfamily.com/guides/park-day-packing-checklist.html) can also help you think through the little things that make a long day of walking, waiting and park-hopping around Magic Kingdom easier.
