@@ -31,4 +31,6 @@ If you were planning a Typhoon Lagoon day after September 8, check Disney’s cu
 
 Disney has not announced a reopening date for Typhoon Lagoon, so we won’t guess. Refurbishment schedules and park availability can always change.
 
-Before you go: Check Disney's Typhoon Lagoon page for the latest operating information and water park availability.[https://disneyworld.disney.go.com/en_CA/destinations/typhoon-lagoon/?utm_source=chatgpt.com](https://disneyworld.disney.go.com/en_CA/destinations/typhoon-lagoon/?utm_source=chatgpt.com)
+Before you go: Check Disney's Typhoon Lagoon page for the latest operating information and water park availability. [https://disneyworld.disney.go.com/en_CA/destinations/typhoon-lagoon/?utm_source=chatgpt.com](https://disneyworld.disney.go.com/en_CA/destinations/typhoon-lagoon/?utm_source=chatgpt.com)
+
+Planning a water-park or non-theme-park day? You may also want to check out our Park Day Packing Checklist for the practical things that help make a long Disney day easier. [https://www.pixiepackedfamily.com/index.html#kit-signup](https://www.pixiepackedfamily.com/index.html#kit-signup)
