@@ -631,3 +631,5 @@ And it’s something no ticket-price calculator ever showed me. ❤️
 ***
 
 **Important**: Annual Pass prices, benefits, discounts, policies and availability can change. Always check[ Walt Disney World’s current Annual Pass ](https://disneyworld.disney.go.com/passholder-program/)information before purchasing.
+
+[6 Ways Our Disney-Loving Family Actually Saves Money at Walt Disney World](https://www.pixiepackedfamily.com/blog-6-ways-our-disney-loving-family-actually-saves-money-at-walt.html)

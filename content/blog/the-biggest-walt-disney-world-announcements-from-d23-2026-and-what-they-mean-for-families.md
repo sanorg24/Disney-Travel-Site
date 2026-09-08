@@ -251,4 +251,6 @@ And we're going to be following it every step of the way.
 
 💫 Helping families pack less stress & more pixie dust ✨
 
+Want to follow these changes as Disney shares new dates, details and updates? Keep an eye on our [Disney News & Updates](https://www.pixiepackedfamily.com/blog.html#tag=disney-news) as we follow what these announcements mean for future Walt Disney World trips.
+
 Concept art © Disney. Source: Disney Parks Blog. Used for news reporting/commentary.

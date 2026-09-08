@@ -281,6 +281,6 @@ The goal is spending less time worrying about everything you brought—and more 
 
 Need help figuring out what deserves a spot in your suitcase before you even get to the park?
 
-Grab our FREE Ultimate Disney Packing List for a simple starting point, then customize it for the way your family travels.
+Grab our [FREE Ultimate Disney Packing List](https://www.pixiepackedfamily.com/index.html#kit-signup) for a simple starting point, then customize it for the way your family travels.
 
-And if you're looking for some of the park-day gear our family actually uses, visit Shop My Finds for our favorite Disney travel essentials, cooling gear, bags and more.
+And if you're looking for some of the park-day gear our family actually uses, visit [Shop My Finds](https://www.pixiepackedfamily.com/shop.html) for our favorite Disney travel essentials, cooling gear, bags and more.
