@@ -33,6 +33,4 @@ None of these habits require you to sacrifice the feeling of being at Disney Wor
 
 For more real, practical Disney trip planning tips from a family that visits regularly, come find us at pixiepackedfamily.com — we share everything we know. Packing Magic. Creating Memories.
 
-Looking for more practical ways to make your Disney days easier? Our Park Day Packing Checklist is a great next stop for the little things that can save time, stress and unnecessary park purchases. 
-
-[https://www.pixiepackedfamily.com/index.html#guides](https://www.pixiepackedfamily.com/index.html#guides)
+Looking for more practical ways to make your Disney days easier? Our [Park Day Packing Checklist](https://www.pixiepackedfamily.com/index.html#guides) is a great next stop for the little things that can save time, stress and unnecessary park purchases.
