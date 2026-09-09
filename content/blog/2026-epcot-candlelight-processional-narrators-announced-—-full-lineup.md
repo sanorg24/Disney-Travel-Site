@@ -4,7 +4,7 @@ date: 2026-09-09
 tag: disney-news
 excerpt: Disney has announced the 2026 EPCOT Candlelight Processional narrator lineup, including new names like Robin Roberts, Jason Kelce and Lacey Chabert. Here’s the full schedule plus what families should know before planning.
 meta_description: See the full 2026 EPCOT Candlelight Processional narrator lineup, showtimes and the October 14 dining package date for Disney holiday planning.
-hero_image: /photos/pasted-image-1788953739204.png
+hero_image: /photos/pasted-image-1788985421166.png
 hero_alt: TPPF graphic showing the 2026 EPCOT Candlelight Processional narrator lineup, showtimes and key planning details.
 status: published
 ---
@@ -18,33 +18,19 @@ Performances take place nightly at \*\*4:45 PM, 6:30 PM and 8:00 PM\*\* at the \
 ## Full 2026 Narrator Lineup
 
 - \*\*Nov. 27–28\*\* — Auli‘i Cravalho
-
 - \*\*Nov. 29–Dec. 1\*\* — Gary Sinise
-
 - \*\*Dec. 2–3\*\* — To Be Announced
-
 - \*\*Dec. 4–5\*\* — Whoopi Goldberg
-
 - \*\*Dec. 6–7\*\* — Robin Roberts \*\*(NEW)\*\*
-
 - \*\*Dec. 8–9\*\* — Jason Kelce \*\*(NEW)\*\*
-
 - \*\*Dec. 10–12\*\* — Neil Patrick Harris
-
 - \*\*Dec. 13–14\*\* — To Be Announced
-
 - \*\*Dec. 15–16\*\* — Lauren Daigle
-
 - \*\*Dec. 17–19\*\* — Ralph Macchio
-
 - \*\*Dec. 20–21\*\* — Henry Winkler
-
 - \*\*Dec. 22–23\*\* — Lacey Chabert \*\*(NEW)\*\*
-
 - \*\*Dec. 24–25\*\* — Jodi Benson
-
 - \*\*Dec. 26–27\*\* — Simu Liu
-
 - \*\*Dec. 28–30\*\* — Eva Longoria
 
 ## What Families Should Know
