@@ -1,7 +1,7 @@
 ---
 label: Mix • Match • Reuse
 slug: mix-match-reuse
-order: null
+order: 2
 active: true
 permalink_path: mix-match-reuse
 description: More outfit inspiration. Less to pack. More room for the magic. ✨
