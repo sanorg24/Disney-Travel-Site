@@ -1402,6 +1402,16 @@ collections:
         widget: "text"
         required: false
         hint: "Short blurb shown on this Group's Shop hub card."
+      - label: "Shop Card Image (optional override)"
+        name: "card_image"
+        widget: "image"
+        required: false
+        hint: "Optional. Leave blank to automatically use the first published Product image from this Group. Use this for Groups like Shop Disney Collections that do not use Product Categories for their card image."
+      - label: "Shop Card Image Alt Text"
+        name: "card_image_alt"
+        widget: "string"
+        required: false
+        hint: "Briefly describe the Shop hub card image. Used when a Shop Card Image override is set."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
         widget: "hidden"
