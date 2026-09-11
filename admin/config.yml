@@ -8,6 +8,7 @@ backend:
   name: github
   repo: sanorg24/Disney-Travel-Site
   branch: cms-edits
+  auth_methods: [token]
   
 media_folder: "/photos"
 public_folder: "/photos"
