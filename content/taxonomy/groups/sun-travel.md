@@ -1,7 +1,7 @@
 ---
 label: Sun & Park Day Essentials
 slug: sun-travel
-order: 7
+order: 6
 active: true
 permalink_path: sun-travel-essentials.html
 description: Sunscreen, hair care, cooling gear, and travel-friendly picks for hot park days.
