@@ -174,13 +174,13 @@ export default function (eleventyConfig) {
   // Shop hub grid (never rendered broken) -- its own landing page still
   // generates via dynamicGroupPages below.
   //
-  // Four Groups (accessories, apparel, sun-travel, holidays) already have
-  // their own hand-built dedicated templates/pages and keep them exactly as
-  // they are -- they're excluded from the generic group-page.njk pagination
-  // target (dynamicGroupPages) so we never generate a duplicate page for
-  // them, but they're still included in shopGroups so their Shop hub card
-  // is taxonomy-driven like every other Group.
-  const DEDICATED_GROUP_TEMPLATES = ["accessories", "apparel", "sun-travel", "holidays"];
+  // Dedicated Groups already have their own hand-built templates/pages and
+  // keep them exactly as they are. They're excluded from the generic
+  // group-page.njk pagination target (dynamicGroupPages) so we never generate
+  // a duplicate page for them, but they're still included in shopGroups so
+  // their Shop hub card and display order are taxonomy-driven like every
+  // other Group.
+  const DEDICATED_GROUP_TEMPLATES = ["accessories", "apparel", "sun-travel", "disney-collections", "holidays"];
 
   function resolveShopGroups(collectionApi) {
     const groups = collectionApi.getFilteredByGlob("content/taxonomy/groups/*.md")
@@ -211,9 +211,9 @@ export default function (eleventyConfig) {
         .filter((c) => c.group === g.slug)
         .sort((a, b) => (a.order || 0) - (b.order || 0));
 
-      let cardImage = null;
-      let cardImageAlt = "";
-      if (groupCategories.length) {
+      let cardImage = g.card_image || null;
+      let cardImageAlt = g.card_image_alt || g.label || "";
+      if (!cardImage && groupCategories.length) {
         const resolved = firstItemImage(groupCategories[0].slug);
         if (resolved) {
           cardImage = resolved.image;
