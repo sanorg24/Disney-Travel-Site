@@ -1,7 +1,7 @@
 ---
 title: 4 Disney Vacation Outfits
 destination: mix-match-reuse
-theme: park-day-outfits
+theme: ''
 collage_image: /photos/pasted-image-1789084154358.png
 collage_image_alt: ''
 pixie_note: ''
