@@ -4,7 +4,7 @@ theme: park-day-outfits
 collage_image: /photos/pasted-image-1789221965327.png
 collage_image_alt: ''
 pixie_note: ''
-status: draft
+status: published
 order: null
 items:
   - label: Loungefly Disney Mickey's Light Up Decorations
