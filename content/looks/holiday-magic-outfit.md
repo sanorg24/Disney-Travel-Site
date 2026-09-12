@@ -1,5 +1,6 @@
 ---
 title: Holiday Magic Outfit
+destination: mix-match-reuse
 theme: park-day-outfits
 collage_image: /photos/pasted-image-1789221965327.png
 collage_image_alt: ''
