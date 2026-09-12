@@ -6,7 +6,7 @@ collage_image: /photos/pasted-image-1789234268596.png
 collage_image_alt: ''
 pixie_note: ''
 status: published
-order: null
+order: 2
 items:
   - label: Brooks Women’s Ghost 18
     amazon_url: https://amzn.to/4h0iop0
