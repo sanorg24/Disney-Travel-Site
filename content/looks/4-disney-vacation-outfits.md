@@ -1,5 +1,5 @@
 ---
-title: 4 Disney Vacation Outfits
+title: 4 Disney Vacation Outfits — Park Day Favorites
 destination: mix-match-reuse
 theme: ''
 collage_image: /photos/pasted-image-1789084154358.png
