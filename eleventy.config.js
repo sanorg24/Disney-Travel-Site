@@ -66,15 +66,31 @@ export default function (eleventyConfig) {
       }
     }
 
-    // Looks -> Theme: mirrors the Product -> Category checks above. A
-    // published Look with no Theme, or a Theme slug that doesn't exist,
-    // is a real data error (fatal) -- a Theme that exists but is
-    // inactive only warns, matching the established leniency for
-    // retired-but-referenced taxonomy elsewhere on the site.
+    // Looks can publish to one of two website destinations. Legacy Looks
+    // created before this field existed are intentionally treated as
+    // disney-collections so the migration does not move or hide any
+    // existing content. Shop Disney Collections Looks require a Theme;
+    // Mix • Match • Reuse Looks do not.
+    const validLookDestinations = new Set(["disney-collections", "mix-match-reuse"]);
     for (const l of looks) {
-      if (!l.theme) {
-        errors.push(`Look "${l.title}" has no Theme assigned.`);
-      } else {
+      const destination = l.destination || "disney-collections";
+      if (!validLookDestinations.has(destination)) {
+        errors.push(`Look "${l.title}" references unknown Website Destination "${destination}".`);
+        continue;
+      }
+
+      if (destination === "disney-collections") {
+        if (!l.theme) {
+          errors.push(`Look "${l.title}" has no Theme assigned for Shop Disney Collections.`);
+        } else {
+          const theme = themeBySlug.get(l.theme);
+          if (!theme) {
+            errors.push(`Look "${l.title}" references unknown Theme "${l.theme}".`);
+          } else if (theme.active === false) {
+            warnings.push(`Look "${l.title}" references inactive Theme "${l.theme}" (${theme.label}).`);
+          }
+        }
+      } else if (l.theme) {
         const theme = themeBySlug.get(l.theme);
         if (!theme) {
           errors.push(`Look "${l.title}" references unknown Theme "${l.theme}".`);
@@ -380,6 +396,16 @@ export default function (eleventyConfig) {
       .sort((a, b) => (a.order || 0) - (b.order || 0));
   });
 
+  // Published Looks assigned to the Mix • Match • Reuse destination.
+  // This keeps the new page on the same CMS Look model Vanessa already
+  // uses, while leaving every legacy Look on Shop Disney Collections.
+  eleventyConfig.addCollection("mixMatchReuseLooks", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("content/looks/*.md")
+      .map((item) => ({ ...item.data, anchorSlug: item.fileSlug }))
+      .filter((l) => l.status === "published" && l.destination === "mix-match-reuse")
+      .sort((a, b) => (a.order || 0) - (b.order || 0));
+  });
+
   eleventyConfig.addFilter("byTheme", function (looks, theme) {
     return (looks || []).filter((l) => l.theme === theme);
   });
@@ -477,7 +503,7 @@ export default function (eleventyConfig) {
     // and does not rename the file when the title changes later.
     const looks = collectionApi.getFilteredByGlob("content/looks/*.md")
       .map((item) => ({ ...item.data, anchorSlug: item.fileSlug }))
-      .filter((l) => l.status === "published")
+      .filter((l) => l.status === "published" && (l.destination || "disney-collections") === "disney-collections")
       .sort((a, b) => (a.order || 0) - (b.order || 0));
 
     return themes
