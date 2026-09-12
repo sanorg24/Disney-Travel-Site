@@ -1,5 +1,5 @@
 ---
-title: 4 Disney Vacation Outfits-Believe
+title: 4 Disney Vacation Outfits-Minnie & Friends
 destination: mix-match-reuse
 theme: park-day-outfits
 collage_image: /photos/pasted-image-1789229750313.png
