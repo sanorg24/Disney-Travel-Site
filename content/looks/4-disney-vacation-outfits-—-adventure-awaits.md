@@ -6,7 +6,7 @@ collage_image: /photos/pasted-image-1789233146611.png
 collage_image_alt: ''
 pixie_note: ''
 status: published
-order: 4
+order: 3
 items:
   - label: High Sierra Loop Backpack
     amazon_url: https://amzn.to/3UQRMiT
