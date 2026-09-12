@@ -55,6 +55,17 @@ permalink: "{{ page.permalink }}"
   .hub-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
   .hub-card p { font-size: 0.86rem; color: var(--gray); flex: 1; margin-bottom: 18px; }
   .hub-card .btn-sm { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 16px; border-radius: 9px; font-weight: 700; font-size: 0.82rem; background: var(--purple); color: var(--white); align-self: flex-start; }
+  .look-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+  .look-card { background: var(--pink-bg); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s; flex: 1 1 210px; max-width: 300px; scroll-margin-top: 90px; }
+  .look-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .look-card img { width: 100%; height: auto; }
+  .look-card-body { padding: 14px 16px 16px; }
+  .look-card-body h3 { font-size: 0.88rem; margin-bottom: 10px; font-weight: 600; }
+  .shop-links { display: flex; flex-direction: column; gap: 6px; }
+  .shop-links a { font-size: 0.74rem; font-weight: 700; color: var(--magenta); padding: 5px 0; border-bottom: 1px solid rgba(194,63,151,0.15); }
+  .shop-links a:hover { color: var(--coral); }
+  .pixie-note { font-size: 0.74rem; color: var(--ink); font-style: italic; background: var(--white); border-radius: 8px; padding: 8px 10px; margin-bottom: 10px; border-left: 3px solid var(--gold); white-space: pre-line; }
+  .affiliate-disclosure { color: var(--gray); font-size: 0.82rem; line-height: 1.5; text-align: center; margin: 0 auto 24px; max-width: 640px; }
   .coming-soon { color: var(--gray); font-size: 0.9rem; font-style: italic; background: var(--pink-bg); border-radius: var(--radius); padding: 24px; text-align: center; }
 
   footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
@@ -78,13 +89,42 @@ permalink: "{{ page.permalink }}"
 {% include "header.njk" %}
 
 <section class="pagehero">
+{%- if page.slug == "mix-match-reuse" %}
+  <span class="eyebrow">Outfit Inspiration</span>
+{%- else %}
   <span class="eyebrow">Shop the Parks</span>
+{%- endif %}
   <h1>{{ page.label }}</h1>
   <p>{{ page.description }}</p>
 </section>
 
 <section class="hub-section">
   <div class="wrap">
+{%- if page.slug == "mix-match-reuse" %}
+    <p class="affiliate-disclosure">A quick note: Some links on this page are Amazon affiliate links, which means we may earn a small commission if you purchase through them—at no extra cost to you. ✨</p>
+{%- if collections.mixMatchReuseLooks.length %}
+    <div class="look-grid">
+{%- for look in collections.mixMatchReuseLooks %}
+      <div class="look-card" id="look-{{ look.anchorSlug | safeAnchor }}">
+        <img src="{{ look.collage_image }}" alt="{{ look.collage_image_alt }}">
+        <div class="look-card-body">
+          <h3>{{ look.title }}</h3>
+{%- if look.pixie_note %}
+          <p class="pixie-note">💡 {{ look.pixie_note }}</p>
+{%- endif %}
+          <div class="shop-links">
+{%- for item in look.items %}
+            <a href="{{ item.amazon_url }}" target="_blank" rel="noopener">{{ item.label }} →</a>
+{%- endfor %}
+          </div>
+        </div>
+      </div>
+{%- endfor %}
+    </div>
+{%- else %}
+    <div class="coming-soon">Outfit ideas coming soon — check back shortly!</div>
+{%- endif %}
+{%- else %}
 {%- set visibleCategories = page.categories | selectattr("cardImage") | list %}
 {%- if visibleCategories.length %}
     <div class="hub-grid">
@@ -103,6 +143,7 @@ permalink: "{{ page.permalink }}"
     </div>
 {%- else %}
     <div class="coming-soon">Items coming soon — check back shortly!</div>
+{%- endif %}
 {%- endif %}
   </div>
 </section>

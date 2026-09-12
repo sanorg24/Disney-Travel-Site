@@ -1312,6 +1312,14 @@ collections:
       - label: "Look Title"
         name: "title"
         widget: "string"
+      - label: "Website Destination"
+        name: "destination"
+        widget: "select"
+        options:
+          - { label: "Shop Disney Collections", value: "disney-collections" }
+          - { label: "Mix • Match • Reuse", value: "mix-match-reuse" }
+        default: "disney-collections"
+        hint: "Choose where this Look should appear on the website. Existing Looks remain in Shop Disney Collections unless you deliberately change this."
       - label: "Theme Section"
         name: "theme"
         widget: "relation"
@@ -1319,8 +1327,8 @@ collections:
         value_field: "slug"
         display_field: "label"
         search_fields: ["label"]
-        required: true
-        hint: "Which Collection Theme section this Look appears under on the Shop Disney Collections page. To add a new section, create it first under TAXONOMY: Collection Themes."
+        required: false
+        hint: "Used for Shop Disney Collections. For Mix • Match • Reuse, you may leave this blank."
       - label: "Collage / Cover Image"
         name: "collage_image"
         widget: "image"
