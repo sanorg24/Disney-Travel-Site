@@ -9,6 +9,7 @@ export default function (eleventyConfig) {
   // --- Explicit passthrough copy: every existing production asset -------
   eleventyConfig.addPassthroughCopy("photos");
   eleventyConfig.addPassthroughCopy("guides");
+  eleventyConfig.addPassthroughCopy("blog-uploads");
   eleventyConfig.addPassthroughCopy("CNAME");
   eleventyConfig.addPassthroughCopy("admin");
 
@@ -552,14 +553,33 @@ export default function (eleventyConfig) {
   // excerpt/hero image/body) -- no per-post template or manual Blog Hub
   // card editing required going forward.
   eleventyConfig.addCollection("blogPosts", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("content/blog/*.md")
-      .filter((item) => item.data.status === "published")
-      .sort((a, b) => {
-        const dateA = new Date(a.data.date).getTime();
-        const dateB = new Date(b.data.date).getTime();
-        if (dateB !== dateA) return dateB - dateA; // newest first
-        return a.data.title.localeCompare(b.data.title); // deterministic tiebreak for same-date posts
-      });
+    const posts = collectionApi.getFilteredByGlob("content/blog/*.md")
+      .filter((item) => item.data.status === "published");
+
+    const errors = [];
+    for (const item of posts) {
+      const format = item.data.article_format || "standard";
+      if (format === "uploaded-html" && !item.data.html_file) {
+        errors.push(`Blog post "${item.data.title}" is set to Finished HTML Upload but has no HTML file.`);
+      }
+      if (!["standard", "uploaded-html"].includes(format)) {
+        errors.push(`Blog post "${item.data.title}" has unknown Article Format "${format}".`);
+      }
+    }
+
+    if (errors.length) {
+      throw new Error(
+        "Blog publishing validation failed -- build stopped:\n" +
+        errors.map((e) => "  - " + e).join("\n")
+      );
+    }
+
+    return posts.sort((a, b) => {
+      const dateA = new Date(a.data.date).getTime();
+      const dateB = new Date(b.data.date).getTime();
+      if (dateB !== dateA) return dateB - dateA; // newest first
+      return a.data.title.localeCompare(b.data.title); // deterministic tiebreak for same-date posts
+    });
   });
 
   // Single structured-date formatter, used identically by both the Blog
