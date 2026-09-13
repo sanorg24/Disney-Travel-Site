@@ -1635,12 +1635,29 @@ collections:
         name: "hero_image"
         widget: "image"
         required: false
-        hint: "Shown near the top of the article and reused automatically as this post's Blog Hub card image."
+        hint: "Used as the Blog Hub card image. For Standard CMS Articles it is also shown near the top of the article; for Finished HTML Uploads the uploaded file controls the article visuals."
       - label: "Featured/Hero Image Alt Text"
         name: "hero_alt"
         widget: "string"
         required: false
         hint: "Briefly describe what is shown in the Featured/Hero image."
+      - label: "Article Format"
+        name: "article_format"
+        widget: "select"
+        options:
+          - { label: "Standard CMS Article", value: "standard" }
+          - { label: "Finished HTML Upload", value: "uploaded-html" }
+        default: "standard"
+        required: false
+        hint: "Choose Finished HTML Upload when the article is already completely designed as an HTML file."
+      - label: "Finished HTML File"
+        name: "html_file"
+        widget: "file"
+        required: false
+        accept: ".html,.htm,text/html"
+        media_folder: "/blog-uploads"
+        public_folder: "/blog-uploads"
+        hint: "For Finished HTML Upload only. Upload the complete HTML file here."
       - label: "Status"
         name: "status"
         widget: "select"
@@ -1649,4 +1666,5 @@ collections:
       - label: "Body"
         name: "body"
         widget: "markdown"
-        hint: "Write the article here. To add a photo, drag it in, paste it, or use the toolbar's image button, right where you want it to appear -- no HTML needed."
+        required: false
+        hint: "For Standard CMS Article only. Leave blank when using a Finished HTML Upload."
