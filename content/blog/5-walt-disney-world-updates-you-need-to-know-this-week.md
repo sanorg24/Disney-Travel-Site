@@ -9,6 +9,6 @@ meta_description: |-
 hero_image: /photos/pasted-image-1789339269033.png
 hero_alt: ''
 article_format: uploaded-html
-html_file: /blog-uploads/TPPF_WDW_Top5_Newsletter_TPPF_Links_2026-09-13.html
+html_file: /blog-uploads/TPPF_WDW_Weekly_Roundup_WITH_Internal_Card_EMBEDDED_2026-09-13 (2).html
 status: published
 ---
