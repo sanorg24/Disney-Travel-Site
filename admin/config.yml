@@ -1654,7 +1654,6 @@ collections:
         name: "html_file"
         widget: "file"
         required: false
-        accept: ".html,.htm,text/html"
         media_folder: "/blog-uploads"
         public_folder: "/blog-uploads"
         hint: "For Finished HTML Upload only. Upload the complete HTML file here."
