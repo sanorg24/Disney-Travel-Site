@@ -81,6 +81,9 @@
   }
 
   .back-link { display: inline-block; margin: 30px 0 0; font-weight: 700; font-size: 0.9rem; }
+  .uploaded-html-shell { width: 100%; background: var(--cream); padding: 0; }
+  .uploaded-html-frame { display: block; width: 100%; min-height: 900px; border: 0; background: transparent; }
+  .uploaded-html-back { max-width: 760px; margin: 0 auto; padding: 10px 24px 50px; }
 
   footer { background: #3a1a26; color: rgba(255,255,255,0.6); padding: 40px 20px 26px; text-align: center; font-family: 'Quicksand', sans-serif; }
   .footlinks { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin: 16px 0; font-size: 0.85rem; }
@@ -105,6 +108,20 @@
 {% set brandHref = "index.html" %}
 {% include "header.njk" %}
 
+{% if article_format == "uploaded-html" and html_file %}
+<main class="uploaded-html-shell">
+  <iframe
+    id="uploaded-html-frame"
+    class="uploaded-html-frame"
+    src="{{ html_file }}"
+    title="{{ title }}"
+    sandbox="allow-same-origin"
+    loading="eager"></iframe>
+  <div class="uploaded-html-back">
+    <a class="back-link" href="blog.html">← Back to all posts</a>
+  </div>
+</main>
+{% else %}
 <section class="articlehero">
   <span class="blog-tag">{{ tag | tagLabel }}</span>
   <h1>{{ title }}</h1>
@@ -119,6 +136,7 @@
   {{ content | safe }}
   <a class="back-link" href="blog.html">← Back to all posts</a>
 </article>
+{% endif %}
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
@@ -128,6 +146,31 @@
 
 <script>
 (function () {
+  var uploadedFrame = document.getElementById('uploaded-html-frame');
+  if (uploadedFrame) {
+    function resizeUploadedFrame() {
+      try {
+        var doc = uploadedFrame.contentDocument;
+        if (!doc) return;
+        doc.querySelectorAll('a').forEach(function (link) {
+          link.setAttribute('target', '_top');
+        });
+        var height = Math.max(
+          doc.documentElement ? doc.documentElement.scrollHeight : 0,
+          doc.body ? doc.body.scrollHeight : 0
+        );
+        if (height) uploadedFrame.style.height = height + 'px';
+        doc.querySelectorAll('img').forEach(function (img) {
+          if (!img.complete) img.addEventListener('load', resizeUploadedFrame, { once: true });
+        });
+      } catch (e) {
+        // Keep the generous minimum height if a browser blocks measurement.
+      }
+    }
+    uploadedFrame.addEventListener('load', resizeUploadedFrame);
+    window.addEventListener('resize', resizeUploadedFrame);
+  }
+
   var article = document.querySelector('article.wrap');
   if (!article) return;
 
