@@ -1635,7 +1635,7 @@ collections:
         name: "hero_image"
         widget: "image"
         required: false
-        hint: "Shown near the top of the article and reused automatically as this post's Blog Hub card image."
+        hint: "Used as the Blog Hub card image. For Standard CMS Articles it is also shown near the top of the article; for Finished HTML Uploads the uploaded file controls the article visuals."
       - label: "Featured/Hero Image Alt Text"
         name: "hero_alt"
         widget: "string"
