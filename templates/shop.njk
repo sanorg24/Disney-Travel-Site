@@ -99,7 +99,7 @@ permalink: "shop.html"
         <div class="hub-card-body">
           <h3>{{ group.label }}</h3>
           <p>{{ group.description }}</p>
-          <span class="btn-sm">Shop {{ group.label }} →</span>
+          <span class="btn-sm">{% if group.slug == "disney-collections" %}{{ group.label }} →{% else %}Shop {{ group.label }} →{% endif %}</span>
         </div>
       </a>
 {%- endif %}
@@ -107,6 +107,8 @@ permalink: "shop.html"
     </div>
   </div>
 </section>
+
+{% include "newsletter-signup.njk" %}
 
 <footer>
   <div class="brand" style="justify-content:center; color:var(--white); margin-bottom:6px;">✦ The Pixie Packed Family</div>
