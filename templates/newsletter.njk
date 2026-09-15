@@ -1,0 +1,107 @@
+---
+permalink: "newsletter.html"
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "analytics.njk" %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{%- set pageTitle = "TPPF Weekly Disney Newsletter | The Pixie Packed Family" %}
+{%- set pageDescription = "Get one helpful weekly email with Walt Disney World news, outfit inspiration, helpful reads, trip essentials, and TPPF resources." %}
+<title>{{ pageTitle }}</title>
+<meta name="description" content="{{ pageDescription }}">
+{%- set ogTitle = pageTitle %}
+{%- set ogDescription = pageDescription %}
+{%- set ogImage = "/photos/brand-banner.jpg" %}
+{% include "seo-meta.njk" %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maroon:#5c2a38; --pink-bg:#fbe0ec; --gold:#e8c468; --cream:#fff8f3;
+    --gray:#7a6f78; --ink:#3a2733; --white:#fff; --magenta:#c23f97;
+  }
+  * , *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+  body { font-family:'Quicksand',sans-serif; background:var(--cream); color:var(--ink); line-height:1.65; }
+  h1,h2,h3 { font-family:'Fredoka',sans-serif; }
+  a { color:inherit; text-decoration:none; }
+  .wrap { max-width:1140px; margin:0 auto; padding:0 24px; }
+
+  header { background:var(--maroon); position:sticky; top:0; z-index:50; }
+  nav.wrap { display:flex; align-items:center; justify-content:space-between; min-height:70px; flex-wrap:wrap; gap:8px; }
+  .brand { display:flex; align-items:center; gap:10px; color:var(--white); font-size:1.2rem; font-weight:600; }
+  .brand .mark { width:36px; height:36px; border-radius:50%; background:var(--gold); display:flex; align-items:center; justify-content:center; }
+  .navlinks { display:flex; gap:4px; }
+  .navlinks a { color:rgba(255,255,255,.85); font-size:.88rem; font-weight:600; padding:8px 12px; border-radius:8px; }
+  .navlinks a:hover { background:rgba(255,255,255,.12); color:var(--gold); }
+  .hamburger-btn { display:none; background:none; border:0; color:var(--white); font-size:1.6rem; cursor:pointer; padding:6px 8px; }
+  .mobile-menu { display:none; flex-direction:column; background:var(--maroon); border-top:1px solid rgba(255,255,255,.12); }
+  .mobile-menu a { color:rgba(255,255,255,.9); font-weight:600; padding:14px 24px; border-bottom:1px solid rgba(255,255,255,.08); }
+  .mobile-menu.open { display:flex; }
+
+  .newsletter-hero {
+    text-align:center;
+    padding:68px 24px 20px;
+    background:linear-gradient(160deg,var(--pink-bg) 0%,#fdeef4 60%,var(--cream) 100%);
+  }
+  .newsletter-hero .eyebrow { color:var(--magenta); text-transform:uppercase; letter-spacing:1.5px; font-size:.75rem; font-weight:700; }
+  .newsletter-hero h1 { color:var(--maroon); font-size:clamp(2rem,5vw,3rem); margin:10px 0 12px; }
+  .newsletter-hero p { color:var(--gray); max-width:680px; margin:0 auto; font-size:1rem; }
+
+  footer { background:#2c1420; color:rgba(255,255,255,.6); padding:40px 24px 30px; text-align:center; }
+  .footlinks { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; margin:16px 0; font-size:.85rem; }
+  .footlinks a:hover { color:var(--gold); }
+  .fineprint { font-size:.78rem; color:rgba(255,255,255,.4); max-width:640px; margin:0 auto; }
+
+  @media (max-width:800px) {
+    .navlinks { display:none; }
+    .hamburger-btn { display:block; }
+  }
+</style>
+</head>
+<body>
+{% set fullNav = true %}
+{% include "header.njk" %}
+
+<section class="newsletter-hero">
+  <span class="eyebrow">Weekly Disney Update</span>
+  <h1>Join the TPPF Weekly Newsletter ✨</h1>
+  <p>One quick weekly email with Walt Disney World news, outfit inspiration, helpful reads, trip essentials, and TPPF resources.</p>
+</section>
+
+{% include "newsletter-signup.njk" %}
+
+<footer>
+  <div class="brand" style="justify-content:center;color:var(--white);margin-bottom:6px;">✦ The Pixie Packed Family</div>
+  <div class="footlinks">
+    <a href="index.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="blog.html">Blog</a>
+    <a href="our-story.html">Our Story</a>
+    <a href="newsletter.html">Newsletter</a>
+  </div>
+  <p class="fineprint">As an Amazon Associate I earn from qualifying purchases. This site is not affiliated with, endorsed by, or sponsored by The Walt Disney Company.</p>
+</footer>
+
+<script>
+  var hamburgerBtn = document.getElementById('hamburger-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (hamburgerBtn && mobileMenu) {
+    hamburgerBtn.addEventListener('click', function () {
+      var isOpen = mobileMenu.classList.toggle('open');
+      hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      hamburgerBtn.textContent = isOpen ? '✕' : '☰';
+    });
+    mobileMenu.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        mobileMenu.classList.remove('open');
+        hamburgerBtn.setAttribute('aria-expanded', 'false');
+        hamburgerBtn.textContent = '☰';
+      });
+    });
+  }
+</script>
+</body>
+</html>
