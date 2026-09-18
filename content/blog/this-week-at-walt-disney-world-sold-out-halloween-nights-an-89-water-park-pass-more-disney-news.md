@@ -7,6 +7,6 @@ meta_description: 'This week at Walt Disney World: sold-out Halloween parties, a
 hero_image: /photos/pasted-image-1789760879154.png
 hero_alt: Walt Disney World weekly news roundup featuring Halloween party updates, a Disney water park pass, The Magic of Disney Animation and other September 2026 Disney news.
 article_format: uploaded-html
-html_file: /blog-uploads/TPPF_Disney_Jollywood_Nights_2026_UPLOAD (3).html
+html_file: /blog-uploads/TPPF_This_Week_at_Walt_Disney_World_Sept_18_2026_UPLOAD.html
 status: published
 ---
