@@ -11,6 +11,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("guides");
   eleventyConfig.addPassthroughCopy("blog-uploads");
   eleventyConfig.addPassthroughCopy("CNAME");
+  eleventyConfig.addPassthroughCopy("tiktokA25lOb74PxvKuJSdbTNrOnAeDo7jNl2p.txt");
   eleventyConfig.addPassthroughCopy("admin");
 
   // --- CMS content collections --------------------------------------------
