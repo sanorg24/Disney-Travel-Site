@@ -1,7 +1,7 @@
 ---
-label: Mickey's Not-So-Scary Halloween Party
+label: Halloween & Fall Outfits
 slug: mnsshp
-subtitle: Spooky-cute looks for MNSSHP nights at Magic Kingdom.
+subtitle: Halloween and Fall-season Disney outfit inspiration for park days, MNSSHP party nights, EPCOT F&W festival and magical autumn looks.
 order: 6
 active: true
 permalink: false
