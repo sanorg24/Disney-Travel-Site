@@ -8,5 +8,5 @@ hero_image: /photos/pasted-image-1790959056484.png
 hero_alt: Walt Disney World official 55 Anniversary logo in light blue background and darker blue text
 article_format: uploaded-html
 html_file: /blog-uploads/TPPF_This_Week_at_Walt_Disney_World_October_Begins_2026_UPLOAD.html
-status: draft
+status: published
 ---
