@@ -4,8 +4,10 @@ date: 2026-09-07
 tag: disney-news
 excerpt: Our family’s experience, the perks people overlook, and the Disney math you should do before buying
 meta_description: Wondering if a Walt Disney World Annual Pass is worth it for an out-of-state family? See the perks, savings and Disney math our family considered.
-hero_image: /photos/pasted-image-1788796419802.png
+hero_image: /photos/pasted-image-1790991011026.png
 hero_alt: Vanessa, Troy and Arianna together in front of Cinderella Castle at Walt Disney World.
+article_format: standard
+html_file: ''
 status: published
 ---
 
