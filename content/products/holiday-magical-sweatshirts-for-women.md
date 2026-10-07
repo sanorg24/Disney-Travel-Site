@@ -1,6 +1,6 @@
 ---
 name: Holiday Magical Sweatshirts for Women
-image: /photos/pasted-image-1791378503409.png
+image: /photos/pasted-image-1791378632355.png
 alt: Green crew neck sweatshirt with Holiday Castle and Minnie Bow
 amazon_url: https://amzn.to/4y8iLnZ
 image_source: uploaded
