@@ -9,7 +9,7 @@ meta_description: Shop Disney Christmas and holiday event finds for Mickey’s V
 card_title: ''
 eyebrow: SHOP THE HOLIDAYS
 back_link_label: ''
-button_label: Shop Holiday Events →
+button_label: Holiday Events
 card_image: ''
 permalink_path: christmas-holiday-events.html
 permalink: false
