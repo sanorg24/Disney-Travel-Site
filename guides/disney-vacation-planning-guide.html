@@ -144,7 +144,7 @@
         <span class="price-note">instant PDF download · no email required</span>
       </div>
 
-      <a class="buy-btn" href="disney-vacation-planning-guide.pdf" download>Download the Free Planner</a>
+      <a class="buy-btn" id="plannerDownload" href="disney-vacation-planning-guide.pdf" download>Download the Free Planner</a>
 
       <div class="includes">
         <h3>What's Included</h3>
@@ -159,7 +159,7 @@
         </ul>
       </div>
 
-      <p class="fineprint">Fillable right on your phone or computer, or print it out — same file works either way. Delivered as an instant digital download after purchase.</p>
+      <p class="fineprint">Fillable right on your phone or computer, or print it out. Free to use with no email required.</p>
     </div>
 
   </div>
@@ -205,6 +205,18 @@
   carousel.addEventListener('mouseleave', startAutoplay);
 
   startAutoplay();
+})();
+
+(function () {
+  const download = document.getElementById('plannerDownload');
+  if (!download) return;
+  const ua = navigator.userAgent || '';
+  const isiOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  if (isiOS) {
+    download.href = 'disney-vacation-planning-guide-content.html';
+    download.removeAttribute('download');
+    download.textContent = 'Open the iPhone-Friendly Planner';
+  }
 })();
 </script>
 

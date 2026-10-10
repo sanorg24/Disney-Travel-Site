@@ -106,8 +106,13 @@
 
   .page-footer { text-align: center; font-size: 0.62rem; color: var(--gray); margin-top: 2px; }
 
+  
+  .planner-mobile-tools { max-width:900px; margin:0 auto 18px; padding:14px 16px; background:#fff; border:2px solid var(--purple); border-radius:14px; box-shadow:var(--shadow); font-size:0.92rem; line-height:1.45; }
+  .planner-mobile-tools button { display:inline-block; margin-left:10px; padding:10px 14px; border:0; border-radius:999px; background:var(--purple); color:#fff; font:700 0.9rem 'Quicksand', sans-serif; cursor:pointer; }
+  @media (max-width:640px) { .planner-mobile-tools button { display:block; width:100%; margin:10px 0 0; } }
   @media print {
     @page { size: letter; margin: 0.3in; }
+    .planner-mobile-tools { display:none !important; }
     body { background: white; padding: 0; }
     .sheet { box-shadow: none; border-radius: 0; max-width: 100%; padding: 10px 22px 4px; }
     .sheet:not(:last-child) { page-break-after: always; }
@@ -136,6 +141,13 @@
 </style>
 </head>
 <body>
+
+<div class="planner-mobile-tools" role="region" aria-label="Planner save and print tools">
+  <strong>iPhone / iPad:</strong> Tap <em>Save / Print Planner</em>, then use the iOS print/share sheet to save a clean copy with the artwork intact.
+  <button type="button" onclick="window.print()">Save / Print Planner</button>
+</div>
+
+
 
 <div class="sheet cover-sheet">
 
