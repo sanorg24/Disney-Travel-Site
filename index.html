@@ -113,6 +113,9 @@
   .guides { background: var(--cream); }
   .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
   .guide-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; }
+  .guide-card-link { display: block; }
+  .guide-card-graphic { width: 100%; height: auto; display: block; }
+  .guide-card-cta { padding: 16px 20px 20px; text-align: center; background: var(--white); }
   .guide-top { background: linear-gradient(135deg, var(--purple), var(--magenta)); color: var(--white); padding: 30px 26px; }
   .guide-body { padding: 22px 26px; flex: 1; display: flex; flex-direction: column; }
   .guide-body p { color: var(--gray); font-size: 0.88rem; margin-bottom: 18px; flex: 1; }
@@ -342,8 +345,10 @@
         <div class="guide-body"><p>Plan your festival days with everything you need in one place — coming soon.</p><div class="guide-foot"><span class="price">$7</span><a class="btn-sm" data-placeholder="true" href="#" style="background:var(--purple)">Get It →</a></div></div>
       </div>
       <div class="guide-card">
-        <div class="guide-top"><div class="picon">🗓️</div><strong>Disney Vacation Planning Guide</strong></div>
-        <div class="guide-body"><p>A free 13-page printable planning system for your whole trip — cover page, vacation overview, packing list, and a full day-by-day itinerary.</p><div class="guide-foot"><span class="price">FREE</span><a class="btn-sm" href="guides/disney-vacation-planning-guide.pdf" style="background:var(--purple)">Free Download →</a></div></div>
+        <a class="guide-card-link" href="guides/disney-vacation-planning-guide.pdf">
+          <img class="guide-card-graphic" src="photos/promo-vacation-planner-17.jpg" alt="The Pixie Packed Family FREE 17-page printable Disney Vacation Planner">
+        </a>
+        <div class="guide-card-cta"><a class="btn-sm" href="guides/disney-vacation-planning-guide.pdf" style="background:var(--purple)">Download Your FREE 17-Page Planner →</a></div>
       </div>
     </div>
   </div>
