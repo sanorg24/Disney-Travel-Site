@@ -1,0 +1,46 @@
+name: One-time replace planner with final 17-page PDF
+
+on:
+  push:
+    branches:
+      - launch/free-17-page-disney-vacation-planner
+    paths:
+      - .github/workflows/replace-planner-17-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  replace:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout launch branch
+        uses: actions/checkout@v4
+        with:
+          ref: launch/free-17-page-disney-vacation-planner
+          fetch-depth: 0
+
+      - name: Download final approved 17-page planner
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 "https://at.adobe.com/t5NZBiNu31CsvXSH" -o guides/disney-vacation-planning-guide.pdf
+          test "$(head -c 4 guides/disney-vacation-planning-guide.pdf)" = "%PDF"
+          python -m pip install --quiet pypdf
+          python - <<'PY'
+          from pypdf import PdfReader
+          path = "guides/disney-vacation-planning-guide.pdf"
+          r = PdfReader(path)
+          assert len(r.pages) == 17, f"Expected 17 pages, got {len(r.pages)}"
+          for i, page in enumerate(r.pages, 1):
+              w=float(page.mediabox.width); h=float(page.mediabox.height)
+              assert abs(w-612) < 0.5 and abs(h-792) < 0.5, f"Page {i} is not US Letter: {w}x{h}"
+          print("Verified 17 US Letter pages")
+          PY
+
+      - name: Commit final planner PDF
+        run: |
+          git config user.name "TPPF Planner Launch"
+          git config user.email "actions@users.noreply.github.com"
+          git add guides/disney-vacation-planning-guide.pdf
+          git commit -m "Replace planner with final free 17-page PDF"
+          git push origin HEAD:launch/free-17-page-disney-vacation-planner
