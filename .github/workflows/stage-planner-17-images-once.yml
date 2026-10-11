@@ -27,6 +27,7 @@ jobs:
           curl -L --fail --retry 3 "https://at.adobe.com/slk4KseWEPTbEOeX" -o photos/vacation-guide-carousel-1.jpg
           curl -L --fail --retry 3 "https://at.adobe.com/RXmaqym5hq1WEutP" -o photos/vacation-guide-carousel-2.jpg
           curl -L --fail --retry 3 "https://at.adobe.com/KNhhBv62vRfqQL4G" -o photos/vacation-guide-carousel-3.jpg
+          python -m pip install --quiet pillow
           python - <<'PY'
           from PIL import Image
           paths = [
