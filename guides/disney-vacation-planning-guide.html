@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Disney Vacation Planning Guide | The Pixie Packed Family</title>
-<meta name="description" content="The complete Disney Vacation Planning Guide from The Pixie Packed Family — cover page, vacation overview, packing list, and a full day-by-day itinerary.">
+<meta name="description" content="Download The Pixie Packed Family FREE 17-page Disney Vacation Planner with trip overview, Lightning Lane strategy, park-day planners, outfit planning, resort days, and more. No email or payment required.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -46,7 +46,7 @@
   .carousel-slide { position: absolute; inset: 0; opacity: 0; transition: opacity 0.45s ease; }
   .carousel-slide.active { opacity: 1; }
   .carousel-slide img {
-    width: 100%; height: 100%; object-fit: cover; display: block;
+    width: 100%; height: 100%; object-fit: contain; background: var(--white); display: block;
     -webkit-user-select: none; -moz-user-select: none; user-select: none;
     -webkit-user-drag: none; -webkit-touch-callout: none;
     pointer-events: none;
@@ -114,13 +114,13 @@
 
       <div class="carousel-track">
         <div class="carousel-slide active">
-          <img src="../photos/vacation-guide-carousel-1.jpg" alt="Preview of the Disney Vacation Planning Guide, Vacation Overview page" draggable="false">
+          <img src="../photos/vacation-guide-carousel-1.jpg" alt="Preview of the FREE 17-page Disney Vacation Planner, Vacation Overview page" draggable="false">
         </div>
         <div class="carousel-slide">
-          <img src="../photos/vacation-guide-carousel-2.jpg" alt="Preview of the Disney Vacation Planning Guide, Park Day Itinerary page" draggable="false">
+          <img src="../photos/vacation-guide-carousel-2.jpg" alt="Preview of the FREE 17-page Disney Vacation Planner, Magic Kingdom Day Planner page" draggable="false">
         </div>
         <div class="carousel-slide">
-          <img src="../photos/vacation-guide-carousel-3.jpg" alt="Preview of the Disney Vacation Planning Guide, Packing List page" draggable="false">
+          <img src="../photos/vacation-guide-carousel-3.jpg" alt="Preview of the FREE 17-page Disney Vacation Planner, Beyond the Parks Day Planner page" draggable="false">
         </div>
       </div>
 
@@ -137,29 +137,30 @@
     <div class="product-info">
       <span class="eyebrow">Free Digital Download</span>
       <h1>Disney Vacation Planning Guide</h1>
-      <p class="lede">A complete, fillable planning system for your whole trip — plan it once, print it or use it digitally, and walk into the parks with a real plan instead of a pile of sticky notes.</p>
+      <p class="lede">A colorful 17-page printable planner built to help families organize the whole Disney vacation — from travel and outfits to Lightning Lane strategy, park days, resort time, and more.</p>
 
       <div class="price-row">
         <span class="price">FREE</span>
-        <span class="price-note">instant PDF download · no email required</span>
+        <span class="price-note">17 printable pages · no email required</span>
       </div>
 
-      <a class="buy-btn" id="plannerDownload" href="disney-vacation-planning-guide.pdf" download>Download the Free Planner</a>
+      <a class="buy-btn" href="disney-vacation-planning-guide.pdf" download>Download Your FREE 17-Page Disney Vacation Planner</a>
 
       <div class="includes">
         <h3>What's Included</h3>
         <ul>
-          <li>Cover Page — a keepsake title page for your trip</li>
-          <li>Vacation Overview — travel dates, resort, budget, pre-packing list, to-do list, documents &amp; dining reservations, all in one place</li>
-          <li>Complete Packing List — every category covered, for every member of the family</li>
-          <li>Travel Day — a dedicated page for getting there smoothly</li>
-          <li>Park Day Itinerary — pre-labeled pages for Day 1 through Day 5</li>
-          <li>Park Hopping Itinerary — a page built specifically for park-to-park days</li>
-          <li>Rest Day Itinerary — for the days built around the resort, pool, and downtime</li>
+          <li>Vacation Overview — travel dates, resort details, budget, pre-packing, documents, dining, and notes</li>
+          <li>Outfit Planner — organize park-day outfits, themes, shoes, bags, ears, and accessories</li>
+          <li>Lightning Lane Strategy Planner — booking details, Multi Pass, Single Pass, return windows, and backup plans</li>
+          <li>Travel Day + Magical Week at a Glance — organize arrival, transportation, and six vacation days</li>
+          <li>Four Park Day Planners — dedicated pages for Magic Kingdom, Hollywood Studios, EPCOT, and Animal Kingdom</li>
+          <li>Park-Hopping + 4 Parks, 1 Day Challenge — plan transportation, attractions, dining, entertainment, and Lightning Lanes</li>
+          <li>Rest &amp; Resort Day + Beyond the Parks — make room for resort time, Disney Springs, water parks, mini golf, dining, and more</li>
+          <li>Tips for More Magic + A Little More Pixie Dust — practical reminders and a final resource page</li>
         </ul>
       </div>
 
-      <p class="fineprint">Fillable right on your phone or computer, or print it out. Free to use with no email required.</p>
+      <p class="fineprint">US Letter printable PDF. Completely free — no email signup, payment, or account required.</p>
     </div>
 
   </div>
@@ -207,17 +208,6 @@
   startAutoplay();
 })();
 
-(function () {
-  const download = document.getElementById('plannerDownload');
-  if (!download) return;
-  const ua = navigator.userAgent || '';
-  const isiOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  if (isiOS) {
-    download.href = 'disney-vacation-planning-guide-content.html';
-    download.removeAttribute('download');
-    download.textContent = 'Open the iPhone-Friendly Planner';
-  }
-})();
 </script>
 
 </body>
