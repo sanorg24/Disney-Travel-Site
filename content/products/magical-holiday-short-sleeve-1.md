@@ -1,8 +1,8 @@
 ---
 name: Magical Holiday Short Sleeve
-image: /photos/pasted-image-1791385941614.png
+image: /photos/pasted-image-1792265215662.png
 alt: green Holiday Magical castle with lights
-amazon_url: https://amzn.to/4yDx7hl
+amazon_url: https://amzn.to/4zxCQFk
 image_source: uploaded
 status: published
 order: 13
