@@ -1,5 +1,5 @@
 ---
-name: Vintage Audrey Hepburn Style Cocktail Swing Dresses
+name: Vintage Audrey Hepburn Style Cocktail Swing Dresses (+22 colors)
 image: /photos/pasted-image-1792265919595.png
 alt: red polka dot cocktail dress
 amazon_url: https://amzn.to/47lWpob
