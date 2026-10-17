@@ -1,6 +1,6 @@
 ---
 name: Disney Mickey Christmas Lights Hoodie
-image: /photos/pasted-image-1791378064999.png
+image: /photos/pasted-image-1792247809398.png
 alt: olive green hoodie with Disney Script logo wrapped in lights
 amazon_url: https://amzn.to/3VmpFsh
 image_source: uploaded
