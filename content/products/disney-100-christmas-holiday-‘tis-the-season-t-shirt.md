@@ -8,7 +8,7 @@ status: published
 order: 13
 category: christmas-holiday-events
 subgroup: ''
-pixie_tip: This item comes in M, W & Youth, and is available in a variety of styles and colors; sweatshirt, hoodie, zip-up, women's
+pixie_tip: ''
 personal_photo: ''
 personal_photo_alt: ''
 personal_video_url: ''
