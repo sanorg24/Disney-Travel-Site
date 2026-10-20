@@ -1,5 +1,5 @@
 ---
-name: https://amzn.to/4zEFglE (+3)
+name: Christmas Velvet Minnie Ears (+3)
 image: /photos/pasted-image-1792283286946.png
 alt: https://amzn.to/4zEFglE
 amazon_url: https://amzn.to/4zEFglE
