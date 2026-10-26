@@ -95,13 +95,63 @@ export default function (eleventyConfig) {
       } else if (l.theme) {
         const theme = themeBySlug.get(l.theme);
         if (!theme) {
-          errors.push(`Look "${l.title}" references unknown Theme "${l.theme}".`);
+          errors.push('Look "' + l.title + '" references unknown Theme "' + l.theme + '".');
         } else if (theme.active === false) {
-          warnings.push(`Look "${l.title}" references inactive Theme "${l.theme}" (${theme.label}).`);
+          warnings.push('Look "' + l.title + '" references inactive Theme "' + l.theme + '" (' + theme.label + ').');
+        }
+      }
+
+      for (const item of (l.items || [])) {
+        const itemCategories = Array.isArray(item.shop_categories)
+          ? item.shop_categories
+          : (item.shop_categories ? [item.shop_categories] : []);
+        const itemSubgroups = Array.isArray(item.shop_subgroups)
+          ? item.shop_subgroups
+          : (item.shop_subgroups ? [item.shop_subgroups] : []);
+
+        if (!itemCategories.length && !itemSubgroups.length) continue;
+
+        if (!itemCategories.length && itemSubgroups.length) {
+          errors.push('Look "' + l.title + '" item "' + item.label + '" has Shop Subgroups but no Shop Category.');
+        }
+        if (itemCategories.length && !item.shop_image) {
+          errors.push('Look "' + l.title + '" item "' + item.label + '" is assigned to a Shop Category but has no Product Image.');
+        }
+        if (itemCategories.length && !item.shop_image_alt) {
+          errors.push('Look "' + l.title + '" item "' + item.label + '" is assigned to a Shop Category but has no Product Image Alt Text.');
+        }
+
+        for (const categorySlug of itemCategories) {
+          const cat = categoryBySlug.get(categorySlug);
+          if (!cat) {
+            errors.push('Look "' + l.title + '" item "' + item.label + '" references unknown Shop Category "' + categorySlug + '".');
+            continue;
+          }
+          if (cat.active === false) {
+            warnings.push('Look "' + l.title + '" item "' + item.label + '" references inactive Shop Category "' + categorySlug + '" (' + cat.label + ').');
+          }
+
+          const categorySubgroups = subgroups.filter((sg) => sg.category === categorySlug && sg.active !== false);
+          if (categorySubgroups.length && !itemSubgroups.some((slug) => categorySubgroups.some((sg) => sg.slug === slug))) {
+            errors.push('Look "' + l.title + '" item "' + item.label + '" is assigned to Shop Category "' + categorySlug + '" but no matching Shop Subgroup was selected.');
+          }
+        }
+
+        for (const subgroupSlug of itemSubgroups) {
+          const sg = subgroupBySlug.get(subgroupSlug);
+          if (!sg) {
+            errors.push('Look "' + l.title + '" item "' + item.label + '" references unknown Shop Subgroup "' + subgroupSlug + '".');
+            continue;
+          }
+          if (!itemCategories.includes(sg.category)) {
+            errors.push('Look "' + l.title + '" item "' + item.label + '" has Shop Subgroup "' + subgroupSlug + '" whose parent Category "' + sg.category + '" is not selected for that item.');
+          }
+          if (sg.active === false) {
+            warnings.push('Look "' + l.title + '" item "' + item.label + '" references inactive Shop Subgroup "' + subgroupSlug + '" (' + sg.label + ').');
+          }
         }
       }
     }
-
     // Category-level validation: unlike the reference checks above, which
     // verify Products/Looks point at something real, these checks verify
     // each Category record is internally complete and non-conflicting on
@@ -358,18 +408,88 @@ export default function (eleventyConfig) {
     return resolveCategoryPages(collectionApi).filter((c) => c.permalink);
   });
 
-  // All other categories: one generic collection of every published
-  // product, any category. The shared category-page layout filters this
-  // per-page (by page.slug) using plain Nunjucks equality checks, not
-  // selectattr's "equalto" test, which does not work reliably in this
-  // Nunjucks setup (discovered and documented earlier in this project).
+  // Shared category-page inventory. Starts with every published Product,
+  // then folds in any published Look items Vanessa explicitly assigns to
+  // Shop Categories. Amazon URL is the de-duplication key: if a Look item
+  // already exists as a Product, the Product record wins for name/image
+  // and the Look's extra category/subgroup assignments are merged into it.
   eleventyConfig.addCollection("allProducts", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("content/products/*.md")
+    const toArray = (value) => Array.isArray(value) ? value : (value ? [value] : []);
+    const normalizeUrl = (value) => String(value || "").trim().toLowerCase();
+
+    const products = collectionApi.getFilteredByGlob("content/products/*.md")
+      .map((item) => ({ ...item.data }))
+      .filter((p) => p.status === "published");
+
+    const byUrl = new Map();
+    for (const p of products) {
+      const key = normalizeUrl(p.amazon_url);
+      const normalized = {
+        ...p,
+        additional_categories: toArray(p.additional_categories),
+        additional_subgroups: toArray(p.additional_subgroups)
+      };
+      if (key) byUrl.set(key, normalized);
+    }
+
+    const looks = collectionApi.getFilteredByGlob("content/looks/*.md")
       .map((item) => item.data)
-      .filter((p) => p.status === "published")
+      .filter((l) => l.status === "published");
+
+    for (const look of looks) {
+      for (const item of (look.items || [])) {
+        const categories = toArray(item.shop_categories);
+        if (!categories.length) continue;
+
+        const subgroups = toArray(item.shop_subgroups);
+        const key = normalizeUrl(item.amazon_url);
+        if (!key) continue;
+
+        if (byUrl.has(key)) {
+          const existing = byUrl.get(key);
+          existing.additional_categories = [...new Set([
+            ...toArray(existing.additional_categories),
+            ...categories.filter((slug) => slug !== existing.category)
+          ])];
+          existing.additional_subgroups = [...new Set([
+            ...toArray(existing.additional_subgroups),
+            ...subgroups.filter((slug) => slug !== existing.subgroup)
+          ])];
+          if (!existing.image && item.shop_image) existing.image = item.shop_image;
+          if (!existing.alt && item.shop_image_alt) existing.alt = item.shop_image_alt;
+        } else {
+          byUrl.set(key, {
+            name: item.label,
+            image: item.shop_image,
+            alt: item.shop_image_alt,
+            amazon_url: item.amazon_url,
+            status: "published",
+            order: look.order || 0,
+            category: null,
+            subgroup: null,
+            additional_categories: categories,
+            additional_subgroups: subgroups,
+            pixie_tip: "",
+            personal_photo: "",
+            personal_photo_alt: "",
+            personal_video_url: "",
+            source_look: look.title
+          });
+        }
+      }
+    }
+
+    const withoutUrl = products
+      .filter((p) => !normalizeUrl(p.amazon_url))
+      .map((p) => ({
+        ...p,
+        additional_categories: toArray(p.additional_categories),
+        additional_subgroups: toArray(p.additional_subgroups)
+      }));
+
+    return [...byUrl.values(), ...withoutUrl]
       .sort((a, b) => (a.order || 0) - (b.order || 0));
   });
-
   // Plain JS filter, not a Nunjucks selectattr("equalto") chain -- that
   // form was found unreliable in this Nunjucks setup earlier in this
   // project. Real JS string comparison has no such ambiguity.

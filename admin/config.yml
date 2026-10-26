@@ -1677,8 +1677,38 @@ collections:
         widget: "list"
         fields:
           - { label: "Item Label", name: "label", widget: "string" }
+          - label: "Product Image"
+            name: "shop_image"
+            widget: "image"
+            required: false
+            hint: "Optional unless you also assign this item to a Shop Category below. Use the individual product image, not the full Look collage."
+          - label: "Product Image Alt Text"
+            name: "shop_image_alt"
+            widget: "string"
+            required: false
+            hint: "Briefly describe the individual product image. Required when this item is also shown on a Shop Category page."
           - { label: "Amazon Affiliate URL", name: "amazon_url", widget: "string", pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."] }
-        hint: "Each product/item shown for this Look. The same item can also appear in other Looks or in a product category -- that's expected, not a duplicate to merge."
+          - label: "Also Show In Shop Categories"
+            name: "shop_categories"
+            widget: "relation"
+            collection: "taxonomy_categories"
+            value_field: "slug"
+            display_field: "label"
+            search_fields: ["label"]
+            multiple: true
+            required: false
+            hint: "Optional. Select every individual Shop Category where this Look item should also appear. No separate Product entry is needed."
+          - label: "Shop Subgroups"
+            name: "shop_subgroups"
+            widget: "relation"
+            collection: "taxonomy_subgroups"
+            value_field: "slug"
+            display_field: "label"
+            search_fields: ["label"]
+            multiple: true
+            required: false
+            hint: "Only needed when a selected Shop Category has sub-sections, such as Footwear, Loungefly, or Family Halloween."
+        hint: "Each item can stay only in the Look, or you can also publish it to individual Shop Categories from this same entry."
       - label: "Page Template Setting (do not change)"
         name: "permalink"
         widget: "hidden"
