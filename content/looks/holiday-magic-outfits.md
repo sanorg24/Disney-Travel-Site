@@ -9,18 +9,48 @@ status: published
 order: 7
 items:
   - label: Loungefly Disney Minnie Mouse Elf
+    shop_image: ''
+    shop_image_alt: ''
     amazon_url: https://amzn.to/4hm8ak6
+    shop_categories: []
+    shop_subgroups: []
   - label: Brooks Women’s Ghost 18
+    shop_image: ''
+    shop_image_alt: ''
     amazon_url: https://amzn.to/3TtSCSe
+    shop_categories: []
+    shop_subgroups: []
   - label: Eatbook Christmas Shirt for Women
+    shop_image: ''
+    shop_image_alt: ''
     amazon_url: https://amzn.to/3Trrqna
+    shop_categories: []
+    shop_subgroups: []
   - label: Eatbook Christmas Shirt for Women
+    shop_image: ''
+    shop_image_alt: ''
     amazon_url: https://amzn.to/4xqskOS
+    shop_categories: []
+    shop_subgroups: []
   - label: Magic Shirts for Women Cute Castle
+    shop_image: ''
+    shop_image_alt: ''
     amazon_url: https://amzn.to/4cD7EeX
+    shop_categories: []
+    shop_subgroups: []
   - label: Disney Merry Christmas Lights Script
+    shop_image: ''
+    shop_image_alt: ''
     amazon_url: https://amzn.to/4xmK1i6
-  - label: CHRLEISURE Leggings with Pockets for Women 4 Pack
+    shop_categories: []
+    shop_subgroups: []
+  - label: CHRLEISURE Leggings with Pockets for Women 4 Pack (+11 color combo)
+    shop_image: /photos/pasted-image-1793023338160.png
+    shop_image_alt: 4 pairs of leggings with pockets, staggered 2 pair of black, 1 charcoal and 1 light grey pair
     amazon_url: https://amzn.to/46EVAqh
+    shop_categories:
+      - womens
+      - christmas-holiday-events
+    shop_subgroups: []
 permalink: false
 ---
