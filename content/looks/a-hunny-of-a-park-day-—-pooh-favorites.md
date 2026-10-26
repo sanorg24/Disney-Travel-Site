@@ -14,7 +14,8 @@ items:
     amazon_url: https://amzn.to/4xxcR0c
     shop_categories:
       - loungefly
-    shop_subgroups: []
+    shop_subgroups:
+      - loungefly-backpacks
   - label: Flip Straw Tumbler with Handle 30 oz
     shop_image: ''
     shop_image_alt: ''
