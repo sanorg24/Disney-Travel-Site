@@ -95,13 +95,63 @@ export default function (eleventyConfig) {
       } else if (l.theme) {
         const theme = themeBySlug.get(l.theme);
         if (!theme) {
-          errors.push(`Look "${l.title}" references unknown Theme "${l.theme}".`);
+          errors.push('Look "' + l.title + '" references unknown Theme "' + l.theme + '".');
         } else if (theme.active === false) {
-          warnings.push(`Look "${l.title}" references inactive Theme "${l.theme}" (${theme.label}).`);
+          warnings.push('Look "' + l.title + '" references inactive Theme "' + l.theme + '" (' + theme.label + ').');
+        }
+      }
+
+      for (const item of (l.items || [])) {
+        const itemCategories = Array.isArray(item.shop_categories)
+          ? item.shop_categories
+          : (item.shop_categories ? [item.shop_categories] : []);
+        const itemSubgroups = Array.isArray(item.shop_subgroups)
+          ? item.shop_subgroups
+          : (item.shop_subgroups ? [item.shop_subgroups] : []);
+
+        if (!itemCategories.length && !itemSubgroups.length) continue;
+
+        if (!itemCategories.length && itemSubgroups.length) {
+          errors.push('Look "' + l.title + '" item "' + item.label + '" has Shop Subgroups but no Shop Category.');
+        }
+        if (itemCategories.length && !item.shop_image) {
+          errors.push('Look "' + l.title + '" item "' + item.label + '" is assigned to a Shop Category but has no Product Image.');
+        }
+        if (itemCategories.length && !item.shop_image_alt) {
+          errors.push('Look "' + l.title + '" item "' + item.label + '" is assigned to a Shop Category but has no Product Image Alt Text.');
+        }
+
+        for (const categorySlug of itemCategories) {
+          const cat = categoryBySlug.get(categorySlug);
+          if (!cat) {
+            errors.push('Look "' + l.title + '" item "' + item.label + '" references unknown Shop Category "' + categorySlug + '".');
+            continue;
+          }
+          if (cat.active === false) {
+            warnings.push('Look "' + l.title + '" item "' + item.label + '" references inactive Shop Category "' + categorySlug + '" (' + cat.label + ').');
+          }
+
+          const categorySubgroups = subgroups.filter((sg) => sg.category === categorySlug && sg.active !== false);
+          if (categorySubgroups.length && !itemSubgroups.some((slug) => categorySubgroups.some((sg) => sg.slug === slug))) {
+            errors.push('Look "' + l.title + '" item "' + item.label + '" is assigned to Shop Category "' + categorySlug + '" but no matching Shop Subgroup was selected.');
+          }
+        }
+
+        for (const subgroupSlug of itemSubgroups) {
+          const sg = subgroupBySlug.get(subgroupSlug);
+          if (!sg) {
+            errors.push('Look "' + l.title + '" item "' + item.label + '" references unknown Shop Subgroup "' + subgroupSlug + '".');
+            continue;
+          }
+          if (!itemCategories.includes(sg.category)) {
+            errors.push('Look "' + l.title + '" item "' + item.label + '" has Shop Subgroup "' + subgroupSlug + '" whose parent Category "' + sg.category + '" is not selected for that item.');
+          }
+          if (sg.active === false) {
+            warnings.push('Look "' + l.title + '" item "' + item.label + '" references inactive Shop Subgroup "' + subgroupSlug + '" (' + sg.label + ').');
+          }
         }
       }
     }
-
     // Category-level validation: unlike the reference checks above, which
     // verify Products/Looks point at something real, these checks verify
     // each Category record is internally complete and non-conflicting on
