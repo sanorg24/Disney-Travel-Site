@@ -7,7 +7,10 @@ image_source: uploaded
 status: published
 order: 16
 category: christmas-holiday-events
+additional_categories:
+  - ears-headbands
 subgroup: ''
+additional_subgroups: []
 pixie_tip: ''
 personal_photo: ''
 personal_photo_alt: ''
