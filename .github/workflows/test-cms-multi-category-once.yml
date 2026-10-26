@@ -1,0 +1,25 @@
+name: One-time test CMS Amazon links and multi-category
+
+on:
+  push:
+    branches:
+      - fix/cms-amazon-links-multi-category
+    paths:
+      - .github/workflows/test-cms-multi-category-once.yml
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/cms-amazon-links-multi-category
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
