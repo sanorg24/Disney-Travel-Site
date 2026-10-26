@@ -151,7 +151,7 @@ permalink: "{{ page.permalink }}"
     <h3 class="subgroup-title">{{ page.subgroupLabels[sgValue] }}</h3>
     <div class="prod-grid">
 {%- for product in categoryProducts %}
-{%- if product.subgroup == sgValue and not (product.pixie_tip or product.personal_photo or product.personal_video_url) %}
+{%- if (product | inSubgroup(sgValue)) and not (product.pixie_tip or product.personal_photo or product.personal_video_url) %}
       <div class="prod-card">
         <img src="{{ product.image }}" alt="{{ product.alt }}">
         <div class="prod-card-body"><h3>{{ product.name }}</h3><a href="{{ product.amazon_url }}" target="_blank" rel="noopener">Shop on Amazon →</a></div>
