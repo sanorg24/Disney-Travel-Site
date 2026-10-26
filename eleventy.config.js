@@ -358,18 +358,88 @@ export default function (eleventyConfig) {
     return resolveCategoryPages(collectionApi).filter((c) => c.permalink);
   });
 
-  // All other categories: one generic collection of every published
-  // product, any category. The shared category-page layout filters this
-  // per-page (by page.slug) using plain Nunjucks equality checks, not
-  // selectattr's "equalto" test, which does not work reliably in this
-  // Nunjucks setup (discovered and documented earlier in this project).
+  // Shared category-page inventory. Starts with every published Product,
+  // then folds in any published Look items Vanessa explicitly assigns to
+  // Shop Categories. Amazon URL is the de-duplication key: if a Look item
+  // already exists as a Product, the Product record wins for name/image
+  // and the Look's extra category/subgroup assignments are merged into it.
   eleventyConfig.addCollection("allProducts", function (collectionApi) {
-    return collectionApi.getFilteredByGlob("content/products/*.md")
+    const toArray = (value) => Array.isArray(value) ? value : (value ? [value] : []);
+    const normalizeUrl = (value) => String(value || "").trim().toLowerCase();
+
+    const products = collectionApi.getFilteredByGlob("content/products/*.md")
+      .map((item) => ({ ...item.data }))
+      .filter((p) => p.status === "published");
+
+    const byUrl = new Map();
+    for (const p of products) {
+      const key = normalizeUrl(p.amazon_url);
+      const normalized = {
+        ...p,
+        additional_categories: toArray(p.additional_categories),
+        additional_subgroups: toArray(p.additional_subgroups)
+      };
+      if (key) byUrl.set(key, normalized);
+    }
+
+    const looks = collectionApi.getFilteredByGlob("content/looks/*.md")
       .map((item) => item.data)
-      .filter((p) => p.status === "published")
+      .filter((l) => l.status === "published");
+
+    for (const look of looks) {
+      for (const item of (look.items || [])) {
+        const categories = toArray(item.shop_categories);
+        if (!categories.length) continue;
+
+        const subgroups = toArray(item.shop_subgroups);
+        const key = normalizeUrl(item.amazon_url);
+        if (!key) continue;
+
+        if (byUrl.has(key)) {
+          const existing = byUrl.get(key);
+          existing.additional_categories = [...new Set([
+            ...toArray(existing.additional_categories),
+            ...categories.filter((slug) => slug !== existing.category)
+          ])];
+          existing.additional_subgroups = [...new Set([
+            ...toArray(existing.additional_subgroups),
+            ...subgroups.filter((slug) => slug !== existing.subgroup)
+          ])];
+          if (!existing.image && item.shop_image) existing.image = item.shop_image;
+          if (!existing.alt && item.shop_image_alt) existing.alt = item.shop_image_alt;
+        } else {
+          byUrl.set(key, {
+            name: item.label,
+            image: item.shop_image,
+            alt: item.shop_image_alt,
+            amazon_url: item.amazon_url,
+            status: "published",
+            order: look.order || 0,
+            category: null,
+            subgroup: null,
+            additional_categories: categories,
+            additional_subgroups: subgroups,
+            pixie_tip: "",
+            personal_photo: "",
+            personal_photo_alt: "",
+            personal_video_url: "",
+            source_look: look.title
+          });
+        }
+      }
+    }
+
+    const withoutUrl = products
+      .filter((p) => !normalizeUrl(p.amazon_url))
+      .map((p) => ({
+        ...p,
+        additional_categories: toArray(p.additional_categories),
+        additional_subgroups: toArray(p.additional_subgroups)
+      }));
+
+    return [...byUrl.values(), ...withoutUrl]
       .sort((a, b) => (a.order || 0) - (b.order || 0));
   });
-
   // Plain JS filter, not a Nunjucks selectattr("equalto") chain -- that
   // form was found unreliable in this Nunjucks setup earlier in this
   // project. Real JS string comparison has no such ambiguity.
