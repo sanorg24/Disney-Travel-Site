@@ -50,7 +50,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -74,6 +74,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -82,6 +92,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -129,7 +149,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -153,6 +173,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -161,6 +191,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -208,7 +248,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -232,6 +272,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -240,6 +290,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -287,7 +347,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -311,6 +371,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -319,6 +389,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -366,7 +446,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -390,6 +470,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -398,6 +488,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -445,7 +545,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -469,6 +569,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -477,6 +587,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -526,7 +646,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -550,6 +670,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -558,6 +688,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -605,7 +745,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -629,6 +769,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -637,6 +787,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -684,7 +844,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -708,6 +868,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -716,6 +886,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -763,7 +943,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -787,6 +967,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -795,6 +985,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -844,7 +1044,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -868,6 +1068,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -876,6 +1086,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -923,7 +1143,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -947,6 +1167,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -955,6 +1185,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -1002,7 +1242,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -1026,6 +1266,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -1034,6 +1284,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -1081,7 +1341,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -1105,6 +1365,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -1113,6 +1383,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -1162,7 +1442,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -1186,6 +1466,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Changing this moves the product to a different shop page's data -- it does not create a new page or sidebar entry."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. No duplicate product entry is needed."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -1194,6 +1484,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         required: false
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Only needed when an additional category is divided into subgroups (for example Footwear, Loungefly, or Family Halloween)."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -1242,7 +1542,7 @@ collections:
       - label: "Amazon Affiliate URL"
         name: "amazon_url"
         widget: "string"
-        pattern: ["^https://amzn\\.to/", "Must be an amzn.to affiliate link."]
+        pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."]
       - label: "Image Source"
         name: "image_source"
         widget: "select"
@@ -1266,6 +1566,16 @@ collections:
         display_field: "label"
         search_fields: ["label"]
         hint: "Which shop page this product belongs to. Choosing a Category here does NOT create a new page or move this product's public URL -- it only assigns this product to an existing shop page."
+      - label: "Also Show In Categories"
+        name: "additional_categories"
+        widget: "relation"
+        collection: "taxonomy_categories"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. Select any additional shop pages where this same product should also appear. Enter the product only once."
       - label: "Subgroup"
         name: "subgroup"
         widget: "relation"
@@ -1275,6 +1585,16 @@ collections:
         search_fields: ["label"]
         required: false
         hint: "Only used for Loungefly, Footwear, and Family Halloween, which are split into sub-sections. Leave blank for every other category."
+      - label: "Also Show In Subgroups"
+        name: "additional_subgroups"
+        widget: "relation"
+        collection: "taxonomy_subgroups"
+        value_field: "slug"
+        display_field: "label"
+        search_fields: ["label"]
+        multiple: true
+        required: false
+        hint: "Optional. If an additional category uses subgroups, select the matching subgroup(s) here so the product appears in the correct section."
       - label: "Our Pixie Packed Tip"
         name: "pixie_tip"
         widget: "text"
@@ -1357,7 +1677,7 @@ collections:
         widget: "list"
         fields:
           - { label: "Item Label", name: "label", widget: "string" }
-          - { label: "Amazon Affiliate URL", name: "amazon_url", widget: "string", pattern: ["^https://(amzn\\.to/|(www\\.)?amazon\\.com/)", "Must be an amzn.to link or a full amazon.com affiliate link."] }
+          - { label: "Amazon Affiliate URL", name: "amazon_url", widget: "string", pattern: ["^https://(amzn\\.to/|link\\.amazon/|link\\.amazon\\.com/|(www\\.)?amazon\\.com/|a\\.co/)", "Must be an Amazon affiliate/share link (amzn.to, link.amazon, amazon.com, or a.co)."] }
         hint: "Each product/item shown for this Look. The same item can also appear in other Looks or in a product category -- that's expected, not a duplicate to merge."
       - label: "Page Template Setting (do not change)"
         name: "permalink"

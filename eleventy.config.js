@@ -374,7 +374,22 @@ export default function (eleventyConfig) {
   // form was found unreliable in this Nunjucks setup earlier in this
   // project. Real JS string comparison has no such ambiguity.
   eleventyConfig.addFilter("byCategory", function (products, slug) {
-    return (products || []).filter((p) => p.category === slug);
+    return (products || []).filter((p) => {
+      if (p.category === slug) return true;
+      const additional = Array.isArray(p.additional_categories)
+        ? p.additional_categories
+        : (p.additional_categories ? [p.additional_categories] : []);
+      return additional.includes(slug);
+    });
+  });
+
+  eleventyConfig.addFilter("inSubgroup", function (product, slug) {
+    if (!product) return false;
+    if (product.subgroup === slug) return true;
+    const additional = Array.isArray(product.additional_subgroups)
+      ? product.additional_subgroups
+      : (product.additional_subgroups ? [product.additional_subgroups] : []);
+    return additional.includes(slug);
   });
 
   // Same reasoning as byCategory above -- confirmed during this migration
