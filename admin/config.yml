@@ -1657,6 +1657,29 @@ collections:
         widget: "string"
         required: false
         hint: "Briefly describe what is shown in the collage image."
+      - label: "Feature on Homepage"
+        name: "feature_on_homepage"
+        widget: "boolean"
+        default: false
+        required: false
+        hint: "Show this published Look in the homepage Collections & Inspiration section. Feature up to four Looks. When none is selected, the existing automatic four are shown."
+      - label: "Homepage Feature Order"
+        name: "homepage_feature_order"
+        widget: "number"
+        value_type: "int"
+        required: false
+        min: 1
+        hint: "Optional. Use 1, 2, 3 or 4 to arrange selected homepage Looks. This does NOT change collection order."
+      - label: "Homepage Feature Image (optional)"
+        name: "homepage_feature_image"
+        widget: "image"
+        required: false
+        hint: "Optional homepage-only photo. Leave blank to use the existing collage cover image without changing it."
+      - label: "Homepage Feature Image Alt Text"
+        name: "homepage_feature_image_alt"
+        widget: "string"
+        required: false
+        hint: "Describe the homepage-only photo if you use one."
       - label: "Our Pixie Packed Note"
         name: "pixie_note"
         widget: "text"

@@ -533,6 +533,19 @@ export default function (eleventyConfig) {
       .sort((a, b) => (a.order || 0) - (b.order || 0));
   });
 
+  // Homepage editor picks are independent of Look ordering within collections.
+  // Until any published Look is marked featured, preserve the existing first-four behavior.
+  eleventyConfig.addFilter("homepageLookSelection", function (looks) {
+    const published = looks || [];
+    const featured = published.filter((look) => look.feature_on_homepage === true);
+    if (featured.length === 0) return published.slice(0, 4);
+    return featured.sort((a, b) =>
+      (Number(a.homepage_feature_order) || 9999) - (Number(b.homepage_feature_order) || 9999)
+      || (Number(a.order) || 0) - (Number(b.order) || 0)
+      || String(a.title || "").localeCompare(String(b.title || ""))
+    ).slice(0, 4);
+  });
+
   // Published Looks assigned to the Mix • Match • Reuse destination.
   // This keeps the new page on the same CMS Look model Vanessa already
   // uses, while leaving every legacy Look on Shop Disney Collections.

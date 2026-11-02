@@ -208,7 +208,7 @@ permalink: "index.html"
   </div>
 </section>
 
-{%- set teaserLooks = collections.allLooks %}
+{%- set teaserLooks = collections.allLooks | homepageLookSelection %}
 {%- if teaserLooks | length > 0 %}
 <section class="looks">
   <div class="wrap">
@@ -217,12 +217,10 @@ permalink: "index.html"
     <p class="ssub">From park-day outfits to travel favorites and park-bag essentials, shop our curated collections to make planning your next Disney adventure a little easier.</p>
     <div class="grid-looks">
       {%- for look in teaserLooks %}
-      {%- if loop.index0 < 4 %}
-      <a class="look-card" href="outfits.html">
-        <img src="{{ look.collage_image }}" alt="{{ look.collage_image_alt }}">
+      <a class="look-card" href="{% if look.destination == 'mix-match-reuse' %}mix-match-reuse.html{% else %}outfits.html{% endif %}">
+        <img src="{{ look.homepage_feature_image or look.collage_image }}" alt="{{ look.homepage_feature_image_alt or look.collage_image_alt or look.title }}">
         <div class="look-title">{{ look.title }}</div>
       </a>
-      {%- endif %}
       {%- endfor %}
     </div>
     <div class="section-cta">
