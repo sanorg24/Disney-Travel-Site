@@ -4,6 +4,10 @@ destination: mix-match-reuse
 theme: park-day-outfits
 collage_image: /photos/pasted-image-1789223162352.png
 collage_image_alt: ''
+feature_on_homepage: true
+homepage_feature_order: 2
+homepage_feature_image: ''
+homepage_feature_image_alt: ''
 pixie_note: ''
 status: published
 order: 7
