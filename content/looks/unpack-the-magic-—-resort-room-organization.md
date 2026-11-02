@@ -2,7 +2,7 @@
 title: Unpack the Magic — Resort Room Organization
 destination: disney-collections
 theme: resort-room-organization
-collage_image: /photos/pasted-image-1788011233388.png
+collage_image: /photos/pasted-image-1793656223310.png
 collage_image_alt: ''
 feature_on_homepage: false
 homepage_feature_order: null
