@@ -5,7 +5,7 @@ alt: model beige zip up sweater cardigan, holding a purse
 amazon_url: https://link.amazon/B0eidyOgp
 image_source: uploaded
 status: published
-order: null
+order: 5
 category: womens
 additional_categories:
   - christmas-holiday-events
