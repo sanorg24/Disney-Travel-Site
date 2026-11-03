@@ -49,7 +49,7 @@ items:
     shop_categories: []
     shop_subgroups: []
   - label: CHRLEISURE Leggings with Pockets for Women 4 Pack (+15 color combo)
-    shop_image: ''
+    shop_image: /photos/pasted-image-1793023338160.png
     shop_image_alt: 4 pairs of leggings with pockets, staggered 2 pair of black, 1 charcoal and 1 light grey pair
     amazon_url: https://amzn.to/46EVAqh
     shop_categories:
