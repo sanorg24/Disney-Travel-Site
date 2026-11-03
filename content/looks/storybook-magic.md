@@ -2,7 +2,7 @@
 title: Storybook Magic
 destination: mix-match-reuse
 theme: ''
-collage_image: /photos/pasted-image-1793728019352.png
+collage_image: /photos/pasted-image-1793731714037.png
 collage_image_alt: ''
 feature_on_homepage: false
 homepage_feature_order: null
@@ -64,6 +64,12 @@ items:
     shop_image: ''
     shop_image_alt: Leggings with Pockets for Women 4 Packs, Tummy Control High Waisted black grey pink blue
     amazon_url: https://link.amazon/B0iPvfdMq
+    shop_categories: []
+    shop_subgroups: []
+  - label: Women's Long Sleeve Zip Up Ribbed Cardigan (+17 colors)
+    shop_image: ''
+    shop_image_alt: ''
+    amazon_url: https://link.amazon/B097AbPyC
     shop_categories: []
     shop_subgroups: []
 permalink: false
