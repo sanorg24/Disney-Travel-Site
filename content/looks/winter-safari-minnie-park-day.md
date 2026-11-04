@@ -27,7 +27,7 @@ items:
     shop_subgroups: []
   - label: Crossbody Bag Bum Bag (+26 colors)
     shop_image: /photos/pasted-image-1793760579524.png
-    shop_image_alt: ''
+    shop_image_alt: gray and white leopard crossbody bag with gold zippers
     amazon_url: https://link.amazon/B09WYkpdi
     shop_categories:
       - backpacks
