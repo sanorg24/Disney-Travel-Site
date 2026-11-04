@@ -32,7 +32,7 @@ items:
     shop_image_alt: black upper mesh, white sole running shoe
     amazon_url: https://link.amazon/B0cQTAKC4
     shop_categories:
-      - womens
+      - footwear
     shop_subgroups:
       - footwear-womens
   - label: Loungefly Minnie Mouse Maroon Quilted
