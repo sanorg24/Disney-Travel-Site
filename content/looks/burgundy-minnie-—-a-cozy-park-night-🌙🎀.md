@@ -33,6 +33,7 @@ items:
     amazon_url: https://link.amazon/B0cQTAKC4
     shop_categories:
       - footwear
+      - womens
     shop_subgroups:
       - footwear-womens
   - label: Loungefly Minnie Mouse Maroon Quilted
