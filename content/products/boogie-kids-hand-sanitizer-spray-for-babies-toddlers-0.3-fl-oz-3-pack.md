@@ -7,7 +7,8 @@ image_source: uploaded
 status: published
 order: 28
 category: park-day-essentials
-additional_categories: []
+additional_categories:
+  - luggage
 subgroup: ''
 additional_subgroups: []
 pixie_tip: ''
