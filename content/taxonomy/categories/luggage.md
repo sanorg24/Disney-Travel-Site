@@ -1,5 +1,5 @@
 ---
-label: Luggage & Travel
+label: Luggage & Travel Day
 slug: luggage
 group: travelresortessentials
 order: 1
