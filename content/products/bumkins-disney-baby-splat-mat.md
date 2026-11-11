@@ -1,5 +1,5 @@
 ---
-name: Bumkins Disney Baby Splat Mat
+name: Bumkins Disney Baby Splat Mat (+17 other styles)
 image: /photos/pasted-image-1794424354749.png
 alt: Mickey splat mat in official packaging
 amazon_url: https://link.amazon/B09wDu93p
