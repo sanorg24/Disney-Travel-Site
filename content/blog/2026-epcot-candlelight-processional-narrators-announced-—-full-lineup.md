@@ -1,11 +1,13 @@
 ---
 title: 2026 EPCOT Candlelight Processional Narrators Announced — Full Lineup
 date: 2026-09-09
-tag: disney-news
+tag: parks-holidays
 excerpt: Disney has announced the 2026 EPCOT Candlelight Processional narrator lineup, including new names like Robin Roberts, Jason Kelce and Lacey Chabert. Here’s the full schedule plus what families should know before planning.
 meta_description: See the full 2026 EPCOT Candlelight Processional narrator lineup, showtimes and the October 14 dining package date for Disney holiday planning.
 hero_image: /photos/pasted-image-1788985421166.png
 hero_alt: TPPF graphic showing the 2026 EPCOT Candlelight Processional narrator lineup, showtimes and key planning details.
+article_format: standard
+html_file: ''
 status: published
 ---
 
