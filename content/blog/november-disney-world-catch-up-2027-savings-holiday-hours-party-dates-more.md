@@ -7,6 +7,6 @@ meta_description: Catch up on important Walt Disney World updates for November 2
 hero_image: /photos/pasted-image-1794584227525.png
 hero_alt: Collage featuring the Animal Kingdom Christmas tree, Disney’s Wilderness Lodge pool and 2026 holiday party early closing dates for Magic Kingdom and Hollywood Studios.
 article_format: uploaded-html
-html_file: /blog-uploads/TPPF_November_Disney_World_Catchup_2026_Sveltia_FINAL (1).html
+html_file: /blog-uploads/TPPF_November_Disney_World_Catchup_2026_Sveltia_FINAL_WITH_AK_LINK.html
 status: published
 ---
