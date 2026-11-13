@@ -1994,6 +1994,7 @@ collections:
         options:
           - { label: "Travel Tips", value: "travel-tips" }
           - { label: "Disney News & Updates", value: "disney-news" }
+          - { label: "Parks & Holidays", value: "parks-holidays" }
           - { label: "Outfits & Packing", value: "outfit-inspiration" }
           - { label: "Family & Accessibility", value: "family-accessibility" }
       - label: "Excerpt"
