@@ -1,7 +1,7 @@
 ---
 title: 'Disney Jollywood Nights 2026: What to Know Before You Go'
 date: 2026-09-18
-tag: disney-news
+tag: parks-holidays
 excerpt: Disney Jollywood Nights is returning to Hollywood Studios for 15 nights in 2026 — with holiday shows, characters, nighttime entertainment, attractions and plenty of old-Hollywood Christmas style. Here’s what’s been announced so far and what to know before your Jollywood night.
 meta_description: Disney Jollywood Nights returns to Hollywood Studios in 2026. See party dates, hours, tickets, entertainment, characters, attractions and what’s new.
 hero_image: /photos/pasted-image-1790991064555.png
