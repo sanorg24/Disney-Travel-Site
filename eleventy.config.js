@@ -755,6 +755,7 @@ export default function (eleventyConfig) {
     const labels = {
       "travel-tips": "Travel Tips",
       "disney-news": "Disney News & Updates",
+      "parks-holidays": "Parks & Holidays",
       "outfit-inspiration": "Outfits & Packing",
       "family-accessibility": "Family & Accessibility"
     };
