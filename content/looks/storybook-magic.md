@@ -10,7 +10,7 @@ homepage_feature_image: ''
 homepage_feature_image_alt: ''
 pixie_note: ''
 status: published
-order: 2
+order: 4
 items:
   - label: Brooks Women’s Ghost 18
     shop_image: ''
