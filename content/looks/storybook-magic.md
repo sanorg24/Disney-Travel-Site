@@ -2,7 +2,7 @@
 title: Storybook Magic
 destination: mix-match-reuse
 theme: ''
-collage_image: /photos/pasted-image-1793731714037.png
+collage_image: /photos/pasted-image-1794836606082.png
 collage_image_alt: ''
 feature_on_homepage: false
 homepage_feature_order: null
