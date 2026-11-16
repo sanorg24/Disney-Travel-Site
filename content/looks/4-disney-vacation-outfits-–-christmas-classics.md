@@ -16,8 +16,7 @@ items:
     shop_image: ''
     shop_image_alt: red tshirt, snowflake outlined minnie mouse head
     amazon_url: https://link.amazon/B09PXTrtY
-    shop_categories:
-      - christmas-holiday-events
+    shop_categories: []
     shop_subgroups: []
   - label: Disney Mickey & Friends "'Tis the Season" Christmas Coffee Pullover Hoodie
     shop_image: ''
