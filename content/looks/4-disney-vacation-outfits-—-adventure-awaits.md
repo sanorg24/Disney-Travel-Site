@@ -10,7 +10,7 @@ homepage_feature_image: ''
 homepage_feature_image_alt: ''
 pixie_note: ''
 status: published
-order: 3
+order: 6
 items:
   - label: High Sierra Loop Backpack
     shop_image: ''
