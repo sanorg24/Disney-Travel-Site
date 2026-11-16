@@ -10,7 +10,7 @@ homepage_feature_image: ''
 homepage_feature_image_alt: ''
 pixie_note: ''
 status: published
-order: 7
+order: 3
 items:
   - label: Loungefly Disney Minnie Mouse Elf
     shop_image: ''
