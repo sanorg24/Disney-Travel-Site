@@ -4,9 +4,13 @@ destination: mix-match-reuse
 theme: ''
 collage_image: /photos/pasted-image-1789231567150.png
 collage_image_alt: ''
+feature_on_homepage: false
+homepage_feature_order: null
+homepage_feature_image: ''
+homepage_feature_image_alt: ''
 pixie_note: ''
 status: published
-order: 3
+order: 8
 items:
   - label: Loungefly Disney Mickey Straw Backpack
     shop_image: ''
