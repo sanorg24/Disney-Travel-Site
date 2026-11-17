@@ -5,7 +5,7 @@ alt: Themed Area Rug Black Mouse Head Carpet Cartoon Animated Character Rug
 amazon_url: https://link.amazon/B0hUKH418
 image_source: uploaded
 status: published
-order: 15
+order: 3
 category: disney-home-decor-comfort
 additional_categories: []
 subgroup: ''
