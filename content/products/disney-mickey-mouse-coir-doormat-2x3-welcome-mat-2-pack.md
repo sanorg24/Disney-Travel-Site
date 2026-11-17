@@ -7,7 +7,8 @@ image_source: uploaded
 status: published
 order: 11
 category: disney-seasonal-decorations
-additional_categories: []
+additional_categories:
+  - disney-outdoor-entryway
 subgroup: ''
 additional_subgroups: []
 pixie_tip: ''
