@@ -1,4 +1,14 @@
 export default function (eleventyConfig) {
+  // Shared Shop subscriptions: only render enabled entries with valid HTTPS links.
+  // Sort order is managed centrally in Sveltia; this never alters product taxonomy.
+  eleventyConfig.addFilter("activeShopSubscriptions", function (settings) {
+    if (!settings || settings.enabled !== true || !Array.isArray(settings.programs)) return [];
+    return settings.programs
+      .filter((p) => p && p.enabled === true && p.label &&
+        typeof p.affiliate_url === "string" && /^https:\/\/[^\s]+$/i.test(p.affiliate_url))
+      .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0));
+  });
+
   // Checkpoint 4.1: only .njk and .md are template formats Eleventy will
   // process. Every existing hand-authored .html/.htm page is excluded via
   // .eleventyignore and handled below as an explicit passthrough copy
