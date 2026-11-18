@@ -34,6 +34,7 @@ collections:
             fields:
               - { label: "Program Name", name: "label", widget: "string", hint: "Example: Amazon Prime, Audible, Amazon Kids+, or Prime Access." }
               - { label: "Short Description (optional)", name: "description", widget: "string", required: false, hint: "Shown as a tooltip on the subscription link, not a sales claim. Keep it factual." }
+              - { label: "Button Text (optional)", name: "button_label", widget: "string", required: false, hint: "Example: Explore Prime benefits. Leave blank to use Explore plus the Program Name." }
               - { label: "Approved Affiliate / Bounty Link", name: "affiliate_url", widget: "string", required: false, pattern: ["^$|^https://", "Use the exact HTTPS affiliate link provided for this program; leave empty until verified."] }
               - { label: "Optional Small Image", name: "image", widget: "image", required: false, hint: "Use only an image you have rights to display; otherwise leave blank for text-only links." }
               - { label: "Optional Image Alt Text", name: "image_alt", widget: "string", required: false }
