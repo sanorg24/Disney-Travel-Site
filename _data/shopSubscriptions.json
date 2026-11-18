@@ -6,10 +6,21 @@
     {
       "label": "Amazon Prime",
       "description": "",
+      "button_label": "Explore Prime benefits",
       "affiliate_url": "https://amzn.to/4iXG26G",
       "image": "",
       "image_alt": "",
       "order": 1,
+      "enabled": true
+    },
+    {
+      "label": "Audible Standard Free Trial",
+      "description": "",
+      "button_label": "Explore Audible Free Trial",
+      "affiliate_url": "https://link.amazon/A0jgGIY5J",
+      "image": "",
+      "image_alt": "",
+      "order": 2,
       "enabled": true
     }
   ]
