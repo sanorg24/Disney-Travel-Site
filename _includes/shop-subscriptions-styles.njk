@@ -14,13 +14,20 @@
 .tppf-programs__arrow { font-size: 1.04em; font-weight: 900; }
 .tppf-programs__disclosure { grid-column: 1 / -1; margin: 1px 0 0; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.22); color: #e0eaf6; font-size: .69rem; line-height: 1.45; }
 @media (max-width: 700px) {
-  .tppf-programs { padding: 0 16px; margin: 16px auto 24px; }
-  .tppf-programs__inner { grid-template-columns: minmax(0,1fr); padding: 19px 19px 15px; gap: 13px; }
-  .tppf-programs__links { justify-content: flex-start; max-width: none; }
-  .tppf-programs__link { min-height: 46px; }
+  .tppf-programs { padding: 0 16px; margin: 14px auto 22px; }
+  .tppf-programs__inner { grid-template-columns: minmax(0,1fr); padding: 16px 17px 13px; gap: 11px; }
+  .tppf-programs__eyebrow { font-size: .65rem; margin-bottom: 4px; }
+  .tppf-programs__intro h2 { font-size: 1.16rem; margin-bottom: 4px; }
+  .tppf-programs__intro p { font-size: .8rem; line-height: 1.4; }
+  .tppf-programs__links { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; width: 100%; max-width: none; }
+  .tppf-programs__link { min-width: 0; min-height: 48px; padding: 9px 7px; gap: 5px; font-size: .75rem; line-height: 1.25; white-space: normal; overflow-wrap: break-word; }
+  /* With three programs, the gift option occupies a full row; with four, a 2x2 grid. */
+  .tppf-programs__link:last-child:nth-child(odd) { grid-column: 1 / -1; }
+  .tppf-programs__disclosure { font-size: .65rem; padding-top: 9px; }
 }
-@media (max-width: 390px) {
-  .tppf-programs__link { width: 100%; }
+@media (max-width: 330px) {
+  .tppf-programs__links { grid-template-columns: minmax(0,1fr); }
+  .tppf-programs__link:last-child:nth-child(odd) { grid-column: auto; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tppf-programs__link { transition: none; }
