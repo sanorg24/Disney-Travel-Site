@@ -22,6 +22,16 @@
       "image_alt": "",
       "order": 2,
       "enabled": true
+    },
+    {
+      "label": "Audible Gift Membership",
+      "description": "",
+      "button_label": "Gift an Audible Membership",
+      "affiliate_url": "https://link.amazon/A038qYL8S",
+      "image": "",
+      "image_alt": "",
+      "order": 3,
+      "enabled": true
     }
   ]
 }
