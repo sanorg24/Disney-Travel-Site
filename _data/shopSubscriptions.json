@@ -1,7 +1,7 @@
 {
   "enabled": true,
   "heading": "Amazon Memberships & Services",
-  "description": "Explore Amazon subscription options and services for your family.",
+  "description": "Shopping is just the start. Explore membership benefits and services for your family.",
   "programs": [
     {
       "label": "Amazon Prime",
@@ -10,7 +10,8 @@
       "image": "",
       "image_alt": "",
       "order": 1,
-      "enabled": true
+      "enabled": true,
+      "button_label": "Explore Prime benefits"
     }
   ]
 }
