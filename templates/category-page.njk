@@ -119,6 +119,7 @@ permalink: "{{ page.permalink }}"
     .hub-grid { grid-template-columns: 1fr; }
   }
 </style>
+{% include "shop-subscriptions-styles.njk" %}
 </head>
 <body>
 
@@ -135,6 +136,8 @@ permalink: "{{ page.permalink }}"
 <div class="wrap">
   <p class="affiliate-disclosure">A quick note: Some links on this page are Amazon affiliate links, which means we may earn a small commission if you purchase through them—at no extra cost to you. ✨</p>
 </div>
+
+{% include "shop-subscriptions-banner.njk" %}
 
 {%- set categoryProducts = collections.allProducts | byCategory(page.slug) %}
 {%- set standardCount = (categoryProducts | rejectattr("pixie_tip") | rejectattr("personal_photo") | rejectattr("personal_video_url") | list | length) %}
