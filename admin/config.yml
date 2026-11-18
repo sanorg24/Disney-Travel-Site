@@ -14,6 +14,32 @@ media_folder: "/photos"
 public_folder: "/photos"
 
 collections:
+  # One centrally managed subscription banner for all Shop pages.
+  # Kept off until Vanessa enters and enables an approved referral link.
+  - name: "shop_subscriptions"
+    label: "SHOP: Amazon Programs & Subscriptions"
+    files:
+      - name: "subscription_banner"
+        label: "Shopping Page Subscription Banner"
+        file: "_data/shopSubscriptions.json"
+        fields:
+          - { label: "Show Banner on Shop Pages", name: "enabled", widget: "boolean", default: false, hint: "Turn on when your subscription links are ready. The banner will remain hidden unless at least one enabled program has a link." }
+          - { label: "Banner Heading", name: "heading", widget: "string", default: "Amazon Memberships & Services" }
+          - { label: "Short Introduction", name: "description", widget: "text", required: false, default: "Explore Amazon subscription options and services for your family." }
+          - label: "Subscription Programs"
+            name: "programs"
+            widget: "list"
+            required: false
+            summary: "{{fields.label}}"
+            fields:
+              - { label: "Program Name", name: "label", widget: "string", hint: "Example: Amazon Prime, Audible, Amazon Kids+, or Prime Access." }
+              - { label: "Short Description (optional)", name: "description", widget: "string", required: false, hint: "Shown as a tooltip on the subscription link, not a sales claim. Keep it factual." }
+              - { label: "Approved Affiliate / Bounty Link", name: "affiliate_url", widget: "string", required: false, pattern: ["^$|^https://", "Use the exact HTTPS affiliate link provided for this program; leave empty until verified."] }
+              - { label: "Optional Small Image", name: "image", widget: "image", required: false, hint: "Use only an image you have rights to display; otherwise leave blank for text-only links." }
+              - { label: "Optional Image Alt Text", name: "image_alt", widget: "string", required: false }
+              - { label: "Display Order", name: "order", widget: "number", value_type: "int", default: 10, required: false }
+              - { label: "Enable this Program", name: "enabled", widget: "boolean", default: false, hint: "Turn on after checking that this exact program and referral link are eligible in Amazon Associates." }
+
   # ------------------------------------------------------------------
   # Filtered Category views -- for FINDING, EDITING, and HIDING/REMOVING
   # existing products. Every one of these reads/writes the exact same
