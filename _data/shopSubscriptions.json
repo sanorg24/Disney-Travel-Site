@@ -1,0 +1,16 @@
+{
+  "enabled": false,
+  "heading": "Amazon Memberships & Services",
+  "description": "Explore Amazon subscription options and services for your family.",
+  "programs": [
+    {
+      "label": "Amazon Prime",
+      "description": "",
+      "affiliate_url": "https://amzn.to/4iXG26G",
+      "image": "",
+      "image_alt": "",
+      "order": 1,
+      "enabled": true
+    }
+  ]
+}
