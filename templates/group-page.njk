@@ -81,6 +81,7 @@ permalink: "{{ page.permalink }}"
     .hub-card { flex: 1 1 100%; max-width: 420px; }
   }
 </style>
+{% include "shop-subscriptions-styles.njk" %}
 </head>
 <body>
 
@@ -98,10 +99,15 @@ permalink: "{{ page.permalink }}"
   <p>{{ page.description }}</p>
 </section>
 
+{% if page.slug != "mix-match-reuse" %}
+{% include "shop-subscriptions-banner.njk" %}
+{% endif %}
+
 <section class="hub-section">
   <div class="wrap">
 {%- if page.slug == "mix-match-reuse" %}
     <p class="affiliate-disclosure">A quick note: Some links on this page are Amazon affiliate links, which means we may earn a small commission if you purchase through them—at no extra cost to you. ✨</p>
+    {% include "shop-subscriptions-banner.njk" %}
 {%- if collections.mixMatchReuseLooks.length %}
     <div class="look-grid">
 {%- for look in collections.mixMatchReuseLooks %}
