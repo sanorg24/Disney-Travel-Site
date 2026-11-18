@@ -1,0 +1,24 @@
+{# One reusable, centrally managed subscription banner; no output until switched on and a live link exists. #}
+{% set activePrograms = shopSubscriptions | activeShopSubscriptions %}
+{% if activePrograms.length %}
+<aside class="tppf-programs" aria-label="Amazon membership and subscription options">
+  <div class="tppf-programs__inner">
+    <div class="tppf-programs__intro">
+      <span class="tppf-programs__mark" aria-hidden="true">✦</span>
+      <div>
+        <h2>{{ shopSubscriptions.heading or "Amazon Memberships &amp; Services" }}</h2>
+        {% if shopSubscriptions.description %}<p>{{ shopSubscriptions.description }}</p>{% endif %}
+      </div>
+    </div>
+    <div class="tppf-programs__links">
+      {% for program in activePrograms %}
+      <a class="tppf-programs__link" href="{{ program.affiliate_url }}" target="_blank" rel="sponsored noopener noreferrer"{% if program.description %} title="{{ program.description }}"{% endif %}>
+        {% if program.image %}<img src="{{ program.image }}" alt="{{ program.image_alt or program.label }}">{% endif %}
+        <span>{{ program.label }} <span aria-hidden="true">↗</span></span>
+      </a>
+      {% endfor %}
+    </div>
+    <p class="tppf-programs__disclosure">As an Amazon Associate I earn from qualifying purchases. Eligible subscription sign-ups may also earn a commission.</p>
+  </div>
+</aside>
+{% endif %}
