@@ -30,11 +30,12 @@ items:
     amazon_url: https://amzn.to/3SpSVx7
     shop_categories: []
     shop_subgroups: []
-  - label: Hybrid Active Noise Cancelling Headphones
-    shop_image: ''
-    shop_image_alt: ''
-    amazon_url: https://amzn.to/4qR7W7R
-    shop_categories: []
+  - label: H30 Hi-Res Bluetooth Headphones Active Noise Cancelling Headphones
+    shop_image: /photos/pasted-image-1795098378866.png
+    shop_image_alt: H30 Hi-Res Bluetooth Headphones Wireless Over Ear, Off-White | 110H Playtime, Noise Cancelling Headphones, Bluetooth 6.0, Quality and Comfort
+    amazon_url: https://link.amazon/B0ae3J00q
+    shop_categories:
+      - luggage
     shop_subgroups: []
   - label: Sleeveless Tops&Biker Short Set
     shop_image: ''
