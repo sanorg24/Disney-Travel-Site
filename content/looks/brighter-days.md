@@ -43,10 +43,11 @@ items:
     shop_categories: []
     shop_subgroups: []
   - label: Princess T-Shirt
-    shop_image: ''
-    shop_image_alt: ''
+    shop_image: /photos/pasted-image-1795189946939.png
+    shop_image_alt: Disney Princesses sitting with their backs to us with stars around them
     amazon_url: https://amzn.to/3VbRiUB
-    shop_categories: []
+    shop_categories:
+      - womens
     shop_subgroups: []
 permalink: false
 ---
