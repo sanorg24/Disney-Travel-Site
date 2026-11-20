@@ -31,10 +31,11 @@ items:
     shop_categories: []
     shop_subgroups: []
   - label: Marvel Guardians of The Galaxy Star-Lord Flight
-    shop_image: ''
-    shop_image_alt: ''
+    shop_image: /photos/pasted-image-1795189699177.png
+    shop_image_alt: Marvel Guardians of The Galaxy Star-Lord Flight
     amazon_url: https://amzn.to/4cJOjsB
-    shop_categories: []
+    shop_categories:
+      - mens
     shop_subgroups: []
   - label: Star Wars Millennium Falcon 77 Retro
     shop_image: ''
