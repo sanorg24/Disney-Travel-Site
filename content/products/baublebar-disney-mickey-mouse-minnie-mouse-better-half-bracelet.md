@@ -5,7 +5,7 @@ alt: BaubleBar - Disney Mickey Mouse & Minnie Mouse Better Half Bracelet
 amazon_url: https://link.amazon/B0dkr1uk0
 image_source: uploaded
 status: published
-order: 18
+order: 20
 category: accessories-jewelry
 additional_categories: []
 subgroup: ''
