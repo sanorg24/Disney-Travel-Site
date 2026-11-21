@@ -7,7 +7,10 @@ image_source: uploaded
 status: published
 order: 17
 category: loungefly
+additional_categories:
+  - luggage
 subgroup: loungefly-backpacks
+additional_subgroups: []
 pixie_tip: ''
 personal_photo: ''
 personal_photo_alt: ''
