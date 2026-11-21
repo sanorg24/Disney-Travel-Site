@@ -2,7 +2,7 @@
 name: Loungefly Disney Minnie Floral Rock The Dots Backpack
 image: /photos/pasted-image-1795239333136.png
 alt: Loungefly Disney Minnie Floral Rock The Dots Mini Backpack
-amazon_url: https://link.amazon/B021kmFTK
+amazon_url: https://link.amazon/B0i9tUpjU
 image_source: uploaded
 status: published
 order: 27
