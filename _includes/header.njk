@@ -3,7 +3,7 @@
     {% if fullNav %}<div class="brand"><span class="mark">✦</span> The Pixie Packed Family</div>
     <div class="navlinks">
       <a href="index.html">Home</a>
-      <a href="shop.html">Shop</a>
+      {% if not shopPaused %}<a href="shop.html">Shop</a>{% endif %}
       <a href="index.html#guides">Guides</a>
       <a href="blog.html">Blog</a>
       <a href="newsletter.html">Newsletter</a>
@@ -15,7 +15,7 @@
   {%- if fullNav %}
   <div class="mobile-menu" id="mobile-menu">
     <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
+    {% if not shopPaused %}<a href="shop.html">Shop</a>{% endif %}
     <a href="index.html#guides">Guides</a>
     <a href="blog.html">Blog</a>
     <a href="newsletter.html">Newsletter</a>
