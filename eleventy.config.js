@@ -1,4 +1,21 @@
 export default function (eleventyConfig) {
+  // EMERGENCY SWITCH: temporarily pause all Amazon shopping, keep underlying assets.
+  // Restore only after the account status and links have been reviewed.
+  const shopPaused = true;
+  eleventyConfig.addGlobalData("shopPaused", shopPaused);
+  if (shopPaused) {
+    const pausedShopPage = "<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n<title>Shopping Temporarily Unavailable | The Pixie Packed Family</title>\n<meta name=\"description\" content=\"The Pixie Packed Family shopping resources are temporarily unavailable. Explore free Disney planning tips and guides instead.\">\n<style>*,*:before,*:after{box-sizing:border-box}body{margin:0;background:#fff8f3;color:#26364a;font:16px/1.65 system-ui,-apple-system,sans-serif}header{background:#073b74;color:white;padding:23px 18px;text-align:center;font-weight:800;font-size:1.2rem}main{max-width:700px;margin:9vh auto 4rem;padding:30px 24px;text-align:center}h1{color:#073b74;font-size:clamp(1.7rem,5vw,2.5rem);line-height:1.2}p{max-width:530px;margin:16px auto 24px}a{display:inline-block;margin:6px;padding:12px 20px;background:#073b74;color:white;text-decoration:none;border-radius:12px;font-weight:700}a.secondary{background:#ed1676}footer{text-align:center;color:#526173;padding:10px 20px 30px;font-size:.9rem}</style>\n</head><body><header>The Pixie Packed Family ✨</header>\n<main><h1>Shopping is temporarily unavailable</h1><p>I'm taking some time to update my shopping resources. Thank you for understanding! My Disney vacation planning tips, articles, and free guides are still here to help you plan your next magical trip.</p>\n<a href=\"/index.html\">Visit the Homepage</a><a class=\"secondary\" href=\"/blog.html\">Read Disney Planning Tips</a><a href=\"/index.html#guides\">Explore Free Guides</a></main>\n<footer>Helping families pack less stress &amp; more pixie dust ✨</footer></body></html>";
+    eleventyConfig.addTransform("pauseShopAndAffiliateLinks", function (content, outputPath) {
+      if (typeof content !== "string" || !outputPath || !outputPath.endsWith(".html")) return content;
+      // Shop templates all include the shared subscription banner stylesheet.
+      if (content.includes(".tppf-programs {")) return pausedShopPage;
+      // Remove active Amazon shopping anchors from other rendered pages.
+      return content.replace(
+        /<a\b[^>]*\bhref\s*=\s*(["'])https?:\/\/(?:www\.)?(?:amazon\.[a-z.]+|amzn\.to|link\.amazon(?:\.com)?|a\.co)\/[^"']*\1[^>]*>[\s\S]*?<\/a>/gi,
+        '<span class="tppf-paused-link">Shopping link temporarily unavailable</span>'
+      );
+    });
+  }
   // Shared Shop subscriptions: only render enabled entries with valid HTTPS links.
   // Sort order is managed centrally in Sveltia; this never alters product taxonomy.
   eleventyConfig.addFilter("activeShopSubscriptions", function (settings) {
