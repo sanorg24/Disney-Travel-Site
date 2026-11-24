@@ -182,7 +182,7 @@ permalink: "index.html"
       <h1><span class="gradient-text">Helping Families Pack Less Stress &amp; More Pixie Dust ✨</span></h1>
       <p class="sub">From our Disney-loving family to yours — honest park tips, outfit inspiration, helpful guides, and the things we actually use to make Disney days a little easier and a lot more magical.</p>
       <div class="btnrow">
-        <a class="btn btn-gold" href="shop.html">Explore Our Disney Finds</a>
+        {% if not shopPaused %}<a class="btn btn-gold" href="shop.html">Explore Our Disney Finds</a>{% endif %}
         <a class="btn btn-outline" href="guides/ultimate-park-day-packing-checklist.pdf">Get the Free Park Day Checklist</a>
       </div>
     </div>
@@ -190,6 +190,7 @@ permalink: "index.html"
   </div>
 </section>
 
+{% if not shopPaused %}
 <section class="products" id="picks">
   <div class="wrap">
     <span class="label">Shop the Parks</span>
@@ -208,6 +209,8 @@ permalink: "index.html"
   </div>
 </section>
 
+{% endif %}
+{% if not shopPaused %}
 {%- set teaserLooks = collections.allLooks | homepageLookSelection %}
 {%- if teaserLooks | length > 0 %}
 <section class="looks">
@@ -230,6 +233,7 @@ permalink: "index.html"
 </section>
 {%- endif %}
 
+{% endif %}
 <section class="guides" id="guides">
   <div class="wrap">
     <span class="label">Plan Ahead</span>
@@ -317,13 +321,13 @@ permalink: "index.html"
   <p style="font-size:0.85rem; color:rgba(255,255,255,0.4)">Disney vacation planning &amp; travel essentials</p>
   <div class="footlinks">
     <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
+    {% if not shopPaused %}<a href="shop.html">Shop</a>{% endif %}
     <a href="our-story.html">Our Story</a>
     <a href="blog.html">Blog</a>
     <a href="newsletter.html">Newsletter</a>
     <a href="guides/ultimate-park-day-packing-checklist.pdf">Free Checklist</a>
   </div>
-  <p class="fineprint">As an Amazon Associate I earn from qualifying purchases. This site is not affiliated with, endorsed by, or sponsored by The Walt Disney Company.</p>
+  <p class="fineprint">This site is not affiliated with, endorsed by, or sponsored by The Walt Disney Company.</p>
 </footer>
 
 <script>
